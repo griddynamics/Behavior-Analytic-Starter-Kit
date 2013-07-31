@@ -49,8 +49,8 @@
               logAbandoned="true"
               minEvictableIdleTimeMillis="30000"
               jdbcInterceptors="org.apache.tomcat.jdbc.pool.interceptor.ConnectionState;org.apache.tomcat.jdbc.pool.interceptor.StatementFinalizer"
-              username="<%= node[:ecask][:db_user] %>"
-              password="<%= node[:ecask][:db_password] %>"
+              username="<%= node[:webstore][:db_user] %>"
+              password="<%= node[:webstore][:db_password] %>"
               driverClassName="com.mysql.jdbc.Driver"
               url="jdbc:mysql://localhost:3306/ecask"/>
  
@@ -71,8 +71,8 @@
               logAbandoned="true"
               minEvictableIdleTimeMillis="30000"
               jdbcInterceptors="org.apache.tomcat.jdbc.pool.interceptor.ConnectionState;org.apache.tomcat.jdbc.pool.interceptor.StatementFinalizer"
-              username="<%= node[:ecask][:db_user] %>"
-              password="<%= node[:ecask][:db_password] %>"
+              username="<%= node[:webstore][:db_user] %>"
+              password="<%= node[:webstore][:db_password] %>"
               driverClassName="com.mysql.jdbc.Driver"
               url="jdbc:mysql://localhost:3306/ecask"/>
  
@@ -93,8 +93,8 @@
               logAbandoned="true"
               minEvictableIdleTimeMillis="30000"
               jdbcInterceptors="org.apache.tomcat.jdbc.pool.interceptor.ConnectionState;org.apache.tomcat.jdbc.pool.interceptor.StatementFinalizer"
-              username="<%= node[:ecask][:db_user] %>"
-              password="<%= node[:ecask][:db_password] %>"
+              username="<%= node[:webstore][:db_user] %>"
+              password="<%= node[:webstore][:db_password] %>"
               driverClassName="com.mysql.jdbc.Driver"
               url="jdbc:mysql://localhost:3306/ecask"/>
  

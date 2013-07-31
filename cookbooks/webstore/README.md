@@ -1,4 +1,4 @@
-ECASK Demo Application
+Webstore Demo Application
 ======================
 
 Description
@@ -32,25 +32,25 @@ Attributes
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>[:ecask][:db_user]</tt></td>
+    <td><tt>[:webstore][:db_user]</tt></td>
     <td>String</td>
     <td>Demo Store database username</td>
     <td>ecask</td>
   </tr>
   <tr>
-    <td><tt>[:ecask][:db_password]</tt></td>
+    <td><tt>[:webstore][:db_password]</tt></td>
     <td>String</td>
     <td>Demo Store database user password</td>
     <td>ecask_password</td>
   </tr>
   <tr>
-    <td><tt>[:ecack][:db_root_password]</tt></td>
+    <td><tt>[:webstore][:db_root_password]</tt></td>
     <td>String</td>
     <td>Root password for MySQL</td>
     <td>PaSsWoRd</td>
   </tr>
   <tr>
-    <td><tt>[:ecask][:tomcat_opts]</tt></td>
+    <td><tt>[:webstore][:tomcat_opts]</tt></td>
     <td>String</td>
     <td>Java options for Tomcat server</td>
     <td>-server -Xms256m -Xmx1024m -XX:PermSize=512m -XX:MaxPermSize=512m -Druntime.environment=development</td>
@@ -59,24 +59,15 @@ Attributes
 
 Usage
 -----
-Include ecask::default recipe to your runlist
-Add url binary and checksum for Oracle JDK for tomcat
+Include webstore::default recipe to your runlist
 ```json
 {
   "run_list": [
-    "recipe[ecask::default]"
+    "recipe[webstore::default]"
   ]
   "override_attributes": {
-    "ecask" => {
+    "webstore" => {
         "db_password" => "SoMe_OtHeR_pAsSwOrD"
-    }
-    "java" => {
-        "6" => {
-            "x86_64" => {
-                "url" => "url_to_jdk_binary"
-                "checksum" => "jdk_checksum(sha256)"
-            }
-        }
     }
   }
 }

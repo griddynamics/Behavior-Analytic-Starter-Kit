@@ -27,37 +27,37 @@ launch:
             description: "site_app_url"
             default: "http://gd-bask.s3.amazonaws.com/bask-site.war"
     steps:
-        - start_ecask_vm:
+        - start_webstore_vm:
             action: provisionVms
             parameters:
                 hardwareId: ${hardware_id}
                 imageId: ${image_id}
                 vmIdentity: ${vm_identity}
-                phase: start_ecask_vm
-                roleName: ecask_demo
-                jcloudsNodeNamePrefix: ecask_host
+                phase: start_webstore_vm
+                roleName: webstore
+                jcloudsNodeNamePrefix: webstore
             output:
                 ips_tomcat: privateips
                 ips_tomcat_pub: ips
 
-        - setup_ecask:
+        - webstore_setup:
             action: chefsolo
-            phase: setup_ecask
-            precedingPhases: [ start_ecask_vm ]
+            phase: webstore_setup
+            precedingPhases: [ start_webstore_vm ]
             parameters:
-                roles: [ ecask_demo ]
-                runList: [ "recipe[java::openjdk]", "recipe[ecask::default]", "recipe[s3manage::packages]" ]
+                roles: [ webstore ]
+                runList: [ "recipe[java::openjdk]", "recipe[webstore::default]", "recipe[s3manage::packages]" ]
                 isSolo: true
                 recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
                 jattrs:
                     java:
                         jdk_version: "7"
                         java_home: "/usr/lib/jvm/java/"
-                    ecask:
+                    webstore:
                         admin_app_url: ${admin_app_url}
                         site_app_url: ${site_app_url}
     return:
-        ecask_url:
+        webstore_url:
             description: "Sample Store URL:"
             value:
                 - "http://{$.ips_tomcat_pub[0]}:8080/ecask-site/"
@@ -75,7 +75,7 @@ Upload_product_catalog_to_S3:
             action: execrun
             phase: downloading_product_catalog
             parameters:
-                roles: [ ecask_demo ]
+                roles: [ webstore ]
                 isSudo: true
                 command:
                     - bash -c
@@ -114,7 +114,7 @@ Get_recommendations_from_S3:
             phase: downloading_product_catalog
             precedingPhases: [ downloading_recommendations ]
             parameters:
-                roles: [ ecask_demo ]
+                roles: [ webstore ]
                 command:
                     - bash -c
                     - |
@@ -141,7 +141,7 @@ Get_product_catalog_from_S3:
             phase: uploading_catalog_to_store
             precedingPhases: [ downloading_catalog ]
             parameters:
-                roles: [ ecask_demo ]
+                roles: [ webstore ]
                 command:
                     - bash -c
                     - |
@@ -167,7 +167,7 @@ Get_product_catalog_from_S3:
             action: chefsolo
             phase: transferring
             parameters:
-                roles: [ ecask_demo ]
+                roles: [ webstore ]
                 runList: [ "recipe[s3manage::default]" ]
                 isSolo: true
                 recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"

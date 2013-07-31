@@ -3,10 +3,10 @@ kit:
   link: https://griddynamics.com
   applications: [{
     name: "Behavior Analytics Platform",
-    manifest: "https://raw.github.com/griddynamics/Deming/deployment/manifests/behavior_analytics_platform.yaml?login=anton-haldin&token=6d8e536fdc789109f34ebfa518174459"
+    manifest: "https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/manifests/behavior_analytics_platform.yaml"
   }, {
     name: "Web Store ",
-    manifest: "https://raw.github.com/griddynamics/Deming/deployment/manifests/webstore.yaml?login=anton-haldin&token=2c3b5997395f113c275b962c37eb23a4"
+    manifest: "https://github.com/griddynamics/Behavior-Analytic-Starter-Kit/blob/master/manifests/webstore.yaml"
   }]
   provider:
     name: "Grid Dynamics"

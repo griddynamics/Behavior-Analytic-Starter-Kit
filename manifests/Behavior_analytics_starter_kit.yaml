@@ -18,8 +18,6 @@ kit:
         * All TCP/UDP ports in security group for vm in same environment should be open .
       Please refer to the Getting Started for step-by-step instructions on how to conﬁgure your environment.
       
-      "Quick Start" is described in "Behavior Analytic Starter Kit Web Site Materials" https://docs.google.com/a/griddynamics.com/document/d/1z_9WJxXGR8_olX4v977c8yh4vTkNPaqaR9mvzITp5Mc/edit#heading=h.hs1v2wv732ij
-      Our blueprint ( draft version)  is in google doc: https://docs.google.com/a/griddynamics.com/document/d/14qPMzM2Om0gTcNbz2UEgI_LAR4iydSJMvg8i-a4jeSY/edit#heading=h.szwnummjichj
 
       "Behavior Analytic Starter Kit" provide following functionality:
         - Launching a new sandbox instance of “Analytic Platform" (Hadoop cluster, Transaction Log generator, Recommendation processor).

@@ -1,4 +1,0 @@
-I, [2013-06-19T07:26:00.801316 #70799]  INFO -- webapp-centos-58: -----> Destroying <webapp-centos-58>
-I, [2013-06-19T07:26:00.802032 #70799]  INFO -- webapp-centos-58: Finished destroying <webapp-centos-58> (0m0.00s).
-I, [2013-06-19T07:26:08.590265 #70852]  INFO -- webapp-centos-58: -----> Destroying <webapp-centos-58>
-I, [2013-06-19T07:26:08.590908 #70852]  INFO -- webapp-centos-58: Finished destroying <webapp-centos-58> (0m0.00s).

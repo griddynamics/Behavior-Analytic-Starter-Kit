@@ -1,0 +1,10 @@
+[cloudera-cdh4]
+name=Cloudera's Distribution for Hadoop, Version <%= @cdh_version %>
+baseurl=http://archive.cloudera.com/cdh4/redhat/6/x86_64/cdh/<%= @cdh_version %>/
+gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-cloudera
+gpgcheck = 1
+<% unless node[:cloudera][:cloudera_repo_props].nil? -%>
+<% node[:cloudera][:cloudera_repo_props].each do |name, value| %>
+<%= name %> = <%= value %>
+<% end %>
+<% end %>

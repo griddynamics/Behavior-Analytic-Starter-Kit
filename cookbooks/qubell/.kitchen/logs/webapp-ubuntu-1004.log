@@ -1,0 +1,4 @@
+I, [2013-06-19T07:26:00.791124 #70799]  INFO -- webapp-ubuntu-1004: -----> Destroying <webapp-ubuntu-1004>
+I, [2013-06-19T07:26:00.791873 #70799]  INFO -- webapp-ubuntu-1004: Finished destroying <webapp-ubuntu-1004> (0m0.00s).
+I, [2013-06-19T07:26:08.588051 #70852]  INFO -- webapp-ubuntu-1004: -----> Destroying <webapp-ubuntu-1004>
+I, [2013-06-19T07:26:08.589238 #70852]  INFO -- webapp-ubuntu-1004: Finished destroying <webapp-ubuntu-1004> (0m0.00s).

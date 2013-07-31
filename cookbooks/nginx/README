@@ -1,0 +1,6 @@
+Recipe has been changed by Sasha Polonsky. In original recipe the default web site did not process
+any PHP scripts and could only serve static content. After my changes nginx expects to find php-fpm
+process listening on localhost:9000 (see the file templates/default/default_site.erb)
+
+I have also added to default_site.erb some configuration specific for running Wordpress, based on
+my work experience.

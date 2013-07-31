@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+    <bean id="com.griddynamics.deming.ecommerce.api.wrapper.SimpleCatalogWrapper" class="com.griddynamics.deming.ecommerce.api.wrapper.SimpleCatalogWrapper" scope="prototype"/>
+    <bean id="com.griddynamics.deming.ecommerce.api.wrapper.SimpleCategoryWrapper" class="com.griddynamics.deming.ecommerce.api.wrapper.SimpleCategoryWrapper" scope="prototype"/>
+    <bean id="com.griddynamics.deming.ecommerce.api.wrapper.SimpleProductWrapper" class="com.griddynamics.deming.ecommerce.api.wrapper.SimpleProductWrapper" scope="prototype"/>
+
+</beans>

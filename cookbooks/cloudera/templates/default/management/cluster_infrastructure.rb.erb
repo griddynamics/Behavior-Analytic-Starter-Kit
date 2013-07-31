@@ -1,0 +1,42 @@
+#!/usr/bin/env ruby
+
+NAME_NODE_DIR="<%= node[:hadoop][:conf][:hdfs_site]['dfs.namenode.name.dir'] %>"
+JOB_TRACKER_HDFS_DIR="<%= node[:hadoop][:conf][:mapred_site]['mapred.job.tracker.persist.jobstatus.dir'] %>"
+MAPRED_SYSTEM_HDFS_DIR="<%= node[:hadoop][:conf][:mapred_site]['mapred.system.dir'] %>"
+MAPRED_STAGING_HDFS_DIR="<%= node[:hadoop][:conf][:mapred_site]['mapreduce.jobtracker.staging.root.dir'] %>"
+
+JOURNAL_NODES = [
+<% @journal_nodes.each do |node| %>
+        "<%= node.ipaddress %>",
+<% end %>
+]
+
+NAME_NODES = [
+<% @name_nodes.each do |node| %>
+        "<%= node.ipaddress %>",
+<% end %>
+]
+
+DATA_NODES = [
+<% @data_nodes.each do |node| %>
+        "<%= node.ipaddress %>",
+<% end %>
+]
+
+JOB_TRACKERS = [
+<% @job_trackers.each do |node| %>
+        "<%= node.ipaddress %>",
+<% end %>
+]
+
+TASK_TRACKERS = [
+<% @task_trackers.each do |node| %>
+        "<%= node.ipaddress %>",
+<% end %>
+]
+
+ZOOKEEPER_SERVERS = [
+<% @zookeepers.each do |node| %>
+        "<%= node.ipaddress %>",
+<% end %>
+]

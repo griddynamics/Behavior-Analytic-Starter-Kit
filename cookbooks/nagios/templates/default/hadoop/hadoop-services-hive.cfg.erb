@@ -1,0 +1,13 @@
+
+# Hive metastore checks
+
+define service {
+    hostgroup_name          hiveserver
+    use                     hadoop-service
+    service_description     HIVE-METASTORE::HIVE-METASTORE status check
+    servicegroups           HIVE-METASTORE
+    check_command           check_hive_metastore_status!9083!/usr/jdk/jdk1.6.0_31!false
+    normal_check_interval   0.5
+    retry_check_interval    0.5
+    max_check_attempts      3
+}

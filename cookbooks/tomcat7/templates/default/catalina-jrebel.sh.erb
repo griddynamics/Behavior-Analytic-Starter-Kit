@@ -1,0 +1,5 @@
+#!/bin/bash
+export JPDA_TRANSPORT=dt_socket
+export JPDA_ADDRESS=9000
+export JAVA_OPTS="-XX:MaxPermSize=256m -Xms256m -Xmx2048m -Drebel.jersey_plugin=true -noverify -javaagent:<%=node['jrebel_jar']%>  $JAVA_OPTS"
+`dirname $0`/catalina.sh $@

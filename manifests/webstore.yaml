@@ -1,0 +1,185 @@
+#
+# @author Maksim malchuk (mmalchuk@griddynamics.com)
+# @author Nickolay Yurin (nyurin@griddynamics.com)
+#
+
+launch:
+    parameters:
+        image_id:
+            description: image id
+            default: us-east-1/ami-d41689bd
+            enum:
+                "CentOS 6.3 ComodIT": "us-east-1/ami-d41689bd"
+                "Patched CentOS 6 with storage": "us-east-1/ami-1b8ff472"
+        hardware_id:
+            description: hardware id
+            default: m1.medium
+        vm_identity:
+            description: identity of vm
+            default: ec2-user
+            enum:
+                "ec2-user": "ec2-user"
+                "root": "root"
+        admin_app_url:
+            description: "admin_app_url"
+            default: "http://gd-bask.s3.amazonaws.com/bask-admin.war"
+        site_app_url:
+            description: "site_app_url"
+            default: "http://gd-bask.s3.amazonaws.com/bask-site.war"
+    steps:
+        - start_ecask_vm:
+            action: provisionVms
+            parameters:
+                hardwareId: ${hardware_id}
+                imageId: ${image_id}
+                vmIdentity: ${vm_identity}
+                phase: start_ecask_vm
+                roleName: ecask_demo
+                jcloudsNodeNamePrefix: ecask_host
+            output:
+                ips_tomcat: privateips
+                ips_tomcat_pub: ips
+
+        - setup_ecask:
+            action: chefsolo
+            phase: setup_ecask
+            precedingPhases: [ start_ecask_vm ]
+            parameters:
+                roles: [ ecask_demo ]
+                runList: [ "recipe[java::openjdk]", "recipe[ecask::default]", "recipe[s3manage::packages]" ]
+                isSolo: true
+                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                jattrs:
+                    java:
+                        jdk_version: "7"
+                        java_home: "/usr/lib/jvm/java/"
+                    ecask:
+                        admin_app_url: ${admin_app_url}
+                        site_app_url: ${site_app_url}
+    return:
+        ecask_url:
+            description: "Sample Store URL:"
+            value:
+                - "http://{$.ips_tomcat_pub[0]}:8080/ecask-site/"
+
+Upload_product_catalog_to_S3:
+    parameters:
+        bucket:
+            description: "s3 bucket to upload"
+            default: "deming"
+        filename:
+            description: "s3 output catalog filename"
+            default: "product_catalog.json"
+    steps:
+        downloading_product_catalog:
+            action: execrun
+            phase: downloading_product_catalog
+            parameters:
+                roles: [ ecask_demo ]
+                isSudo: true
+                command:
+                    - bash -c
+                    - |
+                        curl -o /tmp/${filename} http://localhost:8080/ecask-site/api/v1/catalog_manager/export
+
+        uploading_to_S3:
+            action: .s3manage
+            parameters:
+                localpath: "/tmp/${filename}"
+                bucket: ${bucket}
+                action: "upload"
+    return:
+        Product_catalog_path:
+            description: "Product catalog S3 URL:"
+            value: "s3://${bucket}/${filename}"
+
+Get_recommendations_from_S3:
+    parameters:
+        bucket:
+            description: "s3 bucket"
+        filename:
+            description: "recommendations filename"
+            default: "recommendations.txt"
+    steps:
+        downloading_recommendations:
+            action: .s3manage
+            phase: downloading_recommendations
+            parameters:
+                localpath: "/tmp"
+                bucket: ${bucket}
+                s3_filename: ${filename}
+                action: "download"
+        uploading_recommendations_to_store:
+            action: execrun
+            phase: downloading_product_catalog
+            precedingPhases: [ downloading_recommendations ]
+            parameters:
+                roles: [ ecask_demo ]
+                command:
+                    - bash -c
+                    - |
+                        curl -F 'file=@/tmp/${filename}' http://localhost:8080/ecask-site/api/v1/recommendations/import
+
+Get_product_catalog_from_S3:
+    parameters:
+        bucket:
+            description: "s3 bucket"
+        filename:
+            description: "catalog filename"
+            default: "catalog.zip"
+    steps:
+        downloading_catalog:
+            action: .s3manage
+            phase: downloading_catalog
+            parameters:
+                localpath: "/tmp"
+                bucket: ${bucket}
+                s3_filename: ${filename}
+                action: "download"
+        uploading_catalog_to_store:
+            action: execrun
+            phase: uploading_catalog_to_store
+            precedingPhases: [ downloading_catalog ]
+            parameters:
+                roles: [ ecask_demo ]
+                command:
+                    - bash -c
+                    - |
+                        curl -F 'file=@/tmp/${filename}' http://localhost:8080/ecask-site/api/v1/catalog_manager/import
+
+.s3manage:
+    parameters:
+        aws_access_key_id:
+            description: "aws_access_key_id"
+        aws_secret_access_key:
+            description: "aws_secret_access_key"
+        localpath:
+            description: "local file path"
+        bucket:
+            description: "s3 bucket"
+        s3_filename:
+            description: "s3 file name (only for download)"
+            default: ""
+        action:
+            description: "file action"
+    steps:
+        s3transfer:
+            action: chefsolo
+            phase: transferring
+            parameters:
+                roles: [ ecask_demo ]
+                runList: [ "recipe[s3manage::default]" ]
+                isSolo: true
+                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                jattrs:
+                    s3manage:
+                        access_key_id: ${aws_access_key_id}
+                        secret_access_key: ${aws_secret_access_key}
+                        localpath: ${localpath}
+                        bucket: ${bucket}
+                        s3file: ${s3_filename}
+                        action: ${action}
+destroy:
+    steps:
+        - destroy:
+            action: undeployEnv

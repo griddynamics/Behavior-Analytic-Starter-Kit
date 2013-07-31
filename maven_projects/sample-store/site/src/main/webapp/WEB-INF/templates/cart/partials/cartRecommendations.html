@@ -1,0 +1,37 @@
+<dmg:set_recommendations/>
+
+<div id="cart_recommendations_area" th:if="${cart.getItemCount() > 0 and not #lists.isEmpty(cart.recommendations)}">
+    <h3>Your recommendations</h3>
+
+    <table id="cart_recommendations">
+        <tbody>
+            <tr th:each="item : ${cart.recommendations}" th:object="${item}" th:id="${'recommendation' + item.id}" class="product_container">
+                <td><img th:if="*{product.media['primary']}" th:src="@{*{product.media['primary'].url} + '?thumbnail'}" width="60" th:alt="*{product.name}" /></td>
+                <td class="name">
+                    <a th:href="@{*{product.url}}" th:text="*{product.name}"></a>
+                    <br/>
+                    <blc:product_option_display orderItem="${item}" >
+                        <ul th:unless="${#lists.isEmpty(productOptionDisplayValues)}" class="productOptions">
+                            <li th:each="entry: ${productOptionDisplayValues}">
+                                <span  th:text="${entry.key} + ': ' + ${entry.value}"></span>
+                            </li>
+                        </ul>
+                    </blc:product_option_display>
+                    <ul th:if="${item instanceof T(org.broadleafcommerce.core.order.domain.BundleOrderItem)}">
+                        <li th:each="doi : *{discreteOrderItems}" th:text="${doi.quantity + ' x ' + doi.name}" />
+                    </ul>
+                </td>
+                <td align="center">
+                    <div class="add_to_cart">
+                        <blc:form method="POST" th:action="@{/cart/addRecommendation}">
+                            <input type="hidden" name="productId" th:value="*{product.id}" />
+                            <input type="hidden" name="quantity" value="1" />
+                            <input type="hidden" name="hasProductOptions" th:value="*{!#lists.isEmpty(product.productOptions)}" />
+                            <input type="submit" class="addToCart addRecommend" th:value="#{product.buyNow}"/>
+                        </blc:form>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

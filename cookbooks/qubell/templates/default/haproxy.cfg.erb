@@ -1,0 +1,38 @@
+global
+        log 127.0.0.1 local0
+        log 127.0.0.1 local1 notice
+        maxconn 4096
+        user haproxy
+        group haproxy
+
+defaults
+        log        global
+        mode       http
+        option     httplog
+        option     dontlognull
+        retries    3
+        redispatch
+        maxconn    1000
+        contimeout 90000
+        clitimeout 90000
+        srvtimeout 90000
+
+listen application 0.0.0.0:80
+  balance roundrobin
+  cookie SERVERID insert nocache
+  <% @nodes.each do |node| -%>
+  server <%= node %> <%= node %>:8080 weight 1 cookie <%= node %> check
+  <% end -%>
+
+<% if node["haproxy"]["enable_admin"] -%>
+listen admin 0.0.0.0:22002
+  mode http
+  stats uri /
+
+  #for http://www.formilux.org/archives/haproxy/0803/0796.html
+  <% if node['platform'] == "centos" && node['platform_version'].to_f < 5.3 -%>
+  balance source
+  server stat-server 127.0.0.1:4002
+  <% end -%>
+
+<% end -%>

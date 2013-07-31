@@ -1,0 +1,13 @@
+
+# Oozie checks
+
+define service {
+    hostgroup_name          oozie-server
+    use                     hadoop-service
+    service_description     OOZIE::Oozie status check
+    servicegroups           OOZIE
+    check_command           check_oozie_status!11000!/usr/jdk/jdk1.6.0_31!false
+    normal_check_interval   1
+    retry_check_interval    1
+    max_check_attempts      3
+}

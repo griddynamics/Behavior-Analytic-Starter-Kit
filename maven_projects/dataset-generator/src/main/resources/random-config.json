@@ -1,0 +1,12 @@
+{
+    "transactionCount": 10000,
+
+    "randomConfig": {
+        "transactionLength": 10,
+
+        "patternCount": 100,
+        "patternLength": 4,
+        "confidence": 0.7,
+        "variation": 0.1
+    }
+}

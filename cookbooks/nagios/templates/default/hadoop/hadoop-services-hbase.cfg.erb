@@ -1,0 +1,52 @@
+
+# Nagios hbase checks
+
+define service {
+    hostgroup_name          nagios-server
+    use                     hadoop-service
+    service_description     HBASE::Percent region servers down
+    servicegroups           HBASE
+    check_command           check_aggregate!"REGIONSERVER::Process down"!10%!30%
+    normal_check_interval   0.5
+    retry_check_interval    0.25
+    max_check_attempts      3
+}
+
+
+# Hbase master checks
+
+define service {
+    hostgroup_name          hbasemaster
+    use                     hadoop-service
+    service_description     HBASEMASTER::HBase Web UI down
+    servicegroups           HBASE
+    check_command           check_webui!hbase
+    normal_check_interval   1
+    retry_check_interval    1
+    max_check_attempts      3
+}
+
+define service {
+    hostgroup_name          hbasemaster
+    use                     hadoop-service
+    service_description     HBASEMASTER::HBaseMaster Process down
+    servicegroups           HBASE
+    check_command           check_tcp!60000!-w 1 -c 1
+    normal_check_interval   0.5
+    retry_check_interval    0.25
+    max_check_attempts      4
+}
+
+
+# Hbase region servers checks
+
+define service {
+    hostgroup_name          region-servers
+    use                     hadoop-service
+    service_description     REGIONSERVER::Process down
+    servicegroups           HBASE
+    check_command           check_tcp!60020!-w 1 -c 1
+    normal_check_interval   1
+    retry_check_interval    0.5
+    max_check_attempts      3
+}

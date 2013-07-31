@@ -1,0 +1,577 @@
+#
+# @author Maksim Malchuk (mmalchuk@griddynamics.com)
+# @author Nickolay Yurin (nyurin@griddynamics.com)
+#
+
+launch:
+    parameters:
+        image_id:
+            description: image id
+            default: us-east-1/ami-d41689bd
+            enum:
+                "CentOS 6.3 ComodIT": "us-east-1/ami-d41689bd"
+                "Patched CentOS 6 with storage": "us-east-1/ami-3784ff5e"
+        hardware_id:
+            description: hardware id
+            default: m1.medium
+        vm_identity:
+            description: identity of vm
+            default: ec2-user
+            enum:
+                "ec2-user": "ec2-user"
+                "root": "root"
+        namenode_format:
+            description: format namenode flag
+            default: true
+            enum:
+                "yes": "true"
+                "no": "false"
+        slaveQuantity:
+             default: 4
+    steps:
+        - start_hmaster:
+            action: provisionVms
+            phase: provision_hmaster
+            parameters:
+                hardwareId: ${hardware_id}
+                imageId: ${image_id}
+                vmIdentity: ${vm_identity}
+                roleName: hmaster
+                jcloudsNodeNamePrefix: hadoop_master
+            output:
+                ips_hmaster: privateips
+                ips_hmaster_pub: ips
+
+        - start_hslave:
+            action: provisionVms
+            phase: provision_hslave
+            precedingPhases: [ provision_hmaster ]
+            parameters:
+                quantity: ${slaveQuantity}
+                hardwareId: ${hardware_id}
+                imageId: ${image_id}
+                vmIdentity: ${vm_identity}
+                roleName: hslave
+                jcloudsNodeNamePrefix: hadoop_slave_{$.ips_hmaster_pub[0]}
+            output:
+                ips_hslave: privateips
+                ips_hslave_pub: ips
+
+        - namenode_install:
+            action: chefsolo
+            phase: namenode_install
+            precedingPhases: [ provision_hmaster, provision_hslave ]
+            parameters:
+                roles: [ hmaster ]
+                runList: [ "recipe[selinux::permissive]", "recipe[java::openjdk]", "recipe[cloudera_noha::namenode]", "recipe[cloudera_noha::jobtracker]", "recipe[ganglia::server]", "recipe[s3manage::packages]" ]
+                isSolo: true
+                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                jattrs:
+                    java:
+                        jdk_version: "7"
+                        java_home: "/usr/lib/jvm/java/"
+                    cloudera_noha:
+                        jdk:
+                            home: "/usr/lib/jvm/java/"
+                    hadoop:
+                        conf:
+                            mapred_site:
+                                mapred.tasktracker.map.tasks.maximum: "4"
+                                mapred.tasktracker.reduce.tasks.maximum: "4"
+                                mapred.cluster.map.memory.mb: "1024"        # memory size of single map slot
+                                mapred.cluster.reduce.memory.mb: "1024"     # memory size of single reduce slot
+                                mapred.cluster.max.map.memory.mb: "2048"    # max memory size of single map task
+                                mapred.cluster.max.reduce.memory.mb: "4096" # max memory size of single reduce task
+                                mapred.job.map.memory.mb: "1024"            # memory size of single map task for particular job
+                                mapred.job.reduce.memory.mb: "4096"         # memory size of single reduce task for particular job
+                        nn:
+                            format: ${namenode_format}
+                            host: "{$.ips_hmaster[0]}"
+                        dn:
+                            hosts: ${ips_hslave}
+        - datanode_install:
+            action: chefsolo
+            phase: datanode_install
+            precedingPhases: [ provision_hmaster, provision_hslave ]
+            parameters:
+                roles: [ hslave ]
+                runList: [ "recipe[selinux::permissive]", "recipe[java::openjdk]", "recipe[cloudera_noha::datanode]", "recipe[cloudera_noha::tasktracker]", "recipe[ganglia::client]" ]
+                isSolo: true
+                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                jattrs:
+                    java:
+                        jdk_version: "7"
+                        java_home: "/usr/lib/jvm/java/"
+                    cloudera_noha:
+                        jdk:
+                            home: "/usr/lib/jvm/java/"
+                    hadoop:
+                        conf:
+                            mapred_site:
+                                mapred.tasktracker.map.tasks.maximum: "4"
+                                mapred.tasktracker.reduce.tasks.maximum: "4"
+                                mapred.cluster.map.memory.mb: "1024"        # memory size of single map slot
+                                mapred.cluster.reduce.memory.mb: "1024"     # memory size of single reduce slot
+                                mapred.cluster.max.map.memory.mb: "2048"    # max memory size of single map task
+                                mapred.cluster.max.reduce.memory.mb: "4096" # max memory size of single reduce task
+                                mapred.job.map.memory.mb: "1024"            # memory size of single map task for particular job
+                                mapred.job.reduce.memory.mb: "4096"         # memory size of single reduce task for particular job
+                        nn:
+                            host: "{$.ips_hmaster[0]}"
+                        dn:
+                            hosts: ${ips_hslave}
+
+        - cluster_start:
+            action: manage_cluster
+            phase: cluster_start
+            precedingPhases: [ namenode_install, datanode_install ]
+            parameters:
+                action: "start"
+
+    return:
+        namenode_ip:
+            value: ${ips_hmaster}
+        namenode_ip_public:
+            value: ${ips_hmaster_pub}
+        hdfs_webui:
+            description: "HDFS WebUI address:"
+            value: "http://${ips_hmaster_pub}:50070"
+        jobtracker_webui:
+            description: "JobTracker WebUI address:"
+            value: "http://${ips_hmaster_pub}:50030"
+        ganglia_webui:
+            description: "Ganglia WebUI address:"
+            value: "http://${ips_hmaster_pub}/ganglia2/"
+
+add_datanode:
+    parameters:
+        new_datanodes_quantity:
+            description: "new datanode count"
+    steps:
+        - start_datanodes:
+            action: provisionVms
+            parameters:
+                quantity: ${new_datanodes_quantity}
+                hardwareId: ${hardware_id}
+                imageId: ${image_id}
+                vmIdentity: ${vm_identity}
+                phase: provision_datanode
+                roleName: hslave
+            output:
+                ips_hslave_pub: ips
+                ips_hslave: privateips
+
+        - datanodes_setup:
+            action: chefsolo
+            phase: datanodes_setup
+            precedingPhases: [ provision_datanode ]
+            parameters:
+                roles: [ hslave ]
+                runList: [ "recipe[selinux::permissive]", "recipe[java::openjdk]", "recipe[cloudera_noha::datanode]", "recipe[cloudera_noha::tasktracker]", "recipe[ganglia::client]" ]
+                isSolo: true
+                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                jattrs:
+                    java:
+                        jdk_version: "7"
+                        java_home: "/usr/lib/jvm/java/"
+                    cloudera_noha:
+                        jdk:
+                            home: "/usr/lib/jvm/java/"
+                    hadoop:
+                        conf:
+                            mapred_site:
+                                mapred.tasktracker.map.tasks.maximum: "4"
+                                mapred.tasktracker.reduce.tasks.maximum: "4"
+                                mapred.cluster.map.memory.mb: "1024"        # memory size of single map slot
+                                mapred.cluster.reduce.memory.mb: "1024"     # memory size of single reduce slot
+                                mapred.cluster.max.map.memory.mb: "2048"    # max memory size of single map task
+                                mapred.cluster.max.reduce.memory.mb: "4096" # max memory size of single reduce task
+                                mapred.job.map.memory.mb: "1024"            # memory size of single map task for particular job
+                                mapred.job.reduce.memory.mb: "4096"         # memory size of single reduce task for particular job
+                        nn:
+                            host: "{$.namenode_ip[0]}"
+                        dn:
+                            hosts: ${ips_hslave}
+
+        - namenode_config_update:
+            action: chefsolo
+            phase: namenode_config_update
+            precedingPhases: [ provision_datanode ]
+            parameters:
+                roles: [ hmaster ]
+                runList: [ "recipe[cloudera_noha::hadoop_conf]" ]
+                isSolo: true
+                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                jattrs:
+                    cloudera_noha:
+                        jdk:
+                            home: "/usr/lib/jvm/java/"
+                    hadoop:
+                        conf:
+                            mapred_site:
+                                mapred.tasktracker.map.tasks.maximum: "4"
+                                mapred.tasktracker.reduce.tasks.maximum: "4"
+                                mapred.cluster.map.memory.mb: "1024"        # memory size of single map slot
+                                mapred.cluster.reduce.memory.mb: "1024"     # memory size of single reduce slot
+                                mapred.cluster.max.map.memory.mb: "2048"    # max memory size of single map task
+                                mapred.cluster.max.reduce.memory.mb: "4096" # max memory size of single reduce task
+                                mapred.job.map.memory.mb: "1024"            # memory size of single map task for particular job
+                                mapred.job.reduce.memory.mb: "4096"
+                        nn:
+                            host: "{$.namenode_ip[0]}"
+                        dn:
+                            hosts: ${ips_hslave}
+
+        - cluster_restart:
+            action: manage_cluster
+            precedingPhases: [ namenode_config_update, datanodes_setup ]
+            parameters:
+                action: "restart"
+
+manage_cluster:
+    parameters:
+        action:
+            default: "start"
+            enum:
+                "start": "start"
+                "stop": "stop"
+                "restart": "restart"
+    steps:
+        - processing_namenode:
+            action: chefsolo
+            phase: processing_namenode
+            parameters:
+                roles: [ hmaster ]
+                runList: [ "recipe[hadoop_manage::service]" ]
+                isSolo: true
+                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                jattrs:
+                    hadoop_manage:
+                        service:
+                            services: [ "hadoop-hdfs-namenode", "hadoop-0.20-mapreduce-jobtracker" ]
+                            action: ${action}
+
+        - processing_datanode:
+            action: chefsolo
+            phase: processing_datanode
+            parameters:
+                roles: [ hslave ]
+                runList: [ "recipe[hadoop_manage::service]" ]
+                isSolo: true
+                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                jattrs:
+                    hadoop_manage:
+                        service:
+                            services: [ "hadoop-hdfs-datanode", "hadoop-0.20-mapreduce-tasktracker" ]
+                            action: ${action}
+
+manage_hdfs_dirs:
+    parameters:
+        paths:
+            description: "hdfs dirs path. example: dir1,dir2"
+        user:
+            description: "dir owner"
+            default: "hdfs"
+        action:
+            description: "dir action"
+            default: "create"
+            enum:
+                "create": "create"
+                "remove": "delete"
+    steps:
+        processing:
+            action: chefsolo
+            phase: dir_creating
+            parameters:
+                roles: [ hmaster ]
+                runList: [ "recipe[hadoop_manage::hdfs_dir]" ]
+                isSolo: true
+                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                jattrs:
+                    hadoop_manage:
+                        hdfs:
+                            manage:
+                                dirs: ${paths}       # required parameter
+                                owner: ${user}      # default - hdfs
+                                action: ${action}   # default - "create"
+
+hdfs_data_transfer:
+    parameters:
+        action:
+            description: "action"
+            enum:
+                "Local -> HDFS": "put"
+                "HDFS -> Local": "get"
+        from:
+            description: "source path"
+        to:
+            description: "destination path"
+    steps:
+        transferring:
+            action: chefsolo
+            phase: transferring
+            parameters:
+                roles: [ hmaster ]
+                runList: [ "recipe[hadoop_manage::hdfs_transfer]" ]
+                isSolo: true
+                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                jattrs:
+                    hadoop_manage:
+                        hdfs:
+                            transfer:
+                                source: ${from}
+                                destination: ${to}
+                                action: ${action}
+
+execute_job:
+    parameters:
+        job_url:
+            description: "URL to job file"
+            default: "http://gd-bask.s3.amazonaws.com/hadoop-examples.jar"
+        job_download_path:
+            description: "Directory to download job"
+            default: "/tmp/jobs"
+        job_parameters:
+            description: "Job parameters"
+    steps:
+        running:
+            action: chefsolo
+            phase: job_running
+            parameters:
+                roles: [ hmaster ]
+                runList: [ "recipe[hadoop_manage::mapreduce]" ]
+                isSolo: true
+                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                jattrs:
+                    hadoop_manage:
+                        mapreduce:
+                            job_url: ${job_url}
+                            job_local_path: ${job_download_path}
+                            job_parameters: ${job_parameters}
+
+Launch_transation_log_generator:
+    parameters:
+        job_url:
+            description: "URL to transaction log generator job"
+            default: "http://gd-bask.s3.amazonaws.com/transaction-log-generator.jar"
+        product_catalog_backet:
+            description: "S3 product catalog bucket"
+            default: "gd-bask"
+        product_catalog_filename:
+            description: "S3 product catalog filename"
+            default: "product_catalog.json"
+        dataset_config_url:
+            description: "URL to dataset config"
+            default: "http://gd-bask.s3.amazonaws.com/magento_scenario-config.json"
+    steps:
+        downloading_product_catalog:
+            action: .s3manage
+            phase: downloading_recommendations
+            parameters:
+                localpath: "/tmp/transaction_log_generator"
+                bucket: ${product_catalog_backet}
+                s3_filename: ${product_catalog_filename}
+                action: "download"
+        downloading_dataset_configuration:
+            action: execrun
+            phase: downloading_dataset_configuration
+            parameters:
+                roles: [ hmaster ]
+                command:
+                    - bash -c
+                    - |
+                        wget -c -P /tmp/transaction_log_generator ${dataset_config_url}
+        running_job:
+            action: execute_job
+            precedingPhases: [ downloading_recommendations, downloading_dataset_configuration]
+            parameters:
+                job_url: ${job_url}
+                job_download_path: "/tmp/transaction_log_generator"
+                job_parameters: "-Dmapred.job.map.memory.mb=2048 -c /tmp/transaction_log_generator/`basename ${dataset_config_url}` -p /tmp/transaction_log_generator/${product_catalog_filename} -o /tmp/transaction_log"
+    return:
+        transaction_log_path:
+            description: "HDFS path to transaction log:"
+            value: "hdfs://tmp/transaction_log"
+
+Upload_transaction_log:
+    parameters:
+        s3_bucket_name:
+            description: "S3 bucket name"
+        transaction_log_filename:
+            description: "S3 transaction log filename"
+            default: "transaction_log.txt"
+    steps:
+        saving_result:
+            action: execrun
+            phase: saving_result_to_local
+            parameters:
+                roles: [ hmaster ]
+                isSudo: true
+                command:
+                    - bash -c
+                    - |
+                        chmod -R 777 /tmp/transaction_log_generator/
+                        hadoop fs -text /tmp/transaction_log/part-* > /tmp/transaction_log_generator/${transaction_log_filename}
+        upload_result_to_s3:
+            action: .s3manage
+            phase: upload_result_to_s3
+            precedingPhases: [ saving_result_to_local ]
+            parameters:
+                localpath: "/tmp/transaction_log_generator/${transaction_log_filename}"
+                bucket: ${s3_bucket_name}
+                action: "upload"
+        clean_local:
+            action: execrun
+            phase: clean_local
+            precedingPhases: [ upload_result_to_s3 ]
+            parameters:
+                roles: [ hmaster ]
+                isSudo: true
+                command:
+                    - bash -c
+                    - |
+                        rm -rf /tmp/transaction_log_generator/${transaction_log_filename}
+    return:
+        transaction_log_path:
+            description: "S3 path to uploaded transaction log:"
+            value: "s3://${s3_bucket_name}/${transaction_log_filename}"
+
+Download_transaction_log:
+    parameters:
+        transaction_log_hdfs_path:
+            description: "HDFS path to download transaction log"
+            default: "/tmp/transaction_log"
+        s3_bucket_name:
+            description: "S3 bucket name"
+        transaction_log_filename:
+            description: "S3 transaction log filename"
+            default: ""
+    steps:
+        upload_result_to_s3:
+            action: .s3manage
+            phase: download_from_s3
+            parameters:
+                localpath: "/tmp/transaction_log/${transaction_log_filename}"
+                bucket: ${s3_bucket_name}
+                action: "upload"
+        saving_result:
+            action: chefsolo
+            phase: transferring
+            parameters:
+                roles: [ hmaster ]
+                runList: [ "recipe[hadoop_manage::hdfs_transfer]" ]
+                isSolo: true
+                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                jattrs:
+                    hadoop_manage:
+                        hdfs:
+                            transfer:
+                                source: "/tmp/transaction_log/${transaction_log_filename}"
+                                destination: "/tmp/transaction_log/"
+                                action: "put"
+        clean_local:
+            action: execrun
+            phase: clean_local
+            precedingPhases: [ transferring ]
+            parameters:
+                roles: [ hmaster ]
+                isSudo: true
+                command:
+                    - bash -c
+                    - |
+                        rm -rf /tmp/tmp/transaction_log/${transaction_log_filename}
+    return:
+        analytics_result_path:
+            description: "Transaction log HDFS output path"
+            value: "hdfs://tmp/transaction_log/${transaction_log_filename}"
+
+Launch_recommendation_processor:
+    parameters:
+        analytics_job_url:
+            description: "URL to recommendation processor job"
+            default: "https://s3.amazonaws.com/gd-bask/recommendation-processor.jar"
+        transaction_log_path:
+            description: "HDFS path to transaction log"
+            default: "/tmp/transaction_log"
+        s3_bucket_name:
+            description: "S3 bucket to store recommendation"
+            default: "gd-bask"
+        recommendation_filename:
+            description: "S3 output recommendation filename"
+            default: "recommendations.txt"
+        min_support:
+            description: "minSupport"
+            default: "3"
+        num_groups:
+            description: "numGroups"
+            default: "1000"
+    steps:
+        running_analytics:
+            action: execute_job
+            phase: running_analytics
+            parameters:
+                job_url: ${analytics_job_url}
+                job_download_path: "/tmp/recommendation_processor"
+                job_parameters: "-Dmapred.job.map.memory.mb=2048 -Dmapred.job.reduce.memory.mb=4000 -Dmapred.map.child.java.opts=\"-Xmx480m\" -Dmapred.reduce.child.java.opts=\"-Xmx2000m\" -s ${min_support} -g ${num_groups} -i ${transaction_log_path} -o /tmp/fp"
+        saving_result:
+            action: execrun
+            phase: saving_result
+            precedingPhases: [ running_analytics ]
+            parameters:
+                roles: [ hmaster ]
+                isSudo: true
+                command:
+                    - bash -c
+                    - |
+                        chmod -R 777 /tmp/recommendation_processor/
+                        hadoop fs -text /tmp/fp/frequentpatterns/part-r-* > /tmp/recommendation_processor/${recommendation_filename}
+        upload_result_to_s3:
+            action: .s3manage
+            phase: upload_result_to_s3
+            precedingPhases: [ saving_result ]
+            parameters:
+                localpath: "/tmp/recommendation_processor/${recommendation_filename}"
+                bucket: ${s3_bucket_name}
+                action: "upload"
+    return:
+        analytics_result_path:
+            description: "Recommendation processor S3 output path"
+            value: "s3://${s3_bucket_name}/${recommendation_filename}"
+
+.s3manage:
+    parameters:
+        aws_access_key_id:
+            description: "aws_access_key_id"
+        aws_secret_access_key:
+            description: "aws_secret_access_key"
+        localpath:
+            description: "local file path"
+        bucket:
+            description: "s3 bucket"
+        s3_filename:
+            description: "s3 file name (only for download)"
+            default: ""
+        action:
+            description: "file action"
+    steps:
+        s3transfer:
+            action: chefsolo
+            phase: transferring
+            parameters:
+                roles: [ hmaster ]
+                runList: [ "recipe[s3manage::default]" ]
+                isSolo: true
+                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                jattrs:
+                    s3manage:
+                        access_key_id: ${aws_access_key_id}
+                        secret_access_key: ${aws_secret_access_key}
+                        localpath: ${localpath}
+                        bucket: ${bucket}
+                        s3file: ${s3_filename}
+                        action: ${action}
+
+destroy:
+    steps:
+        - destroy:
+            action: undeployEnv

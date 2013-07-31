@@ -1,0 +1,13 @@
+
+# HCatalog checks
+
+define service {
+    hostgroup_name          webhcat-server
+    use                     hadoop-service
+    service_description     WEBHCAT::WEBHCAT status check
+    servicegroups           WEBHCAT
+    check_command           check_templeton_status!50111!v1!false
+    normal_check_interval   1
+    retry_check_interval    0.5
+    max_check_attempts      3
+}

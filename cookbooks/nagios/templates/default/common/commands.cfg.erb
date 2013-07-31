@@ -1,0 +1,5 @@
+
+define command {
+    command_name    check_nagios
+    command_line    $USER1$/check_nagios -e $ARG1$ -F <%= node['nagios']['cache_dir'] %>/status.dat -C /usr/sbin/nagios
+}

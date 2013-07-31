@@ -1,0 +1,388 @@
+{
+    "id": 9950,
+    "name": "Root",
+    "subcategories": [
+        {
+            "id": 9951,
+            "name": "Furniture",
+            "subcategories": [
+                {
+                    "id": 9952,
+                    "name": "Living Room",
+                    "products": [
+                        {
+                            "id": 9950,
+                            "name": "Ottoman"
+                        },
+                        {
+                            "id": 9951,
+                            "name": "Chair"
+                        },
+                        {
+                            "id": 9952,
+                            "name": "Couch"
+                        },
+                        {
+                            "id": 9953,
+                            "name": "Magento Red Furniture Set"
+                        }
+                    ]
+                },
+                {
+                    "id": 9953,
+                    "name": "Bedroom",
+                    "products": [
+                        {
+                            "id": 9954,
+                            "name": "Akio Dresser"
+                        },
+                        {
+                            "id": 9955,
+                            "name": "Barcelona Bamboo Platform Bed"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 9954,
+            "name": "Electronics",
+            "subcategories": [
+                {
+                    "id": 9955,
+                    "name": "Cell Phones",
+                    "products": [
+                        {
+                            "id": 9956,
+                            "name": "Nokia 2610 Phone"
+                        },
+                        {
+                            "id": 9957,
+                            "name": "BlackBerry 8100 Pearl"
+                        },
+                        {
+                            "id": 9958,
+                            "name": "Sony Ericsson W810i"
+                        },
+                        {
+                            "id": 9959,
+                            "name": "AT&amp;T 8525 PDA"
+                        },
+                        {
+                            "id": 9960,
+                            "name": "Samsung MM-A900M Ace"
+                        },
+                        {
+                            "id": 9961,
+                            "name": "HTC Touch Diamond"
+                        }
+                    ]
+                },
+                {
+                    "id": 9956,
+                    "name": "Cameras",
+                    "subcategories": [
+                        {
+                            "id": 9957,
+                            "name": "Accessories",
+                            "products": [
+                                {
+                                    "id": 9962,
+                                    "name": "SLR Camera Tripod"
+                                },
+                                {
+                                    "id": 9963,
+                                    "name": "Universal Camera Case"
+                                },
+                                {
+                                    "id": 9964,
+                                    "name": "Universal Camera Charger"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 9958,
+                            "name": "Digital Cameras",
+                            "products": [
+                                {
+                                    "id": 9965,
+                                    "name": "Canon Digital Rebel XT 8MP Digital SLR Camera"
+                                },
+                                {
+                                    "id": 9966,
+                                    "name": "Argus QC-2185 Quick Click 5MP Digital Camera"
+                                },
+                                {
+                                    "id": 9967,
+                                    "name": "Olympus Stylus 750 7.1MP Digital Camera"
+                                },
+                                {
+                                    "id": 9968,
+                                    "name": "Canon PowerShot A630 8MP Digital Camera with 4x Optical Zoom"
+                                },
+                                {
+                                    "id": 9969,
+                                    "name": "Kodak EasyShare C530 5MP Digital Camera"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 9959,
+                    "name": "Computers",
+                    "subcategories": [
+                        {
+                            "id": 9960,
+                            "name": "Build Your Own",
+                            "products": [
+                                {
+                                    "id": 9970,
+                                    "name": "Computer"
+                                },
+                                {
+                                    "id": 9971,
+                                    "name": "Gaming Computer"
+                                },
+                                {
+                                    "id": 9972,
+                                    "name": "My Computer"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 9961,
+                            "name": "Laptops",
+                            "products": [
+                                {
+                                    "id": 9973,
+                                    "name": "Apple MacBook Pro MA464LL/A 15.4&quot; Notebook PC"
+                                },
+                                {
+                                    "id": 9974,
+                                    "name": "Acer Ferrari 3200 Notebook Computer PC"
+                                },
+                                {
+                                    "id": 9975,
+                                    "name": "Toshiba M285-E 14&quot;"
+                                },
+                                {
+                                    "id": 9976,
+                                    "name": "Sony VAIO 11.1&quot; Notebook PC"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 9962,
+                            "name": "Hard Drives",
+                            "products": [
+                                {
+                                    "id": 9977,
+                                    "name": "Western Digital - 1TB HD - 7200RPM"
+                                },
+                                {
+                                    "id": 9978,
+                                    "name": "Western Digital 500GB HD - 7200RPM"
+                                },
+                                {
+                                    "id": 9979,
+                                    "name": "Seagate 500GB HD - 5400RPM"
+                                },
+                                {
+                                    "id": 9980,
+                                    "name": "Seagate 250GB HD - 5400RPM"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 9963,
+                            "name": "Monitors",
+                            "products": [
+                                {
+                                    "id": 9981,
+                                    "name": "22&quot; Syncmaster LCD Monitor"
+                                },
+                                {
+                                    "id": 9982,
+                                    "name": "24&quot; Widescreen Flat-Panel LCD Monitor"
+                                },
+                                {
+                                    "id": 9983,
+                                    "name": "19&quot; Widescreen Flat-Panel LCD Monitor"
+                                },
+                                {
+                                    "id": 9984,
+                                    "name": "30&quot; Flat-Panel TFT-LCD Cinema HD Monitor"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 9964,
+                            "name": "RAM / Memory",
+                            "products": [
+                                {
+                                    "id": 9985,
+                                    "name": "Crucial 2GB PC4200 DDR2 533MHz Memory"
+                                },
+                                {
+                                    "id": 9986,
+                                    "name": "Crucial 1GB PC4200 DDR2 533MHz Memory"
+                                },
+                                {
+                                    "id": 9987,
+                                    "name": "Crucial 512MB PC4200 DDR2 533MHz Memory"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 9965,
+                            "name": "Cases",
+                            "products": [
+                                {
+                                    "id": 9988,
+                                    "name": "Apevia Black X-Cruiser Case ATX Mid-Tower Case (Default)"
+                                },
+                                {
+                                    "id": 9989,
+                                    "name": "NZXT Lexa Silver Aluminum ATX Mid-Tower Case (Default)"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 9966,
+                            "name": "Processors",
+                            "products": [
+                                {
+                                    "id": 9990,
+                                    "name": "AMD Phenom X4 9850 Black Ed. 2.50GHz Retail"
+                                },
+                                {
+                                    "id": 9991,
+                                    "name": "AMD A64 X2 3800+ 2.0GHz OEM"
+                                },
+                                {
+                                    "id": 9992,
+                                    "name": "Intel C2D E8400 3.0GHz Retail"
+                                },
+                                {
+                                    "id": 9993,
+                                    "name": "Intel Core 2 Extreme QX9775 3.20GHz Retail"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 9967,
+                            "name": "Peripherals",
+                            "products": [
+                                {
+                                    "id": 9994,
+                                    "name": "Microsoft Natural Ergonomic Keyboard 4000"
+                                },
+                                {
+                                    "id": 9995,
+                                    "name": "Logitech Cordless Optical Trackman"
+                                },
+                                {
+                                    "id": 9996,
+                                    "name": "Logitech diNovo Edge Keyboard"
+                                },
+                                {
+                                    "id": 9997,
+                                    "name": "Microsoft Wireless Optical Mouse 5000"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 9968,
+            "name": "Apparel",
+            "subcategories": [
+                {
+                    "id": 9969,
+                    "name": "Shirts",
+                    "products": [
+                        {
+                            "id": 9998,
+                            "name": "Zolof The Rock And Roll Destroyer: LOL Cat T-shirt"
+                        },
+                        {
+                            "id": 9999,
+                            "name": "Coalesce: Functioning On Impatience T-Shirt"
+                        },
+                        {
+                            "id": 10000,
+                            "name": "Ink Eater: Krylon Bombear Destroyed Tee"
+                        },
+                        {
+                            "id": 10001,
+                            "name": "The Only Children: Paisley T-Shirt"
+                        }
+                    ]
+                },
+                {
+                    "id": 9970,
+                    "name": "Shoes",
+                    "subcategories": [
+                        {
+                            "id": 9971,
+                            "name": "Mens",
+                            "products": [
+                                {
+                                    "id": 10002,
+                                    "name": "CN Clogs Beach/Garden Clog"
+                                },
+                                {
+                                    "id": 10003,
+                                    "name": "ASICS&reg; Men's GEL-Kayano&reg; XII"
+                                },
+                                {
+                                    "id": 10004,
+                                    "name": "Kenneth Cole New York Men's Con-verge Slip-on"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 9972,
+                            "name": "Womens",
+                            "products": [
+                                {
+                                    "id": 10005,
+                                    "name": "CN Clogs Beach/Garden Clog"
+                                },
+                                {
+                                    "id": 10006,
+                                    "name": "Steven by Steve Madden Pryme Pump"
+                                },
+                                {
+                                    "id": 10007,
+                                    "name": "Nine West Women's Lucero Pump"
+                                },
+                                {
+                                    "id": 10008,
+                                    "name": "ECCO Womens Golf Flexor Golf Shoe"
+                                },
+                                {
+                                    "id": 10009,
+                                    "name": "Anashria Womens Premier Leather Sandal"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 9973,
+                    "name": "Hoodies",
+                    "products": [
+                        {
+                            "id": 10010,
+                            "name": "The Get Up Kids: Band Camp Pullover Hoodie"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

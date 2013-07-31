@@ -1,0 +1,85 @@
+
+# JobTracker checks
+
+define service {
+    hostgroup_name          jobtracker
+    use                     hadoop-service
+    service_description     JOBTRACKER::JobTracker Web UI down
+    servicegroups           MAPREDUCE
+    check_command           check_webui!jobtracker
+    normal_check_interval   3
+    retry_check_interval    1
+    max_check_attempts      3
+}
+
+#define service {
+#    hostgroup_name          jobtracker
+#    use                     hadoop-service
+#    service_description     JOBTRACKER::JobHistory Web UI down
+#    servicegroups           MAPREDUCE
+#    check_command           check_webui!jobhistory
+#    normal_check_interval   3
+#    retry_check_interval    1
+#    max_check_attempts      3
+#}
+
+define service {
+    hostgroup_name          jobtracker
+    use                     hadoop-service
+    service_description     JOBTRACKER::Jobtracker Process down
+    servicegroups           MAPREDUCE
+    check_command           check_tcp!50030!-w 1 -c 1
+    normal_check_interval   0.5
+    retry_check_interval    0.1
+    max_check_attempts      3
+}
+
+define service {
+    hostgroup_name          jobtracker
+    use                     hadoop-service
+    service_description     MAPREDUCE::JobTracker RPC Latency
+    servicegroups           MAPREDUCE
+    check_command           check_rpcq_latency!JobTracker!50030!3000!5000
+    normal_check_interval   5
+    retry_check_interval    1
+    max_check_attempts      4
+}
+
+# MrZkfc checks
+
+define service {
+    hostgroup_name          namenode
+    use                     hadoop-service
+    service_description     MRZKFC::MrZkfc Process down
+    servicegroups           MAPREDUCE
+    check_command           check_tcp!8018!-w 1 -c 1
+    normal_check_interval   1
+    retry_check_interval    0.25
+    max_check_attempts      3
+}
+
+# TaskTrakers checks
+
+define service {
+    hostgroup_name          hslave
+    use                     hadoop-service
+    service_description     TASKTRACKER::Process down
+    servicegroups           MAPREDUCE
+    check_command           check_tcp!50060!-w 1 -c 1
+    normal_check_interval   1
+    retry_check_interval    0.25
+    max_check_attempts      3
+}
+
+# Nagios mapreduce checks
+
+define service {
+    hostgroup_name          nagios-server
+    use                     hadoop-service
+    service_description     MAPREDUCE::Percent TaskTrackers down
+    servicegroups           MAPREDUCE
+    check_command           check_aggregate!"TASKTRACKER::Process down"!10%!30%
+    normal_check_interval   3
+    retry_check_interval    1
+    max_check_attempts      2
+}

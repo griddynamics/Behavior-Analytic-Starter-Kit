@@ -1,0 +1,9 @@
+
+CREATE DATABASE <%= @db_name %>;
+USE <%= @db_name %>;
+SOURCE /usr/lib/hive/scripts/metastore/upgrade/mysql/hive-schema-<%= @hive_version %>.mysql.sql;
+
+CREATE USER '<%= @db_user %>'@'<%= @metastore_host %>' IDENTIFIED BY '<%= @db_password %>';
+REVOKE ALL PRIVILEGES, GRANT OPTION FROM '<%= @db_user %>'@'<%= @metastore_host %>';
+GRANT SELECT,INSERT,UPDATE,DELETE,LOCK TABLES,EXECUTE ON <%= @db_name %>.* TO '<%= @db_user %>'@'<%= @metastore_host %>';
+FLUSH PRIVILEGES;

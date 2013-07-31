@@ -1,0 +1,9 @@
+
+define service {
+    name                            hadoop-service
+    use                             generic-service
+    notification_options            w,u,c
+    first_notification_delay        0
+    notification_interval           0     # Send the notification once
+    register                        0
+}

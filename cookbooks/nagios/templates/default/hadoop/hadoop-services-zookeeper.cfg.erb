@@ -1,0 +1,26 @@
+
+# Zookeeper servers checks
+
+define service {
+    hostgroup_name          zookeeper
+    use                     hadoop-service
+    service_description     ZKSERVERS::ZKSERVERS Process down
+    servicegroups           ZOOKEEPER
+    check_command           check_tcp!2181!-w 1 -c 1
+    normal_check_interval   1
+    retry_check_interval    0.2
+    max_check_attempts      3
+}
+
+# Nagios zookeeper checks
+
+define service {
+    hostgroup_name          nagios-server
+    use                     hadoop-service
+    service_description     ZOOKEEPER::Percent zookeeper servers down
+    servicegroups           ZOOKEEPER
+    check_command           check_aggregate!"ZKSERVERS::ZKSERVERS Process down"!35%!70%
+    normal_check_interval   3
+    retry_check_interval    1
+    max_check_attempts      2
+}

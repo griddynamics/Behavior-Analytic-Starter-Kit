@@ -1,0 +1,68 @@
+<header>
+    <div id="header_content">
+        <div id="cart_info">
+
+            <div th:if="${customer.anonymous}"  th:remove="tag">
+
+                <a class="account" th:href="@{/login}">
+                    <span th:text="#{home.login}">Login</span>
+                </a>
+                &nbsp;|&nbsp; 
+                <a class="account" th:href="@{/register}">
+                    <span th:text="#{home.register}">Register</span>
+                </a>
+                &nbsp;|&nbsp; 
+            </div>
+            <div th:unless="${customer.anonymous}" th:remove="tag">
+                <span><span th:text="#{home.welcome}">Welcome</span>, <a class="my-account" th:href="@{/account}" th:text="${customer.firstName}"></a></span>
+                &nbsp;|&nbsp; 
+                <a th:href="@{/logout}">
+                    <span th:text="#{home.logout}">Logout</span>
+                </a>
+                &nbsp;|&nbsp; 
+            </div>
+
+
+            <a id="cartLink" class="fancycart" th:href="@{/cart}">
+                <img th:src="@{/img/shopping_cart.png}" alt="Shopping Cart Icon" />
+                &nbsp; 
+                <span class="headerCartItemsCount" th:text="${cart.itemCount}" />
+                <span class="headerCartItemsCountWord" th:text="${cart.itemCount == 1} ? #{home.item} :  #{home.items}" />
+            </a>
+
+        </div>
+
+        <div id="languages">
+            <span id="selectedLocale" th:text="${session.blLocale.localeCode}" style="display: none" />
+
+            <a href="javascript:;" onclick="BLC.addUrlParam(document.location.search, 'blLocaleCode', 'en_US')">
+                <img id="en_US" src="img/flags/United-States.png" th:src="@{/img/flags/United-States.png}" alt="United States" title="English" />
+            </a>
+
+            <a href="javascript:;" onclick="BLC.addUrlParam(document.location.search, 'blLocaleCode', 'en_GB')">
+                <img id="en_GB" src="img/flags/United-Kingdom.png" th:src="@{/img/flags/United-Kingdom.png}" alt="United Kingdom" title="English (UK)"/>
+            </a>
+
+            <a  href="javascript:;" onclick="BLC.addUrlParam(document.location.search, 'blLocaleCode', 'es_MX')">
+                <img id="es_MX" src="img/flags/Mexico.png" th:src="@{/img/flags/Mexico.png}" alt="Mexico" title="Spanish (Mexico)"/>
+            </a>
+
+            <a href="javascript:;" onclick="BLC.addUrlParam(document.location.search, 'blLocaleCode', 'es_ES')">
+                <img id="es_ES" src="img/flags/Mexico.png" th:src="@{/img/flags/Spain.png}" alt="Spain" title="Spanish (Spain)"/>
+            </a>
+            <a href="javascript:;" onclick="BLC.addUrlParam(document.location.search, 'blLocaleCode', 'fr_FR')">
+                <img id="fr_FR" src="img/flags/Mexico.png" th:src="@{/img/flags/France.png}" alt="France" title="French (France)" />
+            </a>
+
+        </div>
+
+        <div id="logo"><h1><a th:href="@{/}">The Sample Store Home</a></h1></div>
+        
+        <div id="search">
+            <blc:form th:action="@{/search}" method="GET">
+            <input type="search" class="search" name="q" th:value="${originalQuery}" />
+            <input type="submit" id="search_button" value="go" />
+            </blc:form>
+        </div>
+    </div>
+</header>

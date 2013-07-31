@@ -1,0 +1,140 @@
+{
+    "transactionCount": 10000000,
+
+    "scenarioConfig": {
+        "scenarios": [
+            {
+                "name": "woman_with_husband_want_furniture",
+                "probability": 0.8,
+                "behavior":  [
+                    {
+                        "probability": 0.9,
+                        "productCategory": "Furniture->Bedroom"
+                    },
+                    {
+                        "probability": 0.7,
+                        "productCategory": "Furniture->Bedroom"
+                    },
+                    {
+                        "probability": 0.8,
+                        "productCategory": "Furniture->Living Room"
+                    },
+                    {
+                        "probability": 0.8,
+                        "productCategory": "Furniture->Living Room"
+                    },
+                    {
+                        "probability": 0.6,
+                        "productCategory": "Furniture->Living Room"
+                    }
+                ]
+            },
+            {
+                "name": "men_want_digital_camera",
+                "probability": 0.4,
+                "behavior":  [
+                    {
+                        "probability": 0.8,
+                        "productCategory": "Electronics->Cameras->Digital Cameras"
+                    },
+                    {
+                        "probability": 0.9,
+                        "productCategory": "Electronics->Cameras->Accessories"
+                    },
+                    {
+                        "probability": 0.8,
+                        "productCategory": "Electronics->Cameras->Accessories"
+                    },
+                    {
+                        "probability": 0.6,
+                        "productCategory": "Electronics->Cameras->Accessories"
+                    }
+                ]
+            },
+            {
+                "name": "men_want_laptop_and_cell_phone",
+                "probability": 0.6,
+                "behavior":  [
+                    {
+                        "probability": 1,
+                        "productCategory": "Electronics->Computers->Laptops"
+                    },
+                    {
+                        "probability": 0.9,
+                        "productCategory": "Electronics->Cell Phones"
+                    }
+                ]
+            },
+            {
+                "name": "men_build_computer",
+                "probability": 0.8,
+                "behavior":  [
+                    {
+                        "probability": 1,
+                        "productCategory": "Electronics->Computers->Monitors"
+                    },
+                    {
+                        "probability": 0.9,
+                        "productCategory": "Electronics->Computers->Hard Drives"
+                    },
+                    {
+                        "probability": 0.9,
+                        "productCategory": "Electronics->Computers->RAM / Memory"
+                    },
+                    {
+                        "probability": 0.9,
+                        "productCategory": "Electronics->Computers->Processors"
+                    },
+                    {
+                        "probability": 0.9,
+                        "productCategory": "Electronics->Computers->Peripherals"
+                    },
+                    {
+                        "probability": 0.9,
+                        "productCategory": "Electronics->Computers->Cases"
+                    }
+                ]
+            },
+            {
+                "name": "man_want_apparel",
+                "probability": 0.6,
+                "behavior":  [
+                    {
+                        "probability": 1,
+                        "productCategory": "Apparel->Shirts"
+                    },
+                    {
+                        "probability": 0.9,
+                        "productCategory": "Apparel->Hoodies"
+                    },
+                    {
+                        "probability": 0.9,
+                        "productCategory": "Apparel->Shoes->Mens"
+                    },
+                    {
+                        "probability": 0.9,
+                        "productCategory": "Apparel->Shoes->Mens"
+                    }
+                ]
+            },
+            {
+                "name": "woman_want_apparel",
+                "probability": 0.6,
+                "behavior":  [
+                    {
+                        "probability": 1,
+                        "productCategory": "Apparel->Shirts"
+                    },
+                    {
+                        "probability": 0.9,
+                        "productCategory": "Apparel->Shoes->Womens"
+                    },
+                    {
+                        "probability": 0.9,
+                        "productCategory": "Apparel->Shoes->Womens"
+                    }
+                ]
+            }
+        ]
+    }
+}

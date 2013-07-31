@@ -1,0 +1,49 @@
+---
+driver_plugin: vagrant
+driver_config:
+  require_chef_omnibus: true
+  memory: 512
+
+platforms:
+- name: ubuntu-12.04
+  driver_config:
+    box: opscode-ubuntu-12.04
+    box_url: https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box
+  run_list:
+  - recipe[apt]
+
+- name: ubuntu-10.04
+  driver_config:
+    box: opscode-ubuntu-10.04
+    box_url: https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-10.04_provisionerless.box
+  run_list:
+  - recipe[apt]
+
+- name: centos-6.4
+  driver_config:
+    box: opscode-centos-6.4
+    box_url: https://opscode-vm.s3.amazonaws.com/vagrant/opscode_centos-6.4_provisionerless.box
+
+- name: centos-5.8
+  driver_config:
+    box: opscode-centos-5.8
+    box_url: http://opscode-vm.s3.amazonaws.com/vagrant/opscode_centos-5.8_chef-11.2.0.box
+
+suites:
+- name: webapp
+  run_list: ["recipe[qubell::webapp]"]
+  attributes: {
+    "scm": {
+      "provider": "git",
+      "repository": "https://github.com/dieu/petclinic.git",
+      "revision": "experimental"
+    },
+    "database": {
+      "driver": "com.mysql.jdbc.Driver",
+      "name": "webapp",
+      "port": 3306,
+      "host": ["localhost"],
+      "user": "root",
+      "password": "12345"
+    }
+  }

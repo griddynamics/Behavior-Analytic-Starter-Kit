@@ -1,0 +1,10 @@
+<Context docBase="<%= @war %>" path="/"
+        debug="5" reloadable="true" crossContext="true" allowLinking="true">
+  <Environment name="appEnvironment" value="<%= node.chef_environment %>"
+          type="java.lang.String" override="false"/>
+  <Resource name="jdbc/datasource" auth="Container" type="javax.sql.DataSource"
+               maxActive="<%= @database['max_active'] %>" maxIdle="<%= @database['max_idle'] %>" maxWait="<%= @database['max_wait'] %>"
+               username="<%= @database['username'] %>" password="<%= @database['password'] %>" driverClassName="<%= @database['driver'] %>"
+               url="jdbc:<%= @database['adapter'] %>://<%= @database['host'] %>:<%= @database['port'] %>/<%= @database['name'] %>?autoReconnect=true"
+               validationQuery="select 1" testOnReturn="true" testWhileIdle="true"/>
+</Context>

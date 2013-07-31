@@ -1,0 +1,12 @@
+I, [2013-06-19T07:25:58.755566 #70799]  INFO -- Kitchen: -----> Starting Kitchen
+I, [2013-06-19T07:26:00.774057 #70799]  INFO -- Kitchen: -----> Destroying <webapp-ubuntu-1204>
+I, [2013-06-19T07:26:00.791048 #70799]  INFO -- Kitchen: -----> Destroying <webapp-ubuntu-1004>
+I, [2013-06-19T07:26:00.793229 #70799]  INFO -- Kitchen: -----> Destroying <webapp-centos-64>
+I, [2013-06-19T07:26:00.801224 #70799]  INFO -- Kitchen: -----> Destroying <webapp-centos-58>
+I, [2013-06-19T07:26:00.802376 #70799]  INFO -- Kitchen: -----> Kitchen is finished. (0m2.05s)
+I, [2013-06-19T07:26:07.027273 #70852]  INFO -- Kitchen: -----> Starting Kitchen
+I, [2013-06-19T07:26:08.584277 #70852]  INFO -- Kitchen: -----> Destroying <webapp-ubuntu-1204>
+I, [2013-06-19T07:26:08.588017 #70852]  INFO -- Kitchen: -----> Destroying <webapp-ubuntu-1004>
+I, [2013-06-19T07:26:08.589421 #70852]  INFO -- Kitchen: -----> Destroying <webapp-centos-64>
+I, [2013-06-19T07:26:08.590233 #70852]  INFO -- Kitchen: -----> Destroying <webapp-centos-58>
+I, [2013-06-19T07:26:08.591029 #70852]  INFO -- Kitchen: -----> Kitchen is finished. (0m1.56s)

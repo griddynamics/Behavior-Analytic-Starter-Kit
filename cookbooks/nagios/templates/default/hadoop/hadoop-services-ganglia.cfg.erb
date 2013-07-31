@@ -1,0 +1,55 @@
+
+define service {
+    hostgroup_name          ganglia-server
+    use                     hadoop-service
+    service_description     GANGLIA::Ganglia [gmetad] Process down
+    servicegroups           GANGLIA
+    check_command           check_tcp!8651!-w 1 -c 1
+    normal_check_interval   0.25
+    retry_check_interval    0.25
+    max_check_attempts      4
+}
+
+define service {
+    hostgroup_name          ganglia-server
+    use                     hadoop-service
+    service_description     GANGLIA::Ganglia collector [gmond] Process down alert for slaves
+    servicegroups           GANGLIA
+    check_command           check_tcp!8660!-w 1 -c 1
+    normal_check_interval   0.25
+    retry_check_interval    0.25
+    max_check_attempts      4
+}
+
+define service {
+    hostgroup_name          ganglia-server
+    use                     hadoop-service
+    service_description     GANGLIA::Ganglia collector [gmond] Process down alert for namenode
+    servicegroups           GANGLIA
+    check_command           check_tcp!8661!-w 1 -c 1
+    normal_check_interval   0.25
+    retry_check_interval    0.25
+    max_check_attempts      4
+}
+
+define service {
+    hostgroup_name          ganglia-server
+    use                     hadoop-service
+    service_description     GANGLIA::Ganglia collector [gmond] Process down alert for jobtracker
+    servicegroups           GANGLIA
+    check_command           check_tcp!8662!-w 1 -c 1
+    normal_check_interval   0.25
+    retry_check_interval    0.25
+    max_check_attempts      4
+}
+
+define service {
+    hostgroup_name          ganglia-server
+    use                     hadoop-service
+    service_description     GANGLIA::Ganglia collector [gmond] Process down alert for hbasemaster
+    servicegroups           GANGLIA
+    check_command           check_tcp!8663!-w 1 -c 1
+    normal_check_interval   0.25
+    retry_check_interval    0.25
+    max_check_attempts      4
+}

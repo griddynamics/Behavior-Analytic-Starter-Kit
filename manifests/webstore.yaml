@@ -1,6 +1,7 @@
 #
 # @author Maksim malchuk (mmalchuk@griddynamics.com)
 # @author Nickolay Yurin (nyurin@griddynamics.com)
+# @author Anton Haldin (ahaldin@griddynamics.com)
 #
 
 launch:
@@ -124,9 +125,10 @@ Get_product_catalog_from_S3:
     parameters:
         bucket:
             description: "s3 bucket"
+            default: "gd-bask"
         filename:
             description: "catalog filename"
-            default: "catalog.zip"
+            default: "magento_catalog.zip"
     steps:
         downloading_catalog:
             action: .s3manage

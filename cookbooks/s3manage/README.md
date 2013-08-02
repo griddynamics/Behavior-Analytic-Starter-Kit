@@ -69,6 +69,7 @@ Uploading /tmp/test.out to s3://default bucket
 ```json
 {
   "run_list": [
+    "recipe[s3manage::packages]",
     "recipe[s3manage::default]"
   ]
   "override_attributes": {
@@ -87,6 +88,7 @@ Downloading s3://default/test.out to local directory /tmp/
 ```json
 {
   "run_list": [
+    "recipe[s3manage::packages]",
     "recipe[s3manage::default]"
   ]
   "override_attributes": {

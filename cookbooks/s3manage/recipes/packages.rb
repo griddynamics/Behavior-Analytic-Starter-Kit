@@ -3,3 +3,8 @@
     action :install
   end
 end
+
+gem_package "aws-sdk" do
+  	gem_binary("/opt/chef/embedded/bin/gem")
+	action :install
+end

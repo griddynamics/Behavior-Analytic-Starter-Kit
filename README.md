@@ -42,9 +42,10 @@ This repository contains:
 * configs  ( sample configs )
 
 
-How can I try Starter Kit?
+How can I try Starter Kit? (Getting started)
 -------------------
-1. [Setup your Qubell Account][qubell_setup]
+1. [Setup your Qubell Account][qubell_setup] 
+
 2. Run Hadoop and WebStore applications (link)
 3. Setup product catalog for WebStore
     - Just press "Get product calatog from S3" button

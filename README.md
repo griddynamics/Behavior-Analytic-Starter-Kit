@@ -52,7 +52,7 @@ Read short overview in new window, choose organization, edit default names for a
 push “Add” button to load application manifests for Behavior Analytic Starter Kit to you Qubell Account.
 
 3. [Run WebStore and Behavior analytics platform applications](docs/Getting-started--Launch-applications.md)
-4. Load product catalog to Web Store
+4. [Load product catalog to Web Store](docs/Getting-started--Load-product-catalog.md)
     - Just press "Get product calatog from S3" button
 5. Put product catalog information to S3
     - Press "Upload catalog to S3" button and select your S3 bucket

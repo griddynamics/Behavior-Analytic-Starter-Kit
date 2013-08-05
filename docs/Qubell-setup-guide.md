@@ -16,18 +16,18 @@ Qubell setup guide
     - Go to "Environments" page, open previously created environment and press "Add a service" button
     - Select previously created service name and press "Add"
 5. Get, upload, regenerate keys
-    - To get keys go to "Service" page and download private and public keys
-    - To upload key press "Edit", specify service name and press "Upload"
+    - To get keys go to "Platform->Services" page and download private and public keys
+    - To upload key press "Edit", specify service name and press "Upload" button
     - To regenerate key press "Edit" and then "Regenarate" button
-    - On yours environment page select key to use in Security Valut
+    - ? On yours environment page select key to use in Security Valut ?
 6. Add Environment Policies     
     - s3manage.aws_access_key_id
-        On your environment page press "Add policy" and specify parameters:<br>
+        Go to "Environments" page, open previously created environment and press "Add policy" and specify parameters:<br>
             "When asked to execute:" .s3manage<br>
             "Override value of:" aws_access_key_id<br>
             "With:" your Amazon Access Key ID.
     - s3manage.aws_secret_access_key
-        On your environment page press "Add policy" and specify parameters:<br>
+        Go to "Environments" page, open previously created environment and press "Add policy" and specify parameters:<br>
             "When asked to execute:" .s3manage<br>
             "Override value of:" aws_secret_access_key<br>
             "With:" your Amazon Secret Access Key.

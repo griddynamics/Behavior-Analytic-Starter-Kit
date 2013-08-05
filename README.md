@@ -41,6 +41,7 @@ This repository contains:
 * maven_projects  (dataset-generator, recommendation-processor, sample-store)
 * configs  ( sample configs )
 
+Please read [developer documentation](Documentation.md) for more information
 
 How can I try Starter Kit? (Getting started)
 -------------------
@@ -64,7 +65,7 @@ push “Add” button to load application manifests for Behavior Analytic Starte
 
 How can I modify?
 -----------------
-Please read [developer documentation](Documentation.md)
+
 
 We are providing to you all components of our engine:
 

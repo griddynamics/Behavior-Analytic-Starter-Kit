@@ -23,8 +23,8 @@ How it works?
 
 Components
 ----------
-- Sample Store - we can show you results on our demo store application
-- Behavior analytics platform - setup and run Hadoop cluster on your Amazon EC2 account, generate recommendations for you
+- Sample Store - you can see your recommendations results in demo web store application.
+- Behavior analytics platform - setup and run Hadoop cluster on your Amazon EC2 account, generate recommendations for you.
 
 How can I try demo?
 -------------------

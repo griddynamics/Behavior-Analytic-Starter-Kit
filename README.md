@@ -28,7 +28,7 @@ Components
 
 How can I try demo?
 -------------------
-1. Setup your Qubell Account (url to instraction)
+1. [Setup your Qubell Account][qubell_setup]
 2. Run Hadoop and WebStore applications
 3. Setup product catalog for WebStore
     - Just press "Get product calatog from S3" button
@@ -127,6 +127,8 @@ Also we have created own job runner that can take hadoop parameters (e.g. -Dmapr
 [Mahout_logo]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/mahout_logo.png "Apache Mahout"
 
 [work_diagram]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/how_it_work.png "That how it works"
+
+[qubell_setup]: https://github.com/griddynamics/Behavior-Analytic-Starter-Kit/blob/master/docs/Qubell-setup-guide.md
 
 [webstore_manifest]: https://github.com/griddynamics/Behavior-Analytic-Starter-Kit/blob/master/manifests/webstore.yaml
 [Behavior analytics platform]: https://github.com/griddynamics/Behavior-Analytic-Starter-Kit/blob/master/manifests/behavior_analytics_platform.yaml

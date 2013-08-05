@@ -3,7 +3,14 @@ Qubell setup guide
 
 Guide for new Qubell user
 -------------------------
-Before you begin using of starter kit you should have Amazon EC2 account and [setup security group](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html#adding-security-group-rule) there.
+Before you begin using of starter kit you need to obtain an Amazon EC2 account, capable of creating EC2 nodes and S3 usage. 
+The EC2 security group ‘default’ has to allow connections on the following ports:
+* 22 (SSH)
+* 8080
+* 443 (НTTPS)
+* 50030 (HTTP, jobtracker console)
+* 50070 (HTTP, namenode console)
+You should [setup default security group](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html#adding-security-group-rule) to open ports there.
 
 If you already have Qubell account and have defined Cloud Account please skip related steps 1 and 2
 

@@ -11,7 +11,7 @@ Why it's cool?
 
 Technologies
 ------------
-![Broadleaf][Broadleaf_logo] ![Hadoop][Hadoop_logo] ![Mahout][Mahout_logo]
+![Broadleaf][Broadleaf_logo]![Hadoop][Hadoop_logo]![Mahout][Mahout_logo]
 
 How it works?
 -------------

@@ -1,5 +1,5 @@
-Behavior Analytics Starter Kit
-==============================
+Behavior Analytics Starter Kit Documentation
+============================================
 
 Behavior analytics platform is based on Hadoop cluster (HDFS and Map/Reduce) with recommendation processor
 based on [Apache Mahout](http://mahout.apache.org) and additional Transaction Log generator.

@@ -15,7 +15,7 @@ Technologies
 
 How it works?
 -------------
-1. Put your product catalog and transation log to Amazon S3
+1. Put your product catalog and transation log to your private Amazon S3 bucket
 2. Run Recommendation Processor job
 3. Get your recommendations
 
@@ -23,13 +23,13 @@ How it works?
 
 Components
 ----------
-- Sample Store - we can show you results on our demo store application
-- Behavior analytics platform - setup and run Hadoop cluster on your Amazon EC2 account, generate recommendations for you
+- Sample Store - you can see your recommendations results in demo web store application.
+- Behavior analytics platform - setup and run Hadoop cluster on your Amazon EC2 account, generate recommendations for you.
 
 How can I try demo?
 -------------------
 1. [Setup your Qubell Account][qubell_setup]
-2. Run Hadoop and WebStore applications
+2. Run Hadoop and WebStore applications (link)
 3. Setup product catalog for WebStore
     - Just press "Get product calatog from S3" button
     - Press "Upload catalog to S3" button and select your S3 bucket
@@ -43,7 +43,7 @@ How can I try demo?
 
 How can I modify?
 -----------------
-We are provideing to you all components of our engine:
+We are providing to you all components of our engine:
 
 1. **Manifests for Qubell**
     - [WebStore][webstore_manifest]

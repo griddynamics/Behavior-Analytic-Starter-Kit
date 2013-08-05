@@ -15,20 +15,16 @@ Qubell setup guide
     - To regenerate key press "Edit" and then "Regenarate" button
     - On yours environment page select key to use in Security Valut
 5. Add Environment Policies     
-
-    5.1. s3manage.aws_access_key_id
-    - On your environment page press "Add policy" and specify parameters:
-    
-        "When asked to execute:" .s3manage
-        "Override value of:" aws_access_key_id
-        "With:" your Amazon Access Key ID.
-        
-    5.2. s3manage.aws_secret_access_key
-    - On your environment page press "Add policy" and specify parameters:
-    
-        "When asked to execute:" .s3manage
-        "Override value of:" aws_secret_access_key
-        "With:" your Amazon Secret Access Key.
+    - s3manage.aws_access_key_id
+        On your environment page press "Add policy" and specify parameters:<br>
+            "When asked to execute:" .s3manage<br>
+            "Override value of:" aws_access_key_id<br>
+            "With:" your Amazon Access Key ID.<br>     
+    - s3manage.aws_secret_access_key
+        On your environment page press "Add policy" and specify parameters:<br>
+            "When asked to execute:" .s3manage<br>
+            "Override value of:" aws_secret_access_key<br>
+            "With:" your Amazon Secret Access Key.<br>
 
 ------------- need to add one more scenario for not new user ( already has qubell env and cloud account)
 Now you are ready to launch “Behavior Analytic Starter Kit” applications.

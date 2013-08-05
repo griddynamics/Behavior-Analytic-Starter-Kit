@@ -174,11 +174,11 @@ Example:
 17  4,12,23,57,93<br>
 …
     
-[broadleaf_logo]: https://github.com/griddynamics/Behavior-Analytic-Starter-Kit/blob/master/docs/images/broadleaf_logo.png "Broadleaf Framework"
-[Hadoop_logo]: https://github.com/griddynamics/Behavior-Analytic-Starter-Kit/blob/master/docs/images/hadoop_logo.jpg "Apache Hadoop"
-[Mahout_logo]: https://github.com/griddynamics/Behavior-Analytic-Starter-Kit/blob/master/docs/images/mahout_logo.png "Apache Mahout"
+[broadleaf_logo]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/broadleaf_logo.png "Broadleaf Framework"
+[Hadoop_logo]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/hadoop_logo.jpg "Apache Hadoop"
+[Mahout_logo]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/mahout_logo.png "Apache Mahout"
 
-[work_diagram]: https://github.com/griddynamics/Behavior-Analytic-Starter-Kit/blob/master/docs/images/how_it_work.png "That how it works"
+[work_diagram]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/how_it_work.png "That how it works"
 
 [webstore_manifest]: https://github.com/griddynamics/Behavior-Analytic-Starter-Kit/blob/master/manifests/webstore.yaml
 [Behavior analytics platform]: https://github.com/griddynamics/Behavior-Analytic-Starter-Kit/blob/master/manifests/behavior_analytics_platform.yaml

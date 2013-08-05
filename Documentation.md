@@ -1,16 +1,7 @@
 Behavior Analytics Starter Kit Documentation
 ============================================
 
-
-
 **_License:_** Apache License 2.0
-
-
-Getting started
----------------
-
-* [Get Behavior Analytics Starter Kit](#get-bask)
-* [Get Recommendations to Web Store](#get-recommendations)
 
 Documentation
 -------------

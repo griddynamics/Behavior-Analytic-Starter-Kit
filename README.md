@@ -121,58 +121,6 @@ Also we have created own job runner that can take hadoop parameters (e.g. -Dmapr
     You can change current recommendations generation algorithm by change source code in [recommendation-processor module].
 5. **WebStore sample application.**
 
-File format convention
-----------------------
-
-###Product catalog for web store
-Product catalog is zip archive file that contains product_catalog.json and directory with images.
-product_catalog.json consist of categories tree. Each category contains following fields:
-
-- name - category name (not empty value)
-- description - category description (nullable value)
-- subcategories - list of subcategories of this category (nullable value)
-- products - list of products of this category (nullable value)
-
-Each product contains following fields:
-
-- name - product name (not empty value)
-- description - product description (nullable value)
-- image - list of path to images from directory separated by “;”
-
-Directory with images contains images in jpeg or png format.
-
-###Product catalog information for transaction log generator
-Product catalog information contains product catalog in json format that consist of categories tree. Each category contains following fields:
-
-- id - category id in web store (not null value)
-- name - category name in web store (not null value)
-- subcategories - list of subcategories of this category (nullable value)
-- products - list of products of this category (nullable value)
-
-Each product contains following fields:
-
-- id - product id in web store (not null value)
-- name - product name in web store (not null value)
-
-You can see an example of product catalog [here][product_catalog_source]
-
-###Transaction log 
-Transaction log is text file that contains transactions separated by newline char. Each transaction is list of product ids that separated by a comma, a space char or combination of comma and space.
-
-Example:
->123,334,23423,45,453,44<br>
-3432,323,33<br>
-234,885<br>
-…
-
-###Recommendation file
-Recommendation file is text file that contains recommendation in the form of a dictionary, where key and value separated by tab char. Dictionary records is divided by newline char.
-
-Example:
->4,12   23,57,17<br>
-55,73,98    24,84<br>
-17  4,12,23,57,93<br>
-…
     
 [broadleaf_logo]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/broadleaf_logo.png "Broadleaf Framework"
 [Hadoop_logo]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/hadoop_logo.jpg "Apache Hadoop"

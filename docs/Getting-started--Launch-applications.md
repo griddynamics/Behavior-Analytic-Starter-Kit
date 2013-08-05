@@ -4,6 +4,10 @@ Launch applications
 Launch Sample store
 -------------------
 
+Click “Launch” button on sample store application dashboard to launch the sample store application in your environment.
+It should take about 10 minutes for the application to come up.
+Once sample store launched successfully you can see URL to sample store web UI on application output panel.
+
 Launch Behavior analytics platform
 ----------------------------------
 

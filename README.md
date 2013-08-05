@@ -26,7 +26,7 @@ Components
 - Sample Store - you can see your recommendations results in demo web store application.
 - Behavior analytics platform - setup and run Hadoop cluster on your Amazon EC2 account, generate recommendations for you.
 
-How can I try demo?
+How can I try Starter Kit?
 -------------------
 1. [Setup your Qubell Account][qubell_setup]
 2. Run Hadoop and WebStore applications (link)

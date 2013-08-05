@@ -44,19 +44,19 @@ This repository contains:
 
 How can I try Starter Kit? (Getting started)
 -------------------
-0. To get Starter Kit press "Get it now" button on [Starter Kit web site](http://qubell.com)
-1. 
-1. [Setup your Qubell Account][qubell_setup] 
+1. To get Starter Kit press "Get it now" button on [Starter Kit web site](http://qubell.com)
+ 
+2. [Setup your Qubell Account][qubell_setup] 
 
-2. Run Hadoop and WebStore applications (link)
-3. Setup product catalog for WebStore
+3. Run Hadoop and WebStore applications (link)
+4. Setup product catalog for WebStore
     - Just press "Get product calatog from S3" button
     - Press "Upload catalog to S3" button and select your S3 bucket
-4. Generate sample transaction log
+5. Generate sample transaction log
     - Press "Lauch_transation_log_generator" button and select S3 bucket, where you uploaded product catalog
-5. Run recommendation processor
+6. Run recommendation processor
     - Press "Lauch_recommendation_processor" button and select S3 bucket for saving recommendations
-6. Get recommendations
+7. Get recommendations
     - Press "Get_recommendations_from_S3" button and select bucket with saved recommendations
     
 

@@ -11,17 +11,16 @@ If you already have Qubell account and have defined Cloud Account please skip re
     - Specify account name, provider="Amazon EC2", AWS credentials and security group and press "Save"
 3. Create Service Vault
     - Go to "Platform->Services" page and press "Add a service" button
-    - Specify service name and type="Secure Vault 2.0" then press "Add"
-4. Create Environment
+    - Specify service name and type="Secure Vault 2.0" then press "Add". SSH key pair will be generated automatically.
+4. Get, upload, regenerate keys (You can skip this step)
+    - To get keys go to "Platform->Services" page and download private and public keys
+    - To upload key press "Edit", specify service name and press "Upload" button
+    - To regenerate key press "Edit" and then "Regenarate" button
+5. Create Environment
     - Go to "Environments" page, press "Add an environment" button
     - Specify environment name and press "Add". New environment will be open.
     - Press "Set a cloud account" and specify previously created cloud account name then press "Save"
     - Press "Add a service" button and select previously created service name then press "Add"
-5. Get, upload, regenerate keys
-    - To get keys go to "Platform->Services" page and download private and public keys
-    - To upload key press "Edit", specify service name and press "Upload" button
-    - To regenerate key press "Edit" and then "Regenarate" button
-    - ? On yours environment page select key to use in Security Valut ?
 6. Add Environment Policies     
     - s3manage.aws_access_key_id
         Go to "Environments" page, open previously created environment and press "Add policy" and specify parameters:<br>

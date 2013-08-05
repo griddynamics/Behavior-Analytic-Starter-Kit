@@ -47,7 +47,7 @@ How can I try Starter Kit? (Getting started)
 1. [Setup your Qubell Account][qubell_setup]
 
 2. Press "Get it now" button on [Starter Kit web site](http://qubell.com). Log in or sign up if necessary.
-Read short overview in new window, choose organization, edit default named for applications and
+Read short overview in new window, choose organization, edit default names for applications and
 push “Add” button to load application manifests for Behavior Analytic Starter Kit to you Qubell Account.
 
 3. Run Hadoop and WebStore applications (link)

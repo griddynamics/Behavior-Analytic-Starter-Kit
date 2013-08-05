@@ -1,19 +1,23 @@
 Qubell setup guide
 ==================
 
+Guide for new Qubell user
+-------------------------
+If you already have Qubell account and have defined Cloud Account please skip related steps 1 and 2
+
 1. [Sign up for an Express account](http://qubell.com/sign-up/) on Qubell Adaptive PaaS. It is free and takes only a few minutes.
-2. Create Environment
-    - Go to "Environments" page, press "Add an environment" button
-    - Specify environment name and press "Add"
-3. Create Cloud Account with Amazon secret and access keys.
+2. Create Cloud Account with Amazon secret and access keys.
     - Go to "Platform->Cloud Accounts" page and press "Add a cloud account" button
     - Specify account name, provider="Amazon EC2", AWS credentials and security group and press "Save"
-    - Go to "Environments" page, open previously created environment and press "Set a cloud account"
-    - Specify previously created account name and press "Save" 
-4. Create Service Vault
+3. Create Service Vault
     - Go to "Platform->Services" page and press "Add a service" button
     - Specify service name and type="Secure Vault 2.0" then press "Add"
-    - Go to "Environments" page, open previously created environment and press "Add a service" button
+4. Create Environment
+    - Go to "Environments" page, press "Add an environment" button
+    - Specify environment name and press "Add"
+    - Open previously created environment and press "Set a cloud account"
+    - Specify previously created account name and press "Save"
+    - Open previously created environment and press "Add a service" button
     - Select previously created service name and press "Add"
 5. Get, upload, regenerate keys
     - To get keys go to "Platform->Services" page and download private and public keys
@@ -32,5 +36,4 @@ Qubell setup guide
             "Override value of:" aws_secret_access_key<br>
             "With:" your Amazon Secret Access Key.
 
-------------- need to add one more scenario for not new user ( already has qubell env and cloud account)
 Now you are ready to launch “Behavior Analytic Starter Kit” applications.

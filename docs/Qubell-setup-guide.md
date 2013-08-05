@@ -3,6 +3,8 @@ Qubell setup guide
 
 Guide for new Qubell user
 -------------------------
+Before you begin using of starter kit you should have Amazon EC2 account and [setup security group](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html#adding-security-group-rule) there.
+
 If you already have Qubell account and have defined Cloud Account please skip related steps 1 and 2
 
 1. [Sign up for an Express account](http://qubell.com/sign-up/) on Qubell Adaptive PaaS. It is free and takes only a few minutes.

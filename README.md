@@ -15,7 +15,7 @@ Technologies
 
 How it works?
 -------------
-1. Put your product catalog and transation log to Amazon S3
+1. Put your product catalog and transation log to your private Amazon S3 bucket
 2. Run Recommendation Processor job
 3. Get your recommendations
 

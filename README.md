@@ -43,6 +43,7 @@ How can I try Starter Kit?
 
 How can I modify?
 -----------------
+Please read [developer documentation](Documentation.md)
 We are providing to you all components of our engine:
 
 1. **Manifests for Qubell**

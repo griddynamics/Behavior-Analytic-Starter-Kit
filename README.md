@@ -44,6 +44,8 @@ This repository contains:
 
 How can I try Starter Kit? (Getting started)
 -------------------
+0. To get Starter Kit press "Get it now" button on [Starter Kit web site](http://qubell.com)
+1. 
 1. [Setup your Qubell Account][qubell_setup] 
 
 2. Run Hadoop and WebStore applications (link)

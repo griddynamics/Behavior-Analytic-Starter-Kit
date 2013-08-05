@@ -51,7 +51,7 @@ How can I try Starter Kit? (Getting started)
 Read short overview in new window, choose organization, edit default names for applications and
 push “Add” button to load application manifests for Behavior Analytic Starter Kit to you Qubell Account.
 
-3. Run Hadoop and WebStore applications (link)
+3. Run WebStore and Behavior analytics platform applications(link)
 4. Setup product catalog for WebStore
     - Just press "Get product calatog from S3" button
     - Press "Upload catalog to S3" button and select your S3 bucket

@@ -1,20 +1,7 @@
 Behavior Analytics Starter Kit Documentation
 ============================================
 
-Behavior analytics platform is based on Hadoop cluster (HDFS and Map/Reduce) with recommendation processor
-based on [Apache Mahout](http://mahout.apache.org) and additional Transaction Log generator.
-Hadoop cluster uses [Cloudera Hadoop Distribution CDH4](http://www.cloudera.com/content/cloudera/en/products/cdh.html).
 
-Sample store is a java application based on [Broadleaf framework](http://www.broadleafcommerce.org).
-It uses wide range of well known technologies such as [Spring](http://www.springsource.org),
-[Hibernate](http://www.hibernate.org) and [Apache Solr](http://lucene.apache.org/solr).
-
-This repository contains:
-
-* manifests ( deployment manifests for behavior analytic platform and web store (sample store))
-* cookbooks ( chef cookbooks )
-* maven_projects  (dataset-generator, recommendation-processor, sample-store)
-* configs  ( sample configs)
 
 **_License:_** Apache License 2.0
 

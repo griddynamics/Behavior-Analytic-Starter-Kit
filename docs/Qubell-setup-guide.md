@@ -14,11 +14,9 @@ If you already have Qubell account and have defined Cloud Account please skip re
     - Specify service name and type="Secure Vault 2.0" then press "Add"
 4. Create Environment
     - Go to "Environments" page, press "Add an environment" button
-    - Specify environment name and press "Add"
-    - Open previously created environment and press "Set a cloud account"
-    - Specify previously created account name and press "Save"
-    - Open previously created environment and press "Add a service" button
-    - Select previously created service name and press "Add"
+    - Specify environment name and press "Add". New environment will be open.
+    - Press "Set a cloud account" and specify previously created cloud account name then press "Save"
+    - Press "Add a service" button and select previously created service name then press "Add"
 5. Get, upload, regenerate keys
     - To get keys go to "Platform->Services" page and download private and public keys
     - To upload key press "Edit", specify service name and press "Upload" button

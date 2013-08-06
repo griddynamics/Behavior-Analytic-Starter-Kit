@@ -1,6 +1,6 @@
 Behavior Analytic Starter Kit
 =============================
-Open source personalization engine for ecommerce powered by [Qubell](http://qubell.com/)
+Open source personalization engine for ecommerce powered by [Qubell](http://qubell.com/product/qubell-platform/)
 
 Why it's cool?
 -------------
@@ -24,7 +24,7 @@ How it works?
 Components
 ----------
 
-* Sample store is a java application based on [Broadleaf framework](http://www.broadleafcommerce.org).
+* Web store is a java application based on [Broadleaf framework](http://www.broadleafcommerce.org).
 It uses wide range of well known technologies such as [Spring](http://www.springsource.org),
 [Hibernate](http://www.hibernate.org) and [Apache Solr](http://lucene.apache.org/solr).
 You can see your recommendations results in demo web store application.

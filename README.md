@@ -55,8 +55,7 @@ push “Add” button to load application manifests for Behavior Analytic Starte
 4. [Load product catalog to Web Store](docs/Getting-started--Load-product-catalog.md)
 5. [Put product catalog information to S3](docs/Getting-started--Put-product-catalog-information-to-s3.md)
 6. [Generate sample transaction log](docs/Getting-started--Generate-sample-transaction-log.md)
-7. Run recommendation processor
-    - Press "Lauch_recommendation_processor" button and select S3 bucket for saving recommendations
+7. [Run recommendation processor](docs/Getting-started--Run-recommendation-processor.md)
 8. Get recommendations
     - Press "Get_recommendations_from_S3" button and select bucket with saved recommendations
     

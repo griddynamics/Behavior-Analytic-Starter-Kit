@@ -23,26 +23,49 @@ How it works?
 
 Components
 ----------
-- Sample Store - you can see your recommendations results in demo web store application.
-- Behavior analytics platform - setup and run Hadoop cluster on your Amazon EC2 account, generate recommendations for you.
 
-How can I try demo?
+* Sample store is a java application based on [Broadleaf framework](http://www.broadleafcommerce.org).
+It uses wide range of well known technologies such as [Spring](http://www.springsource.org),
+[Hibernate](http://www.hibernate.org) and [Apache Solr](http://lucene.apache.org/solr).
+You can see your recommendations results in demo web store application.
+
+* Behavior analytics platform is based on Hadoop cluster (HDFS and Map/Reduce) with recommendation processor
+based on [Apache Mahout](http://mahout.apache.org) and additional Transaction Log generator.
+Hadoop cluster uses [Cloudera Hadoop Distribution CDH4](http://www.cloudera.com/content/cloudera/en/products/cdh.html).
+Behavior analytics platform run Hadoop cluster on your Amazon EC2 account, generate transaction log and recommendations for you.
+
+This repository contains:
+
+* manifests ( deployment manifests for behavior analytic platform and web store (sample store))
+* cookbooks ( chef cookbooks )
+* maven_projects  (dataset-generator, recommendation-processor, sample-store)
+* configs  ( sample configs )
+
+Please read [developer documentation](Documentation.md) for more information
+
+How can I try Starter Kit? (Getting started)
 -------------------
 1. [Setup your Qubell Account][qubell_setup]
-2. Run Hadoop and WebStore applications (link)
-3. Setup product catalog for WebStore
-    - Just press "Get product calatog from S3" button
-    - Press "Upload catalog to S3" button and select your S3 bucket
-4. Generate sample transaction log
+
+2. Press "Get it now" button on [Starter Kit web site](http://qubell.com). Log in or sign up if necessary.
+Read short overview in new window, choose organization, edit default names for applications and
+push “Add” button to load application manifests for Behavior Analytic Starter Kit to you Qubell Account.
+
+3. [Run WebStore and Behavior analytics platform applications](docs/Getting-started--Launch-applications.md)
+4. [Load product catalog to Web Store](docs/Getting-started--Load-product-catalog.md)
+5. [Put product catalog information to S3](docs/Getting-started--Put-product-catalog-information-to-s3.md)
+6. Generate sample transaction log
     - Press "Lauch_transation_log_generator" button and select S3 bucket, where you uploaded product catalog
-5. Run recommendation processor
+7. Run recommendation processor
     - Press "Lauch_recommendation_processor" button and select S3 bucket for saving recommendations
-6. Get recommendations
+8. Get recommendations
     - Press "Get_recommendations_from_S3" button and select bucket with saved recommendations
     
 
 How can I modify?
 -----------------
+
+
 We are providing to you all components of our engine:
 
 1. **Manifests for Qubell**

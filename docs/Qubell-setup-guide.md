@@ -11,7 +11,7 @@ The EC2 security group ‘default’ has to allow connections on the following p
 * 50030 (HTTP, jobtracker console)
 * 50070 (HTTP, namenode console)
 
-You should [setup 'default' security group](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html#adding-security-group-rule) to open ports there.
+You should [setup 'default' security group](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html#adding-security-group-rule) to open ports listed above.
 
 If you already have Qubell account and have defined Cloud Account please skip related steps 1 and 2
 

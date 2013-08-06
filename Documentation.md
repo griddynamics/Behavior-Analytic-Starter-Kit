@@ -22,7 +22,7 @@ Documentation
         - [Hadoop cluster description](docs/Developer-Guide--Behavior-Analytics-Platform--Hadoop-cluster.md)
         - [Transaction log generator](docs/Developer-Guide--Behavior-Analytics-Platform--Transaction-Log-Generator.md)
         - [Recommendation processor](docs/Developer-Guide--Behavior-Analytics-Platform--Recommendation-Processor.md)
-    - Ganglia monitoring
+    - [Ganglia monitoring](docs/Developer-Guide--Behavior-Analytics-Platform--Ganglia-monitoring.md)
 * Appendix
     - [File formats](docs/Developer-Guide--Appendix--File-Formats.md)
         - [Product catalog for web store](docs/Developer-Guide--Appendix--File-Formats.md#product-catalog-for-web-store)

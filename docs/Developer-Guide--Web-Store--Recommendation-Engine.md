@@ -1,4 +1,3 @@
-
 Recommendation engine
 =====================
 
@@ -20,4 +19,4 @@ To show recommendations with products in cart in site module of Web Store we hav
 Also we have changed cartOperations.js to add an ability adding of products from recommendations.
 
 To load new recommendations to Web Store we have added
-[function of import recommendations via REST API](#import-recommendations).
+[function of import recommendations via REST API](Developer-Guide--Web-Store--REST-API.md#import-recommendations).

@@ -68,7 +68,7 @@ We are providing to you all components of our engine:
 1. **Manifests for Qubell**
     - [WebStore][webstore_manifest]
     - [Behavior analytics platform]
-2. **Chef cookbooks and there dependenses**
+2. **Chef cookbooks and their dependenses**
     - [hadoop_manage] - Manage services, hdfs and mapreduce jobs
     - [cloudera_noha] - Install and configure CDH 4.2 in noHA mode
     - [s3manage] - Upload/Download Amazon S3 files

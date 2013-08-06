@@ -139,7 +139,13 @@ We are providing to you all components of our engine:
 Also we have created own job runner that can take hadoop parameters (e.g. -Dmapred.job.map.memory.mb=2048 and so on) and pfp parameters (minSupport, groups).
 
     You can change current recommendations generation algorithm by change source code in [recommendation-processor module].
-5. **WebStore sample application.**
+5. **WebStore sample application.** Simple shopping cart application based on demo web application (HeatClinic) of Broadleaf Commerce framework. In this web store we have added a simple recommendation engine that shows recommendations to cart content using recommendations from recommendation-processor application.
+Also we have added following features to web store that available via REST API:
+    - Export product catalog information for transaction log generator
+    - Import recommendations
+    - Import product catalog (we have created own product catalog based on magento catalog)
+
+
 
     
 [broadleaf_logo]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/broadleaf_logo.png "Broadleaf Framework"

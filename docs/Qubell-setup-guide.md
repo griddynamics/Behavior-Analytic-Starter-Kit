@@ -54,7 +54,7 @@ If you already have Qubell account and have defined Cloud Account please skip re
     ![add policy][add_policy]
 Now you are ready to launch “Behavior Analytic Starter Kit” applications.
 
-[aws_security_group_doc][http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html#adding-security-group-rule]
+[aws_security_group_doc]: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html#adding-security-group-rule
 
 [add_cloud_acccount]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/Qubell%20Guide/add_cloud_acccount.png
 [setup_cloud_account]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/Qubell%20Guide/setup_cloud_account.png

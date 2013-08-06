@@ -7,6 +7,8 @@ Now it supported two generation strategy:
 * Random
 * Scenario
 
+Each strategy represents by its own configuration file that describes customer behavior model.
+
 Random generation strategy take [random-config.json](../maven_projects/dataset-generator/src/main/resources/random-config.json)
 that contains following parameters:
 
@@ -23,5 +25,6 @@ that contains following parameters:
 * transactionCount - amount of transactions in target transaction log
 * scenarios - list of scenarios
 
+You can modify transaction log generator scenario configuration files and upload it on your S3.
 You can add own generation strategy by change source code
 in [dataset-generator module](../maven_projects/dataset-generator)

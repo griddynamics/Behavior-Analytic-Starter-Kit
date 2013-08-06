@@ -1,8 +1,11 @@
 Ganglia monitoring
 ------------------
 
-We use [Ganglia](http://ganglia.sourceforge.net) as metric collector and storage. Ganglia receives metrics directly from Hadoop. 
-It’s recommended to install rrdcache to improve performance. See [Ganglia documentation](http://sourceforge.net/apps/trac/ganglia/wiki/ganglia_documents) to learn more.
+We use [Ganglia](http://ganglia.sourceforge.net) as metric collector and storage. 
+Ganglia already has preconfigured templates for Hadoop monitoring and receives metrics directly from Hadoop.
+Ganglia also collects custom metrics (counters) from MapReduce jobs.
+It’s recommended to install rrdcache to improve performance. 
+See [Ganglia documentation](http://sourceforge.net/apps/trac/ganglia/wiki/ganglia_documents) to learn more.
 Ganglia collects following metric groups:
 * CPU metrics
 * Disk metrics

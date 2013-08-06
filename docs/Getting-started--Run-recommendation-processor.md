@@ -1,7 +1,8 @@
 Run recommendations processor
 -----------------------------
 
-Press “Launch recommendation processor” button on behavior analytics platform application output panel to launch recommendation processor on transaction log and get recommendations. 
+Press “Launch recommendation processor” button on behavior analytics platform application output panel to launch 
+[recommendation processor](Developer-Guide--Behavior-Analytics-Platform--Recommendation-Processor.md) on transaction log and get recommendations. 
 You can configure recommendation processor default parameters before job start. 
 Following parameters can be configured: 
 * URL to recommendation processor job, 

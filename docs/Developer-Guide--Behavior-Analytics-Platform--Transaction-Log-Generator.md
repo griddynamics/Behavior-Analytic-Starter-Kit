@@ -24,4 +24,4 @@ that contains following parameters:
 * scenarios - list of scenarios
 
 You can add own generation strategy by change source code
-in [dataset-generator module](../maven_projects/recommendation-processor)
+in [dataset-generator module](../maven_projects/dataset-generator)

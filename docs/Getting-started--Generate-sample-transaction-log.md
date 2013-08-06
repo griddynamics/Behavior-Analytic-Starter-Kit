@@ -5,7 +5,4 @@ Click “Launch transaction log generator” button on behavior analytics platfo
 In fact [transaction log generator job](Developer-Guide--Behavior-Analytics-Platform--Transaction-Log-Generator.md) will be launched. You can configure transaction log generator default parameters before job start. 
 Following parameters can be configured: 
 * URLs to transaction log generator job and transaction log generator configuration file (JSON). 
-* Your Amazon S3 bucket and filename for product catalog information on S3 that would be used to generate transaction log. 
-Transaction Log generator configuration file (JSON) - describes customer behavior model. 
-You can modify transaction log generator configuration file and upload it on S3. 
-Example of transaction log generator configuration file is published in detailed transaction log generator description.
+* Your Amazon S3 bucket and filename for product catalog information on S3 that would be used to generate transaction log.

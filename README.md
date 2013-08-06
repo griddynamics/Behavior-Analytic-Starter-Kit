@@ -140,7 +140,7 @@ Also we have created own job runner that can take hadoop parameters (e.g. -Dmapr
 
     You can change current recommendations generation algorithm by change source code in [recommendation-processor module].
 5. **WebStore sample application.** Simple shopping cart application based on demo web application (HeatClinic) of Broadleaf Commerce framework. In this web store we have added a simple recommendation engine that shows recommendations to cart content using recommendations from recommendation-processor application.
-Also we have added following features to web store that available via REST API:
+Also we have added following features to web store that available via [REST API](docs/Developer-Guide--Web-Store--REST-API.md):
     - Export product catalog information for transaction log generator
     - Import recommendations
     - Import product catalog (we have created own product catalog based on magento catalog)

@@ -56,8 +56,7 @@ push “Add” button to load application manifests for Behavior Analytic Starte
 5. [Put product catalog information to S3](docs/Getting-started--Put-product-catalog-information-to-s3.md)
 6. [Generate sample transaction log](docs/Getting-started--Generate-sample-transaction-log.md)
 7. [Run recommendation processor](docs/Getting-started--Run-recommendation-processor.md)
-8. Get recommendations
-    - Press "Get_recommendations_from_S3" button and select bucket with saved recommendations
+8. [Get recommendations](docs/Getting-started--Get-recommendations-from-s3.md)
     
 
 How can I modify?

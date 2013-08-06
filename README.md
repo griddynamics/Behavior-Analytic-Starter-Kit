@@ -53,14 +53,12 @@ push “Add” button to load application manifests for Behavior Analytic Starte
 
 3. [Run WebStore and Behavior analytics platform applications](docs/Getting-started--Launch-applications.md)
 4. [Load product catalog to Web Store](docs/Getting-started--Load-product-catalog.md)
-    - Just press "Get product calatog from S3" button
-5. Put product catalog information to S3
-    - Press "Upload catalog to S3" button and select your S3 bucket
-5. Generate sample transaction log
+5. [Put product catalog information to S3](docs/Getting-started--Put-product-catalog-information-to-s3.md)
+6. Generate sample transaction log
     - Press "Lauch_transation_log_generator" button and select S3 bucket, where you uploaded product catalog
-6. Run recommendation processor
+7. Run recommendation processor
     - Press "Lauch_recommendation_processor" button and select S3 bucket for saving recommendations
-7. Get recommendations
+8. Get recommendations
     - Press "Get_recommendations_from_S3" button and select bucket with saved recommendations
     
 

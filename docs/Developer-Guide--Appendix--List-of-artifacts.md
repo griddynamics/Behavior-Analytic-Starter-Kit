@@ -24,3 +24,5 @@ Marketing materials (Product sheet PDF)	| Amazon S3	| [Document][marketing_mater
 [webstore_source]: /maven_projects/sample-store/
 [transaction_log_source]: /maven_projects/dataset-generator/
 [recommendation_processor_source]: /maven_projects/recommendation-processor/
+[bask_readme]: /README.md
+[bask_licence]: /LICENSE

@@ -7,7 +7,7 @@ recommend what items usually purchased together with selected item(s).
 
 Behavior analytics start kit consists of two main blocks:
 * Behavior analytics platform
-* Web store
+* [Web store](Developer-Guide--Web-Store--Overview.md)
 
 As a developer you can investigate starter kit insights and learn more about developing analytics applications in Hadoop, you can modify a variety of launch parameters and source code.
 

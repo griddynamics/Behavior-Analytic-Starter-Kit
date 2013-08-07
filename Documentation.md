@@ -10,8 +10,8 @@ Documentation
     - [Starter Kit architecture diagram](docs/Developer-Guide--Architecture-diagram.md)
     - [Starter Kit components overview](docs/Developer-Guide--Behavior-Analytics-Starter-Kit--Components-Overview.md)
 * Starter kit components
-    - Sample store
-        - [Sample store overview](docs/Developer-Guide--Web-Store--Overview.md)
+    - Web store
+        - [Web store overview](docs/Developer-Guide--Web-Store--Overview.md)
         - Broadleaf Commerce framework
         - [Product catalog](docs/Developer-Guide--Web-Store--Product-Catalog.md)
         - [Recommendation engine](docs/Developer-Guide--Web-Store--Recommendation-Engine.md)

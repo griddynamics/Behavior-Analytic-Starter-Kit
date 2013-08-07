@@ -26,3 +26,4 @@ Marketing materials (Product sheet PDF)	| Amazon S3	| [Document][marketing_mater
 [recommendation_processor_source]: /maven_projects/recommendation-processor/
 [bask_readme]: /README.md
 [bask_licence]: /LICENSE
+[transaction_log_generator_binary]: http://gd-bask.s3.amazonaws.com/transaction-log-generator.jar

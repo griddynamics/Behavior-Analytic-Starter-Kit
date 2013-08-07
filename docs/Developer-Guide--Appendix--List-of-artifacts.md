@@ -8,7 +8,7 @@ Transaction log generator source code | GitHub | [sources][transaction_log_sourc
 Recommendation processor source code | GitHub |	[sources][recommendation_processor_source]	
 Readme file	| GitHub | [README][bask_readme]	
 Apache License 2.0 | GitHub	| [Licence][bask_licence]
-Configuration file for transaction log generator | Amazon S3 | ?		
+Configuration file for transaction log generator | Amazon S3 | [JSON][scenario_config]	
 Product catalog	| Amazon S3	| [archive][product_catalog]	
 Transaction log | Amazon S3	| [text][transaction_log_example]
 Recommendations	| Amazon S3	| [text][recommendations_example]
@@ -26,4 +26,5 @@ Marketing materials (Product sheet PDF)	| Amazon S3	| [Document][marketing_mater
 [recommendation_processor_source]: /maven_projects/recommendation-processor/
 [bask_readme]: /README.md
 [bask_licence]: /LICENSE
+[scenario_config]: http://gd-bask.s3.amazonaws.com/magento_scenario-config.json
 [transaction_log_generator_binary]: http://gd-bask.s3.amazonaws.com/transaction-log-generator.jar

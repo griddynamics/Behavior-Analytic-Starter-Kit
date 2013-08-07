@@ -18,7 +18,7 @@ Documentation
         - [Recommendations](docs/Developer-Guide--Web-Store--Recommendations.md)
         - [REST API](docs/Developer-Guide--Web-Store--REST-API.md)
     - Behavior analytics platform
-        - Behavior analytics platform overview
+        - [Behavior analytics platform overview](docs/Developer-Guide--Behavior-Analytics-Platform--Overview.md)
         - [Hadoop cluster description](docs/Developer-Guide--Behavior-Analytics-Platform--Hadoop-cluster.md)
         - [Transaction log generator](docs/Developer-Guide--Behavior-Analytics-Platform--Transaction-Log-Generator.md)
         - [Recommendation processor](docs/Developer-Guide--Behavior-Analytics-Platform--Recommendation-Processor.md)

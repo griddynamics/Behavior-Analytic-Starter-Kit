@@ -7,7 +7,7 @@ Documentation
 -------------
 
 * Behavior analytics starter kit overview
-    - Starter Kit architecture diagram
+    - [Starter Kit architecture diagram](docs/Developer-Guide--Architecture-diagram.md)
     - [Starter Kit components overview](docs/Developer-Guide--Behavior-Analytics-Starter-Kit--Components-Overview.md)
 * Starter kit components
     - Sample store

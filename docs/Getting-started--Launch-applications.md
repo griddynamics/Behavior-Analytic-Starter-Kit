@@ -18,3 +18,7 @@ It should take about 10 minutes (depends on slave node number) for the applicati
 The Qubell platform constructs two applications from Behavior analytics starter kit configuration defined in Behavior Analytics Starter Kit manifests (behavior analytics platform and web store). 
 During the launch process, the platform provisions the virtual machines, installs the necessary software packages using Chef, sets up cluster configuration from the property file. 
 Once behavior analytics platform with Hadoop cluster and sample store are up everything is ready to use Starter Kit.
+
+![launch apps][launch_apps]
+
+[launch_apps]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/Developer%20Guide/launch_apps.png

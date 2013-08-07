@@ -29,6 +29,5 @@ Documentation
         - [Product catalog information for transaction log generator](docs/Developer-Guide--Appendix--File-Formats.md#product-catalog-information-for-transaction-log-generator)
         - [Transaction log](docs/Developer-Guide--Appendix--File-Formats.md#transaction-log)
         - [Recommendation file](docs/Developer-Guide--Appendix--File-Formats.md#recommendations-file)
-    - Main cookbooks
     - List of artifacts
     - [Glossary](docs/Developer-Guide--Glossary.md)

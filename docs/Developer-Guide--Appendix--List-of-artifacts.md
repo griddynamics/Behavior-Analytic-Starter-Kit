@@ -12,7 +12,7 @@ Configuration file for transaction log generator | Amazon S3 | [JSON][scenario_c
 Product catalog	| Amazon S3	| [archive][product_catalog]	
 Transaction log | Amazon S3	| [text][transaction_log_example]
 Recommendations	| Amazon S3	| [text][recommendations_example]
-sample store application war files | Amazon S3 | [site binary][webstore_site_war] [admin binary][webstore_admin_war]
+Web store application war files | Amazon S3 | [site binary][webstore_site_war] [admin binary][webstore_admin_war]
 Transaction log generator jar file | Amazon S3 | [binary][transaction_log_generator_binary]
 Recommendation processor jar file |	Amazon S3 |	[binary][recommendation_processor_binary]
 Developer (user) documentation | Amazon S3 | [Documentation][bask_doc_url]

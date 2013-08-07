@@ -20,3 +20,4 @@ Marketing materials (Product sheet PDF)	| Amazon S3	| [Document][marketing_mater
 
 [bap_manifest]: /manifests/behavior_analytics_platform.yaml
 [webstore_manifest]: /manifests/webstore.yaml
+[cookbooks_link]: /cookbooks/

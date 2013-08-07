@@ -8,7 +8,7 @@ Starter kit components overview
 * Ganglia monitoring for Hadoop cluster - collects wide range of Hadoop cluster related metrics.
 * Recommendation processor - implements improved version of PFP-growth algorithm and extracts associative rules out of transaction log and present them as recommendations.
 
-2. Sample store
+2. Web store
 
 * Product catalog - contains information about products and its categories in json format and products images.
 * Web store web UI - application where you can add or remove products to/from your shopping cart and immediate view relevant recommendations.

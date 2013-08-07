@@ -17,3 +17,5 @@ Transaction log generator jar file | Amazon S3 | [binary][transaction_log_genera
 Recommendation processor jar file |	Amazon S3 |	[binary][recommendation_processor_binary]
 Developer (user) documentation | Amazon S3 | [Documentation][bask_doc_url]
 Marketing materials (Product sheet PDF)	| Amazon S3	| [Document][marketing_materials]
+
+[bap_manifest]: /manifests/behavior_analytics_platform.yaml

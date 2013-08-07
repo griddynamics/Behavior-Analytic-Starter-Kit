@@ -1,9 +1,9 @@
 Artefact | Location | URL	
 --- | :---: | ---
-behavior analytic platform manifest	| GitHub | [source code][bap_manifest]
-sample store application manifest | GitHub | [source code][webstore_manifest]
+Behavior analytic platform manifest	| GitHub | [source code][bap_manifest]
+Web store application manifest | GitHub | [source code][webstore_manifest]
 Chef cookbooks for BASK | GitHub | [sources][cookbooks_link]	
-sample store application source code | GitHub |	[sources][webstore_source]	
+Web store application source code | GitHub |	[sources][webstore_source]	
 Transaction log generator source code | GitHub | [sources][transaction_log_source]	
 Recommendation processor source code | GitHub |	[sources][recommendation_processor_source]	
 Readme file	| GitHub | [README][bask_readme]	
@@ -19,3 +19,4 @@ Developer (user) documentation | Amazon S3 | [Documentation][bask_doc_url]
 Marketing materials (Product sheet PDF)	| Amazon S3	| [Document][marketing_materials]
 
 [bap_manifest]: /manifests/behavior_analytics_platform.yaml
+[webstore_manifest]: /manifests/webstore.yaml

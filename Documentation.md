@@ -30,5 +30,5 @@ Documentation
         - [Transaction log](docs/Developer-Guide--Appendix--File-Formats.md#transaction-log)
         - [Recommendation file](docs/Developer-Guide--Appendix--File-Formats.md#recommendations-file)
     - [List of artifacts](docs/Developer-Guide--Appendix--List-of-artifacts.md)
-    - Dependencies
+    - [Dependencies](docs/Developer-Guide--Appendix--Dependencies.md)
     - [Glossary](docs/Developer-Guide--Glossary.md)

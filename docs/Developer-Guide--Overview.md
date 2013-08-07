@@ -9,7 +9,7 @@ Behavior analytics start kit consists of two main blocks:
 * Behavior analytics platform
 * Web store
 
+As a developer you can investigate starter kit insights and learn more about developing analytics applications in Hadoop, you can modify a variety of launch parameters and source code.
 
 As a user you can run recommendation processor against transaction log to get recommendations and use it in the web store.
-As a developer you can investigate starter kit insights and learn more about developing analytics applications in Hadoop.
-You can modify a variety of parameters and source code, use your product catalog and even use sample of your real transaction log to generate recommendations.
+Also you can use your product catalog and even use sample of your real transaction log to generate recommendations.

@@ -9,7 +9,7 @@ Documentation
 * [Behavior analytics starter kit overview](docs/Developer-Guide--Overview.md)
     - [Starter Kit architecture diagram](docs/Developer-Guide--Architecture-diagram.md)
     - [Starter Kit components overview](docs/Developer-Guide--Behavior-Analytics-Starter-Kit--Components-Overview.md)
-* Starter kit components
+* Starter kit components detailed description
     - Web store
         - [Web store overview](docs/Developer-Guide--Web-Store--Overview.md)
         - Broadleaf Commerce framework

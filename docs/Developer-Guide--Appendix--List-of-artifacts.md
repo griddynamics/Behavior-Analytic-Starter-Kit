@@ -27,6 +27,8 @@ Marketing materials (Product sheet PDF)	| Amazon S3	| [Document][marketing_mater
 [bask_readme]: /README.md
 [bask_licence]: /LICENSE
 [scenario_config]: http://gd-bask.s3.amazonaws.com/magento_scenario-config.json
+[product_catalog]: http://gd-bask.s3.amazonaws.com/magento_catalog.zip
+[recommendations_example]: http://gd-bask.s3.amazonaws.com/new_recommendations.txt
 [webstore_site_war]: http://gd-bask.s3.amazonaws.com/bask-site.war
 [webstore_admin_war]: http://gd-bask.s3.amazonaws.com/bask-admin.war
 [transaction_log_generator_binary]: http://gd-bask.s3.amazonaws.com/transaction-log-generator.jar

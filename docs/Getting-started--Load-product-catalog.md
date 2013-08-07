@@ -7,5 +7,4 @@ You can simple load our sample product catalog to web store, just press “Get p
 You can use your product catalog if it has [the same format](Developer-Guide--Appendix--File-Formats.md#product-catalog-for-web-store) with web store product catalog.
 
 ![get catalog][get_catalog]
-
 [get_catalog]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/Developer%20Guide/get_catalog.png

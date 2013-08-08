@@ -13,25 +13,5 @@ kit:
     link: http://griddynamics.com
   documentation:
     overview: |
-      This application requires the following items to be conﬁgured in your environment:
-        * Amazon EC2 account;
-        * All TCP/UDP ports in security group for vm in same environment should be open .
-      Please refer to the Getting Started for step-by-step instructions on how to conﬁgure your environment.
-      
-
-      "Behavior Analytic Starter Kit" provide following functionality:
-        - Launching a new sandbox instance of “Analytic Platform" (Hadoop cluster, Transaction Log generator, Recommendation processor).
-        - Launching a new sandbox instance of “sample store"
-        - Put product catalog from S3 to “sample store"
-        - Launching Transaction Log generation job.
-        - Launching recommendation processor job.
-        - Pull recommendations from S3 to the “sample store"
-        - View recommendations via sample store
-        - Destroying applications instances (“Analytic Platform" and “sample store") and cleaning resources when done.
-
-      “Behavior Analytic Starter Kit" key features:
-        - provide advanced recommendations for items groups.
-        - recommendations dynamically updates after each change of shopping cart.
-        - customisable scenario is used to generate Transaction Log.
-        - product catalog, Transaction Log generator scenario configurations, settings of recommendation processor could be changed. 
-
+         Welcome to Behavior Analytics Starter Kit!
+         By using this software, you agree to the terms of the license agreement <a href="https://github.com/griddynamics/Behavior-Analytic-Starter-Kit/blob/master/LICENSE">(license)</a> 

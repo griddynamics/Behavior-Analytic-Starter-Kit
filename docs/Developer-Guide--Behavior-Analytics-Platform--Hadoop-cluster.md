@@ -14,6 +14,7 @@ Cluster topology:
 ![Cluster topology][cluster_topology]
 
 Cluster management:
+
 You can manage Hadoop cluster using behavior analytics platform application output panel.
 There you can find buttons to manage cluster.
 

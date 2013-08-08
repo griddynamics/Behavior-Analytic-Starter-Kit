@@ -134,13 +134,13 @@ launch:
         namenode_ip_public:
             value: ${ips_hmaster_pub}
         hdfs_webui:
-            description: "HDFS WebUI address:"
+            description: "Namenode (hdfs):"
             value: "http://${ips_hmaster_pub}:50070"
         jobtracker_webui:
-            description: "JobTracker WebUI address:"
+            description: "Job Tracker (MR):"
             value: "http://${ips_hmaster_pub}:50030"
         ganglia_webui:
-            description: "Ganglia WebUI address:"
+            description: "Monitoring:"
             value: "http://${ips_hmaster_pub}/ganglia2/"
 
 add_datanode:

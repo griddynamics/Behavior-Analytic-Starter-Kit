@@ -7,7 +7,7 @@ Cluster description:
 - Monitoring with [Ganglia]
 - Default configuration: noHA - 1 namenode, 8 datanode
 - Default VM configuration: m1.medium without instance storage
-- AWS image: CentOS 6.3(ami-d41689bd)
+- AWS image: CentOS 6.4(ami-d41689bd)
 
 Cluster topology:
 

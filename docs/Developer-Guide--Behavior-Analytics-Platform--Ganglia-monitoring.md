@@ -1,7 +1,8 @@
 Ganglia monitoring
 ------------------
 
-We use [Ganglia](http://ganglia.sourceforge.net) as metric collector and storage. 
+We use [Ganglia](http://ganglia.sourceforge.net) to monitor Behavior analytics platform Hadoop cluster.
+Web store isn't covered by Ganglia monitoring because of it is independent application that can't be configured with one particular Ganglia server.
 Ganglia already has preconfigured templates for Hadoop monitoring and receives metrics directly from Hadoop.
 Hadoop has special [confguration file](../cookbooks/ganglia/templates/default/hadoop-metrics2.properties.erb) /etc/hadoop/conf/hadoop-metrics2.properties that describes settings for Ganglia.
 Ganglia also collects custom metrics (counters) from MapReduce jobs.

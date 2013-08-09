@@ -1,4 +1,4 @@
-Run recommendations processor
+Launch recommendations processor
 -----------------------------
 
 Press “Launch recommendation processor” button on behavior analytics platform application output panel to launch 

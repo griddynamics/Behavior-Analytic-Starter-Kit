@@ -134,10 +134,10 @@ launch:
         namenode_ip_public:
             value: ${ips_hmaster_pub}
         hdfs_webui:
-            description: "Namenode (hdfs):"
+            description: "Namenode (HDFS):"
             value: "http://${ips_hmaster_pub}:50070"
         jobtracker_webui:
-            description: "Job Tracker (MR):"
+            description: "Job Tracker (MapReduce):"
             value: "http://${ips_hmaster_pub}:50030"
         ganglia_webui:
             description: "Monitoring:"

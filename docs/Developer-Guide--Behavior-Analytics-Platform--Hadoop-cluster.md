@@ -39,7 +39,7 @@ Also you should specify owner to be set for new directories.
 Owner will be set to “hdfs” by default. You shouldn’t leave this field blank.
 
 * Custom job executing. 
-Click “Execute job” to run custom map/reduce jod on behavior analytics platform Hadoop cluster. 
+Click “Execute job” to run custom map/reduce job on behavior analytics platform Hadoop cluster. 
 You should specify path to job’s *.jar file and job parameters as a string.
 
 [Cloudera Hadoop Distribution 4]: http://www.cloudera.com/content/cloudera/en/products/cdh.html

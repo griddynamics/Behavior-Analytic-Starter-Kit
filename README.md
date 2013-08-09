@@ -146,7 +146,8 @@ Also we have added following features to web store that available via [REST API]
     - Import product catalog (we have created own product catalog based on magento catalog)
 
 
-
+[Known Issues](docs/Known_Issues.md)
+--------------
     
 [broadleaf_logo]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/broadleaf_logo.png "Broadleaf Framework"
 [Hadoop_logo]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/hadoop_logo.jpg "Apache Hadoop"

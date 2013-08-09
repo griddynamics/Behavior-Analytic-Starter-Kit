@@ -51,11 +51,11 @@ How can I try Starter Kit? (Getting started)
 Read short overview in new window, choose organization, edit default names for applications and
 push “Add” button to load application manifests for Behavior Analytic Starter Kit to you Qubell Account.
 
-3. [Run WebStore and Behavior analytics platform applications](docs/Getting-started--Launch-applications.md)
+3. [Launch WebStore and Behavior analytics platform applications](docs/Getting-started--Launch-applications.md)
 4. [Load product catalog to Web Store](docs/Getting-started--Load-product-catalog.md)
 5. [Put product catalog information to S3](docs/Getting-started--Put-product-catalog-information-to-s3.md)
 6. [Generate sample transaction log](docs/Getting-started--Generate-sample-transaction-log.md)
-7. [Run recommendation processor](docs/Getting-started--Run-recommendation-processor.md)
+7. [Launch recommendation processor](docs/Getting-started--Run-recommendation-processor.md)
 8. [Get recommendations](docs/Getting-started--Get-recommendations-from-s3.md)
     
 

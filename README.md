@@ -13,6 +13,7 @@ Technologies
 ------------
 [![Java programming language][java_logo]][java_site]
 [![Broadleaf Commerce Framework][broadleaf_logo]][broadleaf_site]
+
 [![Apache Hadoop][hadoop_logo]][hadoop_site]
 [![Apache Mahout][mahout_logo]][mahout_site]
 
@@ -161,7 +162,7 @@ Also we have added following features to web store that available via [REST API]
 
 [java_logo]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/java_logo.png "Java programming language"
 [broadleaf_logo]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/broadleaf_logo.png "Broadleaf Commerce Framework"
-[hadoop_logo]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/hadoop_logo.jpg "Apache Hadoop"
+[hadoop_logo]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/hadoop_logo.png "Apache Hadoop"
 [mahout_logo]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/mahout_logo.png "Apache Mahout"
 
 [work_diagram]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/how_it_work.png "That how it works"

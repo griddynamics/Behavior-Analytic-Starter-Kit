@@ -9,8 +9,8 @@ Why it's cool?
 - Get product recommendations in 3 steps.
 - Don't want use real transaction log? We'll generate sample for you - just export your catalog.
 
-Technologies
-------------
+Technology stack
+----------------
 [![Qubell][qubell_logo]][qubell_site]
 [![Java programming language][java_logo]][java_site]
 [![Broadleaf Commerce Framework][broadleaf_logo]][broadleaf_site]
@@ -29,14 +29,14 @@ How it works?
 Components
 ----------
 
-* Web store is a java application based on [Broadleaf framework](http://www.broadleafcommerce.org).
-It uses wide range of well known technologies such as [Spring](http://www.springsource.org),
-[Hibernate](http://www.hibernate.org) and [Apache Solr](http://lucene.apache.org/solr).
+* Web store is a java application based on [Broadleaf framework][broadleaf_site].
+It uses wide range of well known technologies such as [Spring][spring_site],
+[Hibernate][hibernate_site] and [Apache Solr][solr_site].
 You can see your recommendations results in demo web store application.
 
 * Behavior analytics platform is based on Hadoop cluster (HDFS and Map/Reduce) with recommendation processor
-based on [Apache Mahout](http://mahout.apache.org) and additional Transaction Log generator.
-Hadoop cluster uses [Cloudera Hadoop Distribution CDH4](http://www.cloudera.com/content/cloudera/en/products/cdh.html).
+based on [Apache Mahout][mahout_site] and additional Transaction Log generator.
+Hadoop cluster uses [Cloudera Hadoop Distribution (CDH4)][cdh_site].
 Behavior analytics platform run Hadoop cluster on your Amazon EC2 account, generate transaction log and recommendations for you.
 
 This repository contains:
@@ -52,7 +52,7 @@ How can I try Starter Kit? (Getting started)
 -------------------
 1. [Setup your Qubell Account][qubell_setup]
 
-2. Press "Get it now" button on [Starter Kit web site](http://qubell.com). Log in or sign up if necessary.
+2. Press "Get it now" button on [Starter Kit web site][qubell_site]. Log in or sign up if necessary.
 Read short overview in new window, choose organization, edit default names for applications and
 push “Add” button to load application manifests for Behavior Analytic Starter Kit to you Qubell Account.
 
@@ -161,6 +161,10 @@ Also we have added following features to web store that available via [REST API]
 [broadleaf_site]: http://www.broadleafcommerce.org "Broadleaf commerce official site"
 [hadoop_site]: http://hadoop.apache.org "Apache Hadoop official site"
 [mahout_site]: http://mahout.apache.org "Apache Mahout official site"
+[cdh_site]: http://www.cloudera.com/content/cloudera/en/products/cdh.html "Cloudera's Hadoop distribution official site"
+[spring_site]: http://www.springsource.org "Spring framework official site"
+[hibernate_site]: http://www.hibernate.org "Hibernate official site"
+[solr_site]: http://lucene.apache.org/solr "Apache Solr official site"
 
 [qubell_logo]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/qubell_logo.png "Qubell platform"
 [java_logo]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/java_logo.png "Java programming language"

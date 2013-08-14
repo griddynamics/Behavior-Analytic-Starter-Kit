@@ -6,15 +6,14 @@ Guide for new Qubell user
 Before you begin using of starter kit you need to obtain an Amazon EC2 account, capable of creating EC2 nodes and S3 usage. 
 The EC2 security group ‘default’ has to allow connections on the following ports:
 * 22 (SSH)
-* 8080 (tcp) 
+* 80 (TCP)
+* 8080 (TCP) 
 * 443 (НTTPS)
 * 50030 (HTTP, jobtracker console) 
 * 50070 (HTTP, namenode console) 
-* 8018
-* 8019
 * 8020
 * 8021
-* 8649 (tcp and udp)
+* 8649 (TCP and UDP)
 * 50010
 * 50020
 * 50075

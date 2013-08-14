@@ -93,14 +93,10 @@ Extending methods
 
 Heat Clinic web app
 -------------------
-Heat Clinic contains three modules:
-* Core module
-* Site module
-* Admin module
-
-Core module common classes and resources which are used in other modules.
-Admin module uses core module and implements admin console.
-Site module uses core module and implements shopping cart application.
+[Heat Clinic](https://github.com/BroadleafCommerce/DemoSite) contains three modules:
+* **_Core module_** contains common classes and resources which are used in other modules
+* **_Site module_** uses core module and implements admin console
+* **_Admin module_** uses core module and implements shopping cart application
 
 Also See
 --------

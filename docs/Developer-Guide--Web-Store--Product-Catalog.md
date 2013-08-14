@@ -1,3 +1,19 @@
 Product catalog
 ---------------
-Product catalog. Behavior Analytics Starter Kit product catalog is based on Magento (TM) product catalog and distributed under OSL 3.0 licence. Product catalog is zip archive contains product_catalog.json file and a folder  with product images. product_catalog.json contains formatted data about product categories (name and description), products of each category (name, description and path to product image). This product catalog is used by sample store. Transaction log generator uses product categories and products IDs and names to generate transaction log. This data called “product catalog information”. sample store extracts product catalog information from previously uploaded product catalog. Product catalog information contains ID and name for product categories and products, belongs to the categories. So, you can import product catalog from Amazon S3 and then export product catalog information for transaction log generator to Amazon S3.
+
+We have added an ability to upload custom product catalog to Web Store of Behavior Analytics Starter Kit.
+Format of product catalog for Web Store you can see 
+[here](Developer-Guide--Appendix--File-Formats.md#product-catalog-for-web-store).
+
+Also we have created [product catalog](https://s3.amazonaws.com/gd-bask/magento_catalog.zip) based on 
+[Magento (TM) product catalog](http://www.magentocommerce.com/knowledge-base/entry/installing-the-sample-data-for-magento)
+that is distributed under [OSL 3.0 licence](http://opensource.org/licenses/OSL-3.0).
+
+Besides "product catalog" for Web Store there is "product catalog information" for transaction log generator.
+Product catalog information contains only the information necessary to the trasaction log generator.
+Format of product catalog information for transaction log generator you can see 
+[here](Developer-Guide--Appendix--File-Formats.md#product-catalog-information-for-transaction-log-generator).
+
+Web Store can extract product catalog information from product catalog.
+So, you can import product catalog from Amazon S3 and then export product catalog information 
+for transaction log generator to Amazon S3.

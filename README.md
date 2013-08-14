@@ -152,8 +152,10 @@ Also we have added following features to web store that available via [REST API]
     - Import product catalog (we have created own product catalog based on magento catalog)
 
 
-[Known issues](docs/Known_Issues.md)
---------------
+Also see:
+---------
+* [Developer documentation](Documentation.md)
+* [Known issues](docs/Known_Issues.md)
 
 [qubell_platform]: http://qubell.com/product/qubell-platform/ "Qubell platform"
 

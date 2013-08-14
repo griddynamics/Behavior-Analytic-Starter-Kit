@@ -16,8 +16,8 @@ The EC2 security group ‘default’ has to allow connections on the following p
 * 50030 (TCP, HTTP of JobTracker WebUI)
 * 50010 (TCP, DataNode DFS)
 * 50020 (TCP, DataNode IPC)
-* 50060 (TCP, HTTP of TaskTracker WebUI)
 * 50075 (TCP, HTTP of DataNode WebUI)
+* 50060 (TCP, HTTP of TaskTracker WebUI)
 
 You should [setup 'default' security group][aws_security_group_doc] to open ports listed above.
 

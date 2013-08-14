@@ -1,22 +1,6 @@
 Broadleaf Commerce framework
 ============================
 
-+ [Summary](#summary)
-+ [Technology stack](#technology-stack)
-+ [Features](#features)
-+ [Architecture](#architecture)
-+ [Extending methods](#extending-methods)
-+ [Heat Clinic web app](#heat-clinic-web-app)
-+ [Workflow and Activities](#workflow-and-Activities)
-+ [Catalog and Search](#catalog-and-search)
-+ [Presentation Layer](#presentation-layer)
-+ [REST Web Service API](#rest-web-service-api)
-+ [Internationalization](#internationalization)
-+ [Security](#security)
-+ [Also See](#also-see)
-
-Summary
--------
 BroadleafCommerce is an open-source, enterprise-class e-commerce framework
 that has been designed from the ground up for scalability and customizability.
 It has demo web application - [Heat Clinic](http://demo.broadleafcommerce.org/heatclinic/).
@@ -27,17 +11,28 @@ It has demo web application - [Heat Clinic](http://demo.broadleafcommerce.org/he
 **_Operating system:_** Cross-platform <br/>
 **_Licence:_** Apache 2.0
 
+Content
+-------
++ [Technology stack](#technology-stack)
++ [Features](#features)
++ [Architecture](#architecture)
++ [Project Modules](#project-Modules)
++ [Extending methods](#extending-methods)
++ [Heat Clinic web app](#heat-clinic-web-app)
++ [Also See](#also-see)
+
 Technology stack
 ----------------
-* Java
-* Spring framework (DI, JPA support, Transactions, aop, JMS, mvc, web-flow, social, security and other)
-* Hibernate (JPA provider + cache)
-* Thymeleaf (nature templating)
-* JAX-RS (rest api)
-* Apache Solr (faceted search)
-* Quartz (task scheduling)
-* Tomcat (servlet container)
-* Maven (build system)
+* [Java](http://www.oracle.com/technetwork/java/index.html) - main programming language
+* [Spring framework](http://www.springsource.org) - DI, JPA support, Transactions, AOP,
+    JMS, MVC, social, security and other
+* [Hibernate](http://www.hibernate.org) - JPA provider
+* [Thymeleaf](http://www.thymeleaf.org) - template engine with natural templates
+* [JAX-RS](http://jax-rs-spec.java.net) - rest api
+* [Apache Solr](http://lucene.apache.org/solr) - faceted search
+* [Quartz](http://quartz-scheduler.org) - job scheduler
+* [Apache Tomcat](http://tomcat.apache.org) - servlet container
+* [Apache Maven](http://maven.apache.org) - build system
 
 Features
 --------
@@ -57,15 +52,27 @@ Features
 * Basic Fulfillment
 * Basic Inventory
 * Internationalization
+    - Local Resolution
+    - Currency Resolution
+    - Translations
+        + Category Data
+        + Product Options
+        + Product Option Values
+        + Product Sku
+    - CMS
 * Checkout
     - Payment
     - Basic Tax Module
 * Administration console
 * Content Management
 
-
 Architecture
 ------------
+
+![Broadleaf Architecture](https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/broadleaf_architecture.png)
+
+Project Modules
+---------------
 * broadleaf-common (classes shared by various modules)
 * broadleaf-framework (core classes)
 * broadleaf-framework-web (Spring MVC controllers and related items)
@@ -86,33 +93,14 @@ Extending methods
 
 Heat Clinic web app
 -------------------
+Heat Clinic contains three modules:
 * Core module
 * Site module
 * Admin module
 
-Workflow and Activities
------------------------
-TODO:
-
-Catalog and Search
-------------------
-TODO:
-
-Presentation Layer
-------------------
-TODO:
-
-REST Web Service API
---------------------
-TODO:
-
-Internationalization
---------------------
-TODO:
-
-Security
---------
-TODO:
+Core module common classes and resources which are used in other modules.
+Admin module uses core module and implements admin console.
+Site module uses core module and implements shopping cart application.
 
 Also See
 --------

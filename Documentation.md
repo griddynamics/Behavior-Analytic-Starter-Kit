@@ -12,7 +12,7 @@ Documentation
 * Starter kit components detailed description
     - Web store
         - [Web store overview](docs/Developer-Guide--Web-Store--Overview.md)
-        - Broadleaf Commerce framework
+        - [Broadleaf Commerce framework](docs/Developer-Guide--Web-Store--Broadleaf-Commerce-Framework.md)
         - [Product catalog](docs/Developer-Guide--Web-Store--Product-Catalog.md)
         - [Recommendation engine](docs/Developer-Guide--Web-Store--Recommendation-Engine.md)
         - [Recommendations](docs/Developer-Guide--Web-Store--Recommendations.md)
@@ -32,3 +32,4 @@ Documentation
     - [List of artifacts](docs/Developer-Guide--Appendix--List-of-artifacts.md)
     - [Dependencies](docs/Developer-Guide--Appendix--Dependencies.md)
     - [Glossary](docs/Developer-Guide--Glossary.md)
+    - [Known issues](docs/Known_Issues.md)

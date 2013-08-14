@@ -12,6 +12,8 @@ Why it's cool?
 Technology stack
 ----------------
 [![Qubell][qubell_logo]][qubell_site]
+[![Opscode Chef][chef_logo]][chef_site]
+
 [![Java programming language][java_logo]][java_site]
 [![Broadleaf Commerce Framework][broadleaf_logo]][broadleaf_site]
 
@@ -157,6 +159,7 @@ Also we have added following features to web store that available via [REST API]
 [qubell_platform]: http://qubell.com/product/qubell-platform/ "Qubell platform"
 
 [qubell_site]: http://qubell.com "Qubell official site"
+[chef_site]: http://www.opscode.com/chef "Opscode Chef official site"
 [java_site]: http://www.oracle.com/technetwork/java/index.html "Java official site"
 [broadleaf_site]: http://www.broadleafcommerce.org "Broadleaf commerce official site"
 [hadoop_site]: http://hadoop.apache.org "Apache Hadoop official site"
@@ -167,6 +170,7 @@ Also we have added following features to web store that available via [REST API]
 [solr_site]: http://lucene.apache.org/solr "Apache Solr official site"
 
 [qubell_logo]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/qubell_logo.png "Qubell platform"
+[chef_logo]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/chef_logo.png "Opscode Chef"
 [java_logo]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/java_logo.png "Java programming language"
 [broadleaf_logo]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/broadleaf_logo.png "Broadleaf Commerce Framework"
 [hadoop_logo]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/hadoop_logo.png "Apache Hadoop"

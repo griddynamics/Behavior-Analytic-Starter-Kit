@@ -13,7 +13,6 @@ Technology stack
 ----------------
 [![Qubell][qubell_logo]][qubell_site]
 [![Opscode Chef][chef_logo]][chef_site]
-
 [![Java programming language][java_logo]][java_site]
 [![Broadleaf Commerce Framework][broadleaf_logo]][broadleaf_site]
 
@@ -153,7 +152,7 @@ Also we have added following features to web store that available via [REST API]
     - Import product catalog (we have created own product catalog based on magento catalog)
 
 
-[Known Issues](docs/Known_Issues.md)
+[Known issues](docs/Known_Issues.md)
 --------------
 
 [qubell_platform]: http://qubell.com/product/qubell-platform/ "Qubell platform"

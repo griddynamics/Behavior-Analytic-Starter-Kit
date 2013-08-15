@@ -21,5 +21,5 @@ Known Issues
 ### Analytics platform ###
 
 1. HDFS file browsing throw HTTP not working now 
-1. Need to delete hdfs directory ([using manage_hdfs_dirs button](Developer-Guide--Behavior-Analytics-Platform--Hadoop-cluster.md#Cluster management)) before relaunching job from application (launch_transaction_log_generator, launch_recommendation_processor)
+1. Need to delete hdfs directory ([using manage_hdfs_dirs button](Developer-Guide--Behavior-Analytics-Platform--Hadoop-cluster.md#cluster-management)) before relaunching job from application (launch_transaction_log_generator, launch_recommendation_processor)
 1. Config of transaction log generator supports hierarchy of categories only (tree, not graph)

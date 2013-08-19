@@ -403,7 +403,7 @@ Upload_transaction_log:
     steps:
         saving_result:
             action: execrun
-            phase: saving_result_to_local
+            phase: saving_result
             parameters:
                 roles: [ hmaster ]
                 isSudo: true
@@ -415,7 +415,7 @@ Upload_transaction_log:
         upload_result_to_s3:
             action: .s3manage
             phase: upload_result_to_s3
-            precedingPhases: [ saving_result_to_local ]
+            precedingPhases: [ saving_result ]
             parameters:
                 localpath: "/tmp/transaction_log_generator/${transaction_log_filename}"
                 bucket: ${s3_bucket_name}
@@ -447,7 +447,7 @@ Download_transaction_log:
             description: "S3 transaction log filename"
             default: ""
     steps:
-        upload_result_to_s3:
+        download_from_s3:
             action: .s3manage
             phase: download_from_s3
             parameters:
@@ -457,6 +457,7 @@ Download_transaction_log:
         saving_result:
             action: chefsolo
             phase: transferring
+            precedingPhases: [ download_from_s3 ]
             parameters:
                 roles: [ hmaster ]
                 runList: [ "recipe[hadoop_manage::hdfs_transfer]" ]
@@ -479,7 +480,7 @@ Download_transaction_log:
                 command:
                     - bash -c
                     - |
-                        rm -rf /tmp/tmp/transaction_log/${transaction_log_filename}
+                        rm -rf /tmp/transaction_log/
     return:
         analytics_result_path:
             description: "Transaction log HDFS output path"

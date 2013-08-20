@@ -227,14 +227,6 @@ Launch_transation_log_generator:
             description: "URL to dataset config"
             default: "http://gd-bask.s3.amazonaws.com/magento_scenario-config.json"
     steps:
-        downloading_product_catalog:
-            action: .s3manage
-            phase: downloading_recommendations
-            parameters:
-                localpath: "/tmp/transaction_log_generator"
-                bucket: ${product_catalog_backet}
-                s3file: ${product_catalog_filename}
-                action: "download"
         downloading_dataset_configuration:
             action: execrun
             phase: downloading_dataset_configuration
@@ -244,9 +236,23 @@ Launch_transation_log_generator:
                     - bash -c
                     - |
                         wget -c -P /tmp/transaction_log_generator ${dataset_config_url}
-        running_job:
+        downloading_product_catalog:
+            action: .s3manage
+            phase: downloading_recommendations
+            parameters:
+                localpath: "/tmp/transaction_log_generator"
+                bucket: ${product_catalog_backet}
+                s3file: ${product_catalog_filename}
+                action: "download"
+        prepare_generating:
+            action: .manage_hdfs_dirs:
+            phase: preparing
+            parameters:
+                paths: "/tmp/transaction_log"
+                action: "remove"
+        generating_transaction_log:
             action: .execute_job
-            precedingPhases: [ downloading_recommendations, downloading_dataset_configuration]
+            precedingPhases: [ downloading_recommendations, downloading_dataset_configuration, prepare_generating]
             parameters:
                 job_url: ${job_url}
                 job_download_path: "/tmp/transaction_log_generator"
@@ -277,9 +283,16 @@ Launch_recommendation_processor:
             description: "numGroups"
             default: "1000"
     steps:
+        prepare_running_analytics:
+            action: .manage_hdfs_dirs:
+            phase: preparing
+            parameters:
+                paths: "/tmp/fp"
+                action: "remove"
         running_analytics:
             action: .execute_job
             phase: running_analytics
+            precedingPhases: [ preparing ]
             parameters:
                 job_url: ${analytics_job_url}
                 job_download_path: "/tmp/recommendation_processor"

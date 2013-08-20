@@ -101,7 +101,7 @@ launch:
                             hosts: ${ips_hslave}
 
         - cluster_start:
-            action: manage_cluster
+            action: .manage_cluster
             phase: cluster_start
             precedingPhases: [ namenode_install, datanode_install ]
             parameters:
@@ -202,7 +202,7 @@ Scale_up_cluster:
                             hosts: ${ips_hslave}
 
         - cluster_restart:
-            action: manage_cluster
+            action: .manage_cluster
             precedingPhases: [ namenode_config_update, datanodes_setup ]
             parameters:
                 action: "restart"

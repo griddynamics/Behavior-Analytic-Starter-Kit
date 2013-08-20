@@ -57,11 +57,6 @@ org.apache.hadoop.io.compress.Lz4Codec
 default[:hadoop][:conf][:core_site]["hadoop.security.authentication"] = "simple"
 default[:hadoop][:conf][:core_site]["hadoop.rpc.protection"] = "authentication"
 default[:hadoop][:conf][:core_site]["hadoop.security.auth_to_local"] = "DEFAULT"
-node[:hadoop][:proxy_users].each do |proxy_user|
-  default[:hadoop][:conf][:core_site]["hadoop.proxyuser.#{proxy_user}.hosts"] = "*"
-  default[:hadoop][:conf][:core_site]["hadoop.proxyuser.#{proxy_user}.groups"] = "*"
-end
-
 
 ######################
 # Hdfs configuration #

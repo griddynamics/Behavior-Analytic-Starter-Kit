@@ -122,10 +122,10 @@ launch:
             description: "Monitoring:"
             value: "http://${ips_hmaster_pub}/ganglia2/"
 
-add_datanode:
+Scale_up_cluster:
     parameters:
         new_datanodes_quantity:
-            description: "new datanode count"
+            description: "Add slaves quantity"
     steps:
         - start_datanodes:
             action: provisionVms
@@ -207,7 +207,7 @@ add_datanode:
             parameters:
                 action: "restart"
 
-manage_cluster:
+.manage_cluster:
     parameters:
         action:
             default: "start"
@@ -244,7 +244,7 @@ manage_cluster:
                             services: [ "hadoop-hdfs-datanode", "hadoop-0.20-mapreduce-tasktracker" ]
                             action: ${action}
 
-manage_hdfs_dirs:
+.manage_hdfs_dirs:
     parameters:
         paths:
             description: "hdfs dirs path. example: dir1,dir2"
@@ -274,7 +274,7 @@ manage_hdfs_dirs:
                                 owner: ${user}      # default - hdfs
                                 action: ${action}   # default - "create"
 
-hdfs_data_transfer:
+.hdfs_data_transfer:
     parameters:
         action:
             description: "action"
@@ -302,7 +302,7 @@ hdfs_data_transfer:
                                 destination: ${to}
                                 action: ${action}
 
-execute_job:
+.execute_job:
     parameters:
         job_url:
             description: "URL to job file"
@@ -361,7 +361,7 @@ Launch_transation_log_generator:
                     - |
                         wget -c -P /tmp/transaction_log_generator ${dataset_config_url}
         running_job:
-            action: execute_job
+            action: .execute_job
             precedingPhases: [ downloading_recommendations, downloading_dataset_configuration]
             parameters:
                 job_url: ${job_url}
@@ -487,7 +487,7 @@ Launch_recommendation_processor:
             default: "1000"
     steps:
         running_analytics:
-            action: execute_job
+            action: .execute_job
             phase: running_analytics
             parameters:
                 job_url: ${analytics_job_url}

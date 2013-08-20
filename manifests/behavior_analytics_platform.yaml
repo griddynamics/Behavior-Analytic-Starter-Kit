@@ -245,7 +245,7 @@ Launch_transation_log_generator:
                 s3file: ${product_catalog_filename}
                 action: "download"
         prepare_generating:
-            action: .manage_hdfs_dirs:
+            action: .manage_hdfs_dirs
             phase: preparing
             parameters:
                 paths: "/tmp/transaction_log"
@@ -284,7 +284,7 @@ Launch_recommendation_processor:
             default: "1000"
     steps:
         prepare_running_analytics:
-            action: .manage_hdfs_dirs:
+            action: .manage_hdfs_dirs
             phase: preparing
             parameters:
                 paths: "/tmp/fp"

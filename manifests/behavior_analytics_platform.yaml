@@ -3,6 +3,9 @@
 # @author Nickolay Yurin (nyurin@griddynamics.com)
 #
 
+#################
+# Main workflow #
+#################
 launch:
     parameters:
         slaveQuantity:
@@ -122,6 +125,9 @@ launch:
             description: "Monitoring:"
             value: "http://${ips_hmaster_pub}/ganglia2/"
 
+############################
+# Cluster scaling workflow #
+############################
 Scale_up_cluster:
     parameters:
         new_datanodes_quantity:
@@ -206,6 +212,240 @@ Scale_up_cluster:
             precedingPhases: [ namenode_config_update, datanodes_setup ]
             parameters:
                 action: "restart"
+
+#######################
+# Analytics workflows #
+#######################
+Launch_transation_log_generator:
+    parameters:
+        job_url:
+            description: "URL to transaction log generator job"
+            default: "http://gd-bask.s3.amazonaws.com/transaction-log-generator.jar"
+        product_catalog_backet:
+            description: "S3 product catalog bucket"
+            default: "gd-bask"
+        product_catalog_filename:
+            description: "S3 product catalog filename"
+            default: "product_catalog.json"
+        dataset_config_url:
+            description: "URL to dataset config"
+            default: "http://gd-bask.s3.amazonaws.com/magento_scenario-config.json"
+    steps:
+        downloading_product_catalog:
+            action: .s3manage
+            phase: downloading_recommendations
+            parameters:
+                localpath: "/tmp/transaction_log_generator"
+                bucket: ${product_catalog_backet}
+                s3_filename: ${product_catalog_filename}
+                action: "download"
+        downloading_dataset_configuration:
+            action: execrun
+            phase: downloading_dataset_configuration
+            parameters:
+                roles: [ hmaster ]
+                command:
+                    - bash -c
+                    - |
+                        wget -c -P /tmp/transaction_log_generator ${dataset_config_url}
+        running_job:
+            action: .execute_job
+            precedingPhases: [ downloading_recommendations, downloading_dataset_configuration]
+            parameters:
+                job_url: ${job_url}
+                job_download_path: "/tmp/transaction_log_generator"
+                job_parameters: "-Dmapred.job.map.memory.mb=2048 -c /tmp/transaction_log_generator/`basename ${dataset_config_url}` -p /tmp/transaction_log_generator/${product_catalog_filename} -o /tmp/transaction_log"
+    return:
+        transaction_log_path:
+            description: "HDFS path to transaction log:"
+            value: "hdfs://tmp/transaction_log"
+
+Launch_recommendation_processor:
+    parameters:
+        analytics_job_url:
+            description: "URL to recommendation processor job"
+            default: "https://s3.amazonaws.com/gd-bask/recommendation-processor.jar"
+        transaction_log_path:
+            description: "HDFS path to transaction log"
+            default: "/tmp/transaction_log"
+        s3_bucket_name:
+            description: "S3 bucket to store recommendation"
+            default: "gd-bask"
+        recommendation_filename:
+            description: "S3 output recommendation filename"
+            default: "recommendations.txt"
+        min_support:
+            description: "minSupport"
+            default: "3"
+        num_groups:
+            description: "numGroups"
+            default: "1000"
+    steps:
+        running_analytics:
+            action: .execute_job
+            phase: running_analytics
+            parameters:
+                job_url: ${analytics_job_url}
+                job_download_path: "/tmp/recommendation_processor"
+                job_parameters: "-Dmapred.job.map.memory.mb=2048 -Dmapred.job.reduce.memory.mb=4000 -Dmapred.map.child.java.opts=\"-Xmx480m\" -Dmapred.reduce.child.java.opts=\"-Xmx2000m\" -s ${min_support} -g ${num_groups} -i ${transaction_log_path} -o /tmp/fp"
+        saving_result:
+            action: execrun
+            phase: saving_result
+            precedingPhases: [ running_analytics ]
+            parameters:
+                roles: [ hmaster ]
+                isSudo: true
+                command:
+                    - bash -c
+                    - |
+                        chmod -R 777 /tmp/recommendation_processor/
+                        hadoop fs -text /tmp/fp/frequentpatterns/part-r-* > /tmp/recommendation_processor/${recommendation_filename}
+        upload_result_to_s3:
+            action: .s3manage
+            phase: upload_result_to_s3
+            precedingPhases: [ saving_result ]
+            parameters:
+                localpath: "/tmp/recommendation_processor/${recommendation_filename}"
+                bucket: ${s3_bucket_name}
+                action: "upload"
+    return:
+        analytics_result_path:
+            description: "Recommendation processor S3 output path"
+            value: "s3://${s3_bucket_name}/${recommendation_filename}"
+
+######################################
+# Transaction log transfer workflows #
+######################################
+Upload_transaction_log:
+    parameters:
+        s3_bucket_name:
+            description: "S3 bucket name"
+            default: {$.s3_bucket_name}
+        transaction_log_filename:
+            description: "S3 transaction log filename"
+            default: "transaction_log.txt"
+    steps:
+        saving_result:
+            action: execrun
+            phase: saving_result
+            parameters:
+                roles: [ hmaster ]
+                isSudo: true
+                command:
+                    - bash -c
+                    - |
+                        chmod -R 777 /tmp/transaction_log_generator/
+                        hadoop fs -text /tmp/transaction_log/part-* > /tmp/transaction_log_generator/${transaction_log_filename}
+        upload_result_to_s3:
+            action: .s3manage
+            phase: upload_result_to_s3
+            precedingPhases: [ saving_result ]
+            parameters:
+                localpath: "/tmp/transaction_log_generator/${transaction_log_filename}"
+                bucket: ${s3_bucket_name}
+                action: "upload"
+        clean_local:
+            action: execrun
+            phase: clean_local
+            precedingPhases: [ upload_result_to_s3 ]
+            parameters:
+                roles: [ hmaster ]
+                isSudo: true
+                command:
+                    - bash -c
+                    - |
+                        rm -rf /tmp/transaction_log_generator/${transaction_log_filename}
+    return:
+        transaction_log_path:
+            description: "S3 path to uploaded transaction log:"
+            value: "s3://${s3_bucket_name}/${transaction_log_filename}"
+
+Download_transaction_log:
+    parameters:
+        transaction_log_hdfs_path:
+            description: "HDFS path to download transaction log"
+            default: "/tmp/transaction_log"
+        s3_bucket_name:
+            description: "S3 bucket name"
+        s3_transaction_log_filename:
+            description: "S3 transaction log filename"
+            default: ""
+    steps:
+        download_from_s3:
+            action: .s3manage
+            phase: download_from_s3
+            parameters:
+                localpath: "/tmp/transaction_log"
+                bucket: ${s3_bucket_name}
+                s3file: ${s3_transaction_log_filename}
+                action: "download"
+        saving_result:
+            action: chefsolo
+            phase: transferring
+            precedingPhases: [ download_from_s3 ]
+            parameters:
+                roles: [ hmaster ]
+                runList: [ "recipe[hadoop_manage::hdfs_transfer]" ]
+                isSolo: true
+                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                jattrs:
+                    hadoop_manage:
+                        hdfs:
+                            transfer:
+                                source: "/tmp/transaction_log/${s3_transaction_log_filename}"
+                                destination: "/tmp/transaction_log/"
+                                action: "put"
+        clean_local:
+            action: execrun
+            phase: clean_local
+            precedingPhases: [ transferring ]
+            parameters:
+                roles: [ hmaster ]
+                isSudo: true
+                command:
+                    - bash -c
+                    - |
+                        rm -rf /tmp/transaction_log/
+    return:
+        analytics_result_path:
+            description: "Transaction log HDFS output path"
+            value: "hdfs://tmp/transaction_log/${s3_transaction_log_filename}"
+
+####################    
+# Hidden workflows #
+####################
+.s3manage:
+    parameters:
+        aws_access_key_id:
+            description: "aws_access_key_id"
+        aws_secret_access_key:
+            description: "aws_secret_access_key"
+        localpath:
+            description: "local file path"
+        bucket:
+            description: "s3 bucket"
+        s3file:
+            description: "s3 file name (only for download)"
+            default: ""
+        action:
+            description: "file action"
+    steps:
+        s3transfer:
+            action: chefsolo
+            phase: transferring
+            parameters:
+                roles: [ hmaster ]
+                runList: [ "recipe[s3manage::default]" ]
+                isSolo: true
+                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                jattrs:
+                    s3manage:
+                        access_key_id: ${aws_access_key_id}
+                        secret_access_key: ${aws_secret_access_key}
+                        localpath: ${localpath}
+                        bucket: ${bucket}
+                        s3file: ${s3_filename}
+                        action: ${action}
 
 .manage_cluster:
     parameters:
@@ -327,229 +567,6 @@ Scale_up_cluster:
                             job_url: ${job_url}
                             job_local_path: ${job_download_path}
                             job_parameters: ${job_parameters}
-
-Launch_transation_log_generator:
-    parameters:
-        job_url:
-            description: "URL to transaction log generator job"
-            default: "http://gd-bask.s3.amazonaws.com/transaction-log-generator.jar"
-        product_catalog_backet:
-            description: "S3 product catalog bucket"
-            default: "gd-bask"
-        product_catalog_filename:
-            description: "S3 product catalog filename"
-            default: "product_catalog.json"
-        dataset_config_url:
-            description: "URL to dataset config"
-            default: "http://gd-bask.s3.amazonaws.com/magento_scenario-config.json"
-    steps:
-        downloading_product_catalog:
-            action: .s3manage
-            phase: downloading_recommendations
-            parameters:
-                localpath: "/tmp/transaction_log_generator"
-                bucket: ${product_catalog_backet}
-                s3_filename: ${product_catalog_filename}
-                action: "download"
-        downloading_dataset_configuration:
-            action: execrun
-            phase: downloading_dataset_configuration
-            parameters:
-                roles: [ hmaster ]
-                command:
-                    - bash -c
-                    - |
-                        wget -c -P /tmp/transaction_log_generator ${dataset_config_url}
-        running_job:
-            action: .execute_job
-            precedingPhases: [ downloading_recommendations, downloading_dataset_configuration]
-            parameters:
-                job_url: ${job_url}
-                job_download_path: "/tmp/transaction_log_generator"
-                job_parameters: "-Dmapred.job.map.memory.mb=2048 -c /tmp/transaction_log_generator/`basename ${dataset_config_url}` -p /tmp/transaction_log_generator/${product_catalog_filename} -o /tmp/transaction_log"
-    return:
-        transaction_log_path:
-            description: "HDFS path to transaction log:"
-            value: "hdfs://tmp/transaction_log"
-
-Upload_transaction_log:
-    parameters:
-        s3_bucket_name:
-            description: "S3 bucket name"
-        transaction_log_filename:
-            description: "S3 transaction log filename"
-            default: "transaction_log.txt"
-    steps:
-        saving_result:
-            action: execrun
-            phase: saving_result
-            parameters:
-                roles: [ hmaster ]
-                isSudo: true
-                command:
-                    - bash -c
-                    - |
-                        chmod -R 777 /tmp/transaction_log_generator/
-                        hadoop fs -text /tmp/transaction_log/part-* > /tmp/transaction_log_generator/${transaction_log_filename}
-        upload_result_to_s3:
-            action: .s3manage
-            phase: upload_result_to_s3
-            precedingPhases: [ saving_result ]
-            parameters:
-                localpath: "/tmp/transaction_log_generator/${transaction_log_filename}"
-                bucket: ${s3_bucket_name}
-                action: "upload"
-        clean_local:
-            action: execrun
-            phase: clean_local
-            precedingPhases: [ upload_result_to_s3 ]
-            parameters:
-                roles: [ hmaster ]
-                isSudo: true
-                command:
-                    - bash -c
-                    - |
-                        rm -rf /tmp/transaction_log_generator/${transaction_log_filename}
-    return:
-        transaction_log_path:
-            description: "S3 path to uploaded transaction log:"
-            value: "s3://${s3_bucket_name}/${transaction_log_filename}"
-
-Download_transaction_log:
-    parameters:
-        transaction_log_hdfs_path:
-            description: "HDFS path to download transaction log"
-            default: "/tmp/transaction_log"
-        s3_bucket_name:
-            description: "S3 bucket name"
-        transaction_log_filename:
-            description: "S3 transaction log filename"
-            default: ""
-    steps:
-        download_from_s3:
-            action: .s3manage
-            phase: download_from_s3
-            parameters:
-                localpath: "/tmp/transaction_log/${transaction_log_filename}"
-                bucket: ${s3_bucket_name}
-                action: "download"
-        saving_result:
-            action: chefsolo
-            phase: transferring
-            precedingPhases: [ download_from_s3 ]
-            parameters:
-                roles: [ hmaster ]
-                runList: [ "recipe[hadoop_manage::hdfs_transfer]" ]
-                isSolo: true
-                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
-                jattrs:
-                    hadoop_manage:
-                        hdfs:
-                            transfer:
-                                source: "/tmp/transaction_log/${transaction_log_filename}"
-                                destination: "/tmp/transaction_log/"
-                                action: "put"
-        clean_local:
-            action: execrun
-            phase: clean_local
-            precedingPhases: [ transferring ]
-            parameters:
-                roles: [ hmaster ]
-                isSudo: true
-                command:
-                    - bash -c
-                    - |
-                        rm -rf /tmp/transaction_log/
-    return:
-        analytics_result_path:
-            description: "Transaction log HDFS output path"
-            value: "hdfs://tmp/transaction_log/${transaction_log_filename}"
-
-Launch_recommendation_processor:
-    parameters:
-        analytics_job_url:
-            description: "URL to recommendation processor job"
-            default: "https://s3.amazonaws.com/gd-bask/recommendation-processor.jar"
-        transaction_log_path:
-            description: "HDFS path to transaction log"
-            default: "/tmp/transaction_log"
-        s3_bucket_name:
-            description: "S3 bucket to store recommendation"
-            default: "gd-bask"
-        recommendation_filename:
-            description: "S3 output recommendation filename"
-            default: "recommendations.txt"
-        min_support:
-            description: "minSupport"
-            default: "3"
-        num_groups:
-            description: "numGroups"
-            default: "1000"
-    steps:
-        running_analytics:
-            action: .execute_job
-            phase: running_analytics
-            parameters:
-                job_url: ${analytics_job_url}
-                job_download_path: "/tmp/recommendation_processor"
-                job_parameters: "-Dmapred.job.map.memory.mb=2048 -Dmapred.job.reduce.memory.mb=4000 -Dmapred.map.child.java.opts=\"-Xmx480m\" -Dmapred.reduce.child.java.opts=\"-Xmx2000m\" -s ${min_support} -g ${num_groups} -i ${transaction_log_path} -o /tmp/fp"
-        saving_result:
-            action: execrun
-            phase: saving_result
-            precedingPhases: [ running_analytics ]
-            parameters:
-                roles: [ hmaster ]
-                isSudo: true
-                command:
-                    - bash -c
-                    - |
-                        chmod -R 777 /tmp/recommendation_processor/
-                        hadoop fs -text /tmp/fp/frequentpatterns/part-r-* > /tmp/recommendation_processor/${recommendation_filename}
-        upload_result_to_s3:
-            action: .s3manage
-            phase: upload_result_to_s3
-            precedingPhases: [ saving_result ]
-            parameters:
-                localpath: "/tmp/recommendation_processor/${recommendation_filename}"
-                bucket: ${s3_bucket_name}
-                action: "upload"
-    return:
-        analytics_result_path:
-            description: "Recommendation processor S3 output path"
-            value: "s3://${s3_bucket_name}/${recommendation_filename}"
-
-.s3manage:
-    parameters:
-        aws_access_key_id:
-            description: "aws_access_key_id"
-        aws_secret_access_key:
-            description: "aws_secret_access_key"
-        localpath:
-            description: "local file path"
-        bucket:
-            description: "s3 bucket"
-        s3_filename:
-            description: "s3 file name (only for download)"
-            default: ""
-        action:
-            description: "file action"
-    steps:
-        s3transfer:
-            action: chefsolo
-            phase: transferring
-            parameters:
-                roles: [ hmaster ]
-                runList: [ "recipe[s3manage::default]" ]
-                isSolo: true
-                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
-                jattrs:
-                    s3manage:
-                        access_key_id: ${aws_access_key_id}
-                        secret_access_key: ${aws_secret_access_key}
-                        localpath: ${localpath}
-                        bucket: ${bucket}
-                        s3file: ${s3_filename}
-                        action: ${action}
 
 destroy:
     steps:

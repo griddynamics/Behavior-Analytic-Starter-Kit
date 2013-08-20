@@ -432,7 +432,7 @@ Download_transaction_log:
             parameters:
                 localpath: "/tmp/transaction_log/${transaction_log_filename}"
                 bucket: ${s3_bucket_name}
-                action: "upload"
+                action: "download"
         saving_result:
             action: chefsolo
             phase: transferring

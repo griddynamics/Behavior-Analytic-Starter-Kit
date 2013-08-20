@@ -249,7 +249,7 @@ Launch_transation_log_generator:
             phase: preparing
             parameters:
                 paths: "/tmp/transaction_log"
-                action: "remove"
+                action: "delete"
         generating_transaction_log:
             action: .execute_job
             precedingPhases: [ downloading_recommendations, downloading_dataset_configuration, prepare_generating]
@@ -288,7 +288,7 @@ Launch_recommendation_processor:
             phase: preparing
             parameters:
                 paths: "/tmp/fp"
-                action: "remove"
+                action: "delete"
         running_analytics:
             action: .execute_job
             phase: running_analytics
@@ -500,11 +500,7 @@ Download_transaction_log:
             description: "dir owner"
             default: "hdfs"
         action:
-            description: "dir action"
-            default: "create"
-            enum:
-                "create": "create"
-                "remove": "delete"
+            description: "dir action (create/delete)"
     steps:
         processing:
             action: chefsolo
@@ -525,10 +521,7 @@ Download_transaction_log:
 .hdfs_data_transfer:
     parameters:
         action:
-            description: "action"
-            enum:
-                "Local -> HDFS": "put"
-                "HDFS -> Local": "get"
+            description: "action (put/get)"
         from:
             description: "source path"
         to:

@@ -1,15 +1,15 @@
-define :s3manage, :bucket => nil, :s3file => nil, :action => :upload do
+define :s3manage, :bucket => nil, :s3file => nil, :action => nil do
 
   unless [ "upload", "download" ].include?("#{params[:action]}")
     raise ArgumentError, "Unsupported action: #{params[:action]}"
   end
 
-  unless ::File.exists?("#{params[:name]}")
-    raise ArgumentError, "No such file or directory: #{params[:name]}"    
-  end
-
   case params[:action]
     when "upload"    
+      unless ::File.exists?("#{params[:name]}")
+        raise ArgumentError, "No such file: #{params[:name]}"
+      end
+
       ruby_block "s3upload" do
         block do
           require 'rubygems'
@@ -28,6 +28,14 @@ define :s3manage, :bucket => nil, :s3file => nil, :action => :upload do
         end
       end
     when "download"
+      unless ::File.exists?("#{params[:name]}")
+        directory "#{params[:name]}" do
+          mode 00755
+          action :create
+          recursive true
+        end
+        
+      end
       ruby_block "s3download" do
         block do
           require 'rubygems'

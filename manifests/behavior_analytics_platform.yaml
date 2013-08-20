@@ -320,7 +320,6 @@ Upload_transaction_log:
     parameters:
         s3_bucket_name:
             description: "S3 bucket name"
-            default: {$.s3_bucket_name}
         transaction_log_filename:
             description: "S3 transaction log filename"
             default: "transaction_log.txt"

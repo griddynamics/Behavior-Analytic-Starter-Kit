@@ -5,27 +5,6 @@
 
 launch:
     parameters:
-        image_id:
-            description: image id
-            default: us-east-1/ami-d41689bd
-            enum:
-                "CentOS 6.3 ComodIT": "us-east-1/ami-d41689bd"
-                "Patched CentOS 6 with storage": "us-east-1/ami-3784ff5e"
-        hardware_id:
-            description: hardware id
-            default: m1.medium
-        vm_identity:
-            description: identity of vm
-            default: ec2-user
-            enum:
-                "ec2-user": "ec2-user"
-                "root": "root"
-        namenode_format:
-            description: format namenode flag
-            default: true
-            enum:
-                "yes": "true"
-                "no": "false"
         slaveQuantity:
              default: 4
     steps:
@@ -33,9 +12,9 @@ launch:
             action: provisionVms
             phase: provision_hmaster
             parameters:
-                hardwareId: ${hardware_id}
-                imageId: ${image_id}
-                vmIdentity: ${vm_identity}
+                hardwareId: m1.medium
+                imageId: us-east-1/ami-d41689bd
+                vmIdentity: ec2-user
                 roleName: hmaster
                 jcloudsNodeNamePrefix: hadoop_master
             output:
@@ -48,9 +27,9 @@ launch:
             precedingPhases: [ provision_hmaster ]
             parameters:
                 quantity: ${slaveQuantity}
-                hardwareId: ${hardware_id}
-                imageId: ${image_id}
-                vmIdentity: ${vm_identity}
+                hardwareId: m1.medium
+                imageId: us-east-1/ami-d41689bd
+                vmIdentity: ec2-user
                 roleName: hslave
                 jcloudsNodeNamePrefix: hadoop_slave_{$.ips_hmaster_pub[0]}
             output:
@@ -85,7 +64,7 @@ launch:
                                 mapred.job.map.memory.mb: "1024"            # memory size of single map task for particular job
                                 mapred.job.reduce.memory.mb: "4096"         # memory size of single reduce task for particular job
                         nn:
-                            format: ${namenode_format}
+                            format: "true"
                             host: "{$.ips_hmaster[0]}"
                         dn:
                             hosts: ${ips_hslave}

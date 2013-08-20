@@ -237,7 +237,7 @@ Launch_transation_log_generator:
             parameters:
                 localpath: "/tmp/transaction_log_generator"
                 bucket: ${product_catalog_backet}
-                s3_filename: ${product_catalog_filename}
+                s3file: ${product_catalog_filename}
                 action: "download"
         downloading_dataset_configuration:
             action: execrun

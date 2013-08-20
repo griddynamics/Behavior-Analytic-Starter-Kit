@@ -444,7 +444,7 @@ Download_transaction_log:
                         secret_access_key: ${aws_secret_access_key}
                         localpath: ${localpath}
                         bucket: ${bucket}
-                        s3file: ${s3_filename}
+                        s3file: ${s3file}
                         action: ${action}
 
 .manage_cluster:

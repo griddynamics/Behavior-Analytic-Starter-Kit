@@ -111,10 +111,6 @@ launch:
                 action: "start"
 
     return:
-        namenode_ip:
-            value: ${ips_hmaster}
-        namenode_ip_public:
-            value: ${ips_hmaster_pub}
         hdfs_webui:
             description: "Namenode (HDFS):"
             value: "http://${ips_hmaster_pub}:50070"

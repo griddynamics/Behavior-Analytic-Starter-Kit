@@ -63,13 +63,13 @@ launch:
             value:
                 - "http://{$.ips_tomcat_pub[0]}:8080/ecask-site/"
 
-Upload_product_catalog_to_S3:
+Upload_product_catalog_information_to_S3:
     parameters:
         bucket:
             description: "s3 bucket to upload"
             default: "deming"
         filename:
-            description: "s3 output catalog filename"
+            description: "s3 output catalog information filename"
             default: "product_catalog.json"
     steps:
         downloading_product_catalog:

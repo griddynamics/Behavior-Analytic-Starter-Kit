@@ -221,7 +221,7 @@ Launch_transation_log_generator:
             description: "S3 product catalog bucket"
             default: "gd-bask"
         product_catalog_filename:
-            description: "S3 product catalog filename"
+            description: "S3 product catalog information filename"
             default: "product_catalog.json"
         dataset_config_url:
             description: "URL to dataset config"

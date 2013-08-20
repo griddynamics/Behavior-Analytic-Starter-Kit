@@ -180,7 +180,7 @@ Scale_up_cluster:
         - namenode_config_update:
             action: chefsolo
             phase: namenode_config_update
-            precedingPhases: [ provision_datanode ]
+            precedingPhases: [ datanodes_setup ]
             parameters:
                 roles: [ hmaster ]
                 runList: [ "recipe[cloudera_noha::hadoop_conf]" ]

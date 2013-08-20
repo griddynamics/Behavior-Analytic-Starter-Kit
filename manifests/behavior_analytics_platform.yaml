@@ -131,9 +131,9 @@ Scale_up_cluster:
             action: provisionVms
             parameters:
                 quantity: ${new_datanodes_quantity}
-                hardwareId: ${hardware_id}
-                imageId: ${image_id}
-                vmIdentity: ${vm_identity}
+                hardwareId: m1.medium
+                imageId: us-east-1/ami-d41689bd
+                vmIdentity: ec2-user
                 phase: provision_datanode
                 roleName: hslave
             output:

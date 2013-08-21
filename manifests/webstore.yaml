@@ -3,6 +3,10 @@
 # @author Nickolay Yurin (nyurin@griddynamics.com)
 # @author Anton Haldin (ahaldin@griddynamics.com)
 #
+header:
+  services:
+    properties:
+        s3_bucket_name: consume-signal(string)
 
 launch:
     parameters:
@@ -28,6 +32,12 @@ launch:
             description: "site_app_url"
             default: "http://gd-bask.s3.amazonaws.com/bask-site.war"
     steps:
+        - get_env_props:
+            action: getEnvironmentProperties
+            parameters:
+                phase: get-env-props
+            output:
+                config: result
         - start_webstore_vm:
             action: provisionVms
             parameters:
@@ -62,12 +72,12 @@ launch:
             description: "Sample Store URL:"
             value:
                 - "http://{$.ips_tomcat_pub[0]}:8080/ecask-site/"
+        s3_bucket_name:
+            description: "Selected S3 bucket:"
+            value: "{$.config.properties.s3_bucket_name}"
 
 Upload_product_catalog_information_to_S3:
     parameters:
-        bucket:
-            description: "s3 bucket to upload"
-            default: "deming"
         filename:
             description: "s3 output catalog information filename"
             default: "product_catalog.json"
@@ -87,17 +97,15 @@ Upload_product_catalog_information_to_S3:
             action: .s3manage
             parameters:
                 localpath: "/tmp/${filename}"
-                bucket: ${bucket}
+                bucket: "{$.config.properties.s3_bucket_name}"
                 action: "upload"
     return:
         Product_catalog_path:
             description: "Product catalog S3 URL:"
-            value: "s3://${bucket}/${filename}"
+            value: "s3://{$.config.properties.s3_bucket_name}/${filename}"
 
 Get_recommendations_from_S3:
     parameters:
-        bucket:
-            description: "s3 bucket"
         filename:
             description: "recommendations filename"
             default: "recommendations.txt"
@@ -107,7 +115,7 @@ Get_recommendations_from_S3:
             phase: downloading_recommendations
             parameters:
                 localpath: "/tmp"
-                bucket: ${bucket}
+                bucket: "{$.config.properties.s3_bucket_name}"
                 s3_filename: ${filename}
                 action: "download"
         uploading_recommendations_to_store:

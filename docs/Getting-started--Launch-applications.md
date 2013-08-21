@@ -39,6 +39,6 @@ In case defaults are provided for every parameter, the application can be launch
 and workflow can be launched with a single click on button that is captioned with workflow name.
 You can override the defaults and run a customized instance or workflow by clicking on arrow on the right side of the button.
 Advanced launch form will appear.
-![advanced_launch](https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/Advanced_launch.png)
+![advanced_launch](https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/bug_fixes/docs/images/Advanced_launch.png)
 
 [launch_apps]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/Developer%20Guide/launch_apps.png

@@ -18,6 +18,23 @@ It should take about 10 minutes (depends on slave node number) for the applicati
 The Qubell platform constructs two applications from Behavior analytics starter kit configuration defined in Behavior Analytics Starter Kit manifests (behavior analytics platform and web store). 
 During the launch process, the platform provisions the virtual machines, installs the necessary software packages using Chef, sets up cluster configuration from the property file. 
 Once behavior analytics platform with Hadoop cluster and sample store are up everything is ready to use Starter Kit.
+To learn more about application launching please read [Qubell documentation](http://docs.qubell.com/concepts/applications.html)
+
+Important notice!
+-----------------
+Qubell sets time to destroy for each running instance to 1 hour by default. 
+So after 1 hour from start your instance will be destroyed, 
+all VMs in instance will be shutdown, all data will be lost.
+You can change default time to destroy by launching instance with "Advanced" button and set appropriate time in "Destroy in" field.
+Also you can reschedule destroying time for already running instances by pressing "Jobs" button on instance output panel and then press "Reschedule" button at the end of jobs list. 
+
+Advanced launch for applications and workflows
+----------------------------------------------
+Applications and workflows can be customized by using input parameters. 
+In case defaults are provided for every parameter, the application can be launched with a single click on "Launch" button,
+and workflow can be launched with a single click on button that is captioned with workflow name.
+You can override the defaults and run a customized instance or workflow by clicking on arrow on the right side of the button.
+Advanced launch form will appear.
 
 ![launch apps][launch_apps]
 

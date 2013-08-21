@@ -22,7 +22,7 @@ There you can find buttons to manage cluster.
 * Hadoop cluster scale up. 
 You can scale up you Behavior analytics platform Hadoop cluster by adding data nodes. 
 Scale down functionality is not yet implemented.
-Click “Add_datanodes” button and enter the number of data nodes to be added. 
+Click “Scale_up_cluster” button and enter the number of data nodes to be added. 
 Data nodes will be added with flavor defined in manifest (default: flavor m1.medium).
 Once data nodes are added successfully you will lose information about previously completed jobs in job tracker.
 

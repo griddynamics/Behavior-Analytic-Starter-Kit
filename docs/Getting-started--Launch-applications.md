@@ -19,6 +19,13 @@ The Qubell platform constructs two applications from Behavior analytics starter 
 During the launch process, the platform provisions the virtual machines, installs the necessary software packages using Chef, sets up cluster configuration from the property file. 
 Once behavior analytics platform with Hadoop cluster and sample store are up everything is ready to use Starter Kit.
 
+Important notice!
+Qubell sets time to destroy for each running instance to 1 hour by default. 
+So after 1 hour from start your instance will be destroyed, 
+all VMs in instance will be shutdown, all data will be lost.
+You can change default time to destroy by launching instance with "Advanced" button and set appropriate time in "Destroy in" field.
+
+
 ![launch apps][launch_apps]
 
 [launch_apps]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/Developer%20Guide/launch_apps.png

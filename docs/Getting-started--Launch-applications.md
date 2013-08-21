@@ -30,7 +30,10 @@ Qubell sets time to destroy for each running instance to 1 hour by default.
 So after 1 hour from start your instance will be destroyed, 
 all VMs in instance will be shutdown, all data will be lost.
 You can change default time to destroy by launching instance with "Advanced" button and set appropriate time in "Destroy in" field.
+![advanced_launch](https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/Developer%20Guide/Destroy_in.png)
+
 Also you can reschedule destroying time for already running instances by pressing "Jobs" button on instance output panel and then press "Reschedule" button at the end of jobs list. 
+![advanced_launch](https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/Developer%20Guide/Reschedule.png)
 
 Advanced launch for applications and workflows
 ----------------------------------------------

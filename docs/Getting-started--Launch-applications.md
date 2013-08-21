@@ -20,6 +20,10 @@ During the launch process, the platform provisions the virtual machines, install
 Once behavior analytics platform with Hadoop cluster and sample store are up everything is ready to use Starter Kit.
 To learn more about application launching please read [Qubell documentation](http://docs.qubell.com/concepts/applications.html)
 
+![launch apps][launch_apps]
+
+
+
 Important notice!
 -----------------
 Qubell sets time to destroy for each running instance to 1 hour by default. 
@@ -35,7 +39,6 @@ In case defaults are provided for every parameter, the application can be launch
 and workflow can be launched with a single click on button that is captioned with workflow name.
 You can override the defaults and run a customized instance or workflow by clicking on arrow on the right side of the button.
 Advanced launch form will appear.
-
-![launch apps][launch_apps]
+![advanced_launch](https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/Advanced_launch.png)
 
 [launch_apps]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/Developer%20Guide/launch_apps.png

@@ -20,11 +20,12 @@ During the launch process, the platform provisions the virtual machines, install
 Once behavior analytics platform with Hadoop cluster and sample store are up everything is ready to use Starter Kit.
 
 Important notice!
+-----------------
 Qubell sets time to destroy for each running instance to 1 hour by default. 
 So after 1 hour from start your instance will be destroyed, 
 all VMs in instance will be shutdown, all data will be lost.
 You can change default time to destroy by launching instance with "Advanced" button and set appropriate time in "Destroy in" field.
-
+Also you can reschedule destroying time by pressing "Jobs" button on instance output panel and then press "Reschedule" button at the end of jobs list. 
 
 ![launch apps][launch_apps]
 

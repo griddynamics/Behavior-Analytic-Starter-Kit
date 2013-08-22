@@ -10,21 +10,6 @@ header:
 
 launch:
     parameters:
-        image_id:
-            description: image id
-            default: us-east-1/ami-d41689bd
-            enum:
-                "CentOS 6.3 ComodIT": "us-east-1/ami-d41689bd"
-                "Patched CentOS 6 with storage": "us-east-1/ami-1b8ff472"
-        hardware_id:
-            description: hardware id
-            default: m1.medium
-        vm_identity:
-            description: identity of vm
-            default: ec2-user
-            enum:
-                "ec2-user": "ec2-user"
-                "root": "root"
         admin_app_url:
             description: "admin_app_url"
             default: "http://gd-bask.s3.amazonaws.com/bask-admin.war"
@@ -41,9 +26,9 @@ launch:
         - start_webstore_vm:
             action: provisionVms
             parameters:
-                hardwareId: ${hardware_id}
-                imageId: ${image_id}
-                vmIdentity: ${vm_identity}
+                hardwareId: m1.medium
+                imageId: us-east-1/ami-d41689bd
+                vmIdentity: ec2-user
                 phase: start_webstore_vm
                 roleName: webstore
                 jcloudsNodeNamePrefix: webstore
@@ -65,8 +50,38 @@ launch:
                         jdk_version: "7"
                         java_home: "/usr/lib/jvm/java/"
                     webstore:
-                        admin_app_url: ${admin_app_url}
-                        site_app_url: ${site_app_url}
+                        admin_app_url: "http://gd-bask.s3.amazonaws.com/bask-admin.war"
+                        site_app_url: "http://gd-bask.s3.amazonaws.com/bask-site.war"
+        - updating_catalog:
+            action: Load_product_catalog_from_S3
+            phase: updating_catalog
+            precedingPhases: [ webstore_setup ]
+            parameters:
+                bucket: "gd-bask"
+                filename: "catalog.zip"
+
+        - downloading_recommendations:
+            action: .s3manage
+            phase: downloading_recommendations
+            precedingPhases: [ updating_catalog ]
+            parameters:
+                localpath: "/tmp"
+                bucket: "gd-bask"
+                s3_filename: "recommendations.txt"
+                action: "download"
+
+        - uploading_test_recommendations_to_store:
+            action: execrun
+            phase: downloading_product_catalog
+            precedingPhases: [ downloading_recommendations ]
+            parameters:
+                roles: [ webstore ]
+                command:
+                    - bash -c
+                    - |
+                        curl -F 'file=@/tmp/${filename}' http://localhost:8080/ecask-site/api/v1/recommendations/import
+                        rm /tmp/${filename}
+
     return:
         webstore_url:
             description: "Sample Store URL:"
@@ -76,7 +91,7 @@ launch:
             description: "Selected S3 bucket:"
             value: "{$.config.properties.s3_bucket_name}"
 
-Upload_product_catalog_information_to_S3:
+Save_product_catalog_structure_to_S3:
     parameters:
         filename:
             description: "s3 output catalog information filename"
@@ -104,7 +119,7 @@ Upload_product_catalog_information_to_S3:
             description: "Product catalog S3 URL:"
             value: "s3://{$.config.properties.s3_bucket_name}/${filename}"
 
-Get_recommendations_from_S3:
+Load_recommendations_from_S3:
     parameters:
         filename:
             description: "recommendations filename"
@@ -128,8 +143,9 @@ Get_recommendations_from_S3:
                     - bash -c
                     - |
                         curl -F 'file=@/tmp/${filename}' http://localhost:8080/ecask-site/api/v1/recommendations/import
+                        rm /tmp/${filename}
 
-Get_product_catalog_from_S3:
+Load_product_catalog_from_S3:
     parameters:
         bucket:
             description: "s3 bucket"

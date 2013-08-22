@@ -76,6 +76,7 @@ launch:
             precedingPhases: [ downloading_recommendations ]
             parameters:
                 roles: [ webstore ]
+                isSudo: true
                 command:
                     - bash -c
                     - |
@@ -139,6 +140,7 @@ Load_recommendations_from_S3:
             precedingPhases: [ downloading_recommendations ]
             parameters:
                 roles: [ webstore ]
+                isSudo: true
                 command:
                     - bash -c
                     - |

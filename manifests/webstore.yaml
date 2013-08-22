@@ -154,7 +154,7 @@ Load_product_catalog_from_S3:
             default: "gd-bask"
         filename:
             description: "catalog filename"
-            default: "magento_catalog.zip"
+            default: "catalog.zip"
     steps:
         downloading_catalog:
             action: .s3manage

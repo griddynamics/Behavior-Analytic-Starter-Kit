@@ -79,8 +79,8 @@ launch:
                 command:
                     - bash -c
                     - |
-                        curl -F 'file=@/tmp/${filename}' http://localhost:8080/ecask-site/api/v1/recommendations/import
-                        rm /tmp/${filename}
+                        curl -F 'file=@/tmp/recommendations.txt' http://localhost:8080/ecask-site/api/v1/recommendations/import
+                        rm /tmp/recommendations.txt
 
     return:
         webstore_url:

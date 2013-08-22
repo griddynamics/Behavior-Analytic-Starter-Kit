@@ -336,7 +336,7 @@ Compute_new_recommendations:
     return:
         analytics_result_s3_path:
             description: "Recommendation processor S3 output path"
-            value: "s3://${s3_bucket_name}/${recommendation_filename}"
+            value: "s3://{$.config.properties.s3_bucket_name}/${recommendation_filename}"
         analytics_result_hdfs_path:
             description: "HDFS path to analytics result:"
             value: "hdfs://tmp/fp/"

@@ -277,7 +277,7 @@ Generate_new_transaction_log:
                 job_download_path: "/tmp/transaction_log_generator"
                 job_parameters: "-Dmapred.job.map.memory.mb=2048 -c /tmp/transaction_log_generator/`basename ${dataset_config_url}` -p /tmp/transaction_log_generator/${product_catalog_filename} -o /tmp/transaction_log"
     return:
-        transaction_log_path:
+        transaction_log_hdfs_path:
             description: "HDFS path to transaction log:"
             value: "hdfs://tmp/transaction_log"
 

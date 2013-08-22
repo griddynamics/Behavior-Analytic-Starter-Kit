@@ -32,7 +32,7 @@ remote_file "#{node[:webstore][:tomcat_dir]}/webapps/webstore-admin.war" do
   action :create
 end
   
-remote_file "#{node[:webstore][:tomcat_dir]}/webapps/ecask-site.war" do
+remote_file "#{node[:webstore][:tomcat_dir]}/webapps/webstore.war" do
   source "#{node[:webstore][:site_app_url]}"
   mode 0755
   action :create

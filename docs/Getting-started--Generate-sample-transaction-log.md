@@ -8,7 +8,7 @@ In fact [transaction log generator job](Developer-Guide--Behavior-Analytics-Plat
 
 Following parameters can be configured: 
 * URLs to transaction log generator job and transaction log generator configuration file (JSON). 
-* Your Amazon S3 bucket and filename for product catalog information on S3 that would be used to generate transaction log.
+* Your Amazon S3 bucket and filename for product catalog structure on S3 that would be used to generate transaction log.
 
 ![launch transaction log gen dialog][launch_transaction_log_gen_dialog]
 

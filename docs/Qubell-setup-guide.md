@@ -47,7 +47,16 @@ If you already have Qubell account and have defined Cloud Account please skip re
     - Press "Set a cloud account" and specify previously created cloud account name then press "Save"
         ![set cloud account][set_cloud_account]
     - Press "Add a service" button and select previously created service name then press "Add"
-6. Add Environment Policies.
+6. Add Environment Properties.
+
+    - To add net environment property press "Add property" button on environment page.
+        ![add_property_button][add_property_button]
+    - Enter property name: "s3_bucket_name"
+    - Enter property type: "string"
+    - Enter property value: Name of your S3 bucket
+        ![add_property][add_property]
+        
+7. Add Environment Policies.
 
    Please note that the leading dot before "s3manage" is necessary!
     - s3manage.aws_access_key_id
@@ -66,20 +75,21 @@ Now you are ready to launch “Behavior Analytic Starter Kit” applications.
 
 [aws_security_group_doc]: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html#adding-security-group-rule
 
-[add_cloud_acccount]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/Qubell%20Guide/add_cloud_acccount.png
-[setup_cloud_account]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/Qubell%20Guide/setup_cloud_account.png
+[add_cloud_acccount]: docs/images/Qubell%20Guide/add_cloud_acccount.png
+[setup_cloud_account]: docs/images/Qubell%20Guide/setup_cloud_account.png
 
-[add_service]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/Qubell%20Guide/add_service.png
-[setup_service]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/Qubell%20Guide/setup_service.png
-[edit_service]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/Qubell%20Guide/edit_service.png
+[add_service]: docs/images/Qubell%20Guide/add_service.png
+[setup_service]: docs/images/Qubell%20Guide/setup_service.png
+[edit_service]: docs/images/Qubell%20Guide/edit_service.png
 
-[add_env]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/Qubell%20Guide/add_env.png
-[setup_env]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/Qubell%20Guide/setup_env.png
+[add_env]: docs/images/Qubell%20Guide/add_env.png
+[setup_env]: docs/images/Qubell%20Guide/setup_env.png
 
-[set_cloud_account]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/Qubell%20Guide/set_cloud_account.png
+[set_cloud_account]: docs/images/Qubell%20Guide/set_cloud_account.png
 
-[add_policy]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/Qubell%20Guide/add_policy.png
-
+[add_policy]: docs/images/Qubell%20Guide/add_policy.png
+[add_property_button]: docs/images/Qubell%20Guide/add_property_button.png
+[add_property]: docs/images/Qubell%20Guide/add_property.png
 <!-- [env_page]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/Qubell%20Guide/env_page.png
 ![env page][env_page]
  -->

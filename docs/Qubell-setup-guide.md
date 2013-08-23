@@ -47,16 +47,14 @@ If you already have Qubell account and have defined Cloud Account please skip re
     - Press "Set a cloud account" and specify previously created cloud account name then press "Save"
         ![set cloud account][set_cloud_account]
     - Press "Add a service" button and select previously created service name then press "Add"
-6. Add Environment Properties.
-
+6. Add Environment Properties
     - To add net environment property press "Add property" button on environment page.
         ![add_property_button][add_property_button]
     - Enter property name: "s3_bucket_name"
     - Enter property type: "string"
     - Enter property value: Name of your S3 bucket
         ![add_property][add_property]
-        
-7. Add Environment Policies.
+7. Add Environment Policies
 
    Please note that the leading dot before "s3manage" is necessary!
     - s3manage.aws_access_key_id

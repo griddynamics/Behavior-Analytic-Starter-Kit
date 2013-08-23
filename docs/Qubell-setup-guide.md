@@ -47,7 +47,8 @@ If you already have Qubell account and have defined Cloud Account please skip re
     - Press "Set a cloud account" and specify previously created cloud account name then press "Save"
         ![set cloud account][set_cloud_account]
     - Press "Add a service" button and select previously created service name then press "Add"
-6. Add Environment Policies     
+6. Add Environment Policies
+   Please note that the leading dot before "s3manage" is necessary!
     - s3manage.aws_access_key_id
         Go to "Environments" page, open previously created environment and press "Add policy" and specify parameters:<br>
             When asked to execute: ".s3manage"<br>

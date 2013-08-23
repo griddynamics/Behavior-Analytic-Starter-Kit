@@ -50,14 +50,14 @@ If you already have Qubell account and have defined Cloud Account please skip re
 6. Add Environment Policies     
     - s3manage.aws_access_key_id
         Go to "Environments" page, open previously created environment and press "Add policy" and specify parameters:<br>
-            "When asked to execute:" .s3manage<br>
-            "Override value of:" aws_access_key_id<br>
-            "With:" your Amazon Access Key ID.
+            When asked to execute: ".s3manage"<br>
+            Override value of: "aws_access_key_id"<br>
+            With: your Amazon Access Key ID.
     - s3manage.aws_secret_access_key
         Go to "Environments" page, open previously created environment and press "Add policy" and specify parameters:<br>
-            "When asked to execute:" .s3manage<br>
-            "Override value of:" aws_secret_access_key<br>
-            "With:" your Amazon Secret Access Key.
+            When asked to execute: ".s3manage"<br>
+            Override value of: "aws_secret_access_key"<br>
+            With: your Amazon Secret Access Key.
     
     ![add policy][add_policy]
 Now you are ready to launch “Behavior Analytic Starter Kit” applications.

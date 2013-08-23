@@ -240,7 +240,7 @@ Generate_new_transaction_log:
             description: "URL to transaction log generator job"
             default: "http://gd-bask.s3.amazonaws.com/transaction-log-generator.jar"
         product_catalog_filename:
-            description: "Product catalog structure file on {$.config.properties.s3_bucket_name} S3 bucket"
+            description: "Product catalog structure file on your S3 bucket"
             default: "product_catalog_structure.json"
         dataset_config_url:
             description: "URL to transaction scenario log config"

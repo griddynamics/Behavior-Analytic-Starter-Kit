@@ -176,24 +176,23 @@ Also see:
 [broadleaf_logo]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/broadleaf_logo.png "Broadleaf Commerce Framework"
 [hadoop_logo]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/hadoop_logo.png "Apache Hadoop"
 [mahout_logo]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/mahout_logo.png "Apache Mahout"
-
 [work_diagram]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/how_it_work.png "That how it works"
 
-[qubell_setup]: https://github.com/griddynamics/Behavior-Analytic-Starter-Kit/blob/master/docs/Qubell-setup-guide.md
+[qubell_setup]: /docs/Qubell-setup-guide.md
 
-[webstore_manifest]: https://github.com/griddynamics/Behavior-Analytic-Starter-Kit/blob/master/manifests/webstore.yaml
-[Behavior analytics platform]: https://github.com/griddynamics/Behavior-Analytic-Starter-Kit/blob/master/manifests/behavior_analytics_platform.yaml
+[webstore_manifest]: /manifests/webstore.yaml
+[Behavior analytics platform]: /manifests/behavior_analytics_platform.yaml
 
-[hadoop_manage]: https://github.com/griddynamics/Behavior-Analytic-Starter-Kit/blob/master/cookbooks/hadoop_manage/README.md
-[cloudera_noha]: https://github.com/griddynamics/Behavior-Analytic-Starter-Kit/blob/master/cookbooks/cloudera_noha/README.md
-[s3manage]: https://github.com/griddynamics/Behavior-Analytic-Starter-Kit/blob/master/cookbooks/s3manage/README.md
-[webstore_cookbook]: https://github.com/griddynamics/Behavior-Analytic-Starter-Kit/blob/master/cookbooks/webstore/README.md
-[ganglia]: https://github.com/griddynamics/Behavior-Analytic-Starter-Kit/blob/master/cookbooks/ganglia/README.md
+[hadoop_manage]: /cookbooks/hadoop_manage/README.md
+[cloudera_noha]: /cookbooks/cloudera_noha/README.md
+[s3manage]: /cookbooks/s3manage/README.md
+[webstore_cookbook]: /cookbooks/webstore/README.md
+[ganglia]: /cookbooks/ganglia/README.md
 
-[random-config.json]: https://github.com/griddynamics/Behavior-Analytic-Starter-Kit/blob/master/maven_projects/dataset-generator/src/main/resources/random-config.json
-[transaction-log-generator module]: https://github.com/griddynamics/Behavior-Analytic-Starter-Kit/tree/master/maven_projects/dataset-generator
-[recommendation-processor module]: https://github.com/griddynamics/Behavior-Analytic-Starter-Kit/tree/master/maven_projects/recommendation-processor
-[scenario-config.json]: https://github.com/griddynamics/Behavior-Analytic-Starter-Kit/blob/master/maven_projects/dataset-generator/src/main/resources/scenario-config.json
+[random-config.json]: /maven_projects/dataset-generator/src/main/resources/random-config.json
+[transaction-log-generator module]: /maven_projects/dataset-generator
+[recommendation-processor module]: /maven_projects/recommendation-processor
+[scenario-config.json]: /maven_projects/dataset-generator/src/main/resources/scenario-config.json
 
-[product_catalog_source]: https://github.com/griddynamics/Behavior-Analytic-Starter-Kit/blob/master/maven_projects/dataset-generator/src/main/resources/product-catalog.json
+[product_catalog_source]: /maven_projects/dataset-generator/src/main/resources/product-catalog.json
 

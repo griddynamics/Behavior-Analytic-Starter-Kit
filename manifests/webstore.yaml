@@ -87,7 +87,7 @@ launch:
         webstore_url:
             description: "Sample Store URL:"
             value:
-                - "http://{$.ips_tomcat_pub[0]}:8080/ecask-site/"
+                - "http://{$.ips_tomcat_pub[0]}:8080/webstore/"
         s3_bucket_name:
             description: "Selected S3 bucket:"
             value: "{$.config.properties.s3_bucket_name}"

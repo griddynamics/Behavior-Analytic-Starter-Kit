@@ -12,14 +12,14 @@ Format of *product-catalog.zip* you can see to
 [Product catalog for web store](Developer-Guide.md#product-catalog-for-web-store)
 
 
-### Export product catalog information
+### Export product catalog structure
 
-You can export product catalog information by curl:
+You can export product catalog structure by curl:
 
 `curl -X GET http://localhost:8080/api/v1/catalog_manager/export > product-catalog-info.json`
 
 Format of *product-catalog-info.json* you can see to
-[Product catalog information for transaction log generator](Developer-Guide.md#product-catalog-information-for-transaction-log-generator)
+[Product catalog structure for transaction log generator](Developer-Guide.md#product-catalog-information-for-transaction-log-generator)
 
 
 ### Import recommendations

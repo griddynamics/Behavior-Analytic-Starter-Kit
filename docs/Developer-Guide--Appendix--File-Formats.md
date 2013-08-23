@@ -76,10 +76,10 @@ We have created [product catalog](https://s3.amazonaws.com/gd-bask/magento_catal
 [magento catalog](http://www.magentocommerce.com/knowledge-base/entry/installing-the-sample-data-for-magento).
 
 
-Product catalog information for transaction log generator
+Product catalog structure for transaction log generator
 ---------------------------------------------------------
 
-Product catalog information contains product catalog in json format that consist of categories tree.
+Product catalog structure contains product catalog in json format that consist of categories tree.
 Each category contains following fields:
 
  - **_id_** - category id in web store (not null value)

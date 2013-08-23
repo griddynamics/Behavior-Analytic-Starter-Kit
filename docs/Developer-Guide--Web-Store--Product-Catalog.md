@@ -9,11 +9,11 @@ Also we have created [product catalog](https://s3.amazonaws.com/gd-bask/magento_
 [Magento (TM) product catalog](http://www.magentocommerce.com/knowledge-base/entry/installing-the-sample-data-for-magento)
 that is distributed under [OSL 3.0 licence](http://opensource.org/licenses/OSL-3.0).
 
-Besides "product catalog" for Web Store there is "product catalog information" for transaction log generator.
-Product catalog information contains only the information necessary to the trasaction log generator.
-Format of product catalog information for transaction log generator you can see 
+Besides "product catalog" for Web Store there is "product catalog structure" for transaction log generator.
+Product catalog structure contains only the information necessary to the trasaction log generator.
+Format of product catalog structure for transaction log generator you can see 
 [here](Developer-Guide--Appendix--File-Formats.md#product-catalog-information-for-transaction-log-generator).
 
-Web Store can extract product catalog information from product catalog.
-So, you can import product catalog from Amazon S3 and then export product catalog information 
+Web Store can extract product catalog structure from product catalog.
+So, you can import product catalog from Amazon S3 and then export product catalog structure 
 for transaction log generator to Amazon S3.

@@ -25,7 +25,7 @@ define :s3manage, :bucket => nil, :s3file => nil, :action => nil do
 
           base_name = File.basename("#{params[:name]}")
 
-          unless s3.buckets["#{bucket}"].exists?
+          unless s3.buckets["#{params[:bucket]}"].exists?
             raise ArgumentError, "No such bucket: #{params[:bucket]}"
           end
           
@@ -54,15 +54,16 @@ define :s3manage, :bucket => nil, :s3file => nil, :action => nil do
 
           base_name = File.basename("#{params[:name]}")
 
-          unless s3.buckets["#{bucket}"].exists?
+          unless s3.buckets["#{params[:bucket]}"].exists?
             raise ArgumentError, "No such bucket: #{params[:bucket]}"
           end
+
+          bucket = s3.buckets["#{params[:bucket]}"]
 
           unless bucket.objects["#{params[:s3file]}"].exists?
             raise ArgumentError, "No such file on #{params[:bucket]} bucket: #{params[:s3file]}"
           end
 
-          bucket = s3.buckets["#{params[:bucket]}"]
           file = bucket.objects["#{params[:s3file]}"]     
 
           File.open("#{params[:name]}/#{File.basename(params[:s3file])}", 'wb') do |local_file|

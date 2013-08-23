@@ -170,7 +170,7 @@ Also see:
 [hibernate_site]: http://www.hibernate.org "Hibernate official site"
 [solr_site]: http://lucene.apache.org/solr "Apache Solr official site"
 
-[qubell_logo]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/qubell_logo.png "Qubell platform"
+[qubell_logo]: docs/images/qubell_logo.png "Qubell platform"
 [chef_logo]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/chef_logo.png "Opscode Chef"
 [java_logo]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/java_logo.png "Java programming language"
 [broadleaf_logo]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/broadleaf_logo.png "Broadleaf Commerce Framework"

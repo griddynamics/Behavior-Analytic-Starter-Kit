@@ -170,13 +170,13 @@ Also see:
 [hibernate_site]: http://www.hibernate.org "Hibernate official site"
 [solr_site]: http://lucene.apache.org/solr "Apache Solr official site"
 
-[qubell_logo]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/qubell_logo.png "Qubell platform"
-[chef_logo]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/chef_logo.png "Opscode Chef"
-[java_logo]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/java_logo.png "Java programming language"
-[broadleaf_logo]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/broadleaf_logo.png "Broadleaf Commerce Framework"
-[hadoop_logo]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/hadoop_logo.png "Apache Hadoop"
-[mahout_logo]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/mahout_logo.png "Apache Mahout"
-[work_diagram]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/how_it_work.png "That how it works"
+[qubell_logo]: docs/images/qubell_logo.png "Qubell platform"
+[chef_logo]: /docs/images/chef_logo.png "Opscode Chef"
+[java_logo]: /docs/images/java_logo.png "Java programming language"
+[broadleaf_logo]: /docs/images/broadleaf_logo.png "Broadleaf Commerce Framework"
+[hadoop_logo]: /docs/images/hadoop_logo.png "Apache Hadoop"
+[mahout_logo]: /docs/images/mahout_logo.png "Apache Mahout"
+[work_diagram]: /docs/images/how_it_work.png "That how it works"
 
 [qubell_setup]: /docs/Qubell-setup-guide.md
 

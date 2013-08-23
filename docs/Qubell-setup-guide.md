@@ -53,6 +53,7 @@ If you already have Qubell account and have defined Cloud Account please skip re
     - Enter property name: "s3_bucket_name"
     - Enter property type: "string"
     - Enter property value: Name of your S3 bucket
+    - Press "Add" button to add s3 bucket property
         ![add_property][add_property]
 7. Add Environment Policies
 

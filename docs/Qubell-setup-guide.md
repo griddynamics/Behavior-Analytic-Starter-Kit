@@ -73,21 +73,21 @@ Now you are ready to launch “Behavior Analytic Starter Kit” applications.
 
 [aws_security_group_doc]: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html#adding-security-group-rule
 
-[add_cloud_acccount]: docs/images/Qubell%20Guide/add_cloud_acccount.png
-[setup_cloud_account]: docs/images/Qubell%20Guide/setup_cloud_account.png
+[add_cloud_acccount]: images/Qubell%20Guide/add_cloud_acccount.png
+[setup_cloud_account]: images/Qubell%20Guide/setup_cloud_account.png
 
-[add_service]: docs/images/Qubell%20Guide/add_service.png
-[setup_service]: docs/images/Qubell%20Guide/setup_service.png
-[edit_service]: docs/images/Qubell%20Guide/edit_service.png
+[add_service]: images/Qubell%20Guide/add_service.png
+[setup_service]: images/Qubell%20Guide/setup_service.png
+[edit_service]: images/Qubell%20Guide/edit_service.png
 
-[add_env]: docs/images/Qubell%20Guide/add_env.png
-[setup_env]: docs/images/Qubell%20Guide/setup_env.png
+[add_env]: images/Qubell%20Guide/add_env.png
+[setup_env]: images/Qubell%20Guide/setup_env.png
 
-[set_cloud_account]: docs/images/Qubell%20Guide/set_cloud_account.png
+[set_cloud_account]: images/Qubell%20Guide/set_cloud_account.png
 
-[add_policy]: docs/images/Qubell%20Guide/add_policy.png
-[add_property_button]: docs/images/Qubell%20Guide/add_property_button.png
-[add_property]: docs/images/Qubell%20Guide/add_property.png
+[add_policy]: images/Qubell%20Guide/add_policy.png
+[add_property_button]: images/Qubell%20Guide/add_property_button.png
+[add_property]: images/Qubell%20Guide/add_property.png
 <!-- [env_page]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/Qubell%20Guide/env_page.png
 ![env page][env_page]
  -->

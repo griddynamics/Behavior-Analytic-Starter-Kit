@@ -50,8 +50,8 @@ launch:
                         jdk_version: "7"
                         java_home: "/usr/lib/jvm/java/"
                     webstore:
-                        admin_app_url: "http://gd-bask.s3.amazonaws.com/bask-admin.war"
-                        site_app_url: "http://gd-bask.s3.amazonaws.com/bask-site.war"
+                        admin_app_url: ${admin_app_url}
+                        site_app_url: ${site_app_url}
         - updating_catalog:
             action: Load_product_catalog_from_S3
             phase: updating_catalog

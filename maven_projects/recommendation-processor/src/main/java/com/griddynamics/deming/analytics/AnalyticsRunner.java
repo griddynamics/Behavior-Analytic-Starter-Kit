@@ -119,11 +119,31 @@ public class AnalyticsRunner extends Configured implements Tool {
     }
 
     private boolean parseArguments(String[] commandLineArguments) {
-        Options options = new Options();
-        options.addOption("i", "input", true, "Input HDFS directory with transactions");
-        options.addOption("o", "output", true, "Not existing output HDFS directory where will be store result");
-        options.addOption("s", "minSupport", true, "(Optional) The minimum number of times a co-occurrence must be present. Default Value: " + minSupport);
-        options.addOption("g", "numGroups", true, "(Optional) Number of groups the features should be divided in the map-reduce version. Default Value: " + numGroups);
+
+        Option inputOption = new Option("i", "input", true, "Input HDFS directory with transactions");
+        inputOption.setRequired(true);
+        inputOption.setArgName("hdfs path");
+
+        Option outputOption = new Option("o", "output", true,
+                "Not existing output HDFS directory where will be store result");
+        outputOption.setRequired(true);
+        outputOption.setArgName("hdfs path");
+
+        Option minSupportOption = new Option("s", "min-support", true,
+                "(Optional) The minimum number of times a co-occurrence must be present. " +
+                        "Default Value: " + minSupport);
+        minSupportOption.setArgName("support");
+
+        Option groupsOption = new Option("g", "groups", true,
+                "(Optional) Number of groups the features should be divided in the map-reduce version. " +
+                        "Default Value: " + numGroups);
+        groupsOption.setArgName("num of groups");
+
+        Options options = new Options()
+                .addOption(inputOption)
+                .addOption(outputOption)
+                .addOption(minSupportOption)
+                .addOption(groupsOption);
 
         CommandLineParser commandLineParser = new GnuParser();
 
@@ -132,24 +152,32 @@ public class AnalyticsRunner extends Configured implements Tool {
 
             if (commandLine.hasOption("i")) {
                 input = commandLine.getOptionValue("i").trim();
+            } else if (commandLine.hasOption("input")) {
+                input = commandLine.getOptionValue("input").trim();
             } else {
                 throw new IllegalArgumentException("Input directory is required!");
             }
 
             if (commandLine.hasOption("o")) {
                 output = commandLine.getOptionValue("o").trim();
+            } else if (commandLine.hasOption("output")) {
+                output = commandLine.getOptionValue("output").trim();
             } else {
                 throw new IllegalArgumentException("Output directory is required!");
             }
 
             if (commandLine.hasOption("s")) {
                 minSupport = Integer.parseInt(commandLine.getOptionValue("s").trim());
+            } else if (commandLine.hasOption("min-support")) {
+                minSupport = Integer.parseInt(commandLine.getOptionValue("min-support").trim());
             } else {
                 System.out.println("Using default minSupport: " + minSupport);
             }
 
             if (commandLine.hasOption("g")) {
                 numGroups = Integer.parseInt(commandLine.getOptionValue("g").trim());
+            } else if (commandLine.hasOption("groups")) {
+                numGroups = Integer.parseInt(commandLine.getOptionValue("groups").trim());
             } else {
                 System.out.println("Using default numGroups: " + numGroups);
             }
@@ -173,7 +201,7 @@ public class AnalyticsRunner extends Configured implements Tool {
      */
     public void printHelp(Options options) {
         HelpFormatter helpFormatter = new HelpFormatter();
-        helpFormatter.printHelp("analytics.jar", options);
+        helpFormatter.printHelp("recommendation-processor.jar", options);
     }
 
     public static void main(String[] args) throws Exception {

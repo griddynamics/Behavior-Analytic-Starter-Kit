@@ -85,7 +85,7 @@ launch:
 
     return:
         webstore_url:
-            description: "WebStore URL:"
+            description: "Web Store:"
             value:
                 - "http://{$.ips_tomcat_pub[0]}:8080/webstore/"
 

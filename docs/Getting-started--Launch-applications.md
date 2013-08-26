@@ -1,12 +1,12 @@
 Launch applications
 ===================
 
-Launch Sample store
+Launch Web Store
 -------------------
 
-Click “Launch” button on sample store application dashboard to launch the sample store application in your environment.
+Click “Launch” button on Web Store application dashboard to launch the Web Store application in your environment.
 It should take about 10 minutes for the application to come up.
-Once sample store launched successfully you can see URL to sample store web UI on application output panel.
+Once Web Store launched successfully you can see URL to Web Store web UI on application output panel.
 
 Launch Behavior analytics platform
 ----------------------------------
@@ -17,7 +17,7 @@ It should take about 10 minutes (depends on slave node number) for the applicati
 
 The Qubell platform constructs two applications from Behavior analytics starter kit configuration defined in Behavior Analytics Starter Kit manifests (behavior analytics platform and web store). 
 During the launch process, the platform provisions the virtual machines, installs the necessary software packages using Chef, sets up cluster configuration from the property file. 
-Once behavior analytics platform with Hadoop cluster and sample store are up everything is ready to use Starter Kit.
+Once behavior analytics platform with Hadoop cluster and Web Store are up everything is ready to use Starter Kit.
 To learn more about application launching please read [Qubell documentation](http://docs.qubell.com/concepts/applications.html)
 
 ![launch apps][launch_apps]

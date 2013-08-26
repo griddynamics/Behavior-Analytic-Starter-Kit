@@ -380,7 +380,7 @@ Save_transaction_log_to_S3:
     return:
         transaction_log_path:
             description: "S3 path to uploaded transaction log:"
-            value: "s3://${s3_bucket_name}/${transaction_log_filename}"
+            value: "s3://{$.config.properties.s3_bucket_name}/${transaction_log_filename}"
 
 Load_transaction_log_from_S3:
     parameters:

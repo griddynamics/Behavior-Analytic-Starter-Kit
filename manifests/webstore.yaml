@@ -114,7 +114,7 @@ Save_product_catalog_structure_to_S3:
                 action: "upload"
     return:
         Product_catalog_path:
-            description: "Product catalog S3 URL:"
+            description: "Product catalog structure S3 URL:"
             value: "s3://{$.config.properties.s3_bucket_name}/${filename}"
 
 Load_recommendations_from_S3:

@@ -127,9 +127,6 @@ launch:
                 action: "start"
 
     return:
-        s3_bucket_name:
-            description: "Selected S3 bucket:"
-            value: "{$.config.properties.s3_bucket_name}"
         namenode_ip:
             description: "Master private IP:"
             value: ${ips_hmaster}

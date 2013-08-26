@@ -88,9 +88,6 @@ launch:
             description: "Sample Store URL:"
             value:
                 - "http://{$.ips_tomcat_pub[0]}:8080/webstore/"
-        s3_bucket_name:
-            description: "Selected S3 bucket:"
-            value: "{$.config.properties.s3_bucket_name}"
 
 Save_product_catalog_structure_to_S3:
     parameters:

@@ -20,6 +20,5 @@ Known Issues
 
 ### Analytics platform ###
 
-1. HDFS file browsing throw HTTP not working now 
-1. Need to delete hdfs directory (using manage_hdfs_dirs button) before relaunching job from application (launch_transaction_log_generator, launch_recommendation_processor)
-1. Config of transaction log generator supports hierarchy of categories only (tree, not graph)
+1. HDFS file browsing throw HTTP not working now. It is a specific for Hadoop HDFS on Amazon EC2, if we will use public IP addreses (DNS names), all communications between datanode-namenode will go as a public interconnections. So it will costs a lot.
+2. Config of transaction log generator supports hierarchy of categories only (tree, not graph)

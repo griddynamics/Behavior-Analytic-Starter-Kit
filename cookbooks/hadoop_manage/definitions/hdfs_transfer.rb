@@ -13,6 +13,12 @@ define :hdfs_transfer, :source => nil, :destination => nil do
       unless File.exist?("#{source}")
         raise ArgumentError, "Source #{source} not found!"      
       end
+
+      execute "Create HDFS dir" do
+        command "hadoop fs -mkdir #{destination}"
+        user "hdfs"
+        not_if "hadoop fs -test -e #{destination}"
+      end
       
       execute "Transferring from #{source} to hdfs:/#{destination}" do
         command "hadoop fs -put #{source} #{destination}"

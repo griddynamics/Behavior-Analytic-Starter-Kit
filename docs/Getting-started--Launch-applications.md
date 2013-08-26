@@ -1,12 +1,12 @@
 Launch applications
 ===================
 
-Launch Sample store
+Launch Web Store
 -------------------
 
-Click “Launch” button on sample store application dashboard to launch the sample store application in your environment.
+Click “Launch” button on Web Store application dashboard to launch the Web Store application in your environment.
 It should take about 10 minutes for the application to come up.
-Once sample store launched successfully you can see URL to sample store web UI on application output panel.
+Once Web Store launched successfully you can see URL to Web Store web UI on application output panel.
 
 Launch Behavior analytics platform
 ----------------------------------
@@ -17,8 +17,12 @@ It should take about 10 minutes (depends on slave node number) for the applicati
 
 The Qubell platform constructs two applications from Behavior analytics starter kit configuration defined in Behavior Analytics Starter Kit manifests (behavior analytics platform and web store). 
 During the launch process, the platform provisions the virtual machines, installs the necessary software packages using Chef, sets up cluster configuration from the property file. 
-Once behavior analytics platform with Hadoop cluster and sample store are up everything is ready to use Starter Kit.
+Once behavior analytics platform with Hadoop cluster and Web Store are up everything is ready to use Starter Kit.
 To learn more about application launching please read [Qubell documentation](http://docs.qubell.com/concepts/applications.html)
+
+![launch apps][launch_apps]
+
+
 
 Important notice!
 -----------------
@@ -26,7 +30,10 @@ Qubell sets time to destroy for each running instance to 1 hour by default.
 So after 1 hour from start your instance will be destroyed, 
 all VMs in instance will be shutdown, all data will be lost.
 You can change default time to destroy by launching instance with "Advanced" button and set appropriate time in "Destroy in" field.
+![advanced_launch](https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/Developer%20Guide/Destroy_in.png)
+
 Also you can reschedule destroying time for already running instances by pressing "Jobs" button on instance output panel and then press "Reschedule" button at the end of jobs list. 
+![advanced_launch](https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/Developer%20Guide/Reschedule.png)
 
 Advanced launch for applications and workflows
 ----------------------------------------------
@@ -35,7 +42,6 @@ In case defaults are provided for every parameter, the application can be launch
 and workflow can be launched with a single click on button that is captioned with workflow name.
 You can override the defaults and run a customized instance or workflow by clicking on arrow on the right side of the button.
 Advanced launch form will appear.
-
-![launch apps][launch_apps]
+![advanced_launch](https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/Developer%20Guide/Advanced_launch.png)
 
 [launch_apps]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/Developer%20Guide/launch_apps.png

@@ -14,7 +14,7 @@
         <module>recommendation-processor</module>
         <module>dataset-generator</module>
         <module>hadoop-commons</module>
-        <module>sample-store</module>
+        <module>web-store</module>
     </modules>
 
     <properties>

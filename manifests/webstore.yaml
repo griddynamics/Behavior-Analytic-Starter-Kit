@@ -3,24 +3,13 @@
 # @author Nickolay Yurin (nyurin@griddynamics.com)
 # @author Anton Haldin (ahaldin@griddynamics.com)
 #
+header:
+  services:
+    properties:
+        s3_bucket_name: consume-signal(string)
 
 launch:
     parameters:
-        image_id:
-            description: image id
-            default: us-east-1/ami-d41689bd
-            enum:
-                "CentOS 6.3 ComodIT": "us-east-1/ami-d41689bd"
-                "Patched CentOS 6 with storage": "us-east-1/ami-1b8ff472"
-        hardware_id:
-            description: hardware id
-            default: m1.medium
-        vm_identity:
-            description: identity of vm
-            default: ec2-user
-            enum:
-                "ec2-user": "ec2-user"
-                "root": "root"
         admin_app_url:
             description: "admin_app_url"
             default: "http://gd-bask.s3.amazonaws.com/bask-admin.war"
@@ -28,12 +17,18 @@ launch:
             description: "site_app_url"
             default: "http://gd-bask.s3.amazonaws.com/bask-site.war"
     steps:
+        - get_env_props:
+            action: getEnvironmentProperties
+            parameters:
+                phase: get-env-props
+            output:
+                config: result
         - start_webstore_vm:
             action: provisionVms
             parameters:
-                hardwareId: ${hardware_id}
-                imageId: ${image_id}
-                vmIdentity: ${vm_identity}
+                hardwareId: m1.medium
+                imageId: us-east-1/ami-d41689bd
+                vmIdentity: ec2-user
                 phase: start_webstore_vm
                 roleName: webstore
                 jcloudsNodeNamePrefix: webstore
@@ -57,20 +52,48 @@ launch:
                     webstore:
                         admin_app_url: ${admin_app_url}
                         site_app_url: ${site_app_url}
+        - updating_catalog:
+            action: Load_product_catalog_from_S3
+            phase: updating_catalog
+            precedingPhases: [ webstore_setup ]
+            parameters:
+                bucket: "gd-bask"
+                filename: "catalog.zip"
+
+        - downloading_recommendations:
+            action: .s3manage
+            phase: downloading_recommendations
+            precedingPhases: [ updating_catalog ]
+            parameters:
+                localpath: "/tmp"
+                bucket: "gd-bask"
+                s3_filename: "recommendations.txt"
+                action: "download"
+
+        - uploading_test_recommendations_to_store:
+            action: execrun
+            phase: downloading_product_catalog
+            precedingPhases: [ downloading_recommendations ]
+            parameters:
+                roles: [ webstore ]
+                isSudo: true
+                command:
+                    - bash -c
+                    - |
+                        curl -F 'file=@/tmp/recommendations.txt' http://localhost:8080/webstore/api/v1/recommendations/import
+                        rm /tmp/recommendations.txt
+
     return:
         webstore_url:
-            description: "Sample Store URL:"
+            description: "Web Store:"
             value:
-                - "http://{$.ips_tomcat_pub[0]}:8080/ecask-site/"
+                - "http://{$.ips_tomcat_pub[0]}:8080/webstore/"
 
-Upload_product_catalog_to_S3:
+Save_product_catalog_structure_to_S3:
     parameters:
-        bucket:
-            description: "s3 bucket to upload"
-            default: "deming"
         filename:
-            description: "s3 output catalog filename"
-            default: "product_catalog.json"
+            description: "s3 output catalog information filename"
+            default: "product_catalog_structure.json"
     steps:
         downloading_product_catalog:
             action: execrun
@@ -81,23 +104,21 @@ Upload_product_catalog_to_S3:
                 command:
                     - bash -c
                     - |
-                        curl -o /tmp/${filename} http://localhost:8080/ecask-site/api/v1/catalog_manager/export
+                        curl -o /tmp/${filename} http://localhost:8080/webstore/api/v1/catalog_manager/export
 
         uploading_to_S3:
             action: .s3manage
             parameters:
                 localpath: "/tmp/${filename}"
-                bucket: ${bucket}
+                bucket: "{$.config.properties.s3_bucket_name}"
                 action: "upload"
     return:
         Product_catalog_path:
             description: "Product catalog S3 URL:"
-            value: "s3://${bucket}/${filename}"
+            value: "s3://{$.config.properties.s3_bucket_name}/${filename}"
 
-Get_recommendations_from_S3:
+Load_recommendations_from_S3:
     parameters:
-        bucket:
-            description: "s3 bucket"
         filename:
             description: "recommendations filename"
             default: "recommendations.txt"
@@ -107,7 +128,7 @@ Get_recommendations_from_S3:
             phase: downloading_recommendations
             parameters:
                 localpath: "/tmp"
-                bucket: ${bucket}
+                bucket: "{$.config.properties.s3_bucket_name}"
                 s3_filename: ${filename}
                 action: "download"
         uploading_recommendations_to_store:
@@ -116,19 +137,21 @@ Get_recommendations_from_S3:
             precedingPhases: [ downloading_recommendations ]
             parameters:
                 roles: [ webstore ]
+                isSudo: true
                 command:
                     - bash -c
                     - |
-                        curl -F 'file=@/tmp/${filename}' http://localhost:8080/ecask-site/api/v1/recommendations/import
+                        curl -F 'file=@/tmp/${filename}' http://localhost:8080/webstore/api/v1/recommendations/import
+                        rm /tmp/${filename}
 
-Get_product_catalog_from_S3:
+Load_product_catalog_from_S3:
     parameters:
         bucket:
             description: "s3 bucket"
             default: "gd-bask"
         filename:
             description: "catalog filename"
-            default: "magento_catalog.zip"
+            default: "catalog.zip"
     steps:
         downloading_catalog:
             action: .s3manage
@@ -147,7 +170,7 @@ Get_product_catalog_from_S3:
                 command:
                     - bash -c
                     - |
-                        curl -F 'file=@/tmp/${filename}' http://localhost:8080/ecask-site/api/v1/catalog_manager/import
+                        curl -F 'file=@/tmp/${filename}' http://localhost:8080/webstore/api/v1/catalog_manager/import
 
 .s3manage:
     parameters:

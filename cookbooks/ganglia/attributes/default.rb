@@ -4,8 +4,8 @@ default['ganglia']['state_dir']    = "/var/lib/ganglia"
 default['ganglia']['user']  = "ganglia"
 default['ganglia']['group'] = "ganglia"
 
-default['ganglia']['grid_name'] = "Grid Dynamics"
-default['ganglia']['cluster_name'] = "Deming demo"
+default['ganglia']['grid_name'] = "Cluster"
+default['ganglia']['cluster_name'] = "Behavior Analytics Platform"
 
 # gmond
 default['ganglia']['gmond']['ports']['tcp_accept'] = "8649"

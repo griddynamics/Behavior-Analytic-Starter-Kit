@@ -1,10 +1,14 @@
-Put product catalog information to S3
+Put product catalog structure to S3
 -------------------------------------
 
 Press  “Upload product  catalog to S3” button in web store application output panel to put
-[product catalog information](Developer-Guide--Appendix--File-Formats.md#product-catalog-information-for-transaction-log-generator) from web store to your Amazon S3 bucket. You should specify path to your S3 bucket and filename,
-where product catalog information and recommendations will be placed. 
-Product catalog information will upload to your private bucket on Amazon S3.
+[product catalog structure](Developer-Guide--Appendix--File-Formats.md#product-catalog-information-for-transaction-log-generator) from web store to your Amazon S3 bucket. You should specify path to your S3 bucket and filename,
+where product catalog structure and recommendations will be placed. 
+<<<<<<< HEAD
+Product catalog structure will upload to your private bucket on Amazon S3.
+=======
+Product catalog structure will upload to your private bucket on Amazon S3.
+>>>>>>> 9a17c0f465e593fff0d80c62e57443921ca786c3
 
 ![upload catalog][upload_catalog]
 

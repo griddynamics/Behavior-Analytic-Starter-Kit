@@ -7,9 +7,10 @@ end
 
 jobpath = "#{node[:hadoop_manage][:mapreduce][:job_local_path]}/#{File.basename(node[:hadoop_manage][:mapreduce][:job_url])}"
 
-execute "Downloading job" do
-  command "wget -c -P #{node[:hadoop_manage][:mapreduce][:job_local_path]} #{node[:hadoop_manage][:mapreduce][:job_url]}"
-  creates "#{jobpath}"
+remote_file "#{jobpath}" do
+  source "#{node[:hadoop_manage][:mapreduce][:job_url]}"
+  mode 0755
+  action :create
 end
 
 execute "Starting job" do

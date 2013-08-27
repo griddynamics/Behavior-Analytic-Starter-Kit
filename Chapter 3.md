@@ -12,9 +12,9 @@ Let’s take a look at how product recommendations are used in our starter kit. 
 
 To launch web store:
 --------------------
-On Qubell portal, select Application -> Web Store (or your name for the web store) -> Launch -> Advance Launch
+On Qubell portal, select Application -> Web Store (or your name for the web store) -> Launch -> Advanced Launch
 
-PRINT SCREEN
+![Web store advanced launch](Images/web store adv launch.png)
 
 Set the input fields to the following values:
 - Name: myStore
@@ -54,7 +54,7 @@ PRINT SCREEN
 
 To to that URL and you should see the web store
 
-PRINT SCREEN
+![Web store](Images/Web store.png)
 
 As you may have guessed, this store URL was created dynamically for this particular instance of the store. You can launch another store at any time - go ahead, if you like, do it now - and when it comes up, you’ll get a different URL. Once an instance of the web store is destroyed, it’s public URL will become invalid. 
 

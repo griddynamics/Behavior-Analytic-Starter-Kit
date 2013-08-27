@@ -81,7 +81,7 @@ Working with Product Catalog and Product Recommendations
 --------------------------------------------------------
 We have created three utility functions to simplify working with different product catalogs and recommendations. Here they are:
 
-PRINT SCREEN
+![Web store functions](Images/Webstore functions.png)
 
 You’ve seen the definition of these functions in the manifest for the store deployment. 
 - **Load_product_catalog_from_S3:** this action is used to upload a new version of a catalog from S3. For example, the catalog used in this starter kit is not native to Broadleaf project. Instead, we used a demo product catalog from Magento, a popular open source eCommerce technology that you can find here. 

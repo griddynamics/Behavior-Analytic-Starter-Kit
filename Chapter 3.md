@@ -32,7 +32,7 @@ How does Qubell know how to deploy this Web Store?
 --------------------------------------------------
 When you push Launch button, Qubell executes a workflow associated with that command. The workflow can be found in the application manifest. This manifest came with the kit and can be found on Qubell portal here:
 
-PRINT SCREEN
+![Manifest](Images/Manifest.png)
 
 While it is possible to read the manifest to figure out what Qubell is doing, and we even encourage our users to do so, a detailed explanation of this manifest is outside of the scope of this introduction. Interested readers should refer to the [manifest developer guide](http://docs.qubell.com/developer/contents.html). 
 
@@ -42,7 +42,7 @@ Qubell starts every workflow by creating an execution plan consisting of steps i
 
 Navigate to Applications -> Web Store -> myStore and click on “Jobs” tab
 
-PRINT SCREEN
+![Jobs](Images/Jobs.png)
 
 You will find a log of steps taken by Qubell in executing Launch workflow.  
 
@@ -50,7 +50,7 @@ My web store is up. How can I access it?
 ----------------------------------------
 Once the web store successfully launched, you can start interacting with it. To find out the URL of the store, check the link under “Web Store” shown on the myStore instance
 
-PRINT SCREEN
+![Web store URL](Images/Web store url.png)
 
 To to that URL and you should see the web store
 

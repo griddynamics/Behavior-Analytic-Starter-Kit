@@ -4,7 +4,7 @@ To Launch Recommendation Engine
 -------------------------------
 Let’s begin at looking at the recommendation engine by starting one up. Go to Applications ->Recommendation Engine -> Launch -> Advance Launch
 
-PRINT SCREEN
+![Recommendation engine advanced launch](Images/rec engine adv launch.png)
 
 Leave all fields at their default values, except three:
 - Set name to myEngine
@@ -67,7 +67,7 @@ Hadoop Management Tools
 -----------------------
 We’ve integrated three popular tools that can be used to gain insight into the state of the Hadoop cluster. You can find them on the portal associated with a living instance of a cluster
 
-PRINT SCREEN
+![Hadoop cluster](Images/jobtracker.png)
 
   - **Job tracker** shows (TBW)
   - **Monitoring** is done by a popular tool Ganglia (TBW)

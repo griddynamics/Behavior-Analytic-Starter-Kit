@@ -2,7 +2,8 @@ package com.griddynamics.deming.analytics.mr;
 
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
-import com.griddynamics.deming.analytics.MathUtil;
+import com.griddynamics.deming.analytics.core.MathUtil;
+import com.griddynamics.deming.analytics.core.TopPatternsWithKeySupport;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.mahout.common.Pair;
@@ -14,7 +15,7 @@ import java.util.List;
 /**
  * @author Denis Khurtin (dkhurtin@griddynamics.com)
  */
-public class PfpAggregateStageMapper extends Mapper<Text, TopKStringPatterns, Text, TopKStringPatterns> {
+public class PfpAggregateStageMapper extends Mapper<Text, TopKStringPatterns, Text, TopPatternsWithKeySupport> {
 
     private static final Joiner commaJoiner = Joiner.on(',');
 
@@ -47,7 +48,7 @@ public class PfpAggregateStageMapper extends Mapper<Text, TopKStringPatterns, Te
                     List<Pair<List<String>, Long>> patternSingularList = Lists.newArrayList();
                     patternSingularList.add(Pair.of(valueItems, pattern.getSecond()));
 
-                    context.write(KEY, new TopKStringPatterns(patternSingularList));
+                    context.write(KEY, new TopPatternsWithKeySupport(pattern.getSecond(), patternSingularList));
 
                 } while (MathUtil.nextCombination(combination));
             }

@@ -1,4 +1,4 @@
-package com.griddynamics.deming.analytics;
+package com.griddynamics.deming.analytics.core;
 
 import org.apache.commons.lang.Validate;
 

@@ -1,5 +1,6 @@
 package com.griddynamics.deming.analytics;
 
+import com.griddynamics.deming.analytics.core.TopPatternsWithKeySupport;
 import com.griddynamics.deming.analytics.mr.PfpAggregateStageCombiner;
 import com.griddynamics.deming.analytics.mr.PfpAggregateStageMapper;
 import com.griddynamics.deming.analytics.mr.PfpAggregateStageReducer;
@@ -21,7 +22,6 @@ import org.apache.hadoop.util.ToolRunner;
 import org.apache.mahout.common.Pair;
 import org.apache.mahout.common.Parameters;
 import org.apache.mahout.fpm.pfpgrowth.PFPGrowth;
-import org.apache.mahout.fpm.pfpgrowth.convertors.string.TopKStringPatterns;
 
 import java.io.IOException;
 import java.util.List;
@@ -37,6 +37,7 @@ public class AnalyticsRunner extends Configured implements Tool {
     private String output;
     private Integer numGroups = PFPGrowth.NUM_GROUPS_DEFAULT;
     private Integer minSupport = 3;
+    private Double minConfidence = 0.2;
 
     @Override
     public int run(String[] args) throws Exception {
@@ -50,6 +51,7 @@ public class AnalyticsRunner extends Configured implements Tool {
         params.set(PFPGrowth.OUTPUT, output);
         params.set(PFPGrowth.MIN_SUPPORT, minSupport.toString());
         params.set(PFPGrowth.NUM_GROUPS, numGroups.toString());
+        params.set("minConfidence", minConfidence.toString());
 
         Configuration conf = getConf();
         conf.set("io.serializations", "org.apache.hadoop.io.serializer.JavaSerialization," +
@@ -71,9 +73,6 @@ public class AnalyticsRunner extends Configured implements Tool {
 
         LOG.info("Aggregating PFP-Growth results");
         startAggregating(params, conf);
-
-//        LOG.info("Saving frequent pattern as map.");
-//        saveFrequentPatternsAsMap(conf, params);
 
         return 0;
     }
@@ -100,7 +99,7 @@ public class AnalyticsRunner extends Configured implements Tool {
         job.setCombinerClass(PfpAggregateStageCombiner.class);
 
         job.setMapOutputKeyClass(Text.class);
-        job.setMapOutputValueClass(TopKStringPatterns.class);
+        job.setMapOutputValueClass(TopPatternsWithKeySupport.class);
 
         // Reducer
         job.setReducerClass(PfpAggregateStageReducer.class);
@@ -134,6 +133,11 @@ public class AnalyticsRunner extends Configured implements Tool {
                         "Default Value: " + minSupport);
         minSupportOption.setArgName("support");
 
+        Option minConfidenceOption = new Option("c", "min-confidence", true,
+                "(Optional) The minimum confidence of association rules. " +
+                        "Default Value: " + minConfidence);
+        minSupportOption.setArgName("support");
+
         Option groupsOption = new Option("g", "groups", true,
                 "(Optional) Number of groups the features should be divided in the map-reduce version. " +
                         "Default Value: " + numGroups);
@@ -143,6 +147,7 @@ public class AnalyticsRunner extends Configured implements Tool {
                 .addOption(inputOption)
                 .addOption(outputOption)
                 .addOption(minSupportOption)
+                .addOption(minConfidenceOption)
                 .addOption(groupsOption);
 
         CommandLineParser commandLineParser = new GnuParser();
@@ -171,7 +176,15 @@ public class AnalyticsRunner extends Configured implements Tool {
             } else if (commandLine.hasOption("min-support")) {
                 minSupport = Integer.parseInt(commandLine.getOptionValue("min-support").trim());
             } else {
-                System.out.println("Using default minSupport: " + minSupport);
+                System.out.println("Using default min-support: " + minSupport);
+            }
+
+            if (commandLine.hasOption("c")) {
+                minConfidence = Double.parseDouble(commandLine.getOptionValue("c").trim());
+            } else if (commandLine.hasOption("min-confidence")) {
+                minConfidence = Double.parseDouble(commandLine.getOptionValue("min-confidence").trim());
+            } else {
+                System.out.println("Using default min-confidence: " + minConfidence);
             }
 
             if (commandLine.hasOption("g")) {

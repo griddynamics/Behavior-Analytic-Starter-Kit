@@ -1,17 +1,17 @@
 package com.griddynamics.deming.analytics.mr;
 
+import com.griddynamics.deming.analytics.core.TopPatternsWithKeySupport;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.mahout.common.Parameters;
-import org.apache.mahout.fpm.pfpgrowth.convertors.string.TopKStringPatterns;
 
 import java.io.IOException;
 
 /**
  * @author Denis Khurtin (dkhurtin@griddynamics.com)
  */
-public class PfpAggregateStageCombiner extends Reducer<Text, TopKStringPatterns, Text, TopKStringPatterns> {
+public class PfpAggregateStageCombiner extends Reducer<Text, TopPatternsWithKeySupport, Text, TopPatternsWithKeySupport> {
 
     private int maxHeapSize;
 
@@ -25,16 +25,16 @@ public class PfpAggregateStageCombiner extends Reducer<Text, TopKStringPatterns,
     }
 
     @Override
-    protected void reduce(Text key, Iterable<TopKStringPatterns> values, Context context)
+    protected void reduce(Text key, Iterable<TopPatternsWithKeySupport> values, Context context)
             throws IOException, InterruptedException {
 
-        TopKStringPatterns topKPatterns = new TopKStringPatterns();
+        TopPatternsWithKeySupport topPatternsWithKeySupport = new TopPatternsWithKeySupport();
 
-        for (TopKStringPatterns value : values) {
+        for (TopPatternsWithKeySupport value : values) {
             context.setStatus("Reducer of aggregate stage: Selecting TopK patterns for: " + key);
-            topKPatterns = topKPatterns.merge(value, maxHeapSize);
+            topPatternsWithKeySupport = topPatternsWithKeySupport.merge(value, maxHeapSize);
         }
 
-        context.write(key, topKPatterns);
+        context.write(key, topPatternsWithKeySupport);
     }
 }

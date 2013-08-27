@@ -1,4 +1,4 @@
-package com.griddynamics.deming.analytics;
+package com.griddynamics.deming.analytics.core;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;

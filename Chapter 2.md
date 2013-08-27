@@ -14,7 +14,7 @@ Set-up Qubell Account
 ---------------------
 To open a free account on Qubell, please go to [Qubell.com](http://qubell.com/) and click on “Sign Up” from the top menu. Follow the instructions to create an account. If you have an account, skip this step. 
 
-SCREEN PRINT
+![Create account](Images/Qubell account.png)
 
 Volla! You are inside the user portal of Qubell Adaptive PaaS. We are going to use this portal extensively while we work with the Kit. Although we’ll inject detailed instructions on how to use Qubell for all standard functions of the starter kit, you may want to take a minute to familiarize yourself with Qubell Adaptive PaaS technology. Here is a quick reference guide:
 - Core concepts
@@ -29,11 +29,11 @@ Now that you have the account on Qubell, let’s import the content of the Start
 - Go to [http://qubell.com/starter-kits/BASK](http://qubell.com/starter-kits/BASK)
 - Click “Get It Now” 
 
-PRINT SCREEN
+![Get it now](Images/Get it now 2.png)
 
 - Login to Qubell
 
-PRINT SCREEN
+![Log in](Images/Log in.png)
 
 - Provide the following values to the fields:
   - TBW
@@ -41,7 +41,7 @@ PRINT SCREEN
 
 Congratulation, you have successfully imported the elements of the starter kit into your account. To verify, you should see two applications on your Application tab:
 
-PRINT SCREEN
+![Applications](Images/Two apps.png)
 
 You are almost ready to launch your applications - as soon as you provide and configure some sort of physical environment for the applications to run on. This kit was developed to run on Amazon EC2 and S3 cloud services, so you’ll need to have an Amazon account to move forward. Later, we will discuss how to customize this kit so that it can run on any infrastructure, including another public cloud, a private cloud or even bare metal servers in your datacenter. 
 

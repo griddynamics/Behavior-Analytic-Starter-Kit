@@ -57,7 +57,12 @@ This is the main job of the recommendation engine. More on how it works later.
 
 Main Algorithm: Recommendation generator
 ----------------------------------------
-To be written
+Recommendation processor is a java application that implements improved version of PFP-growth algorithm based on PFP-growth algorithm from Apache Mahout, a machine learning library. As a result, it extracts associative rules out of transaction logs and are presented as recommendations. It contains the set of algorithms that can work on top of Hadoop MapReduce. Following parameters should be provided to recommendation processor:
+- minSupport- the minimal support level for PFP-growth algorithm. This means the minimal support N uses to select item sets that appeаrs in transaction log equal or more than N times. You should use minimal support value depending on your transaction log. With a small value, PFP-Growth will produce more association rules (many of them may mean nothing). With a large value, PFP-Grow will produce less rules (may also lose interesting rules). You can experiment with minimal support value to get statistically significant recommendations. Minimal support value is 3 by default.
+- groups- the number of independent groups the transaction log will be split into. Separate FP-Growth will be launched for each group. The more data in the transaction log, the greater the number of groups is necessary to ensure that there is enough memory to handle a large group on a separate machine.
+
+Recommendation processor consists of three map/reduce jobs, which are executed sequentially. So, the result of running of recommendation processor is association rules in form of dictionary, where the key is selected item(s) and the value is set of items usually purchased together with selected item(s). 
+
 
 Supporting Algorithm: Transaction log generator
 -----------------------------------------------

@@ -66,7 +66,7 @@ Recommendation processor consists of three map/reduce jobs, which are executed s
 
 Supporting Algorithm: Transaction log generator
 -----------------------------------------------
-To be written
+Transaction Log generator uses probabilistic customer behavior scenario, along with product categories and product ID names, to create a transaction log. The sample store extract product catalog information from previously uploaded product catalogues, which contain ID and names for product categories. For each user type you can set probability of shopping this user type and probability of buying product from particular category. You could also imitate customers behavior by modifying user type sceneries in configuration file.  
 
 Hadoop Management Tools
 -----------------------

@@ -18,6 +18,13 @@ Known Issues
 1. In web store recommendations are transient objects (aren't persistent in db).
 1. In web store recommendations are stored as HashMap. Prefix tree is more optimal data structure for this purpose.
 
+#### I see products from old product catalog ####
+__*Description:*__ When you have loaded new product catalog to web store you may see old products with recommendations in shopping cart.
+
+__*Cause:*__ Products of previous product catalog wasn't deleted, they was marked as inactive.
+
+__*Workaround:*__ Remove all products from shopping cart and go to home page of web store.
+
 ### Analytics platform ###
 
 1. HDFS file browsing throw HTTP not working now. It is a specific for Hadoop HDFS on Amazon EC2, if we will use public IP addreses (DNS names), all communications between datanode-namenode will go as a public interconnections. So it will costs a lot.

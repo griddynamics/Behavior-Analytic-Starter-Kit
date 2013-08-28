@@ -148,6 +148,7 @@ Scale_up_cluster:
     parameters:
         new_datanodes_quantity:
             description: "Add slaves quantity"
+            default: 1
     steps:
         - start_datanodes:
             action: provisionVms
@@ -249,6 +250,7 @@ Generate_new_transaction_log:
             phase: downloading_dataset_configuration
             parameters:
                 roles: [ hmaster ]
+                isSudo: true
                 command:
                     - bash -c
                     - |

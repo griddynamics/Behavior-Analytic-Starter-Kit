@@ -53,7 +53,7 @@ How can I try Starter Kit? (Getting started)
 -------------------
 1. [Setup your Qubell Account][qubell_setup]
 
-2. Press "Get it now" button on [Starter Kit web site][qubell_site]. Log in or sign up if necessary.
+2. Press "Get it now" button on [Starter Kit web site][bask_site]. Log in or sign up if necessary.
 Read short overview in new window, choose organization, edit default names for applications and
 push “Add” button to load application manifests for Behavior Analytic Starter Kit to you Qubell Account.
 
@@ -158,7 +158,7 @@ Also see:
 
 [qubell_platform]: http://qubell.com/product/qubell-platform/ "Qubell platform"
 
-[qubell_site]: http://qubell.com "Qubell official site"
+[bask_site]: http://qubell.com/starter-kits/behavior-analytics-wip/ "BASK official site"
 [chef_site]: http://www.opscode.com/chef "Opscode Chef official site"
 [java_site]: http://www.oracle.com/technetwork/java/index.html "Java official site"
 [broadleaf_site]: http://www.broadleafcommerce.org "Broadleaf commerce official site"

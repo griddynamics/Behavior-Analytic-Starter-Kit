@@ -113,3 +113,5 @@ Add Policies to “Test” Environment
 To be written
 
 Congratulations, you’ve successfully completed the set-up and ready to start using the Starter Kit.
+
+Next chapter- [Chapter 3- Working with the Web Store](Chapter%203.md)

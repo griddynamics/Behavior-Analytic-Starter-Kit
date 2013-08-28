@@ -73,4 +73,5 @@ We’ve integrated three popular tools that can be used to gain insight into the
   - **Monitoring** is done by a popular tool Ganglia (TBW)
   - **Namenode HDFS** - TBW
 
+**Next Chapter:** [Chapter 5- Summary and What's Next?](Chapter%205.md)
 

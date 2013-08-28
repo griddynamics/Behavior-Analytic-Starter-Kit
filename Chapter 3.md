@@ -2,7 +2,7 @@ Chapter 3: Working with the Web Store
 =====================================
 What is Product Recommendation Engine?
 -------------------------------------
-Product recommendations are used by many web stores to convince a customer who is about to make a purchase to also buy some other product that goes well together. Product recommendation engines are amongst the most popular applications of customer behavior analytics to eCommerce. Amazon.com has been using product recommendations brilliantly from the early days by showing the customer who just put X in the shopping cart that “those who bought X also bought Y and Z”. Many customers gladly go on to check out Y and Z and often buy them, too. 
+Product recommendations are used by many web stores to convince a customer who is about to make a purchase to also buy other product(s) that goes well together. Product recommendation engines are amongst the most popular applications of customer behavior analytics to eCommerce. Amazon.com has been using product recommendations brilliantly from the early days by showing the customer who just put X in the shopping cart that “those who bought X also bought Y and Z”. Many customers gladly go on to check out Y and Z and often buy them, too. 
 
 Product recommendations are computed by mining the data in the historic purchases to identify frequently occurring patterns of products being bought together. We will explain methods of coming up with product recommendations  and show one that had been used in our kit in Chapter 3. In this chapter we’ll see how product recommendations are used in the web store once they were computed.
 
@@ -52,7 +52,7 @@ Once the web store successfully launched, you can start interacting with it. To 
 
 ![Web store URL](Images/Web store url.png)
 
-To to that URL and you should see the web store
+To to that URL and you should see the web store.
 
 ![Web store](Images/Web store.png)
 
@@ -75,7 +75,7 @@ Product recommendations is a feature of a web store that can be added on to alre
 - Extended Web Store UI with simple product recommendation widget to render recommendations as a part of check-out UI
 - Extended web store back end to store product recommendations and find recommendations associated with a given set of selected products
 - Wrote an utility that loads recommendations from a file when recommendations are recomputed
-The actual computation of recommendations happen outside of the web store, inside the analytics platform we’ll be studying next. The web store should only be concerns with using the recommendations that have been computed somewhere else
+The actual computation of recommendations happens outside of the web store and inside the analytics platform. The web store should only be concerned with using the recommendations that have been computed somewhere else.
 
 Working with Product Catalog and Product Recommendations
 --------------------------------------------------------

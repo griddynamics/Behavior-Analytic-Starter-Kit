@@ -92,7 +92,7 @@ launch:
 Save_product_catalog_structure_to_S3:
     parameters:
         filename:
-            description: "s3 output catalog information filename"
+            description: "S3 product catalog structure filename"
             default: "product_catalog_structure.json"
     steps:
         downloading_product_catalog:

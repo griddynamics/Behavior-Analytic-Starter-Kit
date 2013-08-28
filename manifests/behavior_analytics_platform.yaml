@@ -148,6 +148,7 @@ Scale_up_cluster:
     parameters:
         new_datanodes_quantity:
             description: "Add slaves quantity"
+            default: 1
     steps:
         - start_datanodes:
             action: provisionVms

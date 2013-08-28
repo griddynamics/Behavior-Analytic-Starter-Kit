@@ -1,8 +1,8 @@
-Get recommendations from S3
+Load recommendations from S3
 ---------------------------
 
-Press “Get recommendations from S3” button on web store application output panel to load [recommendations](Developer-Guide--Web-Store--Recommendations.md) from S3 to web store. 
-You should specify bucket and filename on your S3, where recommendations was placed.
+Press “Load recommendations from S3” button on web store application output panel to load [recommendations](Developer-Guide--Web-Store--Recommendations.md) from S3 to web store. 
+You could specify filename of recommendations file on your S3, where recommendations was placed or leave default value. Recommendation file should be present in your S3 bucket.
 Now you can add and remove items to/from web store shopping card and see recommendations and its changes.
 
 ![get recommendations][get_recommendations]
@@ -20,11 +20,11 @@ Now to see recommendations you need:
   - Go to your Shipping Card and see revalent items
     ![see recommendations][see_recommendations]
 
-[get_recommendations]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/Developer%20Guide/get_recommendations.png
-[get_recommendations_dialog]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/Developer%20Guide/get_recommendations_dialog.png
+[get_recommendations]: images/Developer%20Guide/get_recommendations.png
+[get_recommendations_dialog]: images/Developer%20Guide/get_recommendations_dialog.png
 
 
-[open_store]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/Developer%20Guide/open_store.png
-[buy_item]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/Developer%20Guide/buy_item.png
-[see_recommendations]: https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/docs/images/Developer%20Guide/see_recommendations.png
+[open_store]: images/Developer%20Guide/open_store.png
+[buy_item]: images/Developer%20Guide/buy_item.png
+[see_recommendations]: images/Developer%20Guide/see_recommendations.png
 

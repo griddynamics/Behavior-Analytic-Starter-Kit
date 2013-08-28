@@ -94,7 +94,6 @@ Add Secure Vault Service to the Platform
 ----------------------------------------
 To create a service vault, go to "Platform->Services" page and press "Add a service" button. 
 ![Add secure vault service](/Images/services.png)
-
 Specify service name and type="Secure Vault 2.0" then press "Add". SSH key pair will be generated automatically. 
 ![Secure vault service info](/Images/service 2.png)
 
@@ -154,6 +153,7 @@ To add .s3manage.aws_secret_access_key, again click "Add policy" from the "Envir
 - When asked to execute: ".s3manage"
 - Override value of: "aws_secret_access_key"
 - With: your Amazon Secret Access Key.
+
 
 
 Congratulations! You’ve successfully completed the set-up and ready to start using the Starter Kit.

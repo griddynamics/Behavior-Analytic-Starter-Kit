@@ -84,39 +84,35 @@ Add Your Amazon Account to the Platform
 ---------------------------------------
 After you have obtained your Amazon account along with its Amazon secret and access keys, you need to add your account to the platform. To do so, go to "Platform->Cloud Accounts" page and press "Add a cloud account" button.
 
-PRINT SCREEN
+![Add cloud](/Images/add cloud account.png)
 
 Specify account name, provider="Amazon EC2", AWS credentials and security group and press "Save."
 
-PRINT SCREEN
+![Cloud info](/Images/cloud info.png)
 
 Add Secure Vault Service to the Platform
 ----------------------------------------
 To create a service vault, go to "Platform->Services" page and press "Add a service" button. 
 
-PRINT SCREEN
+![Add secure vault service](/Images/services.png)
 
 Specify service name and type="Secure Vault 2.0" then press "Add". SSH key pair will be generated automatically. 
+![Secure vault service info](/Images/service info.png)
+
 
 Create “Test” Environment
 -------------------------
 Now you are ready to add your testing environment. To do so, go to "Environments" tab and click on the "Add an environment" button. 
 
-PRINT SCREEN
+![Add environment](/Images/environment.png)
 
 Specify environment name and press "Add." A new environment will be open. 
-
-PRINT SCREEN
-
-Press "Set a cloud account" and specify previously created cloud account name then press "Save" set cloud account
-Press "Add a service" button and select previously created service name then press "Add"
-
 
 Add Amazon cloud to “Test” environment
 --------------------------------------
 To set connect your Amazon cloud account to your own environment, press "Set a cloud account" from the "Environments" tab. Specify previously created cloud account name and press "Save." 
 
-PRINT SCREEN
+![Set cloud](/Images/set coud.png)
 
 Add Secure Vault Service to “Test” Environment
 ----------------------------------------------
@@ -128,13 +124,13 @@ Generate and Store SSH Keys
 ---------------------------
 To get, upload, or regenerate keys, go to "Platform -> Services" page. To get keys, download private and public keys. To upload keys, press "Edit," specify service name and press "Upload" button. To renegerate keys, press "Edit," and then "Regenerate" button. SSH Keys should appear. 
 
-SSH Keys PRINT SCREEN
+![SSH keys](/Images/ssh keys.png)
 
 Add Properties to “Test” Environment
 ------------------------------------
 To add net environment property, press "Add property" button from the "Environments" tab. 
 
-PRITN SCREEN 
+![Add properties](/Images/property button.png)
 
 - Enter property name: "s3_bucket_name"
 - Enter property type: "string"
@@ -142,11 +138,13 @@ PRITN SCREEN
 Press the "Add" button to add your s3 bucket property. 
 Press "Add" button to add s3 bucket property 
 
-PRINT SCREEN
+![Property settings](/Images/add property.png)
 
 Add Policies to “Test” Environment
 ----------------------------------
 There are two policies that need to be added to the environment: .s3manage.aws_access_key_id and .s3manage.aws_secret_access_key. Please note that the leading dot before "s3manage" is necessary!
+
+![Add policy](/Images/add policy.png)
 
 To add .s3manage.aws_access_key_id, click "Add policy" from the "Environment" tab and enter the following parameters;
 - When asked to execute: ".s3manage"
@@ -158,10 +156,7 @@ To add .s3manage.aws_secret_access_key, again click "Add policy" from the "Envir
 - Override value of: "aws_secret_access_key"
 - With: your Amazon Secret Access Key.
 
-PRINT SCREEN
 
-
-
-Congratulations, you’ve successfully completed the set-up and ready to start using the Starter Kit.
+Congratulations! You’ve successfully completed the set-up and ready to start using the Starter Kit.
 
 **Next Chapter:** [Chapter 3- Working with the Web Store](Chapter%203.md)

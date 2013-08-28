@@ -1,6 +1,6 @@
-Behavior Analytics Starter Kit
-==============================
 Chapter 1: Overview and Frequently Asked Questions
+==================================================
+
 
 
 What is Behavior Analytics Starter Kit?

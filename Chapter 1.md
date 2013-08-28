@@ -95,4 +95,4 @@ Starter Kit is provided under the Apache 2.0 license. Although this kit comes wi
 can report bugs, request FREs and ask questions [here](https://qubell.zendesk.com/home) and Kits development team will get back to you as soon 
 as possible.
 
-Next chapter: [Chapter 2](Chapter%202.md)- Getting Started
+Next chapter: [Chapter 2- Getting Started](Chapter%202.md)

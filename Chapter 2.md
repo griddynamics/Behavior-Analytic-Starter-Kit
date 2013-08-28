@@ -39,7 +39,7 @@ Now that you have the account on Qubell, let’s import the content of the Start
   - TBW
   - TBW
 
-Congratulation, you have successfully imported the elements of the starter kit into your account. To verify, you should see two applications on your Application tab:
+Congratulations, you have successfully imported the elements of the starter kit into your account. To verify, you should see two applications on your Application tab:
 
 ![Applications](Images/Two apps.png)
 
@@ -82,35 +82,85 @@ Armed with theory, we are ready to configure our application deployment environm
 
 Add Your Amazon Account to the Platform
 ---------------------------------------
-To be written
+After you have obtained your Amazon account along with its Amazon secret and access keys, you need to add your account to the platform. To do so, go to "Platform->Cloud Accounts" page and press "Add a cloud account" button.
+
+PRINT SCREEN
+
+Specify account name, provider="Amazon EC2", AWS credentials and security group and press "Save."
+
+PRINT SCREEN
 
 Add Secure Vault Service to the Platform
 ----------------------------------------
-To be written
+To create a service vault, go to "Platform->Services" page and press "Add a service" button. 
+
+PRINT SCREEN
+
+Specify service name and type="Secure Vault 2.0" then press "Add". SSH key pair will be generated automatically. 
 
 Create “Test” Environment
 -------------------------
-To be written
+Now you are ready to add your testing environment. To do so, go to "Environments" tab and click on the "Add an environment" button. 
+
+PRINT SCREEN
+
+Specify environment name and press "Add." A new environment will be open. 
+
+PRINT SCREEN
+
+Press "Set a cloud account" and specify previously created cloud account name then press "Save" set cloud account
+Press "Add a service" button and select previously created service name then press "Add"
+
 
 Add Amazon cloud to “Test” environment
 --------------------------------------
-To be written
+To set connect your Amazon cloud account to your own environment, press "Set a cloud account" from the "Environments" tab. Specify previously created cloud account name and press "Save." 
+
+PRINT SCREEN
 
 Add Secure Vault Service to “Test” Environment
 ----------------------------------------------
-To be written
+From the same "Environments" tab, press "Add a Service" to add your secure vault service to your own environment. Press the "Add a service" button and select previously created service name and press "Add."
+
+PRINT SCREEN
 
 Generate and Store SSH Keys
 ---------------------------
-To be written
+To get, upload, or regenerate keys, go to "Platform -> Services" page. To get keys, download private and public keys. To upload keys, press "Edit," specify service name and press "Upload" button. To renegerate keys, press "Edit," and then "Regenerate" button. SSH Keys should appear. 
+
+SSH Keys PRINT SCREEN
 
 Add Properties to “Test” Environment
 ------------------------------------
-To be written
+To add net environment property, press "Add property" button from the "Environments" tab. 
+
+PRITN SCREEN 
+
+- Enter property name: "s3_bucket_name"
+- Enter property type: "string"
+- Enter property value: Name of your S3 bucket
+Press the "Add" button to add your s3 bucket property. 
+Press "Add" button to add s3 bucket property 
+
+PRINT SCREEN
 
 Add Policies to “Test” Environment
 ----------------------------------
-To be written
+There are two policies that need to be added to the environment: .s3manage.aws_access_key_id and .s3manage.aws_secret_access_key. Please note that the leading dot before "s3manage" is necessary!
+
+To add .s3manage.aws_access_key_id, click "Add policy" from the "Environment" tab and enter the following parameters;
+- When asked to execute: ".s3manage"
+- Override value of: "aws_access_key_id"
+- With: your Amazon Access Key ID.
+
+To add .s3manage.aws_secret_access_key, again click "Add policy" from the "Environments" tab and enter the following parameters:
+- When asked to execute: ".s3manage"
+- Override value of: "aws_secret_access_key"
+- With: your Amazon Secret Access Key.
+
+PRINT SCREEN
+
+
 
 Congratulations, you’ve successfully completed the set-up and ready to start using the Starter Kit.
 

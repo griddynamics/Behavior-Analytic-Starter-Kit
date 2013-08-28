@@ -93,7 +93,6 @@ Specify account name, provider="Amazon EC2", AWS credentials and security group 
 Add Secure Vault Service to the Platform
 ----------------------------------------
 To create a service vault, go to "Platform->Services" page and press "Add a service" button. 
-
 ![Add secure vault service](/Images/services.png)
 
 Specify service name and type="Secure Vault 2.0" then press "Add". SSH key pair will be generated automatically. 

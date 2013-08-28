@@ -92,5 +92,5 @@ Can I “play” with these action buttons or modify the web store’s source co
 ---------------------------------------------------------------------------------------------------
 Of course you can, this is the point of this kit. Feel free to experiment with any of these buttons. As long as you don’t change any of the default values of parameters, the system should work correctly. If you decide to modify default parameters to point to a different S3 bucket, or use different files for catalog and/or recommendations - please, go ahead. Just keep in mind that debugging in not always easy and you are on your own. If you get stuck, please feel free to write to [support@qubell.com](mailto:support@qubell.com) with your question and we’ll try to help. 
 
-**Next Chapter**: [Chapter 4- Working with Recommendation Engine](Chapter%204.md)
+**Next Chapter:** [Chapter 4- Working with Recommendation Engine](Chapter%204.md)
 

@@ -167,6 +167,7 @@ Load_product_catalog_from_S3:
             precedingPhases: [ downloading_catalog ]
             parameters:
                 roles: [ webstore ]
+                isSudo: true
                 command:
                     - bash -c
                     - |

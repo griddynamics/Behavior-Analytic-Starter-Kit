@@ -248,6 +248,7 @@ Generate_new_transaction_log:
             phase: downloading_dataset_configuration
             parameters:
                 roles: [ hmaster ]
+                isSudo: true
                 command:
                     - bash -c
                     - |

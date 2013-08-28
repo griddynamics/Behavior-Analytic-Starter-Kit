@@ -50,6 +50,7 @@ This Behavior Analytics Starter Kit was developed by [Grid Dynamics](http://grid
 How does this Kit work?
 -----------------------
 Behavior Analytics Starter Kit has three main parts:
+
 1) **A web store** that sells consumer products over the Internet. It is written in java based on open source 
 [Broadleaf framework](http://www.broadleafcommerce.org/). Out of the box, Broadleaf framework doesn’t have product recommendations. We added them as a part of the check-out process. The product recommendation logic will match the items in the shopping card with other products often bought together and suggest additional items if they are found. This web store operates on three data sets that are relevant to the recommendation system:
 - **Product catalog-** The catalog included with our starter kit is not native to Broadleaf. We took a sample product 

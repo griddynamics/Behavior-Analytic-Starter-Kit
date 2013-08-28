@@ -118,7 +118,7 @@ Add Secure Vault Service to “Test” Environment
 ----------------------------------------------
 From the same "Environments" tab, press "Add a Service" to add your secure vault service to your own environment. Press the "Add a service" button and select previously created service name and press "Add."
 
-PRINT SCREEN
+![Add service](/Images/add service.png)
 
 Generate and Store SSH Keys
 ---------------------------

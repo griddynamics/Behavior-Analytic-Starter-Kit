@@ -1,6 +1,6 @@
 Chapter 2: Getting Started
 ===========================
-In this chapter we’ll perform all configuration and set-up steps necessary to get our starter kit up running. Along the way we’ll introduce basic concepts of Qubell Adaptive PaaS technology used by manage all aspects of deployment and management of your recommendation engine.
+In this chapter we’ll perform all configuration and set-up steps necessary to get our starter kit up running. Along the way we’ll introduce basic concepts of Qubell Adaptive PaaS technology used by managing all aspects of deployment and management of your recommendation engine.
 
 In order to start working with the starter kit, you need to perform the following steps:
 - Set-up your Qubell account
@@ -66,15 +66,15 @@ Since you’ll be deploying the analytics and sample web store on Amazon cloud, 
 
 Introduction to Qubell Platform Concepts
 ----------------------------------------
-Before we go any further, let’s understand how application deployment happens in Qubell. Qubell is designed to make it easy for developers to deploy complex distributed applications - such as multi-tiered web stores or Hadoop clusters - for different purposes, such as development, testing and production. 
-Application is always deployed into some environment - such as dev, qa or production.  The details of where that environment is located and what kind of infrastructure is used is not necessary to know in order to launch application. Different environments may operate on different clouds, reside in different datacenters and use different services. Once the environment has been set-up, Qubell will take care that applications can be launched into any compatible environment. Compatibility between an application and an environment means that if that application requires a certain service, the environment must have a such a service available for the application. Qubell validates the compatibility of application and environment at launch. Services come in three types:
+Before we go any further, let’s understand how application deployment happens in Qubell. Qubell is designed to make it easy for developers to deploy complex distributed applications - multi-tiered web stores or Hadoop clusters - for different purposes, such as development, testing and production. 
+  Application is always deployed into some environment - such as dev, qa or production.  The details of where that environment is located and what kind of infrastructure is used is not necessary to know in order to launch application. Different environments may operate on different clouds, reside in different datacenters and use different services. Once the environment has been set-up, Qubell will take care that applications can be launched into any compatible environment. Compatibility between an application and an environment means that if that application requires a certain service, the environment must have a such a service available for the application. Qubell validates the compatibility of application and environment at launch. Services come in three types:
 - **Cloud accounts-** This is a special type of service reserved for public cloud accounts, such as Amazon EC2 or Rackspace. If your application expects a cloud, it will not be deployed into an environment that doesn’t have one.
 - **Markers-** Marker is another special type of service that simply indicates whether some service is present in the environment. For example, “Mainframe connection” might be a marker that signals the availability of the mainframe end-point in a particular environment. 
-- **Services-** These can be anything, from a pool of VMs to a database with customer records. We are going to use one service called Secure Vault. Secure Vault is an encrypted store that holds your private information such as Amazon credentials and SSH keys. This way applications can safely store,  retrieve and use secret data. 
+- **Services-** These can be anything, from a pool of VMs to a database with customer records. We are going to use one service called Secure Vault. Secure Vault is an encrypted store that holds your private information such as Amazon credentials and SSH keys. This way applications can safely store, retrieve and use secret data. 
 
-A platform is a central repository of definitions of services available across all environments. The lifecycle of a service started by being added to the platform, then enabled in some environments as appropriate. 
-Beside different services, environments may have properties and policies. Both properties and policies look like key-value pairs defined for each environment, but they are used for different purposes:
-- **Properties** are used by Qubell to store parameters necessary to complete application deployment, configuration and management. For example, “db_connection_string = jdbc://somewhere” is a parameter needed by the application to resolve the location of the database driver in this particular environment. We will use properties to pass the location of files stored on S3 between the web store and the analytic engine
+A platform is a central repository of definitions of services available across all environments. The lifecycle of a service starts by being added to the platform, then enabled in some environments as appropriate. 
+  Besides different services, environments may have properties and policies. Both properties and policies look like key-value pairs defined for each environment, but they are used for different purposes:
+- **Properties** are used by Qubell to store parameters necessary to complete application deployment, configuration and management. For example, “db_connection_string = jdbc://somewhere” is a parameter needed by the application to resolve the location of the database driver in this particular environment. We will use properties to pass the location of files stored on S3 between the web store and the analytic engine.
 - **Policies** overwrite the values of parameters defined by the application. Different environments may impose different rules on the application. For example, while “test” environment may be configured to offer a choice of Ubuntu or CentOS for an operating system, the “production” environment may allow only RHEL. We are going to define a few policies related to the cloud account. 
 
 It must be clear now that before any application can be launched, there has to be at least one environment set-up, and that environment ought to have all services required by the application.
@@ -112,4 +112,4 @@ Add Policies to “Test” Environment
 ----------------------------------
 To be written
 
-Congratulations, you’ve successfully completed the set-up and ready to start using the Starter Kit
+Congratulations, you’ve successfully completed the set-up and ready to start using the Starter Kit.

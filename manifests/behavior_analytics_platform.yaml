@@ -292,6 +292,9 @@ Compute_new_recommendations:
         min_support:
             description: "minSupport"
             default: "3"
+        min_confidence:
+            description: "minConfidence"
+            default: "0.2"
         num_groups:
             description: "numGroups"
             default: "1000"
@@ -309,7 +312,7 @@ Compute_new_recommendations:
             parameters:
                 job_url: ${analytics_job_url}
                 job_download_path: "/tmp/recommendation_processor"
-                job_parameters: "-Dmapred.job.map.memory.mb=2048 -Dmapred.job.reduce.memory.mb=4000 -Dmapred.map.child.java.opts=\"-Xmx480m\" -Dmapred.reduce.child.java.opts=\"-Xmx2000m\" -s ${min_support} -g ${num_groups} -i ${transaction_log_path} -o /tmp/fp"
+                job_parameters: "-Dmapred.job.map.memory.mb=2048 -Dmapred.job.reduce.memory.mb=4000 -Dmapred.map.child.java.opts=\"-Xmx480m\" -Dmapred.reduce.child.java.opts=\"-Xmx2000m\" -s ${min_support} -c ${min_confidence} -g ${num_groups} -i ${transaction_log_path} -o /tmp/fp"
         saving_result:
             action: execrun
             phase: saving_result

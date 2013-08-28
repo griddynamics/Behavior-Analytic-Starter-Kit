@@ -38,21 +38,21 @@ Recommendation Engine Workflows
 -------------------------------
 To understand how this engine works, let’s look at the action workflows defined on it. You can always find the details of each action in the manifest. We are going to start with a very short overview of the actions, their purpose and implementation. The main sections of that manifest include:
 
-**Launch:** as you might expect, this action starts up a cluster with one master and requested number of slave nodes. it will also configure the cluster to be monitored by an external tool, Ganglia, and start-up that tool
+**Launch:** as you might expect, this action starts up a cluster with one master and requested number of slave nodes. It will also configure the cluster to be monitored by an external tool, Ganglia, and start-up that tool.
 
-**Scale_up_cluster:** this action will add a requested number of slave nodes to already existing cluster
+**Scale_up_cluster:** this action will add a requested number of slave nodes to already existing cluster.
 
 **Generate_new_transaction_log:** this action takes a product catalog structure file from HDFS, and a configuration file for the algorithm, runs a job to generate recommendations and stores the result in a transaction log file on stored again on HDFS.
 
-**Save_transaction_log_to_S3:** this action moves the transaction log from HDFS to S3 for persistent storage. Note: in the real world, this file can be very large and moving it around might be quite slow and expensive. A different architecture would be needed if this was a truly large-scale log
+**Save_transaction_log_to_S3:** this action moves the transaction log from HDFS to S3 for persistent storage. Note: in the real world, this file can be very large and moving it around might be quite slow and expensive. A different architecture would be needed if this was a truly large-scale log.
 
-**Load_transaction_log_from_S3:** this action moves the transaction log from S3 to HDFS prior to computation of recommendations, if necessary
+**Load_transaction_log_from_S3:** this action moves the transaction log from S3 to HDFS prior to computation of recommendations, if necessary.
 
 **Compute_new_recommendations:** this action takes a transaction log from HDFS,and a configuration parameters for the algorithm, runs a job to generates recommendations and saves the results in the recommendation file on local HDFS and on S3.
 
-This is the main job of the recommendation engine. More on how it works later
-- Save_tansaction_log_to_S3: this action will move the transaction log from Hadoop’s local HDFS to S3 to persist for future use. This is where Web Store will take it from
-- Load_transaction_log_from_S3: 
+This is the main job of the recommendation engine. More on how it works later.
+- **Save_tansaction_log_to_S3:** this action will move the transaction log from Hadoop’s local HDFS to S3 to persist for future use. This is where Web Store will take it from
+- **Load_transaction_log_from_S3:**
 
 
 Main Algorithm: Recommendation generator
@@ -65,7 +65,7 @@ To be written
 
 Hadoop Management Tools
 -----------------------
-We’ve integrated three popular tools that can be used to gain insight into the state of the Hadoop cluster. You can find them on the portal associated with a living instance of a cluster
+We’ve integrated three popular tools that can be used to gain insight into the state of the Hadoop cluster. You can find them on the portal associated with a living instance of a cluster.
 
 ![Hadoop cluster](Images/jobtracker.png)
 

@@ -7,11 +7,11 @@ Let’s begin at looking at the recommendation engine by starting one up. Go to 
 ![Recommendation engine advanced launch](Images/rec engine adv launch.png)
 
 Leave all fields at their default values, except three:
-- Set name to myEngine
-- Set environment to Test
-- Set auto-destruction to 4 hours
+- Set name to "myEngine"
+- Set environment to "Test"
+- Set auto-destruction to "4" hours
 - Set revision to blank
-- Set slave quantify to 4, as a default
+- Set slave quantify to "4", as a default
 
 Press “Launch”. 
 

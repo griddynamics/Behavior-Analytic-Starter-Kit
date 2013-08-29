@@ -16,7 +16,7 @@ To open a free account on Qubell, please go to [Qubell.com](http://qubell.com/) 
 
 ![Create account](Images/Qubell account.png)
 
-If your screen looks similar to the image below, You are inside the user portal of Qubell Adaptive PaaS. We are going to use this portal extensively while we work with the Kit. 
+If your screen looks similar to the image below, volla! You are inside the user portal of Qubell Adaptive PaaS. We are going to use this portal extensively while we work with the Kit. 
 
 ![Welcome](Images/welcome.png)
 Although we’ll inject detailed instructions on how to use Qubell for all standard functions of the starter kit, you may want to take a minute to familiarize yourself with Qubell Adaptive PaaS technology. Here is a quick reference guide:

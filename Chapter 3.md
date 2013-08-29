@@ -15,7 +15,6 @@ To launch web store:
 On Qubell portal, select Application -> Web Store (or your name for the web store) -> Launch -> Advanced Launch.
 
 ![Web store advanced launch](Images/web store adv launch.png)
-
 Set the input fields to the following values:
 - Name: myStore
 - Environment: Test
@@ -27,6 +26,7 @@ Note: pre-scheduled destruction is a convenient feature during testing and exper
 
 It should take about 10 minutes for the application to come up. Once web store launched successfully you can see URL to web store web UI on application output panel.
 
+If you failed to successfully launch the applications, please refer to our Troubleshooting (LINK) page, or return to Chapter 2 to reconfigure your settings. 
 
 How does Qubell know how to deploy this Web Store?
 --------------------------------------------------

@@ -119,9 +119,9 @@ To set connect your Amazon cloud account to your own environment, press "Set a c
 
 Add Secure Vault Service to “Test” Environment
 ----------------------------------------------
-From the same "Environments" tab, press "Add a Service" to add your secure vault service to your own environment. Press the "Add a service" button and select previously created service name and press "Add."
+From the same "Environments" tab, press "Add a Service" to add your secure vault service to your own environment. Press the "Add a service" button. Select "Secure vault" and press "Add."
 
-![Add service](/Images/add service.png)
+![Add service](/Images/service info.png)
 
 Generate and Store SSH Keys
 ---------------------------

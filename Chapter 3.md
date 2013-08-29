@@ -12,7 +12,7 @@ Let’s take a look at how product recommendations are used in our starter kit. 
 
 To launch web store:
 --------------------
-On Qubell portal, select Application -> Web Store (or your name for the web store) -> Launch -> Advanced Launch
+On Qubell portal, select Application -> Web Store (or your name for the web store) -> Launch -> Advanced Launch.
 
 ![Web store advanced launch](Images/web store adv launch.png)
 
@@ -23,7 +23,7 @@ Set the input fields to the following values:
 
 Note: pre-scheduled destruction is a convenient feature during testing and experimentation to make sure you don’t create too many test instances of your application scattered across the cloud, eating away Amazon resources and your money for no reason. A discipline to schedule instance destruction at launch is important, unless you have a good reason to keep it around for much longer, which you can do by setting auto-destruction to “never”.
 
-- Leave all other fields at defaults
+- Leave all other fields at defaults.
 
 It should take about 10 minutes for the application to come up. Once web store launched successfully you can see URL to web store web UI on application output panel.
 
@@ -40,7 +40,7 @@ Can I see what happened when my web store was launched?
 -------------------------------------------------------
 Qubell starts every workflow by creating an execution plan consisting of steps in the workflow, and then proceeds to executive that plan. You can always see a plan in real time under the table “Jobs” on Qubell portal. Once the job is complete, it will store the log of what happened for us to examine at any time. 
 
-Navigate to Applications -> Web Store -> myStore and click on “Jobs” tab
+Navigate to Applications -> Web Store -> myStore and click on “Jobs” tab.
 
 ![Jobs](Images/Jobs.png)
 
@@ -48,7 +48,7 @@ You will find a log of steps taken by Qubell in executing Launch workflow.
 
 My web store is up. How can I access it?
 ----------------------------------------
-Once the web store successfully launched, you can start interacting with it. To find out the URL of the store, check the link under “Web Store” shown on the myStore instance
+Once the web store successfully launched, you can start interacting with it. To find out the URL of the store, check the link under “Web Store” shown on the myStore instance.
 
 ![Web store URL](Images/Web store url.png)
 
@@ -72,8 +72,8 @@ Here is your XYZ in the cart, and you can also see a number of related products 
 How was this product recommendation module incorporated into the web store?
 ---------------------------------------------------------------------------
 Product recommendations is a feature of a web store that can be added on to already functioning web store at any time. To demonstrate how this can be done,  we took an off-the-shelf open source web store framework Broadleaf that didn’t have product recommendations, and extended the store to have them. Specifically, we did the following things:
-- Extended Web Store UI with simple product recommendation widget to render recommendations as a part of check-out UI
-- Extended web store back end to store product recommendations and find recommendations associated with a given set of selected products
+- Extended Web Store UI with simple product recommendation widget to render recommendations as a part of check-out UI.
+- Extended web store back end to store product recommendations and find recommendations associated with a given set of selected products.
 - Wrote an utility that loads recommendations from a file when recommendations are recomputed
 The actual computation of recommendations happens outside of the web store and inside the analytics platform. The web store should only be concerned with using the recommendations that have been computed somewhere else.
 
@@ -86,7 +86,7 @@ We have created three utility functions to simplify working with different produ
 You’ve seen the definition of these functions in the manifest for the store deployment. 
 - **Load_product_catalog_from_S3:** this action is used to upload a new version of a catalog from S3. For example, the catalog used in this starter kit is not native to Broadleaf project. Instead, we used a demo product catalog from Magento, a popular open source eCommerce technology that you can find here. 
 - **Save_product_catalog_structure_to_S3:** this actions puts the product information to S3 where the recommendation engine can pick it up. The engine doesn’t need a full catalog with prices and images; instead it needs to understand the structure of the catalog and the dependencies between products. We call a file with such information Product Catalog Structure file and you can find a default one here.
-- **Load_recommendations_from_S3:** this action pulls newly computed recommendation file from S3 where recommendation engine has put it
+- **Load_recommendations_from_S3:** this action pulls newly computed recommendation file from S3 where recommendation engine has put it.
 
 Can I “play” with these action buttons or modify the web store’s source code to behave differently?
 ---------------------------------------------------------------------------------------------------

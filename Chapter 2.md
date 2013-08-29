@@ -115,7 +115,7 @@ Add Amazon cloud to “Test” environment
 --------------------------------------
 To set connect your Amazon cloud account to your own environment, press "Set a cloud account" from the "Environments" tab. Specify previously created cloud account name and press "Save." 
 
-![Set cloud](/Images/set coud.png)
+![Set cloud](/Images/Test add cloud.png)
 
 Add Secure Vault Service to “Test” Environment
 ----------------------------------------------

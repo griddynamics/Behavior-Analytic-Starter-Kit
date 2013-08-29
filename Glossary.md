@@ -1,7 +1,7 @@
 Glossary
 =======
 
-- **Behavior Analytics platform** - is a Hadoop cluster with map/reduce jobs that can be run in the cluster. There are two map/reduce jobs: transaction log generator and recommendation processor.
+- **Behavioral Analytics platform** - is a Hadoop cluster with map/reduce jobs that can be run in the cluster. There are two map/reduce jobs: transaction log generator and recommendation processor.
 - **Transaction** - is the set of ID of unique products from product catalog, which  was purchased together by single user at once.
 - **Transaction log** - is the set of transactions.
 - Recommendation processor - is the map/reduce job, that implements improved version of PFP-growth algorithm and extracts associative rules out of transaction log and present them as recommendations.

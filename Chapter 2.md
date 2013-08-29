@@ -129,7 +129,7 @@ To get, upload, or regenerate keys, go to "Platform -> Services" page. To get ke
 
 ![SSH keys](/Images/ssh keys.png)
 
-Add Properties to “Test” Environment
+Add S3 Bucket Property to “Test” Environment
 ------------------------------------
 To add net environment property, press "Add property" button from the "Environments" tab. 
 

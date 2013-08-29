@@ -142,8 +142,6 @@ To add net environment property, press "Add property" button from the "Environme
 Press the "Add" button to add your s3 bucket property. 
 Press "Add" button to add s3 bucket property 
 
-![Property settings](/Images/add property.png)
-
 Add Policies to “Test” Environment
 ----------------------------------
 There are two policies that need to be added to the environment: .s3manage.aws_access_key_id and .s3manage.aws_secret_access_key. Please note that the leading dot before "s3manage" is necessary!

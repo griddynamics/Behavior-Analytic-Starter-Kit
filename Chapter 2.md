@@ -16,6 +16,10 @@ To open a free account on Qubell, please go to [Qubell.com](http://qubell.com/) 
 
 ![Create account](Images/Qubell account.png)
 
+Once you have successfully created your account, add your two applications with the default names, Recommendation Engine and Web store (or change them as you wish) to add them to your platform. 
+
+![Add kit](Images/add kit.png)
+
 If your screen looks similar to the image below, volla! You are inside the user portal of Qubell Adaptive PaaS. We are going to use this portal extensively while we work with the Kit. 
 
 ![Welcome](Images/welcome.png)

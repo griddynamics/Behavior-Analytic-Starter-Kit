@@ -20,5 +20,5 @@ We hope that this starter kit will serve as a jump-start for your own behavior a
 - Change the deployment infrastructure from Amazon cloud to any other public cloud, a private cloud or an internal non-cloud environment. 
 - Note: for use of Qubell on non-public clouds you’ll need to upgrade your free account to a paid enterprise account. Contact [info@qubell.com](mailto:info@qubell.com) for more information
 - Develop other analytics applications using our Hadoop development, deployment and management infrastructure. 
-- Contact Grid Dynamics at [starterkit@griddynamics.com](mailto:starterkit@griddynamics.com) with any other ideas and we’ll be happy to help point you in the right direction to the best of our abilities.
+- Contact Grid Dynamics at [BASK@griddynamics.com](mailto:BASK@griddynamics.com) with any other ideas and we’ll be happy to help point you in the right direction to the best of our abilities.
 

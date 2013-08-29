@@ -16,12 +16,15 @@ To open a free account on Qubell, please go to [Qubell.com](http://qubell.com/) 
 
 ![Create account](Images/Qubell account.png)
 
-Volla! You are inside the user portal of Qubell Adaptive PaaS. We are going to use this portal extensively while we work with the Kit. Although we’ll inject detailed instructions on how to use Qubell for all standard functions of the starter kit, you may want to take a minute to familiarize yourself with Qubell Adaptive PaaS technology. Here is a quick reference guide:
-- Core concepts
-- Manifest developer’s guide
-- Action reference
-- API 1.3 reference
-- Administrator’s guide
+If your screen looks similar to the image below, You are inside the user portal of Qubell Adaptive PaaS. We are going to use this portal extensively while we work with the Kit. 
+
+![Welcome](Images/welcome.png)
+Although we’ll inject detailed instructions on how to use Qubell for all standard functions of the starter kit, you may want to take a minute to familiarize yourself with Qubell Adaptive PaaS technology. Here is a quick reference guide:
+- [Core concepts](http://docs.qubell.com/concepts/contents.html)
+- [Manifest developer’s guide](http://docs.qubell.com/developer/contents.html)
+- [Action reference](http://docs.qubell.com/actions/contents.html)
+- [API 1.3 reference](http://docs.qubell.com/api/contents.html)
+- [Administrator’s guide](http://docs.qubell.com/admin/contents.html)
 
 Import Behavior Analytics Kit
 -----------------------------

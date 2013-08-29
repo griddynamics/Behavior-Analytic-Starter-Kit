@@ -138,6 +138,7 @@ To add net environment property, press "Add property" button from the "Environme
 - Enter property name: "s3_bucket_name"
 - Enter property type: "string"
 - Enter property value: Name of your S3 bucket
+
 Press the "Add" button to add your s3 bucket property. 
 Press "Add" button to add s3 bucket property 
 

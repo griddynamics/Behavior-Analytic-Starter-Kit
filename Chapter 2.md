@@ -109,7 +109,7 @@ Now you are ready to add your testing environment. To do so, go to "Environments
 
 ![Add environment](/Images/environment.png)
 
-Specify environment name and press "Add." A new environment will be open. 
+Specify environment name as "Test" (of a name of your own preference) and press "Add." A new environment will be open. 
 
 Add Amazon cloud to “Test” environment
 --------------------------------------

@@ -38,6 +38,7 @@ Recommendation Engine Workflows
 -------------------------------
 To understand how this engine works, let’s look at the action workflows defined on it. You can always find the details of each action in the manifest. We are going to start with a very short overview of the actions, their purpose and implementation. The main sections of that manifest include:
 
+![Recommendation Buttons](Images/rec tabs.png)
 **Launch:** as you might expect, this action starts up a cluster with one master and requested number of slave nodes. It will also configure the cluster to be monitored by an external tool, Ganglia, and start-up that tool.
 
 **Scale_up_cluster:** this action will add a requested number of slave nodes to already existing cluster.

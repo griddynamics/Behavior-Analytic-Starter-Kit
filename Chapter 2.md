@@ -16,10 +16,6 @@ To open a free account on Qubell, please go to [Qubell.com](http://qubell.com/) 
 
 ![Create account](Images/Qubell account.png)
 
-Once you have successfully created your account, add your two applications with the default names, Recommendation Engine and Web store (or change them as you wish) to add them to your platform. 
-
-![Add kit](Images/add kit.png)
-
 If your screen looks similar to the image below, volla! You are inside the user portal of Qubell Adaptive PaaS. We are going to use this portal extensively while we work with the Kit. 
 
 ![Welcome](Images/welcome.png)
@@ -42,9 +38,11 @@ Now that you have the account on Qubell, let’s import the content of the Start
 
 ![Log in](Images/Log in.png)
 
-- Provide the following values to the fields:
-  - TBW
-  - TBW
+- Provide the following values to the fields to add your two applications to the platform:
+  - Display name: Recommendation Engine
+  - Display name: Web store 
+  
+![Add kit](Images/add kit.png)
 
 Congratulations, you have successfully imported the elements of the starter kit into your account. To verify, you should see two applications on your Application tab:
 

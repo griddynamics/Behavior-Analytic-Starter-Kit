@@ -65,7 +65,7 @@ To see how product recommendations work:
 - Step 2: Find a product called “xyz” and put it in your shopping cart: TO BE WRITTEN
 - Step 3: To go check out: TO BE WRITTEN
 
-PRINT SCREEN
+![recommendations](/Images/initial recommendations.png)
 
 Here is your XYZ in the cart, and you can also see a number of related products that were chosen by the web store to tempt me to buy more. That’s how product recommendation works, in a nutshell. 
 

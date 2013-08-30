@@ -37,13 +37,23 @@ Keep the default settings or you may change them as you wish. Further descriptio
 ![Parameters](/Images/minSupport.png)
 
 
-Load recommendations from S3
+Load Recommendations from S3
 ---------------------------
 The final step to receiving the recommendations is to load the recommendations from S3 to the Web Store. To do so, go back to the Web Store applications and click the "Load_recommendations_from_S3" button. Keep the default settings, or if you have changed the filename previously, make sure it stays consistent. Congratulations, you can now see your starter kit in action!
 
 ![Load recommendations](/Images/load recommendations.png)
 
 
-*Next Chapter:** [Chapter 5- Summary and What's Next?](Chapter%205.md)
+To View Your Recommendations
+----------------------------
+To view your recommendations, open up the Web Store URL link located in the Web Store application. 
+![web store url link](/Images/url link.png)
+
+Buy an item, click on the shopping cart icon in the top right corner, and you should be able to see your recommendations! 
+
+![recommendations in action](/Images/initial recommendations.png)
+
+
+**Next Chapter:** [Chapter 5- Summary and What's Next?](Chapter%205.md)
 
 

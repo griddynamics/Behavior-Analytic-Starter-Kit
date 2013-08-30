@@ -1,4 +1,4 @@
-Behavior Analytics Starter Kit
+Behavioral Analytics Starter Kit
 ==============================
 
 - [Chapter 1](Chapter%201.md)- Overview and Frequently Asked Questions

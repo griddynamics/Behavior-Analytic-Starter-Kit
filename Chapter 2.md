@@ -4,7 +4,7 @@ In this chapter we’ll perform all configuration and set-up steps necessary to 
 
 In order to start working with the starter kit, you need to perform the following steps:
 - Set-up your Qubell account
-- Import Behavior Analytics Starter Kit 
+- Import Behavioral Analytics Starter Kit 
 - Set-up Amazon account
 - Configure deployment environment
 
@@ -26,7 +26,7 @@ Although we’ll inject detailed instructions on how to use Qubell for all stand
 - [API 1.3 reference](http://docs.qubell.com/api/contents.html)
 - [Administrator’s guide](http://docs.qubell.com/admin/contents.html)
 
-Import Behavior Analytics Kit
+Import Behavioral Analytics Kit
 -----------------------------
 Now that you have the account on Qubell, let’s import the content of the Starter Kit into your Qubell portal. This Starter Kit is published on Qubell web site, amongst other starter kits.
 - Go to [http://qubell.com/starter-kits/BASK](http://qubell.com/starter-kits/BASK)

@@ -1,14 +1,12 @@
-Behavior Analytics Starter Kit
-==============================
 Chapter 1: Overview and Frequently Asked Questions
+==================================================
 
-
-What is Behavior Analytics Starter Kit?
+What is Behavioral Analytics Starter Kit?
 ---------------------------------------
 
-Behavior Analytics Starter Kit is a cloud lab for developers where they can learn how to create powerful behavior 
+Behaviorl Analytics Starter Kit is a cloud lab for developers where they can learn how to create powerful behavioral 
 analytics applications using Hadoop and Mahout, and deploy them on Amazon Cloud with Qubell Adaptive PaaS. This 
-starter kit presents a complete example of a common application of behavior analytics - a Product Recommendation 
+starter kit presents a complete example of a common application of behavioral analytics - a Product Recommendation 
 engine for an eCommerce store. 
 
 This Starter Kits has everything one needs to: 
@@ -19,7 +17,7 @@ This Starter Kits has everything one needs to:
 - Experiment with the recommendation engine’s behavior by changing the default product catalog, default transaction history or the default configuation of the analytical jobs 
 - Explore how the system can be improved and extended by bringing your own catalog, integrating with a different web store, or writing a completely different analytics algorithms
 
-Why is it called Behavior Analytics Starter Kit, not Recommendations Engine Starter Kit?
+Why is it called Behavioral Analytics Starter Kit, not Recommendations Engine Starter Kit?
 ----------------------------------------------------------------------------------------
 We hope to use this kit to demonstrate, in a very hands-on way, how to write, deploy and manage a wide class of 
 analytics applications. For the purposes of demonstration we chose a particular application, that is both common
@@ -45,11 +43,11 @@ the external documentation for each tool used. You will need to bring two things
 
 Who wrote this Starter Kit and why?
 -----------------------------------
-This Behavior Analytics Starter Kit was developed by [Grid Dynamics](http://griddynamics.com), in partnership with [Qubell](http://qubell.com/), to promote understanding of how to design, implement, deploy and support modern analytics applications, such as Product Recommendations.
+This Behavioral Analytics Starter Kit was developed by [Grid Dynamics](http://griddynamics.com), in partnership with [Qubell](http://qubell.com/), to promote understanding of how to design, implement, deploy and support modern analytics applications, such as Product Recommendations.
 
 How does this Kit work?
 -----------------------
-Behavior Analytics Starter Kit has three main parts:
+Behavioral Analytics Starter Kit has three main parts:
 
 1) **A web store** that sells consumer products over the Internet. It is written in java based on open source 
 [Broadleaf framework](http://www.broadleafcommerce.org/). Out of the box, Broadleaf framework doesn’t have product recommendations. We added them as a part of the check-out process. The product recommendation logic will match the items in the shopping card with other products often bought together and suggest additional items if they are found. This web store operates on three data sets that are relevant to the recommendation system:
@@ -72,7 +70,7 @@ processor written with Apache Mahout.
 
 Main Use Cases
 --------------
-Behavior Analytics Starter Kit supports the following main use cases out of the box:
+Behavioral Analytics Starter Kit supports the following main use cases out of the box:
 - Deploy web store 
 - See how recommendations work on the web store
 - Deploy recommendation engine 

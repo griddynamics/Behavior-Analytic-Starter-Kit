@@ -4,7 +4,7 @@ Summary of what you’ve learned
 ------------------------------
 Let’s summarize the main concepts of this starter kit:
 
-- Product recommendations is one of the most commonly used applications of behavior analytics algorithms.
+- Product recommendations is one of the most commonly used applications of behavioral analytics algorithms.
 - Product recommendations can be added to any existing web store using an approach similar to the one we used in this starter kit.
 - Recommendations are computed via a distributed Hadoop job by looking at the history of what people have purchased and finding products that are often bought together.
 - If you don’t have a real transaction log before you get started on the development of your recommendation algorithm, you may want to generate a synthetic log using a generator similar to one provided with the kit.
@@ -13,7 +13,7 @@ Let’s summarize the main concepts of this starter kit:
 
 What’s Next?
 ------------
-We hope that this starter kit will serve as a jump-start for your own behavior analytics projects. Here are some ideas on what you might want to do as an extension to the kit’s built-in functionality:
+We hope that this starter kit will serve as a jump-start for your own behavioral analytics projects. Here are some ideas on what you might want to do as an extension to the kit’s built-in functionality:
 - Integrate our recommendation engine with your own, real-world web store.
 - Improve on our algorithm by providing an alternative, more sophisticated analytics.
 - Build a proper release engineering process for your analytics project by defining different development, testing and production environments using Qubell Apaptive PaaS technology.

@@ -2,7 +2,7 @@ Chapter 3: Working with the Web Store
 =====================================
 What is Product Recommendation Engine?
 -------------------------------------
-Product recommendations are used by many web stores to convince a customer who is about to make a purchase to also buy other product(s) that goes well together. Product recommendation engines are amongst the most popular applications of customer behavior analytics to eCommerce. Amazon.com has been using product recommendations brilliantly from the early days by showing the customer who just put X in the shopping cart that “those who bought X also bought Y and Z”. Many customers gladly go on to check out Y and Z and often buy them, too. 
+Product recommendations are used by many web stores to convince a customer who is about to make a purchase to also buy other product(s) that goes well together. Product recommendation engines are amongst the most popular applications of customer behavioral analytics to eCommerce. Amazon.com has been using product recommendations brilliantly from the early days by showing the customer who just put X in the shopping cart that “those who bought X also bought Y and Z”. Many customers gladly go on to check out Y and Z and often buy them, too. 
 
 Product recommendations are computed by mining the data in the historic purchases to identify frequently occurring patterns of products being bought together. We will explain methods of coming up with product recommendations  and show one that had been used in our kit in Chapter 3. In this chapter we’ll see how product recommendations are used in the web store once they were computed.
 

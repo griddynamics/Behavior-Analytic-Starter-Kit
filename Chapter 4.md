@@ -2,7 +2,7 @@ Chapter 4: Working with Recommendation Engine
 =============================================
 To Launch Recommendation Engine
 -------------------------------
-Let’s begin at looking at the recommendation engine by starting one up. Go to Applications ->Recommendation Engine -> Launch -> Advance Launch
+Let’s begin at looking at the recommendation engine by starting one up. Go to Applications -> Recommendation Engine -> Launch -> Advance Launch.
 
 ![Recommendation engine advanced launch](Images/rec engine adv launch.png)
 
@@ -13,7 +13,7 @@ Leave all fields at their default values, except three:
 - Set revision to blank
 - Set slave quantify to "4", as a default
 
-Press “Launch”. 
+Press “Launch." 
 
 It should take about 20 minutes for the application to come up. Once the Hadoop cluster comes up successfully you can see it through the management tools and start working with it. Meanwhile, we’ll continue looking at the parts of the Recommendation Engine available to us. 
 

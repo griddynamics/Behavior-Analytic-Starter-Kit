@@ -12,7 +12,7 @@ Let’s take a look at how product recommendations are used in our starter kit. 
 
 To launch Web Store:
 --------------------
-On Qubell portal, go to Applications -> Web Store -> Launch -> Advanced Launch. 
+On Qubell portal, go to the "Applications" tab, and click on "Advanced Launch" from the "Web Store" Launch dropdown box. 
 
 ![Web store advanced launch](Images/web store adv launch.png)
 Set the input fields to the following values:
@@ -39,7 +39,7 @@ Can I see what happened when my web store was launched?
 -------------------------------------------------------
 Qubell starts every workflow by creating an execution plan consisting of steps in the workflow, and then proceeds to executive that plan. You can always see a plan in real time under the table “Jobs” on Qubell portal. Once the job is complete, it will store the log of what happened for us to examine at any time. 
 
-Navigate to Applications -> Web Store -> myStore and click on “Jobs” tab.
+Navigate to the "Jobs" tab from your Web Store (myStore) application main page.
 ![Jobs](Images/Jobs.png)
 
 You will find a log of steps taken by Qubell in executing Launch workflow.  
@@ -50,7 +50,7 @@ Once the web store successfully launched, you can start interacting with it. To 
 
 ![Web store URL](Images/Web store url.png)
 
-Go to that URL and you should see the web store.
+Go to that URL and you should see the web store. Unfortunately you will not be able to see the recommendations until the Recommendation Engine has been configured and set up. We will get to this in the next chapters. 
 
 ![Web store](Images/Web store.png)
 

@@ -57,7 +57,7 @@ Go to that URL and you should see the web store.
 As you may have guessed, this store URL was created dynamically for this particular instance of the store. You can launch another store at any time. When it comes up, you’ll get a different URL. Once an instance of the web store is destroyed, it’s public URL will become invalid. 
 
 
-Working with Product Catalog and Product Recommendations
+Product Catalog and Product Recommendations Workflow
 --------------------------------------------------------
 We have created three utility functions to simplify working with different product catalogs and recommendations. They are:
 

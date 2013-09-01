@@ -6,6 +6,7 @@ Behavioral Analytics Starter Kit will deliver recommendations within half an hou
 Behavioral Analytics Start Kit consists of two main blocks:
 - Analytic platform
 - Sample store (web UI)
+
 You can modify variety of job parameters and source code, use your product catalog and even use sample of your real transaction log to generate recommendations. So, everybody: data analysts, hadoop deployment engineers, analytic job engineers will find interesting use cases here.
 
 Are you interested in eCommerce platforms and its recommendation components? Maybe you are looking for an advanced recommendation engine for your eCommerce shopping cart? Then you probably know that recommendations often based on association rules. 

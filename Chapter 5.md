@@ -1,6 +1,10 @@
 Chapter 5: Steps to see the Recommendations 
 ==========================================
 
+![Steps workflow diagram](/Images/steps .png)
+
+This is a brief overview of the steps needed to see the recommendation products in action. You have already completed the first half of the steps. Now let's get started on the remaining steps.  
+
 Load product catalog from S3 to Web Store
 -----------------------------------------
 The first step is to go to the Web Store application and replace the current product catalog in the Web Store with new a new product catalog from S3. To do so, press the "Load_product_catalog_S3" button. Keep the default settings or you may change the recommendations filename as you wish. 

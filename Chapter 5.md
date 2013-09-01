@@ -1,4 +1,4 @@
-Chapter 5: Steps to see the Recommendations 
+Chapter 5: Steps to See the Recommendations 
 ==========================================
 
 ![Steps workflow diagram](/Images/steps .png)

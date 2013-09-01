@@ -81,5 +81,5 @@ We’ve integrated three popular tools that can be used to gain insight into the
 
 In the next chapter we will discuss the steps necessary to see the Recommendation Engine in junction with the Web Store in action!
 
-**Next Chapter:** [Chapter 5- To see the Recommendations](To%20see%20Recommendations.md)
+**Next Chapter:** [Chapter 5- To see the Recommendations](Chapter%205.md)
 

@@ -1,10 +1,11 @@
 Behavioral Analytics Starter Kit
 ==============================
+![Stick man](/Images/stick man.png)
 Are you looking for an advanced recommendation engine for your eCommerce platform? Нow much time you are willing to spend to see the first results?
 Behavioral Analytics Starter Kit will deliver recommendations within half an hour!
 
-If you're interested in eCommerce platforms and its recommendation components, or are looking for an advanced recommendation engine for your eCommerce shopping cart, then you probably know that recommendations often based on association rules. 
-Association rule learning is well known method for discovering meaningful relations between items in large transaction logs. The discovery of interesting correlation relationships among your transaction records can help you in many business decision-making processes, such as catalog design, cross-marketing, and customer shopping behavior analysis.
+Recommendations often based on association rules. Association rule learning is well known method for discovering meaningful relations between items in large transaction logs. The discovery of interesting correlation relationships among your transaction records can help you in many business decision-making processes, such as catalog design, cross-marketing, and customer shopping behavior analysis.
+
 There are many algorithms for generating frequent itemsets (e.g., Apriori, PFP-growth and Eclat), but recommendation engine needs association rules. So, Behavioral Analytics Starter Kit was released to fill this gap.  It has a recommendation processor that generates association rules. Additionally, this processor uses Mahout library and implements improved version of PFP-growth algorithm - the most effective algorithm for mining frequent itemsets. What is the most important thing to analyse and produce recommendations?
 
 ![Market Basket](/Images/market basket.png)

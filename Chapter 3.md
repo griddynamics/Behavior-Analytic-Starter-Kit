@@ -50,7 +50,7 @@ Once the web store successfully launched, you can start interacting with it. To 
 
 ![Web store URL](Images/Web store url.png)
 
-Go to that URL and you should see the web store. Unfortunately you will not be able to see the recommendations until the Recommendation Engine has been configured and set up. We will get to this in the next chapters. 
+Go to that URL and you should see the web store. Unfortunately you will not be able to see the recommendations until the Recommendation Engine has been configured and set up, which we will cover in the next chapters. 
 
 ![Web store](Images/Web store.png)
 

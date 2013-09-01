@@ -1,4 +1,4 @@
-Chapter 5: Summary and What’s Next?
+Chapter 6: Summary and What’s Next?
 ===================================
 Summary of what you’ve learned
 ------------------------------

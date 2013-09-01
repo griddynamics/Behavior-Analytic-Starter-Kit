@@ -100,8 +100,7 @@ Add Secure Vault Service to the Platform
 To create a service vault, go to the the subsection named "Services" under the tab "Platform". "Press the "Add a service" button. 
 
 ![Add secure vault service](/Images/services.png)
-Specify service name as "Service vault" (or a name of your own preference), choose "Secure Vault 2.0" for Type.
-
+Specify service name as "Service vault" (or a name of your own preference), choose "Secure Vault 2.0" for Type, and press "Add."
 ![Secure vault service info](/Images/service 2.png)
 
 

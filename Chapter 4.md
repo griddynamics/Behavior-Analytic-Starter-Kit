@@ -2,16 +2,16 @@ Chapter 4: Working with Recommendation Engine
 =============================================
 To Launch Recommendation Engine
 -------------------------------
-Let’s begin at looking at the recommendation engine by starting one up. Go to Applications -> Recommendation Engine -> Launch -> Advance Launch.
+Let’s begin at looking at the recommendation engine by starting one up. On Qubell portal, go to Applications -> Recommendation Engine -> Launch -> Advanced Launch.
 
 ![Recommendation engine advanced launch](Images/rec engine adv launch.png)
 
-Leave all fields at their default values, except three:
+Leave all fields at their default values, except these:
 - Set name to "myEngine"
 - Set environment to "Test"
 - Set auto-destruction to "4" hours
 - Set revision to blank
-- Set slave quantify to "4", as a default
+- Set slave quantify to "4", as default
 
 Press “Launch." 
 
@@ -25,7 +25,7 @@ First, someone loads up on S3 a transaction log file. The transaction log file r
 
 Now, unfortunately, getting access to real user transactions for a sample web store is quite impossible since the store is fake and no one is really shopping there. Fortunately, we have a generator of transaction logs based on product catalog structure and some configuration parameters. This generator was written by the analytics team in Grid Dynamics who wrote similar generators to some of their real eCommerce customers to be able to train and test their algorithms. The algorithm to produce the transaction log is also written as a Hadoop job. 
 
-Default files can be found here:
+Default files can be found here (LINK):
 - Transaction log
 - Catalog structure
 - Configuration file for transaction log
@@ -51,9 +51,9 @@ To understand how this engine works, let’s look at the action workflows define
 
 **Compute_new_recommendations:** this action takes a transaction log from HDFS,and a configuration parameters for the algorithm, runs a job to generates recommendations and saves the results in the recommendation file on local HDFS and on S3.
 
-This is the main job of the recommendation engine. More on how it works later.
-- **Save_tansaction_log_to_S3:** this action will move the transaction log from Hadoop’s local HDFS to S3 to persist for future use. This is where Web Store will take it from
-- **Load_transaction_log_from_S3:**
+This is the main job of the recommendation engine. 
+- **Save_tansaction_log_to_S3:** this action will move the transaction log from Hadoop’s local HDFS to S3 to persist for future use. This is where Web Store will take it from (UNFINISHED)
+- **Load_transaction_log_from_S3:** (UNFINISHED)
 
 
 Main Algorithm: Recommendation generator
@@ -78,6 +78,8 @@ We’ve integrated three popular tools that can be used to gain insight into the
   - **Job tracker** shows (TBW)
   - **Monitoring** is done by a popular tool Ganglia (TBW)
   - **Namenode HDFS** - TBW
+
+In the next chapter we will discuss the steps necessary to see the Recommendation Engine in junction with the Web Store in action!
 
 **Next Chapter:** [To see the Recommendations](To%20see%20Recommendations.md)
 

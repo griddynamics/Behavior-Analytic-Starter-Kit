@@ -4,7 +4,7 @@ Chapter 1: Overview and Frequently Asked Questions
 What is Behavioral Analytics Starter Kit?
 ---------------------------------------
 
-Behaviorl Analytics Starter Kit is a cloud lab for developers where they can learn how to create powerful behavioral 
+Behavioral Analytics Starter Kit is a cloud lab for developers where they can learn how to create powerful behavioral 
 analytics applications using Hadoop and Mahout, and deploy them on Amazon Cloud with Qubell Adaptive PaaS. This 
 starter kit presents a complete example of a common application of behavioral analytics - a Product Recommendation 
 engine for an eCommerce store. 

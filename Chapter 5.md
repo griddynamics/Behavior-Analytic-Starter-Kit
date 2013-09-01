@@ -12,9 +12,9 @@ The first step is to go to the Web Store application and replace the current pro
 ![load product catalog](/Images/load product catalog.png)
 
 
-Put product catalog information to S3
+Put product catalog structure to S3
 -------------------------------------
-Once you have successfully loaded the product catalog from S3 to Web Store, press the "Save_product_catalog_structure_to_S3" button in Web Store to put product catalog information from Web Store to your Amazon S3 bucket. Keep the default settings or you may change the S3 product catalog structure filename as you wish. Now product catalog information will be uploaded to your private bucket on Amazon S3. 
+Once you have successfully loaded the product catalog from S3 to Web Store, press the "Save_product_catalog_structure_to_S3" button in Web Store to put product catalog structure from Web Store to your Amazon S3 bucket. Keep the default settings or you may change the S3 product catalog structure filename as you wish. Now product catalog structure will be uploaded to your private bucket on Amazon S3. 
 
 ![save catalog](Images/save product catalog.png)
 

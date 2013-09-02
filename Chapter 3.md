@@ -26,7 +26,7 @@ Note: pre-scheduled destruction is a convenient feature during testing and exper
 
 It should take about 10 minutes for the application to complete deploying. Once web store launches successfully you can see URL to web store web UI on application output panel.
 
-If you failed to successfully launch the applications, please refer to our [Troubleshooting](https://docs.google.com/document/d/19H3Uujw54vJQlbgqc4XmZ7gWptDeNW0KZ9iOWq0dMXI/edit#) page, or return to Chapter 2 to reconfigure your settings. 
+If you failed to successfully launch the applications, please refer to our [Troubleshooting](Troubleshooting.md) page, or return to Chapter 2 to reconfigure your settings. 
 
 How does Qubell know how to deploy this Web Store?
 --------------------------------------------------

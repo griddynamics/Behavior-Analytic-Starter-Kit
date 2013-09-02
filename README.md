@@ -33,7 +33,7 @@ Third Party Components of the Kit
 - [Amazon AWS account](http://aws.amazon.com/)- Your own
 - [Qubell express account](http://express.qubell.com)- Free, register at [qubell.com](http://qubell.com)
 - Sample web store: [Broadleaf Commerce](http://www.broadleafcommerce.org/)- is distributed with the kit and available under Apache 2.0.
-- Recommendation engine: [Cloudera Hadoop](http://www.cloudera.com/content/cloudera/en/products/cdh.html)- is distributed with the kit.
+- Recommendation engine: [Cloudera Hadoop](http://www.cloudera.com/content/support/en/documentation/cdh4-documentation/cdh4-documentation-v4-2-1.html)- is distributed with the kit.
 - Machine learning library: [Apache Mahout](http://mahout.apache.org/)
 - Monitoring: [Ganglia](http://ganglia.sourceforge.net/)
 - Product catalog: [Magento Commerce](http://www.magentocommerce.com/)

@@ -107,13 +107,13 @@ Solution: Setup policies in environment  according to documentation.
 
 **3.7 Failed to retrieve execution status for action RunPreparedExec.**
 
-Solution: Unknown.
+Solution: If you have such issue with launch workflow ,then please destroy your application and launch it again. Such issue can be related with network access between Qubell agent and ssh server launched on virtual machine.
 ![Error](/Images/3.7.png)
 
 
 **3.8 Unknown server error.**
 
-Solution: Unknown.
+Solution: Please refresh page in your browser. Such issue can be related with network issue and java script specific.
 ![Error](/Images/3.8.png)
 
 

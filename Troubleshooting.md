@@ -127,8 +127,6 @@ Solution: If you have such issue with launch workflow ,then please destroy your 
 Solution: Please refresh page in your browser. Such issue can be related with network issue and java script specific.
 
 ![Error](/Images/3.8.png)
-
-
 Go back to the [Mainpage](README.md)
 
 

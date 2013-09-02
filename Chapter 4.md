@@ -26,13 +26,14 @@ First, someone loads up on S3 a transaction log file. The transaction log file r
 Now, unfortunately, getting access to real user transactions for a sample web store is quite impossible since the store is fake and no one is really shopping there. Fortunately, we have a generator of transaction logs based on product catalog structure and some configuration parameters. This generator was written by the analytics team in Grid Dynamics who wrote similar generators to some of their real eCommerce customers to be able to train and test their algorithms. The algorithm to produce the transaction log is also written as a Hadoop job. 
 
 Default files can be found here (LINK):
-- Transaction log
-- Catalog structure
-- Configuration file for transaction log
-- Transaction log generator, in java
-- Resulting transaction log
-- Recommendation algorithm, in java
-- Resulting recommendation file
+- [Transaction log](https://s3.amazonaws.com/gd-bask/transaction_log.txt)
+- [Catalog structure](https://s3.amazonaws.com/gd-bask/product_catalog_structure.json)
+- [Configuration file for transaction log](http://gd-bask.s3.amazonaws.com/scenario-config.json)
+- [Transaction log generator, in java](https://github.com/griddynamics/Behavior-Analytic-Starter-Kit/tree/master/maven_projects/dataset-generator)
+- [Resulting transaction log](https://s3.amazonaws.com/gd-bask/transaction_log.txt)
+- [Recommendation algorithm, in java](https://github.com/griddynamics/Behavior-Analytic-Starter-Kit/tree/master/maven_projects/recommendation-processor)
+- [Resulting recommendation file](https://s3.amazonaws.com/gd-bask/recommendations.txt)
+- [Hadoop manifest](https://github.com/griddynamics/Behavior-Analytic-Starter-Kit/blob/master/manifests/behavior_analytics_platform.yaml)
 
 Recommendation Engine Workflows
 -------------------------------

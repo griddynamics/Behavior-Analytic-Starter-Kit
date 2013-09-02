@@ -53,7 +53,7 @@ You are almost ready to launch your applications, as soon as you provide and con
 Set-up Amazon account
 ---------------------
 Since you’ll be deploying the analytics and sample web store on Amazon cloud, you need to have an Amazon account, configure its security group to allow traffic to your applications, and add that Amazon account to your Qubell portal. 
-- **Obtain Amazon EC2 account capable of creating EC2 nodes and using S3 service.** If you don’t yet have an account on Amazon, it can be done here. If you already have one, move to the next step.
+- **Obtain Amazon EC2 account capable of creating EC2 nodes and using S3 service.** If you don’t yet have an account on Amazon, it can be done [here](http://aws.amazon.com/account/). If you already have one, move to the next step.
 - **Set-up security group.** The EC2 security group “default” has to allow connections to the application you’ll be deploying using your account. Below is the list of ports that have to be open for each application or service using the [Amazon portal](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html#adding-security-group-rule): 
   - 22 (TCP, SSH)
   - 80 (TCP, HTTP of httpd)

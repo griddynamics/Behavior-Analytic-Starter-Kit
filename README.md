@@ -5,6 +5,12 @@ analytics applications using Hadoop and Mahout, and deploy them on Amazon Cloud 
 starter kit presents a complete example of a common application of behavioral analytics - a Product Recommendation 
 engine for an eCommerce store. 
 
+Example of Product Recommendations
+----------------------------------
+Below is an example of the web store displaying its product recommendations.
+
+![Recommendations](/Images/initial recommendations.png)
+
 Main Use Cases
 --------------
 Behavioral Analytics Starter Kit supports the following main use cases out of the box:
@@ -21,10 +27,6 @@ Workflow Diagram
 ----------------
 Here is a brief outline of the steps required to successfully see the product recommendations.
 ![Steps](/Images/steps2.png)
-
-Below is an example of the web store displaying its product recommendations.
-
-![Recommendations](/Images/initial recommendations.png)
 
 Third Party Components of the Kit
 ---------------------------------

@@ -1,9 +1,9 @@
 Chapter 5: Steps to See the Recommendations 
 ==========================================
 
-![Steps workflow diagram](/Images/steps .png)
+![Steps workflow diagram](/Images/steps2.png)
 
-This is a brief overview of the steps needed to see the recommendation products in action. You have already completed the first half of the steps. Now let's get started on the remaining steps.  
+This is a brief overview of the steps needed to see the recommendation products in action. You have already completed half of the steps. Now let's get started on the remaining steps.  
 
 1) Put product catalog structure to S3
 -------------------------------------

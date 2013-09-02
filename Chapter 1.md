@@ -67,6 +67,10 @@ log. This recommendation engine consists of a Hadoop cluster, transaction log ge
 processor written with Apache Mahout. 
 
 3) **A deployment and configuration management automation platform** based on [Qubell Adaptive PaaS technology](http://qubell.com/product/qubell-platform/). This platform does the heavy lifting of automatically deploying new instances of the web store to Amazon on a click of a button, provision the recommendation engine including Hadoop, HDFS and Mahout to Amazon EC2 and S3, run Hadoop jobs to generate new transaction logs and recommendations, load new product recommendations to the web store, run Ganglia’s monitoring agents, and execute all other automated administrative activities.
+  
+![Workflow Diagram](/Images/steps2.png) 
+
+Here is a workflow diagram of the steps necessary to complete the launching process of this starter kit.
 
 Main Use Cases
 --------------

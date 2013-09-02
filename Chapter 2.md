@@ -110,7 +110,7 @@ Now you are ready to add your testing environment. To do so, go to the "Environm
 
 ![Add environment](/Images/environment.png)
 
-Specify environment name as "Test" (or a name of your own preference), select "Qubell/us-east" for "Execute:on" and press "Add." A new environment will be open. 
+Specify environment name as "Test" (or a name of your own preference), select "Qubell/us-east" and press "Add." A new environment will be open. 
 
 Add Amazon cloud to “Test” environment
 --------------------------------------

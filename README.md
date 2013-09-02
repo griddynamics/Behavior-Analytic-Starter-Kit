@@ -49,6 +49,7 @@ Developer Documentation
 - [Glossary](Glossary.md)
 - [Troubleshooting](https://docs.google.com/document/d/19H3Uujw54vJQlbgqc4XmZ7gWptDeNW0KZ9iOWq0dMXI/edit#)
 - [Helpful Links](Helpful%20Links.md)
+- [Troubleshooting](Troubleshooting.md)
 
 
 Useful Links

@@ -47,7 +47,6 @@ Developer Documentation
 - [Chapter 5](Chapter%205.md)- To See the Recommendations
 - [Chapter 6](Chapter%206.md)- Summary and What's Next?
 - [Glossary](Glossary.md)
-- [Troubleshooting](https://docs.google.com/document/d/19H3Uujw54vJQlbgqc4XmZ7gWptDeNW0KZ9iOWq0dMXI/edit#)
 - [Helpful Links](Helpful%20Links.md)
 - [Troubleshooting](Troubleshooting.md)
 

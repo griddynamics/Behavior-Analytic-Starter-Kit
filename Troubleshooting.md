@@ -88,7 +88,7 @@ Solution: Unknown.
 
 3.8 Unknown server error.
 Solution: Unknown.
-
+![Error](/Images/3.8.png)
 
 
 

@@ -51,6 +51,8 @@ Buy any item, click on the shopping cart icon in the top right corner, and you s
 
 ![recommendations in action](/Images/initial recommendations.png)
 
+If you are unable to successfully view your recommendations, please visit our [Troubleshooting](Troubleshooting.md) page or email [BASK@griddynamics.com](mailto:BASK@griddynamics.com) and we will try to resolve your issue(s) as soon as possible.
+
 
   **Next Chapter:** [Chapter 6- Summary and What's Next?](Chapter%206.md)
 

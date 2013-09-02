@@ -50,11 +50,31 @@ Once the web store successfully launched, you can start interacting with it. To 
 
 ![Web store URL](Images/Web store url.png)
 
-Go to that URL and you should see the web store. Unfortunately you will not be able to see the recommendations until the Recommendation Engine has been configured and set up, which we will cover in the next chapters. 
+Go to that URL and you should see the web store. 
 
 ![Web store](Images/Web store.png)
 
 As you may have guessed, this store URL was created dynamically for this particular instance of the store. You can launch another store at any time. When it comes up, you’ll get a different URL. Once an instance of the web store is destroyed, it’s public URL will become invalid. 
+
+Product recommendations in action on the web store
+-----------------------------------------------------------
+To see how product recommendations work:
+- Step 1: Go to myStore home page: TO BE WRITTEN
+- Step 2: Find a product called “xyz” and put it in your shopping cart: TO BE WRITTEN
+- Step 3: To go check out: TO BE WRITTEN
+
+![recommendations](/Images/initial recommendations.png)
+
+Here is your XYZ in the cart, and you can also see a number of related products that were chosen by the web store to convince me to buy more. That’s how product recommendation works, in a nutshell.
+
+
+How was this product recommendation module incorporated into the web store?
+---------------------------------------------------------------------------
+Product recommendations is a feature of a web store that can be added on to already functioning web store at any time. To demonstrate how this can be done,  we took an off-the-shelf open source web store framework Broadleaf that didn’t have product recommendations, and extended the store to have them. Specifically, we did the following things:
+- Extended Web Store UI with simple product recommendation widget to render recommendations as a part of check-out UI.
+- Extended web store back end to store product recommendations and find recommendations associated with a given set of selected products.
+- Wrote an utility that loads recommendations from a file when recommendations are recomputed
+The actual computation of recommendations happens outside of the web store and inside the analytics platform. The web store should only be concerned with using the recommendations that have been computed somewhere else.
 
 
 Product Catalog and Product Recommendations Workflow
@@ -67,6 +87,10 @@ You’ve seen the definition of these functions in the manifest for the store de
 - **Load_product_catalog_from_S3:** this action is used to upload a new version of a catalog from S3. For example, the catalog used in this starter kit is not native to Broadleaf project. Instead, we used a demo product catalog from Magento, a popular open source eCommerce technology that you can find here. 
 - **Save_product_catalog_structure_to_S3:** this actions puts the product information to S3 where the recommendation engine can pick it up. The engine doesn’t need a full catalog with prices and images; instead it needs to understand the structure of the catalog and the dependencies between products. We call a file with such information Product Catalog Structure file and you can find a default one here.
 - **Load_recommendations_from_S3:** this action pulls newly computed recommendation file from S3 where recommendation engine stores it.
+
+Can I “play” with these action buttons or modify the web store’s source code to behave differently?
+---------------------------------------------------------------------------------------------------
+Of course you can- this is the point of this kit. Feel free to experiment with any of these buttons. As long as you don’t change any of the default values of parameters, the system should work correctly. If you decide to modify default parameters to point to a different S3 bucket, or use different files for catalog and/or recommendations - go ahead. Just keep in mind that debugging in not always easy and you are on your own. If you get stuck, please feel free to write to [BASK@griddynamics.com](mailto:BASK@griddyanmics.com) with your question and we’ll try to help. 
 
 
 **Next Chapter:** [Chapter 4- Working with Recommendation Engine](Chapter%204.md)

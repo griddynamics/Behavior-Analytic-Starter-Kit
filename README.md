@@ -17,7 +17,18 @@ Behavioral Analytics Starter Kit supports the following main use cases out of th
 - Push new recommendations to the web store
 - Use monitoring tool Ganglia to  monitor the cluster
 
+Below is an example of the web store displaying its product recommendations.
+![Recommendations](/Images/initial recommendations.png)
 
+Third Party Components of the Kit
+---------------------------------
+- [Amazon AWS account](http://aws.amazon.com/)- Your own
+- [Qubell express account](http://express.qubell.com)- Free, register at [qubell.com](http://qubell.com)
+- Sample web store: [Broadleaf Commerce](http://www.broadleafcommerce.org/)- is distributed with the kit and available under Apache 2.0.
+- Recommendation engine: [Hadoop]()- is distributed with the kit and available under (LICENSE LINK NEEDED.)
+- Machine learning library: [Apache Mahout](http://mahout.apache.org/)
+- Monitoring: [Ganglia](http://ganglia.sourceforge.net/)
+- Product catalog: [Magento Commerce](http://www.magentocommerce.com/)
 
 Developer Documentation
 -----------------------
@@ -30,16 +41,6 @@ Developer Documentation
 - [Glossary](Glossary.md)
 - [Troubleshooting](https://docs.google.com/document/d/19H3Uujw54vJQlbgqc4XmZ7gWptDeNW0KZ9iOWq0dMXI/edit#)
 
-
-Third Party Components of the Kit
----------------------------------
-- [Amazon AWS account](http://aws.amazon.com/)- Your own
-- [Qubell express account](http://express.qubell.com)- Free, register at [qubell.com](http://qubell.com)
-- Sample web store: [Broadleaf Commerce](http://www.broadleafcommerce.org/)- is distributed with the kit and available under Apache 2.0.
-- Recommendation engine: [Hadoop]()- is distributed with the kit and available under (LICENSE LINK NEEDED.)
-- Machine learning library: [Apache Mahout](http://mahout.apache.org/)
-- Monitoring: [Ganglia](http://ganglia.sourceforge.net/)
-- Product catalog: [Magento Commerce](http://www.magentocommerce.com/)
 
 Useful Links
 ------------

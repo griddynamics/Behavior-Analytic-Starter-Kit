@@ -1,6 +1,6 @@
 Troubleshooting
 ===============
-Catalog of common user error message
+[Catalog of common user error message]
 
 Categories:
 -----------

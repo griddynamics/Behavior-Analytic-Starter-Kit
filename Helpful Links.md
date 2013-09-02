@@ -10,4 +10,6 @@ Helpful Links
 - **Amazon EC2 Security Set up-** [http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html#adding-security-group-rule](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html#adding-security-group-rule)
 - **Email for questions-** [BASK@griddynamics.com](mailto:BASK@griddynamics.com)
 - **Research Paper: "PFP: Parallel FP-Growth for Query Recommendation"-** [http://infolab.stanford.edu/~echang/recsys08-69.pdf](http://infolab.stanford.edu/~echang/recsys08-69.pdf)
+- **Home of Apache Hadoop Project-** [http://hadoop.apache.org/](http://hadoop.apache.org/)
+
 

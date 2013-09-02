@@ -43,7 +43,8 @@ The final step to receiving the recommendations is to load the recommendations f
 
 5) To View Your Recommendations
 ----------------------------
-To view your recommendations, open up the Web Store URL link located in the Web Store application. 
+To view your recommendations, open up the Web Store URL link located in the Web Store application.
+
 ![web store url link](/Images/url link.png)
 
 Buy any item, click on the shopping cart icon in the top right corner, and you should be able a number of related products that were chosen by the web store to convince you to buy more recommended products. 
@@ -51,6 +52,6 @@ Buy any item, click on the shopping cart icon in the top right corner, and you s
 ![recommendations in action](/Images/initial recommendations.png)
 
 
-**Next Chapter:** [Chapter 6- Summary and What's Next?](Chapter%206.md)
+  **Next Chapter:** [Chapter 6- Summary and What's Next?](Chapter%206.md)
 
 

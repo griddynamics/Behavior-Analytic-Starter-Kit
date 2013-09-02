@@ -54,20 +54,8 @@ Set-up Amazon account
 ---------------------
 Since you’ll be deploying the analytics and sample web store on Amazon cloud, you need to have an Amazon account, configure its security group to allow traffic to your applications, and add that Amazon account to your Qubell portal. 
 - **Obtain Amazon EC2 account capable of creating EC2 nodes and using S3 service.** If you don’t yet have an account on Amazon, it can be done [here](http://aws.amazon.com/account/). If you already have one, move to the next step.
-- **Set-up security group.** The EC2 security group “default” has to allow connections to the application you’ll be deploying using your account. Below is the list of ports that have to be open for each application or service using the [Amazon portal](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html#adding-security-group-rule): 
-  - 22 (TCP, SSH)
-  - 80 (TCP, HTTP of httpd)
-  - 443 (TCP, НTTPS of httpd)
-  - 8080 (TCP, Tomcat)
-  - 8649 (TCP and UDP, Ganglia)
-  - 8020 (TCP, NameNode DFS)
-  - 50070 (TCP, HTTP of NameNode WebUI)
-  - 8021 (TCP, JobTracker)
-  - 50030 (TCP, HTTP of JobTracker WebUI)
-  - 50010 (TCP, DataNode DFS)
-  - 50020 (TCP, DataNode IPC)
-  - 50075 (TCP, HTTP of DataNode WebUI)
-  - 50060 (TCP, HTTP of TaskTracker WebUI)
+- **Set-up security group.** The EC2 security group “default” has to allow the following connections to the application you’ll be deploying using your account. [Amazon portal](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html#adding-security-group-rule): 
+
 
 Introduction to Qubell Platform Concepts
 ----------------------------------------

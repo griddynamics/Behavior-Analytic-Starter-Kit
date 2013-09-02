@@ -23,8 +23,8 @@ Behavioral Analytics Starter Kit supports the following main use cases out of th
 - Push new recommendations to the web store
 - Use monitoring tool Ganglia to  monitor the cluster
 
-Workflow Diagram
-----------------
+Main Workflows
+---------------
 Here is a brief outline of the steps required to successfully see the product recommendations.
 ![Steps](/Images/steps2.png)
 
@@ -50,12 +50,6 @@ Developer Documentation
 - [Helpful Links](Helpful%20Links.md)
 - [Troubleshooting](Troubleshooting.md)
 
-
-Useful Links
-------------
-- Prime on PFP, a popular machine learning algorithm for discovering frequently co-occurent items: [http://infolab.stanford.edu/~echang/recsys08-69.pdf](http://infolab.stanford.edu/~echang/recsys08-69.pdf)
-- Home of Apache Hadoop Project: [http://hadoop.apache.org/](http://hadoop.apache.org/)
-- Qubell Developer Documentation: [http://docs.qubell.com/](http://docs.qubell.com/)
 
 License
 -------

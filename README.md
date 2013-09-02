@@ -23,6 +23,7 @@ Here is a brief outline of the steps required to successfully see the product re
 ![Steps](/Images/steps2.png)
 
 Below is an example of the web store displaying its product recommendations.
+
 ![Recommendations](/Images/initial recommendations.png)
 
 Third Party Components of the Kit

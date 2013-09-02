@@ -17,6 +17,11 @@ Behavioral Analytics Starter Kit supports the following main use cases out of th
 - Push new recommendations to the web store
 - Use monitoring tool Ganglia to  monitor the cluster
 
+Workflow Diagram
+----------------
+Here is a brief outline of the steps required to successfully see the product recommendations.
+![Steps](/Images/steps2.png)
+
 Below is an example of the web store displaying its product recommendations.
 ![Recommendations](/Images/initial recommendations.png)
 

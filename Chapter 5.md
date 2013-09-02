@@ -50,18 +50,6 @@ Buy any item, click on the shopping cart icon in the top right corner, and you s
 
 ![recommendations in action](/Images/initial recommendations.png)
 
-How was this product recommendation module incorporated into the Web Store?
----------------------------------------------------------------------------
-Product recommendations is a feature of a web store that can be added on to already functioning web store at any time. To demonstrate how this can be done,  we took an off-the-shelf open source web store framework Broadleaf that didn’t have product recommendations, and extended the store to have them. Specifically, we did the following things:
-- Extended Web Store UI with simple product recommendation widget to render recommendations as a part of check-out UI.
-- Extended web store back end to store product recommendations and find recommendations associated with a given set of selected products.
-- Wrote an utility that loads recommendations from a file when recommendations are recomputed
-The actual computation of recommendations happens outside of the web store and inside the analytics platform. The web store should only be concerned with using the recommendations that have been computed somewhere else.
-
-Can I “play” with these action buttons or modify the web store’s source code to behave differently?
----------------------------------------------------------------------------------------------------
-Of course you can- this is the point of this kit. Feel free to experiment with any of these buttons. As long as you don’t change any of the default values of parameters, the system should work correctly. If you decide to modify default parameters to point to a different S3 bucket, or use different files for catalog and/or recommendations - go ahead. Just keep in mind that debugging in not always easy and you are on your own. If you get stuck, please feel free to write to [BASK@griddynamics.com](mailto:BASK@griddyanmics.com) with your question and we’ll try to help. 
-
 
 **Next Chapter:** [Chapter 6- Summary and What's Next?](Chapter%206.md)
 

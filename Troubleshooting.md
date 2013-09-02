@@ -36,8 +36,8 @@ Solution: Put transaction log to HDFS by executing “Generate new transaction l
 
 ![Error](/Images/2.1a.png)
 ![Error](/Images/2.1b.png)
-
-
+
+        
 **2.2 “Generate new transaction log” workflow fails without product catalog structure file in your S3 bucket.**
 Solution: Execute “Load product catalog structure to S3” workflow in Web Store application first.
 

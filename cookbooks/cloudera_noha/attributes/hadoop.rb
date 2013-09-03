@@ -70,7 +70,7 @@ default[:hadoop][:conf][:hdfs_site]["dfs.namenode.name.dir"] = "/data/1/dfs/nn"
 default[:hadoop][:conf][:hdfs_site]["dfs.datanode.data.dir"] = (1..node[:hadoop][:slave_disks]).map{ |num| "/data/#{num}/dfs/dn" }.join(",")
 default[:hadoop][:conf][:hdfs_site]["dfs.webhdfs.enabled"] = true
 default[:hadoop][:conf][:hdfs_site]["dfs.namenode.http-address"] =  "#{node[:hadoop][:nn][:host]}:#{node[:hadoop][:nn][:ports][:http]}"
-
+default[:hadoop][:conf][:hdfs_site]["dfs.namenode.rpc-address"] = "#{node[:hadoop][:nn][:host]}:8020"
 
 ########################
 # Mapred configuration #

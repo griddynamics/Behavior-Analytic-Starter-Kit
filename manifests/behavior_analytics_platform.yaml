@@ -273,13 +273,13 @@ Generate_new_transaction_log:
             action: .execute_job
             precedingPhases: [ downloading_recommendations, downloading_dataset_configuration, prepare_generating]
             parameters:
-                job_url: ${job_url}
+                job_url: ${job_url} 
                 job_download_path: "/tmp/transaction_log_generator"
                 job_parameters: "-Dmapred.job.map.memory.mb=2048 -c /tmp/transaction_log_generator/`basename ${dataset_config_url}` -p /tmp/transaction_log_generator/${product_catalog_filename} -o /tmp/transaction_log"
     return:
         transaction_log_hdfs_path:
             description: "HDFS path to transaction log:"
-            value: "hdfs://tmp/transaction_log"
+            value: "hdfs:///tmp/transaction_log"
 
 Compute_new_recommendations:
     parameters:
@@ -339,7 +339,7 @@ Compute_new_recommendations:
             value: "s3://{$.config.properties.s3_bucket_name}/${recommendation_filename}"
         analytics_result_hdfs_path:
             description: "HDFS path to analytics result:"
-            value: "hdfs://tmp/fp/"
+            value: "hdfs:///tmp/fp/"
 
 ######################################
 # Transaction log transfer workflows #
@@ -429,7 +429,7 @@ Load_transaction_log_from_S3:
     return:
         analytics_result_path:
             description: "Transaction log HDFS output path"
-            value: "hdfs://tmp/transaction_log/${s3_transaction_log_filename}"
+            value: "hdfs:///tmp/transaction_log/${s3_transaction_log_filename}"
 
 ####################    
 # Hidden workflows #

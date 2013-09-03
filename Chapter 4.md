@@ -76,9 +76,57 @@ We’ve integrated three popular tools that can be used to gain insight into the
 
 ![Hadoop cluster](Images/jobtracker.png)
 
-  - **Job tracker** shows (TBW)
+  - **JobTracker(MapReduce)-** JobTracker web UI provides information on the overall job statistics of the Hadoop cluster, host and port information, start time, tracker counts, heap information, scheduling information, current running jobs, retired jobs, and a job history log. Following resources that can be monitored from the MapReduce- JobTracker web interface. 
+    - Common information:
+      - Job Tracker State
+      - Job tracker Start date and time
+      - Version of MapReduce
+    - Cluster Summary:
+      - Running Map Tasks
+      - Running Reduce Tasks
+      - Total Submissions
+      - Nodes
+      - Occupied Map Slots
+      - Occupied Reduce Slots
+      - Reserved Map Slots
+      - Reserved Reduce Slots
+      - Map Task Capacity
+      - Reduce Task Capacity
+      - Avg. Tasks/Node
+      - Blacklisted Nodes
+      - Excluded Nodes
+    - Scheduling Information:
+      - Running Jobs
+      - Retired Jobs
+      - Job tracker Logs  
   - **Monitoring** is done by a popular tool Ganglia (TBW)
-  - **Namenode HDFS** - TBW
+  - **Namenode HDFS** - Namenode displays the basic information about the current status of the cluster. It includes information about the Data nodes in the cluster and basic statistics of the cluster, shost and port information, information about namenode start date, the number of live, dead, and decommissioned nodes, safe mode status, and heap infor­mation.Following information is available via Namenode web UI:
+    - Common information:
+      - Name node Start date and time
+      - Version of CDH
+    - Cluster Summary:
+      - Security status
+      - Number of files and directories
+      - Heap and Non Heap Memory information.
+      - Configured Capacity
+      - DFS Used
+      - Non DFS Used
+      - DFS Remaining
+      - DFS Used%
+      - DFS Remaining%
+      - Block Pool Used
+      - Block Pool Used%
+      - DataNodes usages
+      - Live Nodes
+      - Dead Nodes
+      - Decommissioning Nodes
+      - Number of Under-Replicated Blocks
+      - NameNode Journal Status:
+      - NameNode Storage Directory Information
+
+
+
+
 
 In the next chapter we will discuss the steps necessary to see the Recommendation Engine in junction with the Web Store in action!
 

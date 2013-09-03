@@ -1,8 +1,8 @@
 kit:
-  name: "Behavior Analytic Starter Kit"
+  name: "Behavioral Analytics Starter Kit"
   link: https://griddynamics.com
   applications: [{
-    name: "Behavior Analytics Platform",
+    name: "Recommendation Engine",
     manifest: "https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/manifests/behavior_analytics_platform.yaml"
   }, {
     name: "Web Store ",
@@ -13,4 +13,4 @@ kit:
     link: http://griddynamics.com
   documentation:
     overview: |
-         Welcome to Behavior Analytics Starter Kit!
+         Welcome to Behavioral Analytics Starter Kit!

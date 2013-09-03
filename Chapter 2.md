@@ -73,7 +73,7 @@ To configure your security group:
 ![finished rules](/Images/finished rules.png)
 This is how the finished security group should look like. 
 
-Press "Apply Rule Change" to save changes. 
+5. Press "Apply Rule Change" to save changes. 
 
 For more information, you can visit [Amazon portal](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html#adding-security-group-rule). 
 

@@ -24,7 +24,7 @@ To computer new recoomendations, press the "Compute_new_recommendations" button 
 
 ![Compute new recommendations](/Images/compute new.png)
 
-Keep the default settings or you may change them as you wish. Further description on the parameters are explained here: (LINK)
+Keep the default settings or you may change them as you wish. 
 
 ![Parameters](/Images/minSupport.png)
 

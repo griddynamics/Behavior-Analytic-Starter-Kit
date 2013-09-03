@@ -28,6 +28,10 @@ Main Workflows
 Here is a brief outline of the steps required to successfully see the product recommendations.
 ![Steps](/Images/steps2.png)
 
+Workflow Diagram
+----------------
+![Workflow Diagram](/Images/cloud diagram.png)
+
 Third Party Components of the Kit
 ---------------------------------
 - [Amazon AWS account](http://aws.amazon.com/)- Your own

@@ -129,6 +129,9 @@ From the same "Environments" tab, press "Add a Service" to add your secure vault
 
 ![Add service](/Images/service info.png)
 
+If an error like the picture below comes up, delete the default Service that is listed and add your own. 
+![error](/Images/environment error.png)
+
 Generate and Store SSH Keys   
 ---------------------------
 SSH (Secure Shell) is a pair of private and public key cryptography that allows secure authentication of users to allow login and manipulating of remote operating systems. One benefit of having a SSH key is that users can be authenticated without the need of sending a password to the network. SSH keys always come in pairs, private and public- the public key can be distributed with any SSH server, while the private key is to be safely guarded by the owner. The key pair authenticates the user by verifying that the public and private keys match with each other. Because one cannot access your account without both key pairs, SSH is a much more safe and secure form of storing your information. 

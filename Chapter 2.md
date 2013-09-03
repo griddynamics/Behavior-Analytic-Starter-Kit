@@ -34,10 +34,6 @@ Now that you have the account on Qubell, let’s import the content of the Start
 
 ![Get it now](Images/Get it now 2.png)
 
-- Login to Qubell
-
-![Log in](Images/Log in.png)
-
 - Provide the following values to the fields to add your two applications to the platform:
   - Display name: Recommendation Engine
   - Display name: Web store 

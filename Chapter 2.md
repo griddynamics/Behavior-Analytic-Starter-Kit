@@ -133,9 +133,11 @@ From the same "Environments" tab, press "Add a Service" to add your secure vault
 
 ![Add service](/Images/service info.png)
 
-Generate and Store SSH Keys
+Generate and Store SSH Keys   
 ---------------------------
-To get, upload, or regenerate keys, go to the subsection "Services" under the tab "Platform." To upload keys, press "Edit," specify service name and press "Upload" button. To renegerate keys, press "Edit," and then "Regenerate" button. SSH Keys should appear.  (EXPLAIN SSH KEYS. DIFFERENCE BETWEEN UPLOAD/REGENERATE KEYS.)
+SSH (Secure Shell) is a pair of private and public key cryptography that allows secure authentication of users to allow login and manipulating of remote operating systems. One benefit of having a SSH key is that users can be authenticated without the need of sending a password to the network. SSH keys always come in pairs, private and public- the public key can be distributed with any SSH server, while the private key is to be safely guarded by the owner. The key pair authenticates the user by verifying that the public and private keys match with each other. Because one cannot access your account without both key pairs, SSH is a much more safe and secure form of storing your information. 
+
+To upload or regenerate keys, go to the subsection "Services" under the tab "Platform." If you already have an existing SSH key, you can upload keys. To do so, press "Edit," specify service name and press "Upload" button. If you do not have an existing SSH key, or wish to create a new one (for example, if you think the other keys are unsafe), you can regenerate keys. To do so, press "Edit," and then "Regenerate" button. SSH Keys should appear.
 
 ![SSH keys](/Images/ssh keys.png)
 

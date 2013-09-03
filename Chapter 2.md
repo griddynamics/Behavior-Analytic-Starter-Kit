@@ -62,7 +62,7 @@ To configure your security group:
 2. In the navigation pane, click Security Groups.
 3. Select the security group named "default." 
 4. Click on the tab "Inbound" to add the following rules. There should already be three default rules set up. 
-
+    
 ![default rules](/Images/default rules.png)
 - a) Choose "All TCP" from "Create a new rule", leave "Source" as default (0.0.0.0/0), and click "Add Rule." You should see a new rule added under TCP Port [0 - 65535].
 - b) Choose "SSH" from "Create a new rule", leave "Source" as default (0.0.0.0/0), and click "Add Rule." You should see a new rule added under TCP Port [22(SSH)].
@@ -70,10 +70,11 @@ To configure your security group:
 - d) Choose "MYSQL" from "Create a new rule", leave "Source" as default (0.0.0.0/0), and click "Add rule." You should see a new rule added under TCP Port [3306(MYSQL)].
 - e) Choose "Custom TCP rule," "Port range" as "8080," leave "Source" as default (0.0.0.0/0), and click "Add rule." You should see a new rule added under TCP Port [8080(HTTP*)].
 
-![finished rules](/Images/finished rules.png)
-This is how the finished security group should look like. 
+This is how the finished security group should look like.
 
-5. Press "Apply Rule Change" to save changes. 
+![finished rules](/Images/finished rules.png)
+
+5.Press "Apply Rule Change" to save changes. 
 
 For more information, you can visit [Amazon portal](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html#adding-security-group-rule). 
 

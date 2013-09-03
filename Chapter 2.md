@@ -53,21 +53,30 @@ You are almost ready to launch your applications, as soon as you provide and con
 Set-up Amazon account
 ---------------------
 Since you’ll be deploying the analytics and sample web store on Amazon cloud, you need to have an Amazon account, configure its security group to allow traffic to your applications, and add that Amazon account to your Qubell portal. 
-- **Obtain Amazon EC2 account capable of creating EC2 nodes and using S3 service.** If you don’t yet have an account on Amazon, it can be done here. If you already have one, move to the next step.
-- **Set-up security group.** The EC2 security group “default” has to allow connections to the application you’ll be deploying using your account. Below is the list of ports that have to be open for each application or service using the [Amazon portal](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html#adding-security-group-rule): 
-  - 22 (TCP, SSH)
-  - 80 (TCP, HTTP of httpd)
-  - 443 (TCP, НTTPS of httpd)
-  - 8080 (TCP, Tomcat)
-  - 8649 (TCP and UDP, Ganglia)
-  - 8020 (TCP, NameNode DFS)
-  - 50070 (TCP, HTTP of NameNode WebUI)
-  - 8021 (TCP, JobTracker)
-  - 50030 (TCP, HTTP of JobTracker WebUI)
-  - 50010 (TCP, DataNode DFS)
-  - 50020 (TCP, DataNode IPC)
-  - 50075 (TCP, HTTP of DataNode WebUI)
-  - 50060 (TCP, HTTP of TaskTracker WebUI)
+- **Obtain Amazon EC2 account capable of creating EC2 nodes and using S3 service.** If you don’t yet have an account on Amazon, it can be done [here](http://aws.amazon.com/account/). 
+- **Set-up security group.** The EC2 security group “default” has to allow the following connections to the application you’ll be deploying using your account. 
+
+To configure your security group:
+
+1. Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
+2. In the navigation pane, click Security Groups.
+3. Select the security group named "default." 
+4. Click on the tab "Inbound" to add the following rules. There should already be three default rules set up. 
+    
+![default rules](/Images/default rules.png)
+- a) Choose "All TCP" from "Create a new rule", leave "Source" as default (0.0.0.0/0), and click "Add Rule." You should see a new rule added under TCP Port [0 - 65535].
+- b) Choose "SSH" from "Create a new rule", leave "Source" as default (0.0.0.0/0), and click "Add Rule." You should see a new rule added under TCP Port [22(SSH)].
+- c) Choose  "HTTP" from "Create a new rule", leave "Source" as default (0.0.0.0/0), and click "Add Rule." You should see a new rule added under TCP Port [80(HTTP)].
+- d) Choose "MYSQL" from "Create a new rule", leave "Source" as default (0.0.0.0/0), and click "Add rule." You should see a new rule added under TCP Port [3306(MYSQL)].
+- e) Choose "Custom TCP rule," "Port range" as "8080," leave "Source" as default (0.0.0.0/0), and click "Add rule." You should see a new rule added under TCP Port [8080(HTTP*)].
+
+This is how the finished security group should look like.
+
+![finished rules](/Images/finished rules.png)
+
+5.Press "Apply Rule Change" to save changes. 
+
+For more information, you can visit [Amazon portal](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html#adding-security-group-rule). 
 
 Introduction to Qubell Platform Concepts
 ----------------------------------------
@@ -110,7 +119,7 @@ Now you are ready to add your testing environment. To do so, go to the "Environm
 
 ![Add environment](/Images/environment.png)
 
-Specify environment name as "Test" (or a name of your own preference) and press "Add." A new environment will be open. 
+Specify environment name as "Test" (or a name of your own preference), select "Qubell/us-east" and press "Add." A new environment will be open. 
 
 Add Amazon cloud to “Test” environment
 --------------------------------------
@@ -124,9 +133,11 @@ From the same "Environments" tab, press "Add a Service" to add your secure vault
 
 ![Add service](/Images/service info.png)
 
-Generate and Store SSH Keys
+Generate and Store SSH Keys   
 ---------------------------
-To get, upload, or regenerate keys, go to the subsection "Services" under the tab "Platform." To upload keys, press "Edit," specify service name and press "Upload" button. To renegerate keys, press "Edit," and then "Regenerate" button. SSH Keys should appear.  (EXPLAIN SSH KEYS. DIFFERENCE BETWEEN UPLOAD/REGENERATE KEYS.)
+SSH (Secure Shell) is a pair of private and public key cryptography that allows secure authentication of users to allow login and manipulating of remote operating systems. One benefit of having a SSH key is that users can be authenticated without the need of sending a password to the network. SSH keys always come in pairs, private and public- the public key can be distributed with any SSH server, while the private key is to be safely guarded by the owner. The key pair authenticates the user by verifying that the public and private keys match with each other. Because one cannot access your account without both key pairs, SSH is a much more safe and secure form of storing your information. 
+
+To upload or regenerate keys, go to the subsection "Services" under the tab "Platform." If you already have an existing SSH key, you can upload keys. To do so, press "Edit," specify service name and press "Upload" button. If you do not have an existing SSH key, or wish to create a new one (for example, if you think the other keys are unsafe), you can regenerate keys. To do so, press "Edit," and then "Regenerate" button. SSH Keys should appear.
 
 ![SSH keys](/Images/ssh keys.png)
 

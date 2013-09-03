@@ -14,11 +14,7 @@ Once you have successfully loaded the product catalog from S3 to Web Store, pres
 
 2) Generate sample transaction log
 -------------------------------
-To generate a sample transaction log, you must first go to the Recommendation Engine application and click on the "Load_transaction_log_from_S3" button to load the transaction log. 
-
-![Load transaction log](/Images/load transaction log.png)
-
-After the application has finished successfully launching that job, next click on the "Generate_new_transaction_log" to generate a sample transaction log. As a result, a transaction log generator job (LINK describing transaction log generator job) will be launched. Keep the default settings or you may change them (URLs to transaction log generator job and configuration file, and your Amazon S3 bucket and filename), as you wish.
+After the application has finished successfully launching that job, next click on the "Generate_new_transaction_log" to generate a sample transaction log. As a result, a transaction log generator job will be launched. Keep the default settings or you may change them (URLs to transaction log generator job and configuration file, and your Amazon S3 bucket and filename), as you wish.
 
 ![Get new transaction log](/Images/generate transaction.png)
 

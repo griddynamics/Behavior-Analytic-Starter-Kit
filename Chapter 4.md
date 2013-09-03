@@ -44,7 +44,7 @@ To understand how this engine works, let’s look at the action workflows define
 
 **Scale_up_cluster:** this action will add a requested number of slave nodes to already existing cluster.
 
-**Generate_new_transaction_log:** this action takes a product catalog structure file from HDFS, and a configuration file for the algorithm, runs a job to generate recommendations and stores the result in a transaction log file on stored again on HDFS.
+**Generate_new_transaction_log:** this action takes a product catalog structure file from S3, and a configuration file for the algorithm, runs a job to generate recommendations and stores the result in a transaction log file on stored again on HDFS.
 
 **Save_transaction_log_to_S3:** this action moves the transaction log from HDFS to S3 for persistent storage. Note: in the real world, this file can be very large and moving it around might be quite slow and expensive. A different architecture would be needed if this was a truly large-scale log.
 

@@ -68,9 +68,13 @@ processor written with Apache Mahout.
 
 3) **A deployment and configuration management automation platform** based on [Qubell Adaptive PaaS technology](http://qubell.com/product/qubell-platform/). This platform does the heavy lifting of automatically deploying new instances of the web store to Amazon on a click of a button, provision the recommendation engine including Hadoop, HDFS and Mahout to Amazon EC2 and S3, run Hadoop jobs to generate new transaction logs and recommendations, load new product recommendations to the web store, run Ganglia’s monitoring agents, and execute all other automated administrative activities.
  
-Workflow Diagram
+Main Workflow
 ----------------
 ![Workflow Diagram](/Images/steps2.png) 
+
+Workflow Diagram
+----------------
+![Workflow Diagram](/Images/cloud diagram.png)
 
 Main Use Cases
 --------------

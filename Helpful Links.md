@@ -11,5 +11,6 @@ Helpful Links
 - **Email for questions-** [BASK@griddynamics.com](mailto:BASK@griddynamics.com)
 - **Research Paper: "PFP: Parallel FP-Growth for Query Recommendation"-** [http://infolab.stanford.edu/~echang/recsys08-69.pdf](http://infolab.stanford.edu/~echang/recsys08-69.pdf)
 - **Home of Apache Hadoop Project-** [http://hadoop.apache.org/](http://hadoop.apache.org/)
+- **Parallel Frequent Pattern Mining-** [https://cwiki.apache.org/confluence/display/MAHOUT/Parallel+Frequent+Pattern+Mining](https://cwiki.apache.org/confluence/display/MAHOUT/Parallel+Frequent+Pattern+Mining)
 
 

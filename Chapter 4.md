@@ -44,7 +44,7 @@ To understand how this engine works, let’s look at the action workflows define
 
 **Scale_up_cluster:** this action will add a requested number of slave nodes to already existing cluster.
 
-**Generate_new_transaction_log:** this action takes a product catalog structure file from HDFS, and a configuration file for the algorithm, runs a job to generate recommendations and stores the result in a transaction log file on stored again on HDFS.
+**Generate_new_transaction_log:** this action takes a product catalog structure file from S3, and a configuration file for the algorithm, runs a job to generate recommendations and stores the result in a transaction log file on stored again on HDFS.
 
 **Save_transaction_log_to_S3:** this action moves the transaction log from HDFS to S3 for persistent storage. Note: in the real world, this file can be very large and moving it around might be quite slow and expensive. A different architecture would be needed if this was a truly large-scale log.
 
@@ -53,8 +53,8 @@ To understand how this engine works, let’s look at the action workflows define
 **Compute_new_recommendations:** this action takes a transaction log from HDFS,and a configuration parameters for the algorithm, runs a job to generates recommendations and saves the results in the recommendation file on local HDFS and on S3.
 
 This is the main job of the recommendation engine. 
-- **Save_tansaction_log_to_S3:** this action will move the transaction log from Hadoop’s local HDFS to S3 to persist for future use. This is where Web Store will take it from (UNFINISHED)
-- **Load_transaction_log_from_S3:** (UNFINISHED)
+- **Save_tansaction_log_to_S3:** this action will move the transaction log from Hadoop’s local HDFS to S3 to persist for future use. 
+- **Load_transaction_log_from_S3:** this action will move the transaction log from S3 to Hadoop's local HDFS to persist for future use. 
 
 
 Main Algorithm: Recommendation generator

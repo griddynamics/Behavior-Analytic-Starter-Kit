@@ -3,11 +3,7 @@ define :s3manage, :bucket => nil, :s3file => nil, :action => nil do
   unless [ "upload", "download" ].include?("#{params[:action]}")
     raise ArgumentError, "Unsupported action: #{params[:action]}"
   end
-
-  unless ::File.exists?("#{params[:name]}")
-    raise ArgumentError, "No such file or directory: #{params[:name]}"    
-  end
-
+  
   case params[:action]
     when "upload"    
       unless ::File.exists?("#{params[:name]}")

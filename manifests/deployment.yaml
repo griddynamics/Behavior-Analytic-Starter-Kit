@@ -4,12 +4,26 @@
 # @author Denis Khurtin (dkhurtin@griddynamics.com)
 #
 
+#################################
+# Description of env properties #
+#################################
+header:
+    services:
+        properties:
+            s3_bucket_name: consume-signal(string)
+
 launch:
     parameters:
         cookbooks_url:
             description: "Cookbooks URL:"
             default: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
     steps:
+        - get_env_props:
+            action: getEnvironmentProperties
+            parameters:
+                phase: get-env-props
+            output:
+                config: result
         - start_build_server_vm:
             action: provisionVms
             phase: provision_build_server

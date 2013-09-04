@@ -12,25 +12,42 @@ launch:
     steps:
         - start_build_server_vm:
             action: provisionVms
+            phase: provision_build_server
             parameters:
-                 roleName: build_server
-                 jcloudsNodeNamePrefix: build_server
+                hardwareId: m1.medium
+                imageId: us-east-1/ami-d41689bd
+                vmIdentity: ec2-user
+                roleName: build_server
+                jcloudsNodeNamePrefix: build_server
             output:
                  build_server_ips: ips
 
         - build_server_setup:
             action: chefsolo
             phase: server_setup
-            precedingPhases: [ start_build_server_vm ]
+            precedingPhases: [ provision_build_server ]
             parameters:
                 roles: [ build_server ]
-                runList: [ "recipe[java::openjdk]", "recipe[maven]", "recipe[git]" ]
+                runList: [ "recipe[java::openjdk]" ]
                 isSolo: true
                 recipeUrl: ${cookbooks_url}
                 jattrs:
                     java:
                         jdk_version: "7"
                         java_home: "/usr/lib/jvm/java/"
+
+        - install_dev_tools:
+            action: execrun
+            phase: install_dev_tools
+            precedingPhases: [ server_setup ]
+            parameters:
+                roles: [ build_server ]
+                isSudo: true
+                command:
+                    - bash -c
+                    - |
+                        yum -y install git || exit 1
+                        yum -y install maven || exit 2
 
     return:
         build_server_ip:

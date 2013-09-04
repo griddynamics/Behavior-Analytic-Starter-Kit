@@ -36,9 +36,9 @@ launch:
                         jdk_version: "7"
                         java_home: "/usr/lib/jvm/java/"
 
-        - install_dev_tools:
+        - install_git:
             action: execrun
-            phase: install_dev_tools
+            phase: install_git
             precedingPhases: [ server_setup ]
             parameters:
                 roles: [ build_server ]
@@ -47,7 +47,25 @@ launch:
                     - bash -c
                     - |
                         yum -y install git || exit 1
-                        yum -y install maven || exit 2
+
+        - install_maven:
+            action: execrun
+            phase: install_maven
+            precedingPhases: [ server_setup ]
+            parameters:
+                roles: [ build_server ]
+                isSudo: true
+                command:
+                    - bash -c
+                    - |
+                        cd /usr/local || exit 1
+                        wget "http://apache-mirror.rbc.ru/pub/apache/maven/maven-3/3.1.0/binaries/apache-maven-3.1.0-bin.tar.gz" || exit 2
+                        tar -xzf apache-maven-3.1.0-bin.tar.gz || exit 3
+                        echo 'export M2_HOME=/usr/local/apache-maven-3.1.0' > /etc/profile.d/maven.sh || exit 4
+                        echo 'export M2=$$M2_HOME/bin' >> /etc/profile.d/maven.sh || exit 5
+                        echo 'export PATH=$$M2:$$PATH' >> /etc/profile.d/maven.sh || exit 6
+                        source /etc/profile.d/maven.sh || exit 7
+                        mvn -version || exit 8
 
     return:
         build_server_ip:

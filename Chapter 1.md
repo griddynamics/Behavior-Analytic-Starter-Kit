@@ -72,6 +72,10 @@ Workflow Diagram
 ----------------
 ![Workflow Diagram](/Images/steps2.png) 
 
+System Architecture
+----------------
+![System Architecture](/Images/cloud diagram.png)
+
 Main Use Cases
 --------------
 Behavioral Analytics Starter Kit supports the following main use cases out of the box:

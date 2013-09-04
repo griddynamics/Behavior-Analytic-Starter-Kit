@@ -99,7 +99,16 @@ We’ve integrated three popular tools that can be used to gain insight into the
       - Running Jobs
       - Retired Jobs
       - Job tracker Logs  
-  - **Monitoring** is done by a popular tool Ganglia (TBW)
+  - **Monitoring** is done by a popular tool Ganglia that can be used as a metric collector and storage. Ganglia receives metrics directly from Hadoop. Ganglia collects following metric groups:
+    - CPU metrics
+    - Disk metrics
+    - Load metrics
+    - Memory metrics
+    - Network metrics
+    - Process metrics
+    - JVM metrics
+    - DFS metrics
+    - RPC metrics
   - **Namenode HDFS** - Namenode displays the basic information about the current status of the cluster. It includes information about the Data nodes in the cluster and basic statistics of the cluster, shost and port information, information about namenode start date, the number of live, dead, and decommissioned nodes, safe mode status, and heap infor­mation.Following information is available via Namenode web UI:
     - Common information:
       - Name node Start date and time
@@ -123,9 +132,6 @@ We’ve integrated three popular tools that can be used to gain insight into the
       - Number of Under-Replicated Blocks
       - NameNode Journal Status:
       - NameNode Storage Directory Information
-
-
-
 
 
 In the next chapter we will discuss the steps necessary to see the Recommendation Engine in junction with the Web Store in action!

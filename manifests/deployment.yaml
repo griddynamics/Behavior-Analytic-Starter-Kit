@@ -1,193 +1,133 @@
-launch:
-    steps:
-        - provision:
-            action: provisionAmazonVm
-            parameters:
-                 roleName: maven
-                 jcloudsNodeNamePrefix: debug_maven_install_plus
-            output:
-                 publicIp: ips
- 
-        - install-Oracle-JDK:
-            action: execCommandWithCD
-            parameters:
-                commandOne: "wget --no-cookies --header 'Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F' http://download.oracle.com/otn-pub/java/jdk/6u33-b03/jre-6u33-linux-i586.bin --no-check-certificate; chmod +x jre-6u33-linux-i586.bin;./jre-6u33-linux-i586.bin; ln -s /tmp/jre1.6.0_33/bin/java /usr/bin/java;"
-                targetDirectory: "/tmp/"
-                roleName: maven
-                phaseName: "install-Oracle-JDK"
-                precedingPhases: ["provision"]
- 
- 
-        - install-Open-JDK:
-            action: execCommandWithCD
-            parameters:
-                commandOne: "apt-get update;apt-get -y install openjdk-6-jdk"
-                targetDirectory: "/tmp/"
-                roleName: maven
-                phaseName: "install-Open-JDK"
-                precedingPhases: ["install-Oracle-JDK"]
- 
-        - install-maven:
-            action: "chefrun"
-            parameters:
-                roles: [ maven ]
-                runList: ["recipe[chef-maven3]"]
-                isSolo: true
-                recipeUrl: "https://s3.amazonaws.com/tmmpa2/cookbooks.tar.gz"
-                phase: "install-maven"
-                precedingPhases: ["install-Open-JDK"]
- 
-        - install-sources:
-             action: gitCloneWf
-             parameters:
-                url: "https://github.com/SpringSource/spring-petclinic/"
-                targetDirectory: "/home/ubuntu/test"
- 
- 
-        - run-maven-install:
-            action: execrun
-            description: run maven install
-            parameters:
-                phase: "run-maven-install"
-                roles: [ maven ]
-                isSudo: true
-                precedingPhases: ["exec"]
-                command:
-                    - "cd /home/ubuntu/test/;mvn3 install"
-#                     - "cd /home/ubuntu/test/;mvn3 install"
-    return:
-        ipAddress:
-            value: ${publicIp}
- 
- 
-gitCloneWf:
-    parameters:
-        url:
-            description: git workflow
-        targetDirectory:
-            description: where to clone
-    steps:
-        - install-git:
-            action: execrun
-            description: Install git on new machine
-            parameters:
-                phase: "install-git"
-                precedingPhases: ["install-maven"]
-                roles: [ maven ]
-                isSudo: true
-                command:
-                    - "which git || (which yum && sudo yum -y install git-core || sudo apt-get -y --force-yes install git-core) || true"
- 
-        - download-app:
-            action: execrun
-            description: Sample command for cloning git repos
-            parameters:
-                phase: "exec"
-                precedingPhases: ["install-git"]
-                roles: [ maven ]
-                isSudo: true
-                command:
-                    - "[ ! -d ${targetDirectory} ] && mkdir ${targetDirectory};"
-                    - git
-                    - clone
-                    - ${url}
-                    - ${targetDirectory}
- 
-execRunTest2:
-    parameters:
-        - commandOne:
-            description: command
-            default: undefined
-        - roleName:
-            default: defaultRole
- 
-    steps:
-        - install-git:
-            action: execrun
-            description: exec command
-            parameters:
-                roles: [ "${roleName}" ]
-                isSudo: true
-                command:
-                    - " ${commandOne}"
- 
-execCommandWithCD:
-    parameters:
-        - commandOne:
-            description: command
-        - targetDirectory:
-            description: where to execute
-        - roleName:
-            default: defaultRole
-        - phaseName:
-            description: phase name
-        - precedingPhases:
-            description: precedingPhases
- 
-    steps:
-        - exec-run-with-cd:
-            action: execrun
-            description: exec command
-            parameters:
-                phase: ${phaseName}
-                precedingPhases: ${precedingPhases}
-                roles: [ "${roleName}" ]
-                isSudo: true
-                command:
-                    - "[ ! -d ${targetDirectory} ] && mkdir ${targetDirectory}; cd ${targetDirectory};${commandOne}"
- 
+#
+# Copyright 2013, Grid Dynamics Inc. Deming Project.
+# @author Anton Haldin (ahaldin@griddynamics.com)
+# @author Denis Khurtin (dkhurtin@griddynamics.com)
+#
 
-jenkinsInstall:
+launch:
     parameters:
-        test1: 
-            description: test1 parameter1
-        test2:
-            description: test2 parameter2
+        cookbooks_url:
+            description: "Cookbooks URL:"
+            default: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
     steps:
-        - getJenkinsRepoKey:
-            action: execrun
-            description: get Jenkins repo key
+        - start_build_server_vm:
+            action: provisionVms
             parameters:
-                phase: "get-JenkinsRepoKey"
-                precedingPhases: ["deploy"]
-                roles: [web]
-                isSudo: true
-                command: 
-                     - "wget -q -O - http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add -"
-        - getJenkinsRepo:
-            action: execrun
-            description: get Jenkins repo
+                 roleName: build_server
+                 jcloudsNodeNamePrefix: build_server
+            output:
+                 build_server_ips: ips
+
+        - build_server_setup:
+            action: chefsolo
+            phase: server_setup
+            precedingPhases: [ start_build_server_vm ]
             parameters:
-                phase: "get-JenkinsRepo"
-                precedingPhases: ["get-JenkinsRepoKey"]
-                roles: [web]
-                isSudo: true
-                command: 
-                    - "sudo sh -c 'echo deb http://pkg.jenkins-ci.org/debian binary/ > /etc/apt/sources.list.d/jenkins.list'"
-        - aptGetUpdate:
+                roles: [ build_server ]
+                runList: [ "recipe[java::openjdk]", "recipe[maven]", "recipe[git]" ]
+                isSolo: true
+                recipeUrl: ${cookbooks_url}
+                jattrs:
+                    java:
+                        jdk_version: "7"
+                        java_home: "/usr/lib/jvm/java/"
+
+    return:
+        build_server_ip:
+            description: "Build Server IP:"
+            value: "{$.build_server_ips[0]}"
+
+
+Redeploy_java_artifacts:
+    parameters:
+        git_repo_url:
+            description: "Git repo URL:"
+            default: "https://github.com/griddynamics/Behavior-Analytic-Starter-Kit.git"
+        repo_localpath:
+            description: "Local path to repo"
+            default: "/var/local/git_repos/bask"
+        repo_branch:
+            description: "Git branch:"
+            default: "master"
+    steps:
+        - clone_git_repo:
             action: execrun
-            description: apt-get update
+            phase: clone_repository
             parameters:
-                phase: "apt-getUpdate"
-                precedingPhases: ["get-JenkinsRepo"]
-                roles: [web]
+                roles: [ build_server ]
                 isSudo: true
-                command: 
-                    - "sleep 120; sudo apt-get update"
-        - installJenkins:
+                command:
+                    - bash -c
+                    - |
+                        if [ -d ${repo_localpath} ]; then
+                            cd ${repo_localpath} || exit -1
+                            git fetch --all || exit -2
+                        else
+                            git clone ${git_repo_url} ${repo_localpath} || exit 1
+                            cd ${repo_localpath} || exit 2
+                        fi
+                        git reset --hard origin/${repo_branch} || exit 3
+
+        - build_maven_projects:
             action: execrun
-            description: jenkins install
+            phase: build_maven_projects
+            precedingPhases: [ clone_repository ]
             parameters:
-                phase: "install-Jenkins"
-                precedingPhases: ["apt-getUpdate"]
-                roles: [web]
+                roles: [ build_server ]
                 isSudo: true
-                command: 
-                    - "sudo apt-get -y install jenkins"
+                command:
+                    - bash -c
+                    - |
+                        cd ${repo_localpath}/maven_projects || exit 1
+                        mvn clean install || exit 2
+
+        - uploading_webstore_war_to_S3:
+            action: .s3manage
+            parameters:
+                localpath: "${repo_localpath}/maven_projects/web-store/site/target/site.war"
+                bucket: "{$.config.properties.s3_bucket_name}"
+                action: "upload"
+
+
+####################
+# Hidden workflows #
+####################
+.s3manage:
+    parameters:
+        aws_access_key_id:
+            description: "aws_access_key_id"
+        aws_secret_access_key:
+            description: "aws_secret_access_key"
+        localpath:
+            description: "local file path"
+        bucket:
+            description: "s3 bucket"
+        s3file:
+            description: "s3 file name (only for download)"
+            default: ""
+        action:
+            description: "file action"
+    steps:
+        s3transfer:
+            action: chefsolo
+            phase: transferring
+            parameters:
+                roles: [ build_server ]
+                runList: [ "recipe[s3manage::default]" ]
+                isSolo: true
+                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                jattrs:
+                    s3manage:
+                        access_key_id: ${aws_access_key_id}
+                        secret_access_key: ${aws_secret_access_key}
+                        localpath: ${localpath}
+                        bucket: ${bucket}
+                        s3file: ${s3file}
+                        action: ${action}
+
 
 destroy:
     steps:
-        - undeployEnv:
+        - destroy:
             action: undeployEnv
-            parameters:
-                phase: destroy
+            phase: destroy

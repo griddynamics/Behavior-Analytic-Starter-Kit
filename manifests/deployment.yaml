@@ -42,7 +42,7 @@ launch:
             precedingPhases: [ provision_build_server ]
             parameters:
                 roles: [ build_server ]
-                runList: [ "recipe[java::openjdk]" ]
+                runList: [ "recipe[java::openjdk]", "recipe[build-essential]", "recipe[s3manage::packages]" ]
                 isSolo: true
                 recipeUrl: ${cookbooks_url}
                 jattrs:
@@ -79,7 +79,8 @@ launch:
                         echo 'export M2=$$M2_HOME/bin' >> /etc/profile.d/maven.sh || exit 5
                         echo 'export PATH=$$M2:$$PATH' >> /etc/profile.d/maven.sh || exit 6
                         source /etc/profile.d/maven.sh || exit 7
-                        mvn -version || exit 8
+                        ln -s /usr/local/apache-maven-3.1.0/bin/mvn /usr/bin/mvn || exit 8
+                        mvn -version || exit 9
 
     return:
         build_server_ip:
@@ -132,6 +133,8 @@ Redeploy_java_artifacts:
 
         - uploading_webstore_war_to_S3:
             action: .s3manage
+            phase: uploading_webstore_war_war_to_S3
+            precedingPhases: [ build_maven_projects ]
             parameters:
                 localpath: "${repo_localpath}/maven_projects/web-store/site/target/site.war"
                 bucket: "{$.config.properties.s3_bucket_name}"

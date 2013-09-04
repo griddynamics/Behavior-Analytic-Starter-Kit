@@ -1,0 +1,193 @@
+launch:
+    steps:
+        - provision:
+            action: provisionAmazonVm
+            parameters:
+                 roleName: maven
+                 jcloudsNodeNamePrefix: debug_maven_install_plus
+            output:
+                 publicIp: ips
+ 
+        - install-Oracle-JDK:
+            action: execCommandWithCD
+            parameters:
+                commandOne: "wget --no-cookies --header 'Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F' http://download.oracle.com/otn-pub/java/jdk/6u33-b03/jre-6u33-linux-i586.bin --no-check-certificate; chmod +x jre-6u33-linux-i586.bin;./jre-6u33-linux-i586.bin; ln -s /tmp/jre1.6.0_33/bin/java /usr/bin/java;"
+                targetDirectory: "/tmp/"
+                roleName: maven
+                phaseName: "install-Oracle-JDK"
+                precedingPhases: ["provision"]
+ 
+ 
+        - install-Open-JDK:
+            action: execCommandWithCD
+            parameters:
+                commandOne: "apt-get update;apt-get -y install openjdk-6-jdk"
+                targetDirectory: "/tmp/"
+                roleName: maven
+                phaseName: "install-Open-JDK"
+                precedingPhases: ["install-Oracle-JDK"]
+ 
+        - install-maven:
+            action: "chefrun"
+            parameters:
+                roles: [ maven ]
+                runList: ["recipe[chef-maven3]"]
+                isSolo: true
+                recipeUrl: "https://s3.amazonaws.com/tmmpa2/cookbooks.tar.gz"
+                phase: "install-maven"
+                precedingPhases: ["install-Open-JDK"]
+ 
+        - install-sources:
+             action: gitCloneWf
+             parameters:
+                url: "https://github.com/SpringSource/spring-petclinic/"
+                targetDirectory: "/home/ubuntu/test"
+ 
+ 
+        - run-maven-install:
+            action: execrun
+            description: run maven install
+            parameters:
+                phase: "run-maven-install"
+                roles: [ maven ]
+                isSudo: true
+                precedingPhases: ["exec"]
+                command:
+                    - "cd /home/ubuntu/test/;mvn3 install"
+#                     - "cd /home/ubuntu/test/;mvn3 install"
+    return:
+        ipAddress:
+            value: ${publicIp}
+ 
+ 
+gitCloneWf:
+    parameters:
+        url:
+            description: git workflow
+        targetDirectory:
+            description: where to clone
+    steps:
+        - install-git:
+            action: execrun
+            description: Install git on new machine
+            parameters:
+                phase: "install-git"
+                precedingPhases: ["install-maven"]
+                roles: [ maven ]
+                isSudo: true
+                command:
+                    - "which git || (which yum && sudo yum -y install git-core || sudo apt-get -y --force-yes install git-core) || true"
+ 
+        - download-app:
+            action: execrun
+            description: Sample command for cloning git repos
+            parameters:
+                phase: "exec"
+                precedingPhases: ["install-git"]
+                roles: [ maven ]
+                isSudo: true
+                command:
+                    - "[ ! -d ${targetDirectory} ] && mkdir ${targetDirectory};"
+                    - git
+                    - clone
+                    - ${url}
+                    - ${targetDirectory}
+ 
+execRunTest2:
+    parameters:
+        - commandOne:
+            description: command
+            default: undefined
+        - roleName:
+            default: defaultRole
+ 
+    steps:
+        - install-git:
+            action: execrun
+            description: exec command
+            parameters:
+                roles: [ "${roleName}" ]
+                isSudo: true
+                command:
+                    - " ${commandOne}"
+ 
+execCommandWithCD:
+    parameters:
+        - commandOne:
+            description: command
+        - targetDirectory:
+            description: where to execute
+        - roleName:
+            default: defaultRole
+        - phaseName:
+            description: phase name
+        - precedingPhases:
+            description: precedingPhases
+ 
+    steps:
+        - exec-run-with-cd:
+            action: execrun
+            description: exec command
+            parameters:
+                phase: ${phaseName}
+                precedingPhases: ${precedingPhases}
+                roles: [ "${roleName}" ]
+                isSudo: true
+                command:
+                    - "[ ! -d ${targetDirectory} ] && mkdir ${targetDirectory}; cd ${targetDirectory};${commandOne}"
+ 
+
+jenkinsInstall:
+    parameters:
+        test1: 
+            description: test1 parameter1
+        test2:
+            description: test2 parameter2
+    steps:
+        - getJenkinsRepoKey:
+            action: execrun
+            description: get Jenkins repo key
+            parameters:
+                phase: "get-JenkinsRepoKey"
+                precedingPhases: ["deploy"]
+                roles: [web]
+                isSudo: true
+                command: 
+                     - "wget -q -O - http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add -"
+        - getJenkinsRepo:
+            action: execrun
+            description: get Jenkins repo
+            parameters:
+                phase: "get-JenkinsRepo"
+                precedingPhases: ["get-JenkinsRepoKey"]
+                roles: [web]
+                isSudo: true
+                command: 
+                    - "sudo sh -c 'echo deb http://pkg.jenkins-ci.org/debian binary/ > /etc/apt/sources.list.d/jenkins.list'"
+        - aptGetUpdate:
+            action: execrun
+            description: apt-get update
+            parameters:
+                phase: "apt-getUpdate"
+                precedingPhases: ["get-JenkinsRepo"]
+                roles: [web]
+                isSudo: true
+                command: 
+                    - "sleep 120; sudo apt-get update"
+        - installJenkins:
+            action: execrun
+            description: jenkins install
+            parameters:
+                phase: "install-Jenkins"
+                precedingPhases: ["apt-getUpdate"]
+                roles: [web]
+                isSudo: true
+                command: 
+                    - "sudo apt-get -y install jenkins"
+
+destroy:
+    steps:
+        - undeployEnv:
+            action: undeployEnv
+            parameters:
+                phase: destroy

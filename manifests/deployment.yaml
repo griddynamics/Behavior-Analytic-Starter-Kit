@@ -90,38 +90,31 @@ launch:
 
 Redeploy_java_artifacts:
     parameters:
-        git_repo_url:
-            description: "Git repo URL"
-            default: "https://github.com/griddynamics/Behavior-Analytic-Starter-Kit.git"
+        cookbooks_url:
+            description: "Cookbooks URL"
+            default: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
         repo_localpath:
             description: "Local path to repo"
             default: "/var/local/git_repos/bask"
-        repo_branch:
+        git_repo_url:
+            description: "Git repo URL"
+            default: "https://github.com/griddynamics/Behavior-Analytic-Starter-Kit.git"
+        git_branch:
             description: "Git branch"
             default: "master"
     steps:
-        - clone_git_repo:
-            action: execrun
-            phase: clone_repository
+        - fetch_git_repo_to_build_java_artifacts:
+            action: .fetch_git_repo
+            phase: fetch_git_repo_to_build_java_artifacts
             parameters:
-                roles: [ build_server ]
-                isSudo: true
-                command:
-                    - bash -c
-                    - |
-                        if [ -d ${repo_localpath} ]; then
-                            cd ${repo_localpath} || exit -1
-                            git fetch --all || exit -2
-                        else
-                            git clone ${git_repo_url} ${repo_localpath} || exit 1
-                            cd ${repo_localpath} || exit 2
-                        fi
-                        git reset --hard origin/${repo_branch} || exit 3
+                repo_localpath: ${repo_localpath}
+                git_repo_url: ${git_repo_url}
+                git_branch: ${git_branch}
 
         - build_maven_projects:
             action: execrun
             phase: build_maven_projects
-            precedingPhases: [ clone_repository ]
+            precedingPhases: [ fetch_git_repo_to_build_java_artifacts ]
             parameters:
                 roles: [ build_server ]
                 isSudo: true
@@ -130,7 +123,9 @@ Redeploy_java_artifacts:
                     - |
                         cd ${repo_localpath}/maven_projects || exit 1
                         mvn clean install || exit 2
-                        [ ! -d "${repo_localpath}/maven_artifacts" ] && rm -rf ${repo_localpath}/maven_artifacts || exit 3
+                        if [ -d "${repo_localpath}/maven_artifacts" ]; then
+                            rm -rf ${repo_localpath}/maven_artifacts || exit 3
+                        fi
                         mkdir "${repo_localpath}/maven_artifacts" || exit 4
                         cp ${repo_localpath}/maven_projects/web-store/site/target/site.war \
                            ${repo_localpath}/maven_artifacts/webstore.war || exit 5
@@ -146,6 +141,7 @@ Redeploy_java_artifacts:
             phase: uploading_webstore_to_S3
             precedingPhases: [ build_maven_projects ]
             parameters:
+                cookbooks_url: ${cookbooks_url}
                 localpath: "${repo_localpath}/maven_artifacts/webstore.war"
                 bucket: "{$.config.properties.s3_bucket_name}"
                 action: "upload"
@@ -155,6 +151,7 @@ Redeploy_java_artifacts:
             phase: uploading_webstore_admin_to_S3
             precedingPhases: [ build_maven_projects ]
             parameters:
+                cookbooks_url: ${cookbooks_url}
                 localpath: "${repo_localpath}/maven_artifacts/webstore-admin.war"
                 bucket: "{$.config.properties.s3_bucket_name}"
                 action: "upload"
@@ -164,6 +161,7 @@ Redeploy_java_artifacts:
             phase: uploading_transaction_log_generator_to_S3
             precedingPhases: [ build_maven_projects ]
             parameters:
+                cookbooks_url: ${cookbooks_url}
                 localpath: "${repo_localpath}/maven_artifacts/transaction-log-generator.jar"
                 bucket: "{$.config.properties.s3_bucket_name}"
                 action: "upload"
@@ -173,16 +171,69 @@ Redeploy_java_artifacts:
             phase: uploading_recommendation_processor_to_S3
             precedingPhases: [ build_maven_projects ]
             parameters:
+                cookbooks_url: ${cookbooks_url}
                 localpath: "${repo_localpath}/maven_artifacts/recommendation-processor.jar"
                 bucket: "{$.config.properties.s3_bucket_name}"
                 action: "upload"
 
+
+Redeploy_cookbooks:
+    parameters:
+        cookbooks_url:
+            description: "Cookbooks URL"
+            default: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+        repo_localpath:
+            description: "Local path to repo"
+            default: "/var/local/git_repos/bask"
+        git_repo_url:
+            description: "Git repo URL"
+            default: "https://github.com/griddynamics/Behavior-Analytic-Starter-Kit.git"
+        git_branch:
+            description: "Git branch"
+            default: "master"
+    steps:
+        - fetch_git_repo_to_create_cookbooks_archive:
+            action: .fetch_git_repo
+            phase: fetch_git_repo_to_create_cookbooks_archive
+            parameters:
+                repo_localpath: ${repo_localpath}
+                git_repo_url: ${git_repo_url}
+                git_branch: ${git_branch}
+
+        - create_cookbooks_archive:
+            action: execrun
+            phase: create_cookbooks_archive
+            precedingPhases: [ fetch_git_repo_to_create_cookbooks_archive ]
+            parameters:
+                roles: [ build_server ]
+                isSudo: true
+                command:
+                    - bash -c
+                    - |
+                        cd ${repo_localpath} || exit 1
+                        if [ -d "${repo_localpath}/chef_artifacts" ]; then
+                            rm -rf "${repo_localpath}/chef_artifacts" || exit 2
+                        fi
+                        mkdir "${repo_localpath}/chef_artifacts" || exit 3
+                        tar -czf ${repo_localpath}/chef_artifacts/cookbooks.tar.gz ./cookbooks || exit 4
+
+        - uploading_cookbooks_to_S3:
+            action: .s3manage
+            phase: uploading_cookbooks_to_S3
+            precedingPhases: [ create_cookbooks_archive ]
+            parameters:
+                cookbooks_url: ${cookbooks_url}
+                localpath: "${repo_localpath}/chef_artifacts/cookbooks.tar.gz"
+                bucket: "{$.config.properties.s3_bucket_name}"
+                action: "upload"
 
 ####################
 # Hidden workflows #
 ####################
 .s3manage:
     parameters:
+        cookbooks_url:
+            description: "Cookbooks URL"
         aws_access_key_id:
             description: "aws_access_key_id"
         aws_secret_access_key:
@@ -204,7 +255,7 @@ Redeploy_java_artifacts:
                 roles: [ build_server ]
                 runList: [ "recipe[s3manage::default]" ]
                 isSolo: true
-                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                recipeUrl: ${cookbooks_url}
                 jattrs:
                     s3manage:
                         access_key_id: ${aws_access_key_id}
@@ -213,6 +264,34 @@ Redeploy_java_artifacts:
                         bucket: ${bucket}
                         s3file: ${s3file}
                         action: ${action}
+
+
+.fetch_git_repo:
+    parameters:
+        repo_localpath:
+            description: "Local path to git repo"
+        git_repo_url:
+            description: "URL to git repo"
+        git_branch:
+            description: "Git branch"
+    steps:
+        - fetch_git_repo:
+            action: execrun
+            phase: fetch_git_repo
+            parameters:
+                roles: [ build_server ]
+                isSudo: true
+                command:
+                    - bash -c
+                    - |
+                        if [ -d ${repo_localpath} ]; then
+                            cd ${repo_localpath} || exit -1
+                            git fetch --all || exit -2
+                        else
+                            git clone ${git_repo_url} ${repo_localpath} || exit 1
+                            cd ${repo_localpath} || exit 2
+                        fi
+                        git reset --hard origin/${git_branch} || exit 3
 
 
 destroy:

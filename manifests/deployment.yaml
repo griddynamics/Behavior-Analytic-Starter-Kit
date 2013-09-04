@@ -15,7 +15,7 @@ header:
 launch:
     parameters:
         cookbooks_url:
-            description: "Cookbooks URL:"
+            description: "Cookbooks URL"
             default: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
     steps:
         - get_env_props:
@@ -91,13 +91,13 @@ launch:
 Redeploy_java_artifacts:
     parameters:
         git_repo_url:
-            description: "Git repo URL:"
+            description: "Git repo URL"
             default: "https://github.com/griddynamics/Behavior-Analytic-Starter-Kit.git"
         repo_localpath:
             description: "Local path to repo"
             default: "/var/local/git_repos/bask"
         repo_branch:
-            description: "Git branch:"
+            description: "Git branch"
             default: "master"
     steps:
         - clone_git_repo:
@@ -130,13 +130,50 @@ Redeploy_java_artifacts:
                     - |
                         cd ${repo_localpath}/maven_projects || exit 1
                         mvn clean install || exit 2
+                        [ ! -d "${repo_localpath}/maven_artifacts" ] && rm -rf ${repo_localpath}/maven_artifacts || exit 3
+                        mkdir "${repo_localpath}/maven_artifacts" || exit 4
+                        cp ${repo_localpath}/maven_projects/web-store/site/target/site.war \
+                           ${repo_localpath}/maven_artifacts/webstore.war || exit 5
+                        cp ${repo_localpath}/maven_projects/web-store/admin/target/admin.war \
+                           ${repo_localpath}/maven_artifacts/webstore-admin.war || exit 6
+                        cp ${repo_localpath}/maven_projects/dataset-generator/target/dataset-generator-1.0-SNAPSHOT-jar-with-dependencies.jar \
+                           ${repo_localpath}/maven_artifacts/transaction-log-generator.jar || exit 7
+                        cp ${repo_localpath}/maven_projects/recommendation-processor/target/recommendation-processor-1.0-SNAPSHOT-jar-with-dependencies.jar \
+                           ${repo_localpath}/maven_artifacts/recommendation-processor.jar || exit 8
 
-        - uploading_webstore_war_to_S3:
+        - uploading_webstore_to_S3:
             action: .s3manage
-            phase: uploading_webstore_war_war_to_S3
+            phase: uploading_webstore_to_S3
             precedingPhases: [ build_maven_projects ]
             parameters:
-                localpath: "${repo_localpath}/maven_projects/web-store/site/target/site.war"
+                localpath: "${repo_localpath}/maven_artifacts/webstore.war"
+                bucket: "{$.config.properties.s3_bucket_name}"
+                action: "upload"
+
+        - uploading_webstore_admin_to_S3:
+            action: .s3manage
+            phase: uploading_webstore_admin_to_S3
+            precedingPhases: [ build_maven_projects ]
+            parameters:
+                localpath: "${repo_localpath}/maven_artifacts/webstore-admin.war"
+                bucket: "{$.config.properties.s3_bucket_name}"
+                action: "upload"
+
+        - uploading_transaction_log_generator_to_S3:
+            action: .s3manage
+            phase: uploading_transaction_log_generator_to_S3
+            precedingPhases: [ build_maven_projects ]
+            parameters:
+                localpath: "${repo_localpath}/maven_artifacts/transaction-log-generator.jar"
+                bucket: "{$.config.properties.s3_bucket_name}"
+                action: "upload"
+
+        - uploading_recommendation_processor_to_S3:
+            action: .s3manage
+            phase: uploading_recommendation_processor_to_S3
+            precedingPhases: [ build_maven_projects ]
+            parameters:
+                localpath: "${repo_localpath}/maven_artifacts/recommendation-processor.jar"
                 bucket: "{$.config.properties.s3_bucket_name}"
                 action: "upload"
 

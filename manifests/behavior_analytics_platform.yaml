@@ -85,7 +85,7 @@ launch:
                                 mapred.job.reduce.memory.mb: "4096"         # memory size of single reduce task for particular job
                         nn:
                             format: "true"
-                            host: "{$.ips_hmaster[0]}"
+                            host: "{$.ips_hmaster_pub[0]}"
                         dn:
                             hosts: ${ips_hslave}
         - datanode_install:
@@ -116,7 +116,7 @@ launch:
                                 mapred.job.map.memory.mb: "1024"            # memory size of single map task for particular job
                                 mapred.job.reduce.memory.mb: "4096"         # memory size of single reduce task for particular job
                         nn:
-                            host: "{$.ips_hmaster[0]}"
+                            host: "{$.ips_hmaster_pub[0]}"
                         dn:
                             hosts: ${ips_hslave}
         - cluster_start:

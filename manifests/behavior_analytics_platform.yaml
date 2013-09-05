@@ -45,6 +45,7 @@ launch:
         - start_hslave:
             action: provisionVms
             phase: provision_hslave
+            precedingPhases: [ provision_hmaster ]
             parameters:
                 quantity: ${slaveQuantity}
                 hardwareId: m1.medium

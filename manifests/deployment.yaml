@@ -82,6 +82,11 @@ launch:
                         ln -s /usr/local/apache-maven-3.1.0/bin/mvn /usr/bin/mvn || exit 8
                         mvn -version || exit 9
 
+        - install_s3cmd:
+            action: .s3cmd_installation
+            phase: install_s3cmd
+            precedingPhases: [ server_setup ]
+
     return:
         build_server_ip:
             description: "Build Server IP:"
@@ -176,6 +181,26 @@ Redeploy_java_artifacts:
                 bucket: "{$.config.properties.s3_bucket_name}"
                 action: "upload"
 
+        - make_public_java_s3_files:
+            action: execrun
+            phase: make_public_java_s3_files
+            precedingPhases: [
+                uploading_webstore_to_S3,
+                uploading_webstore_admin_to_S3,
+                uploading_transaction_log_generator_to_S3,
+                uploading_recommendation_processor_to_S3
+            ]
+            parameters:
+                roles: [ build_server ]
+                isSudo: true
+                command:
+                    - bash -c
+                    - |
+                        s3cmd setacl --acl-public "s3://{$.config.properties.s3_bucket_name}/webstore.war" || exit 1
+                        s3cmd setacl --acl-public "s3://{$.config.properties.s3_bucket_name}/webstore-admin.war" || exit 2
+                        s3cmd setacl --acl-public "s3://{$.config.properties.s3_bucket_name}/transaction-log-generator.jar" || exit 3
+                        s3cmd setacl --acl-public "s3://{$.config.properties.s3_bucket_name}/recommendation-processor.jar" || exit 4
+
 
 Redeploy_cookbooks:
     parameters:
@@ -227,9 +252,41 @@ Redeploy_cookbooks:
                 bucket: "{$.config.properties.s3_bucket_name}"
                 action: "upload"
 
+        - make_public_cookbooks_s3_files:
+            action: execrun
+            phase: make_public_cookbooks_s3_files
+            precedingPhases: [ create_cookbooks_archive ]
+            parameters:
+                roles: [ build_server ]
+                isSudo: true
+                command:
+                    - bash -c
+                    - |
+                        s3cmd setacl --acl-public "s3://{$.config.properties.s3_bucket_name}/cookbooks.tar.gz" || exit 1
+
+
 ####################
 # Hidden workflows #
 ####################
+.s3cmd_installation:
+    parameters:
+        aws_access_key_id:
+            description: "aws_access_key_id"
+        aws_secret_access_key:
+            description: "aws_secret_access_key"
+    steps:
+        - install_s3cmd_package:
+              action: execrun
+              phase: install_s3cmd_package
+              parameters:
+                  roles: [ build_server ]
+                  isSudo: true
+                  command:
+                      - bash -c
+                      - |
+                          yum -y install s3cmd || exit 1
+                          echo -e "[default]\naccess_key = ${aws_access_key_id}\nsecret_key = ${aws_secret_access_key}\n" > ~/.s3cfg || exit 2
+
 .s3manage:
     parameters:
         cookbooks_url:

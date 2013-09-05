@@ -130,7 +130,7 @@ launch:
     return:
         namenode_ip:
             description: "Master private IP:"
-            value: ${ips_hmaster}
+            value: ${ips_hmaster_pub}
         hdfs_webui:
             description: "Namenode (HDFS):"
             value: "http://${ips_hmaster_pub}:50070"

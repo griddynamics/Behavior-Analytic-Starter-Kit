@@ -65,7 +65,7 @@ launch:
                 roles: [ hmaster ]
                 runList: [ "recipe[selinux::permissive]", "recipe[java::openjdk]", "recipe[cloudera_noha::namenode]", "recipe[cloudera_noha::jobtracker]", "recipe[ganglia::server]", "recipe[s3manage::packages]" ]
                 isSolo: true
-                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                recipeUrl: "http://dkhurtin.s3.amazonaws.com/cookbooks.tar.gz"
                 jattrs:
                     java:
                         jdk_version: "7"
@@ -97,7 +97,7 @@ launch:
                 roles: [ hslave ]
                 runList: [ "recipe[selinux::permissive]", "recipe[java::openjdk]", "recipe[cloudera_noha::datanode]", "recipe[cloudera_noha::tasktracker]", "recipe[ganglia::client]" ]
                 isSolo: true
-                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                recipeUrl: "http://dkhurtin.s3.amazonaws.com/cookbooks.tar.gz"
                 jattrs:
                     java:
                         jdk_version: "7"
@@ -171,7 +171,7 @@ Scale_up_cluster:
                 roles: [ hslave ]
                 runList: [ "recipe[selinux::permissive]", "recipe[java::openjdk]", "recipe[cloudera_noha::datanode]", "recipe[cloudera_noha::tasktracker]", "recipe[ganglia::client]" ]
                 isSolo: true
-                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                recipeUrl: "http://dkhurtin.s3.amazonaws.com/cookbooks.tar.gz"
                 jattrs:
                     java:
                         jdk_version: "7"
@@ -203,7 +203,7 @@ Scale_up_cluster:
                 roles: [ hmaster ]
                 runList: [ "recipe[cloudera_noha::hadoop_conf]" ]
                 isSolo: true
-                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                recipeUrl: "http://dkhurtin.s3.amazonaws.com/cookbooks.tar.gz"
                 jattrs:
                     cloudera_noha:
                         jdk:
@@ -237,13 +237,13 @@ Generate_new_transaction_log:
     parameters:
         job_url:
             description: "URL to transaction log generator job"
-            default: "http://gd-bask.s3.amazonaws.com/transaction-log-generator.jar"
+            default: "http://dkhurtin.s3.amazonaws.com/transaction-log-generator.jar"
         product_catalog_filename:
             description: "Product catalog structure file on your S3 bucket"
             default: "product_catalog_structure.json"
         dataset_config_url:
             description: "URL to transaction scenario log config"
-            default: "http://gd-bask.s3.amazonaws.com/scenario-config.json"
+            default: "http://dkhurtin.s3.amazonaws.com/scenario-config.json"
     steps:
         downloading_dataset_configuration:
             action: execrun
@@ -285,7 +285,7 @@ Compute_new_recommendations:
     parameters:
         analytics_job_url:
             description: "URL to recommendation processor job"
-            default: "https://s3.amazonaws.com/gd-bask/recommendation-processor.jar"
+            default: "https://s3.amazonaws.com/dkhurtin/recommendation-processor.jar"
         transaction_log_path:
             description: "HDFS path to transaction log"
             default: "/tmp/transaction_log"
@@ -407,7 +407,7 @@ Load_transaction_log_from_S3:
                 roles: [ hmaster ]
                 runList: [ "recipe[hadoop_manage::hdfs_transfer]" ]
                 isSolo: true
-                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                recipeUrl: "http://dkhurtin.s3.amazonaws.com/cookbooks.tar.gz"
                 jattrs:
                     hadoop_manage:
                         hdfs:
@@ -457,7 +457,7 @@ Load_transaction_log_from_S3:
                 roles: [ hmaster ]
                 runList: [ "recipe[s3manage::default]" ]
                 isSolo: true
-                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                recipeUrl: "http://dkhurtin.s3.amazonaws.com/cookbooks.tar.gz"
                 jattrs:
                     s3manage:
                         access_key_id: ${aws_access_key_id}
@@ -483,7 +483,7 @@ Load_transaction_log_from_S3:
                 roles: [ hmaster ]
                 runList: [ "recipe[hadoop_manage::service]" ]
                 isSolo: true
-                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                recipeUrl: "http://dkhurtin.s3.amazonaws.com/cookbooks.tar.gz"
                 jattrs:
                     hadoop_manage:
                         service:
@@ -497,7 +497,7 @@ Load_transaction_log_from_S3:
                 roles: [ hslave ]
                 runList: [ "recipe[hadoop_manage::service]" ]
                 isSolo: true
-                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                recipeUrl: "http://dkhurtin.s3.amazonaws.com/cookbooks.tar.gz"
                 jattrs:
                     hadoop_manage:
                         service:
@@ -521,7 +521,7 @@ Load_transaction_log_from_S3:
                 roles: [ hmaster ]
                 runList: [ "recipe[hadoop_manage::hdfs_dir]" ]
                 isSolo: true
-                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                recipeUrl: "http://dkhurtin.s3.amazonaws.com/cookbooks.tar.gz"
                 jattrs:
                     hadoop_manage:
                         hdfs:
@@ -546,7 +546,7 @@ Load_transaction_log_from_S3:
                 roles: [ hmaster ]
                 runList: [ "recipe[hadoop_manage::hdfs_transfer]" ]
                 isSolo: true
-                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                recipeUrl: "http://dkhurtin.s3.amazonaws.com/cookbooks.tar.gz"
                 jattrs:
                     hadoop_manage:
                         hdfs:
@@ -559,7 +559,7 @@ Load_transaction_log_from_S3:
     parameters:
         job_url:
             description: "URL to job file"
-            default: "http://gd-bask.s3.amazonaws.com/hadoop-examples.jar"
+            default: "http://dkhurtin.s3.amazonaws.com/hadoop-examples.jar"
         job_download_path:
             description: "Directory to download job"
             default: "/tmp/jobs"
@@ -573,7 +573,7 @@ Load_transaction_log_from_S3:
                 roles: [ hmaster ]
                 runList: [ "recipe[hadoop_manage::mapreduce]" ]
                 isSolo: true
-                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                recipeUrl: "http://dkhurtin.s3.amazonaws.com/cookbooks.tar.gz"
                 jattrs:
                     hadoop_manage:
                         mapreduce:

@@ -65,7 +65,7 @@ launch:
                 roles: [ hmaster ]
                 runList: [ "recipe[selinux::permissive]", "recipe[java::openjdk]", "recipe[cloudera_noha::namenode]", "recipe[cloudera_noha::jobtracker]", "recipe[ganglia::server]", "recipe[s3manage::packages]" ]
                 isSolo: true
-                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                recipeUrl: "http://gd-bask-rackspace.s3.amazonaws.com/cookbooks.tar.gz"
                 jattrs:
                     java:
                         jdk_version: "7"
@@ -73,20 +73,10 @@ launch:
                     cloudera_noha:
                         jdk:
                             home: "/usr/lib/jvm/java/"
-                    hadoop:
-                        conf:
-                            mapred_site:
-                                mapred.tasktracker.map.tasks.maximum: "4"
-                                mapred.tasktracker.reduce.tasks.maximum: "4"
-                                mapred.cluster.map.memory.mb: "1024"        # memory size of single map slot
-                                mapred.cluster.reduce.memory.mb: "1024"     # memory size of single reduce slot
-                                mapred.cluster.max.map.memory.mb: "2048"    # max memory size of single map task
-                                mapred.cluster.max.reduce.memory.mb: "4096" # max memory size of single reduce task
-                                mapred.job.map.memory.mb: "1024"            # memory size of single map task for particular job
-                                mapred.job.reduce.memory.mb: "4096"         # memory size of single reduce task for particular job
+                    hadoop:                  
                         nn:
                             format: "true"
-                            host: "{$.ips_hmaster_pub[0]}"
+                            host: "{$.ips_hmaster[0]}"
                         dn:
                             hosts: ${ips_hslave}
         - datanode_install:
@@ -97,7 +87,7 @@ launch:
                 roles: [ hslave ]
                 runList: [ "recipe[selinux::permissive]", "recipe[java::openjdk]", "recipe[cloudera_noha::datanode]", "recipe[cloudera_noha::tasktracker]", "recipe[ganglia::client]" ]
                 isSolo: true
-                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                recipeUrl: "http://gd-bask-rackspace.s3.amazonaws.com/cookbooks.tar.gz"
                 jattrs:
                     java:
                         jdk_version: "7"
@@ -106,18 +96,8 @@ launch:
                         jdk:
                             home: "/usr/lib/jvm/java/"
                     hadoop:
-                        conf:
-                            mapred_site:
-                                mapred.tasktracker.map.tasks.maximum: "4"
-                                mapred.tasktracker.reduce.tasks.maximum: "4"
-                                mapred.cluster.map.memory.mb: "1024"        # memory size of single map slot
-                                mapred.cluster.reduce.memory.mb: "1024"     # memory size of single reduce slot
-                                mapred.cluster.max.map.memory.mb: "2048"    # max memory size of single map task
-                                mapred.cluster.max.reduce.memory.mb: "4096" # max memory size of single reduce task
-                                mapred.job.map.memory.mb: "1024"            # memory size of single map task for particular job
-                                mapred.job.reduce.memory.mb: "4096"         # memory size of single reduce task for particular job
                         nn:
-                            host: "{$.ips_hmaster_pub[0]}"
+                            host: "{$.ips_hmaster[0]}"
                         dn:
                             hosts: ${ips_hslave}
         - cluster_start:
@@ -130,7 +110,7 @@ launch:
     return:
         namenode_ip:
             description: "Master private IP:"
-            value: ${ips_hmaster_pub}
+            value: ${ips_hmaster}
         hdfs_webui:
             description: "Namenode (HDFS):"
             value: "http://${ips_hmaster_pub}:50070"
@@ -171,7 +151,7 @@ Scale_up_cluster:
                 roles: [ hslave ]
                 runList: [ "recipe[selinux::permissive]", "recipe[java::openjdk]", "recipe[cloudera_noha::datanode]", "recipe[cloudera_noha::tasktracker]", "recipe[ganglia::client]" ]
                 isSolo: true
-                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                recipeUrl: "http://gd-bask-rackspace.s3.amazonaws.com/cookbooks.tar.gz"
                 jattrs:
                     java:
                         jdk_version: "7"
@@ -180,16 +160,6 @@ Scale_up_cluster:
                         jdk:
                             home: "/usr/lib/jvm/java/"
                     hadoop:
-                        conf:
-                            mapred_site:
-                                mapred.tasktracker.map.tasks.maximum: "4"
-                                mapred.tasktracker.reduce.tasks.maximum: "4"
-                                mapred.cluster.map.memory.mb: "1024"        # memory size of single map slot
-                                mapred.cluster.reduce.memory.mb: "1024"     # memory size of single reduce slot
-                                mapred.cluster.max.map.memory.mb: "2048"    # max memory size of single map task
-                                mapred.cluster.max.reduce.memory.mb: "4096" # max memory size of single reduce task
-                                mapred.job.map.memory.mb: "1024"            # memory size of single map task for particular job
-                                mapred.job.reduce.memory.mb: "4096"         # memory size of single reduce task for particular job
                         nn:
                             host: "{$.namenode_ip[0]}"
                         dn:
@@ -203,22 +173,12 @@ Scale_up_cluster:
                 roles: [ hmaster ]
                 runList: [ "recipe[cloudera_noha::hadoop_conf]" ]
                 isSolo: true
-                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                recipeUrl: "http://gd-bask-rackspace.s3.amazonaws.com/cookbooks.tar.gz"
                 jattrs:
                     cloudera_noha:
                         jdk:
                             home: "/usr/lib/jvm/java/"
-                    hadoop:
-                        conf:
-                            mapred_site:
-                                mapred.tasktracker.map.tasks.maximum: "4"
-                                mapred.tasktracker.reduce.tasks.maximum: "4"
-                                mapred.cluster.map.memory.mb: "1024"        # memory size of single map slot
-                                mapred.cluster.reduce.memory.mb: "1024"     # memory size of single reduce slot
-                                mapred.cluster.max.map.memory.mb: "2048"    # max memory size of single map task
-                                mapred.cluster.max.reduce.memory.mb: "4096" # max memory size of single reduce task
-                                mapred.job.map.memory.mb: "1024"            # memory size of single map task for particular job
-                                mapred.job.reduce.memory.mb: "4096"
+                    hadoop:                       
                         nn:
                             host: "{$.namenode_ip[0]}"
                         dn:
@@ -407,7 +367,7 @@ Load_transaction_log_from_S3:
                 roles: [ hmaster ]
                 runList: [ "recipe[hadoop_manage::hdfs_transfer]" ]
                 isSolo: true
-                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                recipeUrl: "http://gd-bask-rackspace.s3.amazonaws.com/cookbooks.tar.gz"
                 jattrs:
                     hadoop_manage:
                         hdfs:
@@ -457,7 +417,7 @@ Load_transaction_log_from_S3:
                 roles: [ hmaster ]
                 runList: [ "recipe[s3manage::default]" ]
                 isSolo: true
-                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                recipeUrl: "http://gd-bask-rackspace.s3.amazonaws.com/cookbooks.tar.gz"
                 jattrs:
                     s3manage:
                         access_key_id: ${aws_access_key_id}
@@ -483,7 +443,7 @@ Load_transaction_log_from_S3:
                 roles: [ hmaster ]
                 runList: [ "recipe[hadoop_manage::service]" ]
                 isSolo: true
-                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                recipeUrl: "http://gd-bask-rackspace.s3.amazonaws.com/cookbooks.tar.gz"
                 jattrs:
                     hadoop_manage:
                         service:
@@ -497,7 +457,7 @@ Load_transaction_log_from_S3:
                 roles: [ hslave ]
                 runList: [ "recipe[hadoop_manage::service]" ]
                 isSolo: true
-                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                recipeUrl: "http://gd-bask-rackspace.s3.amazonaws.com/cookbooks.tar.gz"
                 jattrs:
                     hadoop_manage:
                         service:
@@ -521,7 +481,7 @@ Load_transaction_log_from_S3:
                 roles: [ hmaster ]
                 runList: [ "recipe[hadoop_manage::hdfs_dir]" ]
                 isSolo: true
-                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                recipeUrl: "http://gd-bask-rackspace.s3.amazonaws.com/cookbooks.tar.gz"
                 jattrs:
                     hadoop_manage:
                         hdfs:
@@ -546,7 +506,7 @@ Load_transaction_log_from_S3:
                 roles: [ hmaster ]
                 runList: [ "recipe[hadoop_manage::hdfs_transfer]" ]
                 isSolo: true
-                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                recipeUrl: "http://gd-bask-rackspace.s3.amazonaws.com/cookbooks.tar.gz"
                 jattrs:
                     hadoop_manage:
                         hdfs:
@@ -573,7 +533,7 @@ Load_transaction_log_from_S3:
                 roles: [ hmaster ]
                 runList: [ "recipe[hadoop_manage::mapreduce]" ]
                 isSolo: true
-                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                recipeUrl: "http://gd-bask-rackspace.s3.amazonaws.com/cookbooks.tar.gz"
                 jattrs:
                     hadoop_manage:
                         mapreduce:

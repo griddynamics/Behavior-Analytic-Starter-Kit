@@ -426,6 +426,7 @@ Load_transaction_log_from_S3:
                         bucket: ${bucket}
                         s3file: ${s3file}
                         action: ${action}
+                        permissions: ${permissions}
 
 .manage_cluster:
     parameters:
@@ -436,20 +437,6 @@ Load_transaction_log_from_S3:
                 "stop": "stop"
                 "restart": "restart"
     steps:
-        - processing_namenode:
-            action: chefsolo
-            phase: processing_namenode
-            parameters:
-                roles: [ hmaster ]
-                runList: [ "recipe[hadoop_manage::service]" ]
-                isSolo: true
-                recipeUrl: "http://gd-bask-rackspace.s3.amazonaws.com/cookbooks.tar.gz"
-                jattrs:
-                    hadoop_manage:
-                        service:
-                            services: [ "hadoop-hdfs-namenode", "hadoop-0.20-mapreduce-jobtracker" ]
-                            action: ${action}
-
         - processing_datanode:
             action: chefsolo
             phase: processing_datanode
@@ -462,6 +449,19 @@ Load_transaction_log_from_S3:
                     hadoop_manage:
                         service:
                             services: [ "hadoop-hdfs-datanode", "hadoop-0.20-mapreduce-tasktracker" ]
+                            action: ${action}
+        - processing_namenode:
+            action: chefsolo
+            phase: processing_namenode
+            parameters:
+                roles: [ hmaster ]
+                runList: [ "recipe[hadoop_manage::service]" ]
+                isSolo: true
+                recipeUrl: "http://gd-bask-rackspace.s3.amazonaws.com/cookbooks.tar.gz"
+                jattrs:
+                    hadoop_manage:
+                        service:
+                            services: [ "hadoop-hdfs-namenode", "hadoop-0.20-mapreduce-jobtracker" ]
                             action: ${action}
 
 .manage_hdfs_dirs:

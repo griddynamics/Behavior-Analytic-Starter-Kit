@@ -11,7 +11,7 @@ default[:hadoop][:slave_disks] = 1
 ##########################
 
 default[:hadoop][:nn][:format] = false
-default[:hadoop][:nn][:host] = ""
+default[:hadoop][:nn][:host] = nil
 
 default[:hadoop][:nn][:ports][:rpc] = 8020
 default[:hadoop][:nn][:ports][:http] = 50070
@@ -69,15 +69,34 @@ default[:hadoop][:conf][:hdfs_site]["dfs.permissions.superusergroup"] = "hadoop"
 default[:hadoop][:conf][:hdfs_site]["dfs.namenode.name.dir"] = "/data/1/dfs/nn"
 default[:hadoop][:conf][:hdfs_site]["dfs.datanode.data.dir"] = (1..node[:hadoop][:slave_disks]).map{ |num| "/data/#{num}/dfs/dn" }.join(",")
 default[:hadoop][:conf][:hdfs_site]["dfs.webhdfs.enabled"] = true
-default[:hadoop][:conf][:hdfs_site]["dfs.namenode.http-address"] =  "#{node[:hadoop][:nn][:host]}:#{node[:hadoop][:nn][:ports][:http]}"
-
+case node[:cloud][:provider]
+when "rackspace"
+	if node[:cloud][:local_ipv4] == node[:hadoop][:nn][:host]
+		default[:hadoop][:conf][:hdfs_site]["dfs.namenode.http-address"] =  "0.0.0.0:#{node[:hadoop][:nn][:ports][:http]}"	
+		default[:hadoop][:conf][:hdfs_site]["dfs.namenode.rpc-address"] =  "0.0.0.0:#{node[:hadoop][:nn][:ports][:rpc]}"	
+	else
+		default[:hadoop][:conf][:hdfs_site]["dfs.namenode.http-address"] =  "#{node[:hadoop][:nn][:host]}:#{node[:hadoop][:nn][:ports][:http]}"	
+		default[:hadoop][:conf][:hdfs_site]["dfs.namenode.rpc-address"] =  "#{node[:hadoop][:nn][:host]}:#{node[:hadoop][:nn][:ports][:rpc]}"	
+	end
+when "ec2"
+	default[:hadoop][:conf][:hdfs_site]["dfs.namenode.http-address"] =  "#{node[:hadoop][:nn][:host]}:#{node[:hadoop][:nn][:ports][:http]}"	
+end	
 
 ########################
 # Mapred configuration #
 ########################
 
 default[:hadoop][:conf][:mapred_site]["mapred.reduce.tasks"] = "#{node[:hadoop][:dn][:hosts].size}"
-default[:hadoop][:conf][:mapred_site]["mapred.job.tracker"] = "#{node[:hadoop][:jt][:host]}:#{node[:hadoop][:jt][:ports][:rpc]}"
+case node[:cloud][:provider]
+when "rackspace"
+	if node[:cloud][:local_ipv4] == node[:hadoop][:nn][:host]
+		default[:hadoop][:conf][:mapred_site]["mapred.job.tracker"] = "0.0.0.0:#{node[:hadoop][:jt][:ports][:rpc]}"
+	else
+		default[:hadoop][:conf][:mapred_site]["mapred.job.tracker"] = "#{node[:hadoop][:jt][:host]}:#{node[:hadoop][:jt][:ports][:rpc]}"
+	end
+when "ec2"
+	default[:hadoop][:conf][:mapred_site]["mapred.job.tracker"] = "#{node[:hadoop][:jt][:host]}:#{node[:hadoop][:jt][:ports][:rpc]}"
+end	
 default[:hadoop][:conf][:mapred_site]["mapred.local.dir"] =
     (1..node[:hadoop][:slave_disks]).map{ |num| "/data/#{num}/mapred/local" }.join(",")
 default[:hadoop][:conf][:mapred_site]["mapred.system.dir"] = "/var/mapred/staging"
@@ -87,8 +106,8 @@ default[:hadoop][:conf][:mapred_site]["mapred.output.compression.type"] = "BLOCK
 default[:hadoop][:conf][:mapred_site]["mapred.output.compression.codec"] = "org.apache.hadoop.io.compress.DefaultCodec"
 default[:hadoop][:conf][:mapred_site]["mapred.compress.map.output"] = true
 default[:hadoop][:conf][:mapred_site]["mapred.map.output.compression.codec"] = "org.apache.hadoop.io.compress.SnappyCodec"
-default[:hadoop][:conf][:mapred_site]["mapred.tasktracker.map.tasks.maximum"] = 1
-default[:hadoop][:conf][:mapred_site]["mapred.tasktracker.reduce.tasks.maximum"] = 1
+default[:hadoop][:conf][:mapred_site]["mapred.tasktracker.map.tasks.maximum"] = 4
+default[:hadoop][:conf][:mapred_site]["mapred.tasktracker.reduce.tasks.maximum"] = 4
 default[:hadoop][:conf][:mapred_site]["mapred.child.java.opts"] = "-Xmx512m -server"
 default[:hadoop][:conf][:mapred_site]["mapred.job.reuse.jvm.num.tasks"] = -1
 default[:hadoop][:conf][:mapred_site]["mapred.map.tasks.speculative.execution"] = false
@@ -101,10 +120,10 @@ default[:hadoop][:conf][:mapred_site]["mapred.jobtracker.taskScheduler"] = "org.
 default[:hadoop][:conf][:mapred_site]["mapred.queue.names"] = "default"
 default[:hadoop][:conf][:mapred_site]["mapred.cluster.map.memory.mb"] = 1024        # memory size of single map slot
 default[:hadoop][:conf][:mapred_site]["mapred.cluster.reduce.memory.mb"] = 1024     # memory size of single reduce slot
-default[:hadoop][:conf][:mapred_site]["mapred.cluster.max.map.memory.mb"] = 4096    # max memory size of single map task
-default[:hadoop][:conf][:mapred_site]["mapred.cluster.max.reduce.memory.mb"] = 5096 # max memory size of single reduce task
+default[:hadoop][:conf][:mapred_site]["mapred.cluster.max.map.memory.mb"] = 2048    # max memory size of single map task
+default[:hadoop][:conf][:mapred_site]["mapred.cluster.max.reduce.memory.mb"] = 4096 # max memory size of single reduce task
 default[:hadoop][:conf][:mapred_site]["mapred.job.map.memory.mb"] = 1024            # memory size of single map task for particular job
-default[:hadoop][:conf][:mapred_site]["mapred.job.reduce.memory.mb"] = 1024         # memory size of single reduce task for particular job
+default[:hadoop][:conf][:mapred_site]["mapred.job.reduce.memory.mb"] = 4096         # memory size of single reduce task for particular job
 
 
 #######################################################################################

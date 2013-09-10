@@ -6,6 +6,26 @@ directory node[:hadoop][:env_conf_path] do
   recursive true
 end
 
+if node[:cloud][:provider] == "rackspace"
+  template "/etc/hosts" do
+    source "hosts.erb"
+    owner "root"
+    group "root"
+    variables(:options => node[:hadoop][:dn][:hosts])
+    mode 00644
+  end
+  template "/etc/host.conf" do
+    source "host.conf.erb"
+    owner "root"
+    group "root"
+    mode 00644
+  end
+  execute "changing hostname" do
+    command "hostname default#{node[:cloud][:local_ipv4].delete(".")}"
+    action :run
+  end  
+end
+
 template "#{node[:hadoop][:env_conf_path]}/core-site.xml" do
   source "generic-site.xml.erb"
   variables(:options => node[:hadoop][:conf][:core_site])

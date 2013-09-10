@@ -1,4 +1,4 @@
-define :s3manage, :bucket => nil, :s3file => nil, :action => nil do
+define :s3manage, :bucket => nil, :s3file => nil, :action => nil, :permissions => :private do
 
   unless [ "upload", "download" ].include?("#{params[:action]}")
     raise ArgumentError, "Unsupported action: #{params[:action]}"
@@ -28,6 +28,7 @@ define :s3manage, :bucket => nil, :s3file => nil, :action => nil do
           bucket = s3.buckets["#{params[:bucket]}"]
           file = bucket.objects["#{base_name}"]
           file.write(:file => params[:name])
+          file.acl = params[:permissions]
         end
       end
     when "download"

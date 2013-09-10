@@ -409,6 +409,9 @@ Load_transaction_log_from_S3:
             default: ""
         action:
             description: "file action"
+        permissions:
+            default: "private"
+            description: "can be private/public_read/public_read_write"
     steps:
         s3transfer:
             action: chefsolo

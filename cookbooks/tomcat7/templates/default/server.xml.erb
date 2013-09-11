@@ -67,9 +67,9 @@
          APR (HTTP/AJP) Connector: /docs/apr.html
          Define a non-SSL HTTP/1.1 Connector on port 8080
     -->
-    <Connector port="<%= node[:tomcat7][:port] %>" protocol="HTTP/1.1"
+    <Connector port="<%= node[:tomcat7][:ports][:http] %>" protocol="HTTP/1.1"
                connectionTimeout="20000"
-               redirectPort="<%= node[:tomcat7][:ssl_port] %>" />
+               redirectPort="<%= node[:tomcat7][:ports][:ssl] %>" />
     <!-- A "Connector" using the shared thread pool-->
     <!--
     <Connector executor="tomcatThreadPool"
@@ -82,13 +82,13 @@
          connector should be using the OpenSSL style configuration
          described in the APR documentation -->
     <!--
-    <Connector port="<%= node[:tomcat7][:ssl_port] %>" protocol="HTTP/1.1" SSLEnabled="true"
+    <Connector port="<%= node[:tomcat7][:ports][:ssl] %>" protocol="HTTP/1.1" SSLEnabled="true"
                maxThreads="150" scheme="https" secure="true"
                clientAuth="false" sslProtocol="TLS" />
     -->
 
     <!-- Define an AJP 1.3 Connector on port 8009 -->
-    <Connector port="<%= node[:tomcat7][:ajp_port] %>" protocol="AJP/1.3" redirectPort="8443" />
+    <Connector port="<%= node[:tomcat7][:ports][:ajp] %>" protocol="AJP/1.3" redirectPort="8443" />
 
 
     <!-- An Engine represents the entry point (within Catalina) that processes

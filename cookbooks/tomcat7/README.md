@@ -54,19 +54,19 @@ Attributes
     <td>/usr/share</td>
   </tr>
   <tr>
-    <td><tt>[:tomcat7][:port]</tt></td>
+    <td><tt>[:tomcat7][:ports][:http]</tt></td>
     <td>Integer</td>
     <td>Network port for Tomcat HTTP connector</td>
     <td>8080</td>
   </tr>
   <tr>
-    <td><tt>[:tomcat7][:ssl_port]</tt></td>
+    <td><tt>[:tomcat7][:ports][:ssl]</tt></td>
     <td>Integer</td>
     <td>Network port for Tomcat SSL connector</td>
     <td>8080</td>
   </tr>
   <tr>
-    <td><tt>[:tomcat7][:ajp_port]</tt></td>
+    <td><tt>[:tomcat7][:ports][:ajp]</tt></td>
     <td>Integer</td>
     <td>Network port for Tomcat AJP connector</td>
     <td>8080</td>

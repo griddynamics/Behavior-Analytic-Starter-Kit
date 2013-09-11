@@ -19,9 +19,9 @@
 default[:tomcat7][:version] = "7.0.41"
 default[:tomcat7][:user] = "tomcat"
 default[:tomcat7][:group] = "tomcat"
-default[:tomcat7][:port] = 8080
-default[:tomcat7][:ssl_port] = 8443
-default[:tomcat7][:ajp_port] = 8009
+default[:tomcat7][:ports][:http] = 8080
+default[:tomcat7][:ports][:ssl] = 8443
+default[:tomcat7][:ports][:ajp] = 8009
 default[:tomcat7][:java_options] = " -Xmx768M -Djava.awt.headless=true"
 default[:tomcat7][:tarball] = "apache-tomcat-#{node[:tomcat7][:version]}.tar.gz"
 default[:tomcat7][:url] = "http://archive.apache.org/dist/tomcat/tomcat-7/v#{node[:tomcat7][:version]}/bin/#{node[:tomcat7][:tarball]}"

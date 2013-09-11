@@ -7,6 +7,10 @@ version          "0.0.3"
 
 recipe "tomcat7::default", "Installs and configures Tomcat7"
 
+%w{ iptables }.each do |cb|
+  depends cb
+end
+
 %w{ debian ubuntu centos redhat fedora }.each do |os|
   supports os
 end

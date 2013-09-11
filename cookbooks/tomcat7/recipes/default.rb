@@ -6,6 +6,12 @@
 package "gcc"
 package "make"
 
+#Open ports
+simple_firewall "open tomcat ports" do
+  ports node[:tomcat][:ports].values
+  action :open
+end
+
 # Get the tomcat binary 
 remote_file "/tmp/#{node[:tomcat7][:tarball]}" do
     source "#{node[:tomcat7][:url]}"

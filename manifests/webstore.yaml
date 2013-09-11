@@ -45,7 +45,7 @@ launch:
                 roles: [ webstore ]
                 runList: [ "recipe[java::openjdk]", "recipe[webstore::default]", "recipe[s3manage::packages]" ]
                 isSolo: true
-                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                recipeUrl: "http://gd-bask-rackspace.s3.amazonaws.com/cookbooks.tar.gz"
                 jattrs:
                     java:
                         jdk_version: "7"
@@ -197,7 +197,7 @@ Load_product_catalog_from_S3:
                 roles: [ webstore ]
                 runList: [ "recipe[s3manage::default]" ]
                 isSolo: true
-                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                recipeUrl: "http://gd-bask-rackspace.s3.amazonaws.com/cookbooks.tar.gz"
                 jattrs:
                     s3manage:
                         access_key_id: ${aws_access_key_id}

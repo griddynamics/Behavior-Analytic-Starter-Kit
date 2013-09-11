@@ -21,8 +21,11 @@ define :simple_firewall, :ports => [], :protocol => :tcp, :action => :open do
 
   ports.each do |port|
     execute "open #{port} port" do
-      command "#{bin_path} -I INPUT     -p #{protocol} -m state --state NEW -m #{protocol} --dport #{port} -j #{action}"
-      notifies :run, "execute[iptables save]", :delayed
+      command "#{bin_path} -I INPUT -p #{protocol} -m state --state NEW -m #{protocol} --dport #{port} -j #{action}"
     end
+  end
+
+  execute "iptables save" do
+    command "service #{node[:iptables][:service_name]} save"
   end
 end

@@ -8,7 +8,7 @@ package "make"
 
 #Open ports
 simple_firewall "open tomcat ports" do
-  ports node[:tomcat][:ports].values
+  ports node[:tomcat7][:ports].values
   action :open
 end
 

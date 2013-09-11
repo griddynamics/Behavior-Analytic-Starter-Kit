@@ -63,6 +63,14 @@ launch:
                         ln -s /usr/local/apache-maven-3.1.0/bin/mvn /usr/bin/mvn || exit 8
                         mvn -version || exit 9
 
+                        ##### test tools installation #####
+                        yum -y install make gcc ruby-devel rubygems httpd || exit 11
+                        gem install cucumber --no-ri --no-rdoc || exit 12
+                        gem install json --no-ri --no-rdoc || exit 13
+                        gem install rest-client --no-ri --no-rdoc || exit 14
+
+                        service httpd restart || exit 15
+
 
         - install_s3cmd:
             action: .s3manage
@@ -191,6 +199,45 @@ Redeploy_cookbooks:
                     - |
                         s3cmd put -P "{$.git_repo_localpath}/chef_artifacts/cookbooks.tar.gz" \
                             "s3://{$.config.properties.s3_bucket_name}/cookbooks.tar.gz" || exit 1
+
+
+Run_bdd_tests:
+    parameters:
+        git_branch:
+            description: "Git branch"
+            default: "master"
+        qubell_user:
+            description: "Qubell user"
+        qubell_password:
+            description: "Password"
+    steps:
+        - prepare_git_repo_to_run_tests:
+            action: .fetch_and_reset_git_repo
+            phase: prepare_git_repo_to_run_tests
+            parameters:
+                git_branch: ${git_branch}
+
+        - run_bdd_tests:
+            action: execrun
+            phase: run_bdd_tests
+            precedingPhases: [ prepare_git_repo_to_run_tests ]
+            parameters:
+                roles: [ build_server ]
+                isSudo: true
+                command:
+                    - bash -c
+                    - |
+                        cd {$.git_repo_localpath} || exit 1
+
+                        export QUBELL_TEST_USER='${qubell_user}'
+                        export QUBELL_TEST_PASSWORD='${qubell_password}'
+
+                        cucumber -f html -o /var/www/cucumber.html || exit 4
+
+    return:
+        test_reports:
+            description: "4. Test report:"
+            value: "http://{$.build_server_ips[0]}/cucumber.html"
 
 
 ####################

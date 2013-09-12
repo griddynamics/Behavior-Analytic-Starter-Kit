@@ -212,10 +212,25 @@ Run_bdd_tests:
         git_branch:
             description: "Git branch"
             default: "master"
+        qubell_api_url:
+            description: "Qubell api url"
+            default: "https://express.qubell.com/api/1"
+        qubell_org:
+            description: "Organization"
+            default: "Denis - Personal Account"
+        qubell_test_evn:
+            description: "Environment"
+            default: "test_env"
         qubell_user:
-            description: "Qubell user"
+            description: "User"
         qubell_password:
             description: "Password"
+        recommendation_engine_app:
+            description: "Recommendation engine application"
+            default: "Test Recommendation Engine"
+        web_store_app:
+            description: "Web store application"
+            default: "Test Web Store"
     steps:
         - prepare_ruby_dev_tools:
             action: execrun
@@ -254,8 +269,16 @@ Run_bdd_tests:
                     - |
                         cd {$.git_repo_localpath} || exit 1
 
+                        export QUBELL_API_URL='${qubell_api_url}'
+
+                        export QUBELL_ORGANIZATION='${qubell_org}'
+                        export QUBELL_TEST_ENV='${qubell_test_evn}'
+
                         export QUBELL_TEST_USER='${qubell_user}'
                         export QUBELL_TEST_PASSWORD='${qubell_password}'
+
+                        export RECOMMENDATION_ENGINE_APP_NAME='${recommendation_engine_app}'
+                        export WEB_STORE_APP_NAME='${web_store_app}'
 
                         cucumber -f html -o /var/www/html/cucumber.html || exit 4
 

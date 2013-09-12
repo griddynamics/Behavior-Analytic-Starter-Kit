@@ -5,26 +5,39 @@ require 'rest_client'
 
 class QubellPlatform
 
-  QUBELL_API_URL = 'https://express.qubell.com/api/1'
+  def initialize
+    @qubell_api_url = ENV['QUBELL_API_URL']
+    @qubell_user = ENV['QUBELL_TEST_USER']
+    @qubell_password = ENV['QUBELL_TEST_PASSWORD']
 
-  TEST_ENV_ID = '523034c8e4b07d962112af55'
+    qubell_organization_name = ENV['QUBELL_ORGANIZATION']
+    qubell_organization_id = find_organization_id(qubell_organization_name)
 
-  APPLICATION_IDS = {
-      'Web Store' => '522f17cce4b07d962112ad1e',
-      'Recommendation Engine' => '522f17cce4b07d962112ad1d',
-  }
+    test_env_name = ENV['QUBELL_TEST_ENV']
+    @qubell_environment_id = find_environment_id(qubell_organization_id, test_env_name)
 
-  def api_call(method, api_path, body)
+    recommendation_engine_app_name = ENV['RECOMMENDATION_ENGINE_APP_NAME']
+    web_store_app_name = ENV['WEB_STORE_APP_NAME']
 
-    $logger.debug "API CALL: '#{method}' '#{QUBELL_API_URL}/#{api_path}' '#{body}'"
+    @applications = {
+        'Recommendation Engine' => find_application_id(qubell_organization_id, recommendation_engine_app_name),
+        'Web Store' => find_application_id(qubell_organization_id, web_store_app_name),
+    }
+  end
+
+  def api_call(method, api_path, request_body)
+
+    end_point = "#{@qubell_api_url}/#{api_path}"
+
+    $logger.debug "API CALL: '#{method}' '#{end_point}' '#{request_body}'"
 
     resp = RestClient::Request.new(
         :method => method,
-        :url => "#{QUBELL_API_URL}/#{api_path}",
-        :user => ENV['QUBELL_TEST_USER'],
-        :password => ENV['QUBELL_TEST_PASSWORD'],
+        :url => end_point,
+        :user => @qubell_user,
+        :password => @qubell_password,
         :headers => { :accept => :json, :content_type => :json },
-        :payload => body
+        :payload => request_body
     ).execute
 
     result = resp.to_str
@@ -38,12 +51,39 @@ class QubellPlatform
     api_call :get, api_path, '{}'
   end
 
-  def api_post(api_path, body)
-    api_call :post, api_path, body
+  def api_post(api_path, request_body)
+    api_call :post, api_path, request_body
+  end
+
+  def find_organization_id(org_name)
+    organizations = api_get "organizations"
+    organization = organizations.find{ |org| org['name'] == org_name }
+
+    raise "Organization '#{org_name}' not found" if organization.nil?
+
+    organization['id']
+  end
+
+  def find_environment_id(org_id, env_name)
+    environments = api_get "organizations/#{org_id}/environments"
+    environment = environments.find{ |env| env['name'] == env_name }
+
+    raise "Environment '#{env_name}' not found in org '#{org_id}'" if environment.nil?
+
+    environment['id']
+  end
+
+  def find_application_id(org_id, app_name)
+    applications = api_get "organizations/#{org_id}/applications"
+    application = applications.find{ |app| app['name'] == app_name }
+
+    raise "Application '#{app_name}' not found in org '#{org_id}'" if application.nil?
+
+    application['id']
   end
 
   def create_application(name)
-    QubellApplication.new(name, APPLICATION_IDS[name], self)
+    QubellApplication.new(name, @applications[name], self)
   end
 
   # launch new instance
@@ -52,9 +92,14 @@ class QubellPlatform
   # destroyInterval=7200000 - 2 hours
   def launch_application(application)
     launch_response = api_post("applications/#{application.get_id}/launch",
-                               '{"destroyInterval":3600000,"environmentId":"' + TEST_ENV_ID + '"}')
+                               '{"destroyInterval":3600000,"environmentId":"' + @qubell_environment_id + '"}')
 
     QubellApplicationInstance.new application, launch_response['id'], self
+  end
+
+  def run_workflow(instance, workflow_name)
+    $logger.debug "Run '#{workflow_name}' on #{instance}"
+    api_post "instances/#{instance.get_id}/#{workflow_name}", '{}'
   end
 
   def fetch_instance_info(instance)
@@ -63,11 +108,6 @@ class QubellPlatform
 
   def destroy_instance(instance)
     run_workflow instance, 'destroy'
-  end
-
-  def run_workflow(instance, workflow_name)
-    $logger.debug "Run '#{workflow_name}' on #{instance}"
-    api_post "instances/#{instance.get_id}/#{workflow_name}", '{}'
   end
 end
 

@@ -1,7 +1,7 @@
 require 'logger'
 
 $logger = Logger.new(STDERR)
-$logger.level = Logger::DEBUG
+$logger.level = Logger::INFO
 $logger.formatter = proc do |severity, datetime, progname, msg|
   "[#{severity}] (#{datetime.strftime('%Y-%m-%d %H:%M:%S')}) #{msg}\n"
 end

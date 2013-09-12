@@ -16,6 +16,8 @@ class QubellPlatform
 
   def api_call(method, api_path, body)
 
+    $logger.debug "API CALL: '#{method}' '#{QUBELL_API_URL}/#{api_path}' '#{body}'"
+
     resp = RestClient::Request.new(
         :method => method,
         :url => "#{QUBELL_API_URL}/#{api_path}",
@@ -25,7 +27,11 @@ class QubellPlatform
         :payload => body
     ).execute
 
-    JSON.parse(resp.to_str)
+    result = resp.to_str
+
+    $logger.debug "Response: #{result}"
+
+    JSON.parse(result)
   end
 
   def api_get(api_path)
@@ -55,8 +61,13 @@ class QubellPlatform
     api_get "instances/#{instance.get_id}"
   end
 
+  def destroy_instance(instance)
+    run_workflow instance, 'destroy'
+  end
+
   def run_workflow(instance, workflow_name)
-    api_post "instances/#{instance.get_id}/#{workflow_name}", {}
+    $logger.debug "Run '#{workflow_name}' on #{instance}"
+    api_post "instances/#{instance.get_id}/#{workflow_name}", '{}'
   end
 end
 
@@ -71,6 +82,10 @@ class QubellApplication
   def get_id
     @app_id
   end
+
+  def to_s
+    "QubellApplication{ id: #{@app_id}, name: '#{@name}' }"
+  end
 end
 
 class QubellApplicationInstance
@@ -83,5 +98,32 @@ class QubellApplicationInstance
 
   def get_id
     @id
+  end
+
+  def fetch_status
+    instance_info = @qubell.fetch_instance_info self
+    instance_info['status']
+  end
+
+  def wait_status(from_status, to_status)
+    instance_status = fetch_status
+
+    while instance_status == from_status
+      sleep 5
+      instance_status = fetch_status
+    end
+
+    if instance_status != to_status
+      raise "Instance has #{instance_status} status, but expected: #{to_status}"
+    end
+  end
+
+  def destroy
+    @qubell.destroy_instance self
+    wait_status 'Destroying', 'Destroyed'
+  end
+
+  def to_s
+    "QubellApplicationInstance{ id: #{@id}, app: #{@app} }"
   end
 end

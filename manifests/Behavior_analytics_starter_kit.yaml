@@ -5,7 +5,7 @@ kit:
     name: "Behavior Analytics Platform",
     manifest: "https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/manifests/behavior_analytics_platform.yaml"
   }, {
-    name: "Web Store ",
+    name: "Web Store",
     manifest: "https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/manifests/webstore.yaml"
   }]
   provider:

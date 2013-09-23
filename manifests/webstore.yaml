@@ -68,7 +68,7 @@ launch:
             parameters:
                 localpath: "/tmp"
                 bucket: "gd-bask"
-                s3_filename: "recommendations.txt"
+                s3_filename: "recommendations_example.txt"
                 action: "download"
 
         - uploading_test_recommendations_to_store:
@@ -81,8 +81,8 @@ launch:
                 command:
                     - bash -c
                     - |
-                        curl -F 'file=@/tmp/recommendations.txt' http://localhost:8080/webstore/api/v1/recommendations/import
-                        rm /tmp/recommendations.txt
+                        curl -F 'file=@/tmp/recommendations_example.txt' http://localhost:8080/webstore/api/v1/recommendations/import
+                        rm /tmp/recommendations_example.txt
 
     return:
         webstore_url:

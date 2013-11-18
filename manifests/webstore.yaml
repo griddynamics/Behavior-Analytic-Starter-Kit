@@ -81,14 +81,14 @@ launch:
                 command:
                     - bash -c
                     - |
-                        curl -F 'file=@/tmp/recommendations.txt' http://localhost:8080/webstore/api/v1/recommendations/import
+                        curl -F 'file=@/tmp/recommendations.txt' http://localhost:8080/ecask-site/api/v1/recommendations/import
                         rm /tmp/recommendations.txt
 
     return:
         webstore_url:
             description: "Web Store:"
             value:
-                - "http://{$.ips_tomcat_pub[0]}:8080/webstore/"
+                - "http://{$.ips_tomcat_pub[0]}:8080/ecask-site/"
 
 Save_product_catalog_structure_to_S3:
     parameters:
@@ -105,7 +105,7 @@ Save_product_catalog_structure_to_S3:
                 command:
                     - bash -c
                     - |
-                        curl -o /tmp/${filename} http://localhost:8080/webstore/api/v1/catalog_manager/export
+                        curl -o /tmp/${filename} http://localhost:8080/ecask-site/api/v1/catalog_manager/export
 
         uploading_to_S3:
             action: .s3manage
@@ -142,7 +142,7 @@ Load_recommendations_from_S3:
                 command:
                     - bash -c
                     - |
-                        curl -F 'file=@/tmp/${filename}' http://localhost:8080/webstore/api/v1/recommendations/import
+                        curl -F 'file=@/tmp/${filename}' http://localhost:8080/ecask-site/api/v1/recommendations/import
                         rm /tmp/${filename}
 
 Load_product_catalog_from_S3:
@@ -172,7 +172,7 @@ Load_product_catalog_from_S3:
                 command:
                     - bash -c
                     - |
-                        curl -F 'file=@/tmp/${filename}' http://localhost:8080/webstore/api/v1/catalog_manager/import
+                        curl -F 'file=@/tmp/${filename}' http://localhost:8080/ecask-site/api/v1/catalog_manager/import
 
 .s3manage:
     parameters:

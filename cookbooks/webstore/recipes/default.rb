@@ -2,15 +2,11 @@ include_recipe "tomcat7::default"
 include_recipe "mysql::server"
 include_recipe "webstore::db_setup"
 
-# package "mysql-connector-java"
+package "mysql-connector-java"
 
-bash "installing mysql-connector-java" do
-    user "root"
-    cwd "/tmp"
-    code <<-EOH
-wget -q -O - "http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.25.tar.gz/from/http://cdn.mysql.com/" | tar xvfz -
-mv /tmp/mysql-connector-java-*/mysql-connector-java*.jar #{node[:webstore][:tomcat_dir]}/lib/    
-    EOH
+execute "installing mysql-connector-java" do
+  command "cp /usr/share/java/mysql-connector-java.jar #{node[:webstore][:tomcat_dir]}/lib/"
+  action :run
 end
 
 execute "Fixing daemon script" do

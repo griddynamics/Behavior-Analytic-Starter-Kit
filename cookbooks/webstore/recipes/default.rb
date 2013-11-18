@@ -38,13 +38,19 @@ service "tomcat" do
   action :restart
 end
 
-bash "waiting webstore app deployment" do
-    user "root"
-    code <<-EOH
-	until [ "`curl --silent --show-error --connect-timeout 1 -I http://localhost:8080/ecask-site/ | grep 'Coyote'`" != "" ];
-	do
-	  sleep 10
-	done
-    EOH
+bash 'waiting webstore app deployment' do
+  user 'root'
+  code <<-EOH
+  while [ "`curl -s -w "%{http_code}" "http://localhost:8080/webstore" -o /dev/null`" == "000" ];
+  do
+          sleep 10
+  done
+  if [ "`curl -s -w "%{http_code}" "http://localhost:8080/webstore" -o /dev/null`" == "302" ];
+  then
+          exit 0
+  else
+          exit 1
+  fi
+  EOH
 end
 

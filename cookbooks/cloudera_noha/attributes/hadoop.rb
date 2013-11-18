@@ -80,6 +80,8 @@ when "rackspace"
 	end
 when "ec2"
 	default[:hadoop][:conf][:hdfs_site]["dfs.namenode.http-address"] =  "#{node[:hadoop][:nn][:host]}:#{node[:hadoop][:nn][:ports][:http]}"	
+else
+	default[:hadoop][:conf][:hdfs_site]["dfs.namenode.http-address"] =  "#{node[:hadoop][:nn][:host]}:#{node[:hadoop][:nn][:ports][:http]}"
 end	
 
 ########################
@@ -96,6 +98,8 @@ when "rackspace"
 	end
 when "ec2"
 	default[:hadoop][:conf][:mapred_site]["mapred.job.tracker"] = "#{node[:hadoop][:jt][:host]}:#{node[:hadoop][:jt][:ports][:rpc]}"
+else
+	default[:hadoop][:conf][:mapred_site]["mapred.job.tracker"] = "#{node[:hadoop][:jt][:host]}:#{node[:hadoop][:jt][:ports][:rpc]}"	
 end	
 default[:hadoop][:conf][:mapred_site]["mapred.local.dir"] =
     (1..node[:hadoop][:slave_disks]).map{ |num| "/data/#{num}/mapred/local" }.join(",")

@@ -1,5 +1,9 @@
 Behavioral Analytics Starter Kit
 ==============================
+
+[![Install](https://raw.github.com/qubell-bazaar/component-skeleton/master/img/install.png)](https://express.qubell.com/applications/upload?metadataUrl=https://raw.github.com/griddynamics/Behavior-Analytic-Starter-Kit/master/manifests/Behavior_analytics_starter_kit.yaml)
+
+
 Behavioral Analytics Starter Kit is a cloud lab for developers where they can learn how to create powerful behavioral 
 analytics applications using Hadoop and Mahout, and deploy them on Amazon Cloud with Qubell Adaptive PaaS. This 
 starter kit presents a complete example of a common application of behavioral analytics - a Product Recommendation 

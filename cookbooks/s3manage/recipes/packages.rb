@@ -4,7 +4,13 @@
   end
 end
 
+gem_package "nokogiri" do
+  	gem_binary("/opt/chef/embedded/bin/gem")
+  	version "1.6.1"
+    action :install
+end
+
 gem_package "aws-sdk" do
   	gem_binary("/opt/chef/embedded/bin/gem")
-	action :install
+    action :install
 end

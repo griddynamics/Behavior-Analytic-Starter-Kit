@@ -38,6 +38,11 @@ launch:
                 vmIdentity: ec2-user
                 roleName: hmaster
                 jcloudsNodeNamePrefix: hadoop_master
+                providerSettings:
+                  userData:
+                    |
+                      #!/bin/bash
+                      sed -i "s/mirrorlist=https/mirrorlist=http/" /etc/yum.repos.d/epel.repo
             output:
                 ips_hmaster: privateips
                 ips_hmaster_pub: ips
@@ -53,6 +58,11 @@ launch:
                 vmIdentity: ec2-user
                 roleName: hslave
                 jcloudsNodeNamePrefix: hadoop_slave_{$.ips_hmaster_pub[0]}
+                providerSettings:
+                  userData:
+                    |
+                      #!/bin/bash
+                      sed -i "s/mirrorlist=https/mirrorlist=http/" /etc/yum.repos.d/epel.repo
             output:
                 ips_hslave: privateips
                 ips_hslave_pub: ips
@@ -65,7 +75,7 @@ launch:
                 roles: [ hmaster ]
                 runList: [ "recipe[selinux::permissive]", "recipe[java::openjdk]", "recipe[cloudera_noha::namenode]", "recipe[cloudera_noha::jobtracker]", "recipe[ganglia::server]", "recipe[s3manage::packages]" ]
                 isSolo: true
-                recipeUrl: "http://gd-bask.s3.amazonaws.com/cookbooks.tar.gz"
+                recipeUrl: "https://s3.amazonaws.com/bask-art/bask.tar.gz"
                 jattrs:
                     java:
                         jdk_version: "7"
